@@ -46,7 +46,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div className="w-full px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div className="w-full pl-[35px] pr-4 sm:pr-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Logo />
           <span className="flex flex-col items-center justify-center font-semibold text-xs leading-snug tracking-wide">
