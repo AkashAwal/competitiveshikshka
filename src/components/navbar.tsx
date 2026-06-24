@@ -33,8 +33,8 @@ function Logo() {
       src={src || "/logo-white-mode.svg"}
       alt="CompetitiveShiksha"
       width={200}
-      height={275}
-      className="h-20 w-auto"
+      height={244}
+      className="h-10 w-auto"
       priority
     />
   );
@@ -46,9 +46,13 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-24 flex items-center justify-between">
-        <Link href="/" className="flex items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2">
           <Logo />
+          <span className="font-bold text-base leading-tight">
+            <span className="text-primary">Competitive</span>
+            <span className="block text-foreground">Shiksha</span>
+          </span>
         </Link>
 
         {/* Desktop nav */}
