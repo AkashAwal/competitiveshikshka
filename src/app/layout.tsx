@@ -1,25 +1,13 @@
 import type { Metadata } from "next";
-import { Geist_Mono } from "next/font/google";
-import localFont from "next/font/local";
+import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 
-const champagne = localFont({
-  src: [
-    {
-      path: "../../public/champagne-regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/champagne-bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-champagne",
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
@@ -45,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${champagne.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
