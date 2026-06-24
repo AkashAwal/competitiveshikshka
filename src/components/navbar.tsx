@@ -32,9 +32,9 @@ function Logo() {
     <Image
       src={src || "/logo-white-mode.svg"}
       alt="CompetitiveShiksha"
-      width={280}
-      height={80}
-      className="h-20 w-auto"
+      width={200}
+      height={275}
+      className="h-14 w-auto"
       priority
     />
   );
