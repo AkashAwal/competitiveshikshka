@@ -49,9 +49,9 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Logo />
-          <span className="flex flex-col items-center justify-center font-bold text-sm leading-tight">
-            <span className="text-primary">Competitive</span>
-            <span className="text-foreground">Shiksha</span>
+          <span className="flex flex-col items-center justify-center font-semibold text-xs leading-snug tracking-wide">
+            <span className="text-primary uppercase">Competitive</span>
+            <span className="text-foreground uppercase">Shiksha</span>
           </span>
         </Link>
 
