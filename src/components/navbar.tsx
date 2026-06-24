@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -16,6 +18,28 @@ const navLinks = [
   { label: "Mentorship", href: "/mentorship" },
 ];
 
+function Logo() {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  const src = mounted && resolvedTheme === "dark"
+    ? "/logo-dark-mode.svg"
+    : "/logo-white-mode.svg";
+
+  return (
+    <Image
+      src={src || "/logo-white-mode.svg"}
+      alt="CompetitiveShiksha"
+      width={140}
+      height={40}
+      className="h-9 w-auto"
+      priority
+    />
+  );
+}
+
 export function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,9 +47,8 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 font-bold text-lg">
-          <span className="text-primary">CS</span>
-          <span className="hidden sm:inline text-foreground">CompetitiveShikshka</span>
+        <Link href="/" className="flex items-center">
+          <Logo />
         </Link>
 
         {/* Desktop nav */}
