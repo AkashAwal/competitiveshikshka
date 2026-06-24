@@ -34,7 +34,7 @@ function Logo() {
       alt="CompetitiveShiksha"
       width={280}
       height={80}
-      className="h-16 w-auto"
+      className="h-20 w-auto"
       priority
     />
   );
@@ -46,7 +46,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <Logo />
         </Link>
