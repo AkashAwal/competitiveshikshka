@@ -41,15 +41,14 @@ export function HeroSlider() {
 
   return (
     <div className="relative w-full bg-white select-none">
-      {/* image — full width, natural height, no crop */}
-      <div className={cn("transition-opacity duration-200", animating ? "opacity-0" : "opacity-100")}>
+      {/* image — fixed aspect ratio so every slide is identical height */}
+      <div className={cn("relative w-full aspect-[2128/739] transition-opacity duration-200", animating ? "opacity-0" : "opacity-100")}>
         <Image
           key={slide.image}
           src={slide.image}
           alt={slide.alt}
-          width={2128}
-          height={739}
-          className="w-full h-auto block"
+          fill
+          className="object-contain"
           priority
         />
       </div>
