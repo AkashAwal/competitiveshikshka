@@ -3,9 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -18,28 +16,6 @@ const navLinks = [
   { label: "Mentorship", href: "/mentorship" },
 ];
 
-function Logo() {
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
-  const src = mounted && resolvedTheme === "dark"
-    ? "/logo-dark-mode.svg"
-    : "/logo-white-mode.svg";
-
-  return (
-    <Image
-      src={src || "/logo-white-mode.svg"}
-      alt="CompetitiveShiksha"
-      width={200}
-      height={265}
-      className="h-[72px] w-auto"
-      priority
-    />
-  );
-}
-
 export function Navbar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -48,10 +24,16 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="w-full pl-[35px] pr-4 sm:pr-6 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center">
-          <Logo />
+          <Image
+            src="/logo-white-mode.svg"
+            alt="CompetitiveShiksha"
+            width={200}
+            height={265}
+            className="h-[72px] w-auto"
+            priority
+          />
         </Link>
 
-        {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <Link
@@ -70,7 +52,6 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
           <button
             className="md:hidden p-2 rounded-md hover:bg-accent"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -81,7 +62,6 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden border-t border-border bg-background px-4 py-3 flex flex-col gap-1">
           {navLinks.map((link) => (
