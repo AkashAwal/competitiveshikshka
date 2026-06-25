@@ -21,15 +21,15 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b-[3px] border-black bg-white">
-      <div className="w-full pl-[35px] pr-4 sm:pr-6 h-[68px] flex items-center justify-between">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+      <div className="w-full pl-[35px] pr-4 sm:pr-6 h-[64px] flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <Image
             src="/logo-white-mode.svg"
             alt="CompetitiveShiksha"
             width={200}
             height={265}
-            className="h-[66px] w-auto"
+            className="h-[62px] w-auto"
             priority
           />
         </Link>
@@ -40,10 +40,10 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               className={cn(
-                "px-3.5 py-1.5 rounded-lg text-sm font-bold transition-all duration-150 cursor-pointer border-[2px]",
+                "px-3 py-1.5 rounded-md text-sm font-semibold transition-colors cursor-pointer",
                 pathname.startsWith(link.href)
-                  ? "bg-primary text-white border-black [box-shadow:2px_2px_0_#000]"
-                  : "text-foreground border-transparent hover:border-black hover:bg-accent hover:[box-shadow:2px_2px_0_#000]"
+                  ? "text-primary bg-primary/10"
+                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
               )}
             >
               {link.label}
@@ -53,7 +53,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <button
-            className="md:hidden p-2 rounded-lg border-[2px] border-black bg-white hover:bg-accent transition-all duration-150 cursor-pointer [box-shadow:2px_2px_0_#000] hover:[box-shadow:3px_3px_0_#000]"
+            className="md:hidden p-2 rounded-md hover:bg-accent transition-colors cursor-pointer"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -63,17 +63,17 @@ export function Navbar() {
       </div>
 
       {menuOpen && (
-        <div className="md:hidden border-t-[3px] border-black bg-white px-4 py-3 flex flex-col gap-1">
+        <div className="md:hidden border-t border-border bg-background px-4 py-3 flex flex-col gap-1">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
               className={cn(
-                "px-3.5 py-2.5 rounded-lg text-sm font-bold transition-all duration-150 cursor-pointer border-[2px]",
+                "px-3 py-2 rounded-md text-sm font-semibold transition-colors cursor-pointer",
                 pathname.startsWith(link.href)
-                  ? "bg-primary text-white border-black [box-shadow:2px_2px_0_#000]"
-                  : "text-foreground border-transparent hover:border-black hover:bg-accent"
+                  ? "text-primary bg-primary/10"
+                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
               )}
             >
               {link.label}

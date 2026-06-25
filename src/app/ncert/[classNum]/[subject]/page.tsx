@@ -42,29 +42,29 @@ export default async function NcertSubjectPage({ params }: Props) {
         <ChevronRight className="h-4 w-4" />
         <Link href={`/ncert/${cls}`} className="hover:text-primary transition-colors">Class {cls}</Link>
         <ChevronRight className="h-4 w-4" />
-        <span className="text-foreground font-bold capitalize">{subjectTitle}</span>
+        <span className="text-foreground font-semibold capitalize">{subjectTitle}</span>
       </nav>
 
       <h1 className="text-3xl font-bold mb-2 capitalize">Class {cls} {subjectTitle} Solutions</h1>
       <p className="text-muted-foreground mb-8">Select a chapter to view solutions.</p>
 
-      <div className="space-y-3">
+      <div className="space-y-2">
         {chapters.map(({ chapter, chapterTitle, questionCount }) => (
           <Link
             key={chapter}
             href={`/ncert/${cls}/${subject}/chapter-${chapter}`}
-            className="group flex cursor-pointer items-center justify-between p-5 rounded-lg border-[3px] border-black bg-white [box-shadow:var(--neo-shadow)] hover:[box-shadow:var(--neo-shadow-hover)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+            className="group flex items-center justify-between p-4 rounded-xl border border-border bg-card hover:border-primary/40 hover:shadow-sm transition-all duration-200"
           >
             <div className="flex items-center gap-4">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border-[2px] border-black bg-primary/10 text-sm font-bold text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-sm font-bold text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                 {chapter}
               </span>
               <div>
-                <p className="font-bold group-hover:text-primary transition-colors">{chapterTitle}</p>
+                <p className="font-semibold group-hover:text-primary transition-colors">{chapterTitle}</p>
                 <p className="text-sm text-muted-foreground">{questionCount} questions</p>
               </div>
             </div>
-            <ChevronRight className="h-5 w-5 shrink-0 text-muted-foreground group-hover:text-primary transition-colors" />
+            <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground group-hover:text-primary transition-colors" />
           </Link>
         ))}
       </div>

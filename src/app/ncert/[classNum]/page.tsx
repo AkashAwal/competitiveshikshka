@@ -35,24 +35,24 @@ export default async function NcertClassPage({ params }: Props) {
       <nav className="flex items-center gap-1 text-sm text-muted-foreground mb-8">
         <Link href="/ncert" className="hover:text-primary transition-colors">NCERT</Link>
         <ChevronRight className="h-4 w-4" />
-        <span className="text-foreground font-bold">Class {cls}</span>
+        <span className="text-foreground font-semibold">Class {cls}</span>
       </nav>
 
       <h1 className="text-3xl font-bold mb-2">Class {cls} NCERT Solutions</h1>
       <p className="text-muted-foreground mb-8">Select a subject to view chapter-wise solutions.</p>
 
-      <div className="grid sm:grid-cols-2 gap-4">
+      <div className="grid sm:grid-cols-2 gap-3">
         {subjects.map(({ subject, chapters }) => (
           <Link
             key={subject}
             href={`/ncert/${cls}/${subjectToSlug(subject)}`}
-            className="group flex cursor-pointer items-center justify-between p-5 rounded-lg border-[3px] border-black bg-white [box-shadow:var(--neo-shadow)] hover:[box-shadow:var(--neo-shadow-hover)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+            className="group flex items-center justify-between p-4 rounded-xl border border-border bg-card hover:border-primary/40 hover:shadow-sm transition-all duration-200"
           >
             <div>
-              <p className="font-bold group-hover:text-primary transition-colors">{subject}</p>
+              <p className="font-semibold group-hover:text-primary transition-colors">{subject}</p>
               <p className="text-sm text-muted-foreground">{chapters} chapter{chapters !== 1 ? "s" : ""}</p>
             </div>
-            <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+            <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
           </Link>
         ))}
       </div>

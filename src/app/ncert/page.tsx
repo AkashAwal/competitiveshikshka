@@ -23,9 +23,7 @@ export default async function NcertHomePage() {
     <div className="mx-auto max-w-4xl px-4 sm:px-6 py-12">
       <div className="mb-10">
         <h1 className="text-3xl font-bold mb-2">NCERT Solutions</h1>
-        <p className="text-muted-foreground">
-          Step-by-step solutions for all classes and subjects. Select your class to get started.
-        </p>
+        <p className="text-muted-foreground">Select your class to get started.</p>
       </div>
 
       {classes.length === 0 ? (
@@ -36,7 +34,7 @@ export default async function NcertHomePage() {
             <Link
               key={cls}
               href={`/ncert/${cls}`}
-              className="group flex cursor-pointer flex-col items-center justify-center gap-2 p-6 rounded-lg border-[3px] border-black bg-white [box-shadow:var(--neo-shadow)] hover:[box-shadow:var(--neo-shadow-hover)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
+              className="group flex flex-col items-center justify-center gap-2 p-6 rounded-xl border border-border bg-card hover:border-primary/40 hover:shadow-sm transition-all duration-200"
             >
               <BookOpen className="h-6 w-6 text-primary" />
               <span className="font-bold text-sm group-hover:text-primary transition-colors">

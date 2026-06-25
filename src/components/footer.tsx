@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="mt-auto border-t-[3px] border-black bg-white">
+    <footer className="mt-auto border-t border-border bg-background">
       <div className="mx-auto max-w-7xl px-6 py-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
         <div>
           <p className="font-bold text-primary mb-2">CompetitiveShikshka</p>
@@ -30,7 +30,7 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <div className="border-t-[3px] border-black mx-6 pb-4 pt-3 text-xs text-muted-foreground">
+      <div className="border-t border-border mx-6 pb-4 pt-3 text-xs text-muted-foreground">
         © {new Date().getFullYear()} CompetitiveShikshka. All rights reserved.
       </div>
     </footer>
