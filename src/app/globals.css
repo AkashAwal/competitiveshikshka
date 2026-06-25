@@ -6,9 +6,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-nunito);
+  --font-sans: var(--font-urbanist);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-fredoka);
+  --font-heading: var(--font-urbanist);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -50,9 +50,9 @@
 :root {
   --background: oklch(0.99 0 0);
   --foreground: oklch(0.1 0 0);
-  --card: oklch(1 0.004 55);
+  --card: oklch(1 0 0);
   --card-foreground: oklch(0.1 0 0);
-  --popover: oklch(1 0.004 55);
+  --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.1 0 0);
   --primary: oklch(0.65 0.2 45);
   --primary-foreground: oklch(0.99 0 0);
@@ -63,32 +63,23 @@
   --accent: oklch(0.94 0.03 45);
   --accent-foreground: oklch(0.3 0.1 45);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.9 0.02 55);
-  --input: oklch(0.9 0.02 55);
+  --border: oklch(0.88 0 0);
+  --input: oklch(0.88 0 0);
   --ring: oklch(0.65 0.2 45);
   --chart-1: oklch(0.65 0.2 45);
   --chart-2: oklch(0.72 0.15 60);
   --chart-3: oklch(0.55 0.18 35);
   --chart-4: oklch(0.78 0.1 50);
   --chart-5: oklch(0.45 0.15 30);
-  --radius: 0.75rem;
-  --sidebar: oklch(0.97 0.01 45);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.97 0 0);
   --sidebar-foreground: oklch(0.1 0 0);
   --sidebar-primary: oklch(0.65 0.2 45);
   --sidebar-primary-foreground: oklch(0.99 0 0);
   --sidebar-accent: oklch(0.94 0.03 45);
   --sidebar-accent-foreground: oklch(0.2 0 0);
-  --sidebar-border: oklch(0.9 0.01 45);
+  --sidebar-border: oklch(0.88 0 0);
   --sidebar-ring: oklch(0.65 0.2 45);
-
-  /* Claymorphism */
-  --clay-shadow: inset -2px -4px 8px rgba(0,0,0,0.07), 4px 8px 20px rgba(232,97,26,0.14);
-  --clay-shadow-sm: inset -1px -2px 5px rgba(0,0,0,0.05), 2px 4px 10px rgba(232,97,26,0.10);
-  --clay-shadow-hover: inset -2px -4px 8px rgba(0,0,0,0.09), 6px 12px 28px rgba(232,97,26,0.22);
-  --clay-shadow-btn: inset -1px -3px 6px rgba(0,0,0,0.18), 3px 6px 16px rgba(232,97,26,0.38);
-  --clay-shadow-btn-hover: inset -1px -3px 6px rgba(0,0,0,0.18), 5px 8px 22px rgba(232,97,26,0.50);
-  --clay-shadow-btn-active: inset -1px -2px 4px rgba(0,0,0,0.18), 1px 2px 6px rgba(232,97,26,0.22);
-  --clay-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 

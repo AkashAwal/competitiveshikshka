@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import { Fredoka, Nunito } from "next/font/google";
+import { Urbanist } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 
-const fredoka = Fredoka({
-  variable: "--font-fredoka",
-  subsets: ["latin"],
-});
-
-const nunito = Nunito({
-  variable: "--font-nunito",
+const urbanist = Urbanist({
+  variable: "--font-urbanist",
   subsets: ["latin"],
 });
 
@@ -32,7 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fredoka.variable} ${nunito.variable} h-full antialiased`}
+      className={`${urbanist.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Navbar />
