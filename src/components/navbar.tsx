@@ -22,7 +22,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div className="w-full pl-[35px] pr-4 sm:pr-6 h-20 flex items-center justify-between">
+      <div className="w-full pl-[35px] pr-4 sm:pr-6 h-[70px] flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <Image
             src="/logo-white-mode.svg"
