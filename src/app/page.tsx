@@ -56,20 +56,6 @@ export default function HomePage() {
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-14">
 
-        {/* Headline */}
-        <div className="text-center mb-10">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border-[3px] border-primary/25 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary [box-shadow:inset_-1px_-2px_4px_rgba(0,0,0,0.06),_2px_3px_8px_rgba(232,97,26,0.18)]">
-            JEE · NEET · Govt Exams
-          </div>
-          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl mb-4">
-            Everything you need to{" "}
-            <span className="text-primary">crack your exam</span>
-          </h1>
-          <p className="mx-auto max-w-xl text-lg text-muted-foreground">
-            Free resources, smart tools, and real mentorship — all built for serious aspirants.
-          </p>
-        </div>
-
         {/* 4-col bento grid */}
         <div className="grid grid-cols-4 gap-5">
 
