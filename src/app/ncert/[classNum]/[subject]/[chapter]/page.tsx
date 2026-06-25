@@ -52,7 +52,7 @@ export default async function NcertChapterPage({ params }: Props) {
   if (!data) notFound();
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+    <div className="mx-auto max-w-3xl px-4 sm:px-6 py-12">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-1 text-sm text-muted-foreground mb-8 flex-wrap">
         <Link href="/ncert" className="hover:text-primary transition-colors">NCERT</Link>
@@ -61,11 +61,13 @@ export default async function NcertChapterPage({ params }: Props) {
         <ChevronRight className="h-4 w-4" />
         <Link href={`/ncert/${cls}/${subject}`} className="hover:text-primary transition-colors capitalize">{subjectTitle}</Link>
         <ChevronRight className="h-4 w-4" />
-        <span className="text-foreground font-medium">Chapter {chapterNum}</span>
+        <span className="text-foreground font-semibold">Chapter {chapterNum}</span>
       </nav>
 
       <div className="mb-8">
-        <p className="text-sm text-primary font-medium mb-1">Chapter {chapterNum}</p>
+        <div className="inline-flex items-center rounded-full border-[3px] border-primary/25 bg-primary/10 px-3 py-1 text-sm font-semibold text-primary mb-3 [box-shadow:inset_-1px_-2px_4px_rgba(0,0,0,0.05),_2px_3px_8px_rgba(232,97,26,0.14)]">
+          Chapter {chapterNum}
+        </div>
         <h1 className="text-3xl font-bold">{data.chapterTitle}</h1>
         <p className="text-muted-foreground mt-1">Class {cls} · {subjectTitle}</p>
       </div>
@@ -74,15 +76,15 @@ export default async function NcertChapterPage({ params }: Props) {
         {data.questions.map((qa, i) => (
           <details
             key={i}
-            className="group border border-border rounded-xl bg-card overflow-hidden"
+            className="group rounded-3xl border-[3px] border-primary/15 bg-card overflow-hidden [box-shadow:var(--clay-shadow)] open:[box-shadow:var(--clay-shadow-hover)]"
             id={`q${qa.questionNumber}`}
           >
-            <summary className="flex items-start justify-between gap-4 p-5 cursor-pointer select-none hover:bg-accent transition-colors list-none">
+            <summary className="flex cursor-pointer select-none list-none items-start justify-between gap-4 p-5 hover:bg-accent/50 transition-colors">
               <div className="flex items-start gap-3">
-                <span className="shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary/10 text-primary text-xs font-bold mt-0.5">
+                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-[3px] border-primary/25 bg-primary/10 text-xs font-bold text-primary [box-shadow:inset_-1px_-2px_4px_rgba(0,0,0,0.07),_1px_2px_5px_rgba(232,97,26,0.18)]">
                   {qa.questionNumber}
                 </span>
-                <div className="text-sm font-medium leading-relaxed">
+                <div className="text-sm font-semibold leading-relaxed">
                   {qa.questionText?.length ? (
                     <PortableText value={qa.questionText as unknown[]} />
                   ) : (
@@ -90,11 +92,11 @@ export default async function NcertChapterPage({ params }: Props) {
                   )}
                 </div>
               </div>
-              <ChevronDown className="h-5 w-5 shrink-0 text-muted-foreground mt-0.5 transition-transform group-open:rotate-180" />
+              <ChevronDown className="h-5 w-5 mt-0.5 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
             </summary>
 
-            <div className="px-5 pb-5 pt-1 border-t border-border">
-              <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-3">Answer</p>
+            <div className="border-t-[3px] border-primary/10 px-5 pb-5 pt-4">
+              <p className="mb-3 text-xs font-bold uppercase tracking-wide text-primary">Answer</p>
               {qa.answer?.length ? (
                 <PortableText value={qa.answer as unknown[]} />
               ) : (

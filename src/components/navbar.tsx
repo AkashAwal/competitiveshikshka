@@ -21,59 +21,67 @@ export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div className="w-full pl-[35px] pr-4 sm:pr-6 h-[70px] flex items-center justify-between">
-        <Link href="/" className="flex items-center">
-          <Image
-            src="/logo-white-mode.svg"
-            alt="CompetitiveShiksha"
-            width={200}
-            height={265}
-            className="h-[72px] w-auto"
-            priority
-          />
-        </Link>
+    <header className="sticky top-3 z-50 px-3">
+      <div
+        className={cn(
+          "border-[3px] border-primary/20 bg-white/95 backdrop-blur-md",
+          "[box-shadow:inset_-1px_-2px_6px_rgba(0,0,0,0.05),_4px_8px_24px_rgba(232,97,26,0.13)]",
+          menuOpen ? "rounded-t-3xl" : "rounded-3xl"
+        )}
+      >
+        <div className="pl-[35px] pr-4 sm:pr-6 h-[66px] flex items-center justify-between">
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo-white-mode.svg"
+              alt="CompetitiveShiksha"
+              width={200}
+              height={265}
+              className="h-[68px] w-auto"
+              priority
+            />
+          </Link>
 
-        <nav className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "px-3 py-1.5 rounded-md text-sm font-medium transition-colors",
-                pathname.startsWith(link.href)
-                  ? "text-primary bg-accent"
-                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
-              )}
+          <nav className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "px-3.5 py-1.5 rounded-2xl text-sm font-semibold transition-all duration-200 cursor-pointer",
+                  pathname.startsWith(link.href)
+                    ? "text-primary bg-primary/10 border-[2px] border-primary/25 [box-shadow:inset_-1px_-2px_4px_rgba(0,0,0,0.05),_2px_3px_8px_rgba(232,97,26,0.15)]"
+                    : "text-muted-foreground border-[2px] border-transparent hover:text-foreground hover:bg-accent hover:border-primary/15"
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <button
+              className="md:hidden p-2 rounded-2xl border-[2px] border-primary/20 hover:bg-accent transition-all duration-200 cursor-pointer [box-shadow:inset_-1px_-2px_4px_rgba(0,0,0,0.05),_2px_3px_8px_rgba(232,97,26,0.10)]"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
             >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-2">
-          <button
-            className="md:hidden p-2 rounded-md hover:bg-accent"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+              {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
       </div>
 
       {menuOpen && (
-        <div className="md:hidden border-t border-border bg-background px-4 py-3 flex flex-col gap-1">
+        <div className="md:hidden border-[3px] border-t-0 border-primary/20 bg-white/95 rounded-b-3xl px-4 py-3 flex flex-col gap-1 [box-shadow:0_8px_24px_rgba(232,97,26,0.12)]">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
               className={cn(
-                "px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                "px-3.5 py-2.5 rounded-2xl text-sm font-semibold transition-all duration-200 cursor-pointer",
                 pathname.startsWith(link.href)
-                  ? "text-primary bg-accent"
-                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                  ? "text-primary bg-primary/10 border-[2px] border-primary/25"
+                  : "text-muted-foreground border-[2px] border-transparent hover:text-foreground hover:bg-accent hover:border-primary/15"
               )}
             >
               {link.label}

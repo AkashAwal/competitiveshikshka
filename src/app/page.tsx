@@ -46,19 +46,27 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="border-b border-border">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-20 text-center">
-          <p className="text-primary font-semibold text-sm uppercase tracking-widest mb-4">
-            For JEE · NEET · Govt Exams
-          </p>
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-5">
+      <section className="relative overflow-hidden py-20">
+        {/* Background blobs */}
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute -top-10 left-1/3 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 h-64 w-64 rounded-full bg-primary/8 blur-3xl" />
+        </div>
+
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
+          {/* Badge */}
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border-[3px] border-primary/25 bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary [box-shadow:inset_-1px_-2px_4px_rgba(0,0,0,0.06),_2px_3px_8px_rgba(232,97,26,0.18)]">
+            JEE · NEET · Govt Exams
+          </div>
+
+          <h1 className="mb-5 text-4xl font-bold tracking-tight sm:text-6xl">
             Everything you need to{" "}
             <span className="text-primary">crack your exam</span>
           </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
+          <p className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground">
             Free NCERT solutions, PYQs, college info, rank calculators and expert mentorship — all in one place.
           </p>
-          <div className="flex flex-wrap gap-3 justify-center">
+          <div className="flex flex-wrap justify-center gap-3">
             <Link href="/ncert" className={cn(buttonVariants({ size: "lg" }))}>
               Browse NCERT Solutions
             </Link>
@@ -70,21 +78,21 @@ export default function HomePage() {
       </section>
 
       {/* Features grid */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
-        <h2 className="text-2xl font-bold text-center mb-10">What&apos;s on CompetitiveShikshka</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <section className="mx-auto max-w-5xl px-4 pb-20 sm:px-6">
+        <h2 className="mb-10 text-center text-2xl font-bold">What&apos;s on CompetitiveShikshka</h2>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {features.map(({ icon: Icon, label, description, href }) => (
             <Link
               key={href}
               href={href}
-              className="flex items-start gap-4 p-5 rounded-xl border border-border bg-card hover:border-primary hover:bg-accent transition-colors group"
+              className="group flex cursor-pointer items-start gap-4 rounded-3xl border-[3px] border-primary/15 bg-card p-5 [box-shadow:var(--clay-shadow)] hover:[box-shadow:var(--clay-shadow-hover)] hover:-translate-y-1 [transition-property:all] [transition-duration:200ms] [transition-timing-function:var(--clay-bounce)]"
             >
-              <span className="p-2.5 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border-[3px] border-primary/20 bg-primary/10 [box-shadow:inset_-1px_-2px_4px_rgba(0,0,0,0.07),_2px_4px_8px_rgba(232,97,26,0.15)]">
                 <Icon className="h-5 w-5 text-primary" />
               </span>
               <div>
-                <p className="font-semibold group-hover:text-primary transition-colors">{label}</p>
-                <p className="text-sm text-muted-foreground mt-0.5">{description}</p>
+                <p className="font-bold group-hover:text-primary transition-colors">{label}</p>
+                <p className="mt-0.5 text-sm text-muted-foreground">{description}</p>
               </div>
             </Link>
           ))}
