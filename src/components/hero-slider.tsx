@@ -9,6 +9,36 @@ import { buttonVariants } from "@/components/ui/button";
 
 const slides = [
   {
+    tag: "Exams",
+    heading: "Your Exam, Decoded",
+    subtext:
+      "Syllabus, eligibility, key dates, and paper patterns — everything about JEE, NEET, NDA & CUET, all in one place.",
+    cta: "Explore Exams",
+    href: "/exams",
+    image: "/heroslider/about exams_5.webp",
+    tagColor: "bg-white/20 text-white",
+  },
+  {
+    tag: "Colleges",
+    heading: "Find Your Dream College",
+    subtext:
+      "Cutoffs, fees, rankings and admission details for the top engineering and medical colleges — from IITs to AIIMS.",
+    cta: "Browse Colleges",
+    href: "/colleges",
+    image: "/heroslider/about college_4.webp",
+    tagColor: "bg-white/20 text-white",
+  },
+  {
+    tag: "Study Material",
+    heading: "Study with the Best, for Free",
+    subtext:
+      "NCERT solutions, PYQs with answer keys, and curated notes for JEE, NEET, NDA & CUET — no paywall, ever.",
+    cta: "Start Studying",
+    href: "/ncert",
+    image: "/heroslider/about material_3.webp",
+    tagColor: "bg-white/20 text-white",
+  },
+  {
     tag: "Community",
     heading: "Your Tribe of Toppers-in-Making",
     subtext:
@@ -26,36 +56,6 @@ const slides = [
     cta: "Apply for Mentorship",
     href: "/mentorship",
     image: "/heroslider/mentorship_2.webp",
-    tagColor: "bg-white/20 text-white",
-  },
-  {
-    tag: "Study Material",
-    heading: "Study with the Best, for Free",
-    subtext:
-      "NCERT solutions, PYQs with answer keys, and curated notes for JEE, NEET, NDA & CUET — no paywall, ever.",
-    cta: "Start Studying",
-    href: "/ncert",
-    image: "/heroslider/about material_3.webp",
-    tagColor: "bg-white/20 text-white",
-  },
-  {
-    tag: "Colleges",
-    heading: "Find Your Dream College",
-    subtext:
-      "Cutoffs, fees, rankings and admission details for the top engineering and medical colleges — from IITs to AIIMS.",
-    cta: "Browse Colleges",
-    href: "/colleges",
-    image: "/heroslider/about college_4.webp",
-    tagColor: "bg-white/20 text-white",
-  },
-  {
-    tag: "Exams",
-    heading: "Your Exam, Decoded",
-    subtext:
-      "Syllabus, eligibility, key dates, and paper patterns — everything about JEE, NEET, NDA & CUET, all in one place.",
-    cta: "Explore Exams",
-    href: "/exams",
-    image: "/heroslider/about exams_5.webp",
     tagColor: "bg-white/20 text-white",
   },
 ];
