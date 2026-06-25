@@ -35,7 +35,7 @@ export default async function NcertClassPage({ params }: Props) {
       <nav className="flex items-center gap-1 text-sm text-muted-foreground mb-8">
         <Link href="/ncert" className="hover:text-primary transition-colors">NCERT</Link>
         <ChevronRight className="h-4 w-4" />
-        <span className="text-foreground font-semibold">Class {cls}</span>
+        <span className="text-foreground font-bold">Class {cls}</span>
       </nav>
 
       <h1 className="text-3xl font-bold mb-2">Class {cls} NCERT Solutions</h1>
@@ -46,7 +46,7 @@ export default async function NcertClassPage({ params }: Props) {
           <Link
             key={subject}
             href={`/ncert/${cls}/${subjectToSlug(subject)}`}
-            className="group flex cursor-pointer items-center justify-between p-5 rounded-3xl border-[3px] border-primary/15 bg-card [box-shadow:var(--clay-shadow)] hover:[box-shadow:var(--clay-shadow-hover)] hover:-translate-y-1 [transition-property:all] [transition-duration:200ms] [transition-timing-function:var(--clay-bounce)]"
+            className="group flex cursor-pointer items-center justify-between p-5 rounded-lg border-[3px] border-black bg-white [box-shadow:var(--neo-shadow)] hover:[box-shadow:var(--neo-shadow-hover)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
           >
             <div>
               <p className="font-bold group-hover:text-primary transition-colors">{subject}</p>

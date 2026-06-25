@@ -42,12 +42,10 @@ export default async function NcertSubjectPage({ params }: Props) {
         <ChevronRight className="h-4 w-4" />
         <Link href={`/ncert/${cls}`} className="hover:text-primary transition-colors">Class {cls}</Link>
         <ChevronRight className="h-4 w-4" />
-        <span className="text-foreground font-semibold capitalize">{subjectTitle}</span>
+        <span className="text-foreground font-bold capitalize">{subjectTitle}</span>
       </nav>
 
-      <h1 className="text-3xl font-bold mb-2 capitalize">
-        Class {cls} {subjectTitle} Solutions
-      </h1>
+      <h1 className="text-3xl font-bold mb-2 capitalize">Class {cls} {subjectTitle} Solutions</h1>
       <p className="text-muted-foreground mb-8">Select a chapter to view solutions.</p>
 
       <div className="space-y-3">
@@ -55,10 +53,10 @@ export default async function NcertSubjectPage({ params }: Props) {
           <Link
             key={chapter}
             href={`/ncert/${cls}/${subject}/chapter-${chapter}`}
-            className="group flex cursor-pointer items-center justify-between p-5 rounded-3xl border-[3px] border-primary/15 bg-card [box-shadow:var(--clay-shadow)] hover:[box-shadow:var(--clay-shadow-hover)] hover:-translate-y-0.5 [transition-property:all] [transition-duration:200ms] [transition-timing-function:var(--clay-bounce)]"
+            className="group flex cursor-pointer items-center justify-between p-5 rounded-lg border-[3px] border-black bg-white [box-shadow:var(--neo-shadow)] hover:[box-shadow:var(--neo-shadow-hover)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
           >
             <div className="flex items-center gap-4">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border-[3px] border-primary/20 bg-primary/10 text-sm font-bold text-primary/50 group-hover:text-primary group-hover:bg-primary/15 transition-colors [box-shadow:inset_-1px_-2px_4px_rgba(0,0,0,0.06)]">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border-[2px] border-black bg-primary/10 text-sm font-bold text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                 {chapter}
               </span>
               <div>

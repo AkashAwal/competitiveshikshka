@@ -36,11 +36,9 @@ export default async function NcertHomePage() {
             <Link
               key={cls}
               href={`/ncert/${cls}`}
-              className="group flex cursor-pointer flex-col items-center justify-center gap-2 p-6 rounded-3xl border-[3px] border-primary/15 bg-card [box-shadow:var(--clay-shadow)] hover:[box-shadow:var(--clay-shadow-hover)] hover:-translate-y-1 [transition-property:all] [transition-duration:200ms] [transition-timing-function:var(--clay-bounce)]"
+              className="group flex cursor-pointer flex-col items-center justify-center gap-2 p-6 rounded-lg border-[3px] border-black bg-white [box-shadow:var(--neo-shadow)] hover:[box-shadow:var(--neo-shadow-hover)] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-150"
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-2xl border-[3px] border-primary/20 bg-primary/10 [box-shadow:inset_-1px_-2px_4px_rgba(0,0,0,0.07),_2px_4px_8px_rgba(232,97,26,0.15)]">
-                <BookOpen className="h-5 w-5 text-primary" />
-              </span>
+              <BookOpen className="h-6 w-6 text-primary" />
               <span className="font-bold text-sm group-hover:text-primary transition-colors">
                 {CLASS_LABELS[cls] ?? `Class ${cls}`}
               </span>
