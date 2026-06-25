@@ -47,8 +47,8 @@ export function HeroSlider() {
           key={slide.image}
           src={slide.image}
           alt={slide.alt}
-          width={1440}
-          height={600}
+          width={2128}
+          height={739}
           className="w-full h-auto block"
           priority
         />
