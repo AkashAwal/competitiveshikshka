@@ -6,6 +6,10 @@ import {
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+const CLAY_CARD = "flex flex-col rounded-3xl border-[3px] p-5 [transition-property:all] [transition-duration:200ms] [transition-timing-function:var(--clay-bounce)] hover:-translate-y-1";
+const SHADOW = "[box-shadow:inset_-2px_-4px_10px_rgba(0,0,0,0.08),_5px_10px_28px_rgba(232,97,26,0.18)]";
+const SHADOW_HOVER = "hover:[box-shadow:inset_-2px_-4px_10px_rgba(0,0,0,0.10),_8px_16px_36px_rgba(232,97,26,0.28)]";
+
 function SmallCard({
   icon: Icon,
   label,
@@ -13,7 +17,7 @@ function SmallCard({
   href,
   cta,
   bg,
-  iconBg,
+  border,
   iconColor,
 }: {
   icon: React.ElementType;
@@ -22,28 +26,17 @@ function SmallCard({
   href: string;
   cta: string;
   bg: string;
-  iconBg: string;
+  border: string;
   iconColor: string;
 }) {
   return (
-    <div className={cn(
-      "flex flex-col rounded-lg border-[3px] border-black p-5 [box-shadow:var(--neo-shadow)]",
-      "hover:[box-shadow:var(--neo-shadow-hover)] hover:-translate-x-0.5 hover:-translate-y-0.5",
-      "transition-all duration-150",
-      bg
-    )}>
-      <span className={cn(
-        "mb-4 flex h-11 w-11 items-center justify-center rounded-lg border-[3px] border-black",
-        iconBg
-      )}>
+    <div className={cn(CLAY_CARD, SHADOW, SHADOW_HOVER, bg, border)}>
+      <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border-[3px] border-white/80 bg-white [box-shadow:inset_-1px_-2px_5px_rgba(0,0,0,0.08),_2px_4px_10px_rgba(232,97,26,0.16)]">
         <Icon className={cn("h-5 w-5", iconColor)} />
       </span>
       <h2 className="mb-1.5 text-lg font-bold">{label}</h2>
-      <p className="mb-5 flex-1 text-sm leading-relaxed opacity-70">{description}</p>
-      <Link href={href} className={cn(
-        buttonVariants({ variant: "outline", size: "sm" }),
-        "w-full justify-between group bg-white"
-      )}>
+      <p className="mb-5 flex-1 text-sm text-muted-foreground leading-relaxed">{description}</p>
+      <Link href={href} className={cn(buttonVariants({ variant: "outline", size: "sm" }), "w-full justify-between group bg-white/70 border-white/80")}>
         {cta}
         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
       </Link>
@@ -53,121 +46,119 @@ function SmallCard({
 
 export default function HomePage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10">
-      <div className="grid grid-cols-4 gap-4">
+    <div>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10">
 
-        {/* NCERT — orange featured card, col 1-2 row 1 */}
-        <div className={cn(
-          "col-span-2 rounded-lg border-[3px] border-black bg-primary p-7",
-          "[box-shadow:var(--neo-shadow)]",
-          "hover:[box-shadow:var(--neo-shadow-hover)] hover:-translate-x-0.5 hover:-translate-y-0.5",
-          "transition-all duration-150"
-        )}>
-          <div className="flex items-start gap-5">
-            <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg border-[3px] border-black bg-white [box-shadow:2px_2px_0_#000]">
-              <BookOpen className="h-8 w-8 text-primary" />
-            </span>
-            <div className="flex-1 text-white">
-              <div className="mb-1 text-xs font-bold uppercase tracking-widest opacity-70">Most Popular</div>
-              <h2 className="text-2xl font-bold mb-2">NCERT Solutions</h2>
-              <p className="text-sm leading-relaxed opacity-80 mb-4">
-                Step-by-step solutions for Class 6–12 — Physics, Chemistry, Maths, Biology and more.
-              </p>
-              <div className="flex items-center gap-3 mb-5">
-                <div className="rounded-lg border-[2px] border-black bg-white px-3 py-1.5 text-center [box-shadow:2px_2px_0_#000]">
-                  <p className="text-base font-bold text-primary leading-none">7</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">Classes</p>
+        {/* 4-col bento grid */}
+        <div className="grid grid-cols-4 gap-5">
+
+          {/* NCERT — wide left, row 1 */}
+          <div className={cn(
+            "col-span-2 rounded-3xl border-[3px] border-orange-200 bg-orange-50 p-7",
+            "[box-shadow:inset_-3px_-5px_14px_rgba(0,0,0,0.08),_6px_12px_34px_rgba(232,97,26,0.22)]",
+            "hover:[box-shadow:inset_-3px_-5px_14px_rgba(0,0,0,0.10),_10px_18px_44px_rgba(232,97,26,0.32)]",
+            "hover:-translate-y-1 [transition-property:all] [transition-duration:200ms] [transition-timing-function:var(--clay-bounce)]"
+          )}>
+            <div className="flex items-start gap-6">
+              <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-3xl border-[3px] border-orange-200 bg-white [box-shadow:inset_-2px_-3px_8px_rgba(0,0,0,0.08),_3px_6px_14px_rgba(232,97,26,0.22)]">
+                <BookOpen className="h-8 w-8 text-primary" />
+              </span>
+              <div className="flex-1">
+                <div className="mb-1 text-xs font-bold uppercase tracking-widest text-primary/60">Most Popular</div>
+                <h2 className="text-2xl font-bold mb-2">NCERT Solutions</h2>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  Step-by-step solutions for Class 6–12 — Physics, Chemistry, Maths, Biology and more.
+                </p>
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="rounded-2xl border-[3px] border-orange-200 bg-white px-3 py-1.5 text-center [box-shadow:inset_-1px_-2px_4px_rgba(0,0,0,0.06),_2px_3px_8px_rgba(232,97,26,0.14)]">
+                    <p className="text-base font-bold text-primary leading-none">7</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">Classes</p>
+                  </div>
+                  <div className="rounded-2xl border-[3px] border-orange-200 bg-white px-3 py-1.5 text-center [box-shadow:inset_-1px_-2px_4px_rgba(0,0,0,0.06),_2px_3px_8px_rgba(232,97,26,0.14)]">
+                    <p className="text-base font-bold text-primary leading-none">10+</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">Subjects</p>
+                  </div>
                 </div>
-                <div className="rounded-lg border-[2px] border-black bg-white px-3 py-1.5 text-center [box-shadow:2px_2px_0_#000]">
-                  <p className="text-base font-bold text-primary leading-none">10+</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">Subjects</p>
-                </div>
+                <Link href="/ncert" className={cn(buttonVariants({ size: "default" }), "gap-2 group")}>
+                  Browse Solutions
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </Link>
               </div>
-              <Link href="/ncert" className={cn(
-                buttonVariants({ variant: "outline", size: "default" }),
-                "gap-2 group bg-white"
-              )}>
-                Browse Solutions
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </Link>
             </div>
           </div>
-        </div>
 
-        {/* PYQs — col 3 row 1 */}
-        <SmallCard
-          icon={FileText}
-          label="Previous Year Questions"
-          description="JEE, NEET & govt exam PYQs with detailed answer keys."
-          href="/pyqs"
-          cta="Explore PYQs"
-          bg="bg-yellow-300"
-          iconBg="bg-white"
-          iconColor="text-yellow-700"
-        />
+          {/* PYQs — col 3, row 1 */}
+          <SmallCard
+            icon={FileText}
+            label="Previous Year Questions"
+            description="JEE, NEET & govt exam PYQs with detailed answer keys."
+            href="/pyqs"
+            cta="Explore PYQs"
+            bg="bg-amber-50"
+            border="border-amber-200"
+            iconColor="text-amber-600"
+          />
 
-        {/* Rank Calculator — col 4 row 1 */}
-        <SmallCard
-          icon={Calculator}
-          label="Rank Calculator"
-          description="Estimate your rank and college chances from your marks."
-          href="/calculators"
-          cta="Calculate Now"
-          bg="bg-white"
-          iconBg="bg-primary"
-          iconColor="text-white"
-        />
+          {/* Rank Calculator — col 4, row 1 */}
+          <SmallCard
+            icon={Calculator}
+            label="Rank Calculator"
+            description="Estimate your rank and college chances from your marks."
+            href="/calculators"
+            cta="Calculate Now"
+            bg="bg-yellow-50"
+            border="border-yellow-200"
+            iconColor="text-yellow-600"
+          />
 
-        {/* Colleges — col 1 row 2 */}
-        <SmallCard
-          icon={GraduationCap}
-          label="College Info"
-          description="Cutoffs, rankings, fees and admission details for top colleges."
-          href="/colleges"
-          cta="Find Colleges"
-          bg="bg-white"
-          iconBg="bg-yellow-300"
-          iconColor="text-yellow-800"
-        />
+          {/* Colleges — col 1, row 2 */}
+          <SmallCard
+            icon={GraduationCap}
+            label="College Info"
+            description="Cutoffs, rankings, fees and admission details for top colleges."
+            href="/colleges"
+            cta="Find Colleges"
+            bg="bg-amber-50"
+            border="border-amber-200"
+            iconColor="text-amber-600"
+          />
 
-        {/* Exams — col 2 row 2 */}
-        <SmallCard
-          icon={FlaskConical}
-          label="Exam Guides"
-          description="Syllabus, eligibility, dates and strategy for every major exam."
-          href="/exams"
-          cta="View Exams"
-          bg="bg-orange-100"
-          iconBg="bg-white"
-          iconColor="text-primary"
-        />
+          {/* Exams — col 2, row 2 */}
+          <SmallCard
+            icon={FlaskConical}
+            label="Exam Guides"
+            description="Syllabus, eligibility, dates and strategy for every major exam."
+            href="/exams"
+            cta="View Exams"
+            bg="bg-orange-50/80"
+            border="border-orange-200"
+            iconColor="text-primary"
+          />
 
-        {/* Mentorship — black featured card, col 3-4 row 2 */}
-        <div className={cn(
-          "col-span-2 rounded-lg border-[3px] border-black bg-black p-6",
-          "[box-shadow:var(--neo-shadow)]",
-          "hover:[box-shadow:var(--neo-shadow-hover)] hover:-translate-x-0.5 hover:-translate-y-0.5",
-          "transition-all duration-150",
-          "flex flex-col justify-between"
-        )}>
-          <div>
-            <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg border-[3px] border-white bg-primary [box-shadow:2px_2px_0_rgba(255,255,255,0.3)]">
-              <Users className="h-5 w-5 text-white" />
-            </span>
-            <h2 className="text-xl font-bold text-white mb-1.5">Get Mentored by Toppers</h2>
-            <p className="text-sm text-white/60 leading-relaxed">
-              Personalised guidance from JEE & NEET rankers — form-based, free to apply.
-            </p>
-          </div>
-          <Link href="/mentorship" className={cn(
-            buttonVariants({ variant: "outline", size: "default" }),
-            "mt-5 gap-2 group w-fit bg-white"
+          {/* Mentorship — col 3-4 wide, row 2 */}
+          <div className={cn(
+            "col-span-2 rounded-3xl border-[3px] border-primary/20 bg-gradient-to-br from-orange-50 to-amber-50 p-6",
+            "[box-shadow:inset_-3px_-5px_14px_rgba(0,0,0,0.07),_6px_12px_34px_rgba(232,97,26,0.20)]",
+            "hover:[box-shadow:inset_-3px_-5px_14px_rgba(0,0,0,0.10),_10px_18px_44px_rgba(232,97,26,0.30)]",
+            "hover:-translate-y-1 [transition-property:all] [transition-duration:200ms] [transition-timing-function:var(--clay-bounce)]",
+            "flex flex-col justify-between"
           )}>
-            Apply Now
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </Link>
-        </div>
+            <div>
+              <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border-[3px] border-orange-200 bg-white [box-shadow:inset_-1px_-2px_5px_rgba(0,0,0,0.07),_2px_4px_10px_rgba(232,97,26,0.16)]">
+                <Users className="h-5 w-5 text-primary" />
+              </span>
+              <h2 className="text-xl font-bold mb-1.5">Get Mentored by Toppers</h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Personalised guidance from JEE & NEET rankers — form-based, free to apply.
+              </p>
+            </div>
+            <Link href="/mentorship" className={cn(buttonVariants({ size: "default" }), "mt-5 gap-2 group w-fit")}>
+              Apply Now
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </div>
 
+        </div>
       </div>
     </div>
   );
