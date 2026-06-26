@@ -29,6 +29,11 @@ import {
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import type { User } from "@supabase/supabase-js";
+import { OnboardingModal, type OnboardingProfile } from "@/components/dashboard/onboarding-modal";
+
+interface Profile extends OnboardingProfile {
+  onboarding_completed: boolean;
+}
 
 const navItems = [
   { icon: LayoutDashboard, label: "Home",          href: "/dashboard" },
@@ -51,6 +56,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const pathname = usePathname();
   const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
+  const [profile, setProfile] = useState<Profile | null | undefined>(undefined);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [achievementsOpen, setAchievementsOpen] = useState(false);
 
@@ -58,7 +64,17 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   useEffect(() => {
     const supabase = createClient();
-    supabase.auth.getUser().then(({ data }) => setUser(data.user));
+    supabase.auth.getUser().then(async ({ data }) => {
+      setUser(data.user);
+      if (data.user) {
+        const { data: profileData } = await supabase
+          .from("profiles")
+          .select("class, stream, state, heard_from, strong_subject, weak_subject, coaching, school, onboarding_completed")
+          .eq("id", data.user.id)
+          .single();
+        setProfile(profileData ?? null);
+      }
+    });
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_, session) => {
       setUser(session?.user ?? null);
     });
@@ -238,9 +254,19 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           style={{ height: "65px", backgroundColor: "#15191e" }}
         >
           {/* Greeting — centred across full viewport */}
-          <p className="fixed left-1/2 -translate-x-1/2 text-xl font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>
-            Hey {user?.user_metadata?.full_name?.split(" ")[0] ?? "Student"}!
-          </p>
+          <div className="fixed left-1/2 -translate-x-1/2 flex items-center gap-2">
+            <p className="text-xl font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>
+              Hey {user?.user_metadata?.full_name?.split(" ")[0] ?? "Student"}!
+            </p>
+            {profile?.onboarding_completed && (
+              <>
+                <span style={{ color: "rgba(255,255,255,0.2)" }}>·</span>
+                <span className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.45)" }}>{profile.class}</span>
+                <span style={{ color: "rgba(255,255,255,0.2)" }}>·</span>
+                <span className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.45)" }}>{profile.stream}</span>
+              </>
+            )}
+          </div>
 
           {/* Stats chips — right */}
           <div className="flex items-center gap-3">
@@ -304,6 +330,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             {children}
           </main>
         </div>
+
+        {/* Onboarding modal — shown when profile not yet completed */}
+        {user && profile !== undefined && !profile?.onboarding_completed && (
+          <OnboardingModal
+            userId={user.id}
+            onComplete={(p) => setProfile({ ...p, onboarding_completed: true })}
+          />
+        )}
 
         {/* Achievements side panel */}
         {achievementsOpen && (

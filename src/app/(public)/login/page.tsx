@@ -1,7 +1,6 @@
 "use client";
 
 import { createClient } from "@/lib/supabase/client";
-import Image from "next/image";
 
 export default function LoginPage() {
   async function signInWithGoogle() {
@@ -15,26 +14,27 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4">
-      <div className="w-full max-w-sm flex flex-col items-center gap-8">
+    <div className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden" style={{ backgroundColor: "#15191e" }}>
+      {/* Glow blobs */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] opacity-25 pointer-events-none" style={{ background: "radial-gradient(ellipse at top left, #2563eb, transparent 70%)" }} />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] opacity-20 pointer-events-none" style={{ background: "radial-gradient(ellipse at bottom right, #7c3aed, transparent 70%)" }} />
 
-        <Image
-          src="/logo-white-mode.svg"
-          alt="CompetitiveShiksha"
-          width={180}
-          height={48}
-          className="h-12 w-auto"
-        />
+      <div className="w-full max-w-sm flex flex-col items-center gap-8 relative z-10">
 
-        <div className="w-full rounded-2xl border border-border bg-white p-8 flex flex-col gap-6">
+        <div
+          className="w-full rounded-2xl p-8 flex flex-col gap-6"
+          style={{ backgroundColor: "#1b2027", border: "1px solid rgba(255,255,255,0.08)" }}
+        >
           <div className="text-center">
-            <h1 className="text-2xl font-black text-zinc-900">Welcome back</h1>
-            <p className="text-sm text-muted-foreground mt-1">Sign in to access your dashboard</p>
+            <h1 className="text-2xl font-black" style={{ color: "rgba(255,255,255,0.95)" }}>Sign in to continue</h1>
           </div>
 
           <button
             onClick={signInWithGoogle}
-            className="w-full flex items-center justify-center gap-3 rounded-xl border border-border bg-white px-4 py-3 text-sm font-semibold text-zinc-900 hover:bg-zinc-50 transition-colors cursor-pointer"
+            className="w-full flex items-center justify-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition-colors cursor-pointer"
+            style={{ backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.9)" }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(255,255,255,0.1)"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(255,255,255,0.06)"; }}
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5" xmlns="http://www.w3.org/2000/svg">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -45,7 +45,7 @@ export default function LoginPage() {
             Continue with Google
           </button>
 
-          <p className="text-center text-xs text-muted-foreground">
+          <p className="text-center text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
             By signing in you agree to our terms of service and privacy policy.
           </p>
         </div>
