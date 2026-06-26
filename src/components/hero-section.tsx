@@ -146,8 +146,8 @@ export function HeroSection() {
             </h1>
 
             <div className="flex items-center gap-3 flex-wrap">
-              <Link href="/exams" className={cn(buttonVariants({ size: "lg" }))}>
-                Start Preparing
+              <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
+                Get Started
               </Link>
               <Link href="/colleges" className={cn(buttonVariants({ variant: "outline", size: "lg" }))}>
                 Browse Colleges

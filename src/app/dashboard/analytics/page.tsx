@@ -1,0 +1,15 @@
+export default function AnalyticsPage() {
+  return (
+    <div className="px-6 py-8 max-w-5xl">
+      <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(255,255,255,0.95)" }}>Analytics</h1>
+      <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.45)" }}>Your performance across tests, topics and time.</p>
+      <div
+        className="rounded-xl p-8 flex flex-col items-center justify-center text-center gap-3"
+        style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", minHeight: "300px" }}
+      >
+        <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.4)" }}>Analytics coming soon</p>
+        <p className="text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>Test scores, weak areas and time-on-task charts will appear here.</p>
+      </div>
+    </div>
+  );
+}
