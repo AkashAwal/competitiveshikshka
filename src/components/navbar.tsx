@@ -42,8 +42,8 @@ export function Navbar() {
               className={cn(
                 "px-3 py-1.5 rounded-md text-sm font-semibold transition-colors cursor-pointer",
                 pathname.startsWith(link.href)
-                  ? "text-primary bg-primary/10"
-                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                  ? "bg-[#2563eb] text-white"
+                  : "text-zinc-900 hover:bg-accent"
               )}
             >
               {link.label}
@@ -72,8 +72,8 @@ export function Navbar() {
               className={cn(
                 "px-3 py-2 rounded-md text-sm font-semibold transition-colors cursor-pointer",
                 pathname.startsWith(link.href)
-                  ? "text-primary bg-primary/10"
-                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                  ? "bg-[#2563eb] text-white"
+                  : "text-zinc-900 hover:bg-accent"
               )}
             >
               {link.label}

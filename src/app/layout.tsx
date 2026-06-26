@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Urbanist } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 
-const urbanist = Urbanist({
+const urbanist = DM_Sans({
   variable: "--font-urbanist",
   subsets: ["latin"],
 });
