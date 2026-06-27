@@ -1,56 +1,49 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
-import Image from "next/image";
+import { ProfileForm } from "./ProfileForm";
 
 export default async function ProfilePage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("class, stream, state, strong_subject, weak_subject, coaching, school, avatar_style, target_exam, target_year, daily_goal_hours, streak")
+    .eq("id", user.id)
+    .single();
+
   return (
-    <div className="px-6 py-8 max-w-2xl">
-      <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(255,255,255,0.95)" }}>Profile</h1>
-      <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.45)" }}>Your account details.</p>
-
-      <div
-        className="rounded-xl p-6 flex items-center gap-5"
-        style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
-      >
-        {user.user_metadata.avatar_url ? (
-          <Image
-            src={user.user_metadata.avatar_url}
-            alt={user.user_metadata.full_name ?? "Profile"}
-            width={64}
-            height={64}
-            className="rounded-full"
-          />
-        ) : (
-          <div
-            className="h-16 w-16 rounded-full flex items-center justify-center text-2xl font-black text-white"
-            style={{ backgroundColor: "#2563eb" }}
-          >
-            {user.email?.[0].toUpperCase()}
-          </div>
-        )}
-        <div>
-          <p className="text-lg font-black" style={{ color: "rgba(255,255,255,0.95)" }}>
-            {user.user_metadata.full_name ?? "Student"}
-          </p>
-          <p className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>{user.email}</p>
-        </div>
-      </div>
-
-      <div
-        className="rounded-xl p-6 mt-4"
-        style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
-      >
-        <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "rgba(255,255,255,0.35)" }}>
-          Profile settings
-        </p>
-        <p className="text-sm" style={{ color: "rgba(255,255,255,0.3)" }}>
-          Extended profile options — target exam, class, subjects — coming soon.
+    <div className="px-6 py-8 flex flex-col items-center">
+      <div className="w-full max-w-xl">
+        <h1 className="text-3xl font-black mb-1 text-center" style={{ color: "rgba(255,255,255,0.95)" }}>Profile</h1>
+        <p className="text-sm mb-6 text-center" style={{ color: "rgba(255,255,255,0.45)" }}>
+          Manage your account and study preferences.
         </p>
       </div>
+
+      <ProfileForm
+        userId={user.id}
+        email={user.email ?? ""}
+        initialName={user.user_metadata.full_name ?? "Student"}
+        initialAvatarStyle={profile?.avatar_style ?? ""}
+        googleAvatarUrl={user.user_metadata.avatar_url ?? ""}
+        streak={profile?.streak ?? 0}
+        initial={{
+          class: profile?.class ?? "",
+          stream: profile?.stream ?? "",
+          state: profile?.state ?? "",
+          strong_subject: profile?.strong_subject ?? "",
+          weak_subject: profile?.weak_subject ?? "",
+          coaching: profile?.coaching ?? "",
+          school: profile?.school ?? "",
+          target_exam: profile?.target_exam ?? "",
+          target_year: profile?.target_year ? String(profile.target_year) : "",
+          daily_goal_hours: profile?.daily_goal_hours
+            ? (profile.daily_goal_hours >= 6 ? "6+ hrs" : profile.daily_goal_hours === 1 ? "1 hr" : `${profile.daily_goal_hours} hrs`)
+            : "",
+        }}
+      />
     </div>
   );
 }

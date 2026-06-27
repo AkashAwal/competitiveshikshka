@@ -97,7 +97,6 @@ export function OnboardingModal({ userId, onComplete }: Props) {
       onboarding_completed: true,
     });
     if (error) {
-      console.error("Onboarding save failed:", error);
       setSaving(false);
       return;
     }

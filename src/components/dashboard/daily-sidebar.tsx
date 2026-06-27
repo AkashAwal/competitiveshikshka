@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { FlaskConical, BookOpen, Eye, EyeOff } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { FlaskConical, BookOpen, Eye, EyeOff, ListTodo, Plus, X, Check } from "lucide-react";
 
 const formulas = [
   {
@@ -153,6 +153,135 @@ const problems = [
   },
 ];
 
+const TODAY = new Date().toISOString().slice(0, 10);
+const STORAGE_KEY = `cs-tasks-${TODAY}`;
+
+interface Task { id: string; text: string; done: boolean }
+
+function DailyTasks() {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [input, setInput] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) setTasks(JSON.parse(saved));
+    } catch {}
+  }, []);
+
+  function save(next: Task[]) {
+    setTasks(next);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+  }
+
+  function addTask() {
+    const text = input.trim();
+    if (!text) return;
+    save([...tasks, { id: crypto.randomUUID(), text, done: false }]);
+    setInput("");
+    inputRef.current?.focus();
+  }
+
+  function toggle(id: string) {
+    save(tasks.map(t => t.id === id ? { ...t, done: !t.done } : t));
+  }
+
+  function remove(id: string) {
+    save(tasks.filter(t => t.id !== id));
+  }
+
+  const done = tasks.filter(t => t.done).length;
+
+  return (
+    <div
+      className="rounded-xl p-5 flex flex-col gap-3"
+      style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+    >
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <ListTodo className="h-4 w-4" style={{ color: "#a78bfa" }} />
+          <span className="text-[11px] font-bold uppercase tracking-widest" style={{ color: "#a78bfa" }}>
+            Today's Tasks
+          </span>
+        </div>
+        {tasks.length > 0 && (
+          <span className="text-[11px] font-semibold" style={{ color: "rgba(255,255,255,0.3)" }}>
+            {done}/{tasks.length}
+          </span>
+        )}
+      </div>
+
+      {/* Progress bar */}
+      {tasks.length > 0 && (
+        <div className="h-1 rounded-full overflow-hidden" style={{ backgroundColor: "rgba(255,255,255,0.07)" }}>
+          <div
+            className="h-full rounded-full transition-all duration-500"
+            style={{ width: `${(done / tasks.length) * 100}%`, backgroundColor: "#a78bfa" }}
+          />
+        </div>
+      )}
+
+      {/* Task list */}
+      <div className="flex flex-col gap-1.5">
+        {tasks.length === 0 && (
+          <p className="text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>No tasks yet — add one below.</p>
+        )}
+        {tasks.map(task => (
+          <div key={task.id} className="flex items-center gap-2 group">
+            <button
+              onClick={() => toggle(task.id)}
+              className="flex h-4 w-4 shrink-0 items-center justify-center rounded cursor-pointer transition-colors"
+              style={{
+                border: `1.5px solid ${task.done ? "#a78bfa" : "rgba(255,255,255,0.2)"}`,
+                backgroundColor: task.done ? "#a78bfa" : "transparent",
+              }}
+            >
+              {task.done && <Check className="h-2.5 w-2.5" style={{ color: "#fff" }} />}
+            </button>
+            <span
+              className="flex-1 text-xs leading-snug"
+              style={{
+                color: task.done ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.75)",
+                textDecoration: task.done ? "line-through" : "none",
+              }}
+            >
+              {task.text}
+            </span>
+            <button
+              onClick={() => remove(task.id)}
+              className="opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+              style={{ color: "rgba(255,255,255,0.3)" }}
+            >
+              <X className="h-3 w-3" />
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {/* Input */}
+      <div className="flex items-center gap-2 mt-1">
+        <input
+          ref={inputRef}
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          onKeyDown={e => e.key === "Enter" && addTask()}
+          placeholder="Add a task…"
+          className="flex-1 text-xs bg-transparent outline-none placeholder:opacity-30"
+          style={{ color: "rgba(255,255,255,0.8)" }}
+        />
+        <button
+          onClick={addTask}
+          className="cursor-pointer transition-opacity hover:opacity-80"
+          style={{ color: "#a78bfa" }}
+        >
+          <Plus className="h-4 w-4" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function getDailyIndex(list: unknown[]) {
   return Math.floor(Date.now() / 86_400_000) % list.length;
 }
@@ -241,6 +370,8 @@ export function DailySidebar() {
           )}
         </div>
       </div>
+
+      <DailyTasks />
     </div>
   );
 }

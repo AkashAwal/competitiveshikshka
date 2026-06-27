@@ -33,6 +33,21 @@ import { OnboardingModal, type OnboardingProfile } from "@/components/dashboard/
 
 interface Profile extends OnboardingProfile {
   onboarding_completed: boolean;
+  streak?: number;
+  last_visited_date?: string;
+  avatar_style?: string;
+  target_exam?: string;
+  target_year?: number;
+}
+
+const BG = "backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf";
+function resolveAvatarUrl(avatarStyle: string | undefined, googleUrl: string | undefined) {
+  if (!avatarStyle || avatarStyle === "google") return googleUrl ?? "";
+  const idx = avatarStyle.indexOf(":");
+  if (idx === -1) return `https://api.dicebear.com/9.x/${avatarStyle}/svg?seed=default&${BG}`;
+  const style = avatarStyle.slice(0, idx);
+  const seed = avatarStyle.slice(idx + 1);
+  return `https://api.dicebear.com/9.x/${style}/svg?seed=${encodeURIComponent(seed)}&${BG}`;
 }
 
 const navItems = [
@@ -41,7 +56,6 @@ const navItems = [
   { icon: BookCheck,       label: "Tests",         href: "/dashboard/tests" },
   { icon: StickyNote,      label: "Notes",         href: "/dashboard/notes" },
   { icon: Bookmark,        label: "Bookmarks",     href: "/dashboard/bookmarks" },
-  { icon: ListTodo,        label: "To Do",         href: "/dashboard/todo" },
   { icon: CalendarDays,    label: "Planner",       href: "/dashboard/planner" },
   { icon: Bell,            label: "Notifications", href: "/dashboard/exams" },
   { icon: Settings,        label: "Settings",      href: "/dashboard/settings" },
@@ -57,10 +71,26 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null | undefined>(undefined);
+  const [streak, setStreak] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [achievementsOpen, setAchievementsOpen] = useState(false);
 
-  const daysToJEE = Math.ceil((new Date("2027-01-15").getTime() - Date.now()) / 86_400_000);
+  function getExamCountdown() {
+    const exam = profile?.target_exam;
+    const year = profile?.target_year;
+    if (!exam || !year) {
+      const days = Math.ceil((new Date("2027-01-15").getTime() - Date.now()) / 86_400_000);
+      return { label: "JEE", days };
+    }
+    let month = 1, day = 15;
+    if (exam === "NEET") { month = 5; day = 5; }
+    else if (exam === "JEE Advanced") { month = 5; day = 18; }
+    const target = new Date(year, month - 1, day);
+    const days = Math.ceil((target.getTime() - Date.now()) / 86_400_000);
+    const shortLabel = exam === "JEE + NEET" ? "JEE" : exam === "JEE Mains" ? "JEE" : exam;
+    return { label: shortLabel, days };
+  }
+  const examCountdown = getExamCountdown();
 
   useEffect(() => {
     const supabase = createClient();
@@ -69,16 +99,54 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       if (data.user) {
         const { data: profileData } = await supabase
           .from("profiles")
-          .select("class, stream, state, heard_from, strong_subject, weak_subject, coaching, school, onboarding_completed")
+          .select("class, stream, state, heard_from, strong_subject, weak_subject, coaching, school, onboarding_completed, streak, last_visited_date, avatar_style, target_exam, target_year")
           .eq("id", data.user.id)
           .single();
         setProfile(profileData ?? null);
+
+        if (profileData) {
+          const today = new Date().toISOString().slice(0, 10);
+          const last = profileData.last_visited_date;
+          const yesterday = new Date(Date.now() - 86_400_000).toISOString().slice(0, 10);
+
+          if (last !== today) {
+            const newStreak = last === yesterday ? (profileData.streak ?? 0) + 1 : 1;
+            setStreak(newStreak);
+            await supabase.from("profiles").update({
+              streak: newStreak,
+              last_visited_date: today,
+            }).eq("id", data.user.id);
+          } else {
+            setStreak(profileData.streak ?? 0);
+          }
+        }
       }
     });
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_, session) => {
       setUser(session?.user ?? null);
     });
-    return () => subscription.unsubscribe();
+
+    // Listen for profile updates from the profile page
+    function onProfileUpdated(e: Event) {
+      const { avatar_style, full_name, target_exam, target_year } = (e as CustomEvent<{ avatar_style?: string; full_name?: string; target_exam?: string; target_year?: string }>).detail;
+      if (avatar_style !== undefined)
+        setProfile(prev => prev ? { ...prev, avatar_style } : prev);
+      if (full_name !== undefined)
+        setUser(prev => prev ? { ...prev, user_metadata: { ...prev.user_metadata, full_name } } : prev);
+      if (target_exam !== undefined || target_year !== undefined)
+        setProfile(prev => prev ? {
+          ...prev,
+          ...(target_exam !== undefined ? { target_exam } : {}),
+          ...(target_year !== undefined ? { target_year: parseInt(target_year) } : {}),
+        } : prev);
+    }
+    window.addEventListener("cs-profile-updated", onProfileUpdated);
+
+    return () => {
+      subscription.unsubscribe();
+      window.removeEventListener("cs-profile-updated", onProfileUpdated);
+    };
   }, []);
 
   async function signOut() {
@@ -254,7 +322,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           style={{ height: "65px", backgroundColor: "#15191e" }}
         >
           {/* Greeting — centred across full viewport */}
-          <div className="fixed left-1/2 -translate-x-1/2 flex items-center gap-2">
+          <div className="fixed left-1/2 -translate-x-1/2 flex items-center gap-3">
+            {/* Avatar */}
+            {(() => {
+              const url = resolveAvatarUrl(profile?.avatar_style, user?.user_metadata?.avatar_url);
+              return url ? (
+                <Image src={url} alt="avatar" width={32} height={32} className="rounded-full object-cover shrink-0" unoptimized style={{ width: 32, height: 32 }} />
+              ) : (
+                <div className="h-8 w-8 rounded-full flex items-center justify-center text-xs font-black text-white shrink-0" style={{ backgroundColor: "#2563eb" }}>
+                  {user?.user_metadata?.full_name?.[0]?.toUpperCase() ?? "S"}
+                </div>
+              );
+            })()}
             <p className="text-xl font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>
               Hey {user?.user_metadata?.full_name?.split(" ")[0] ?? "Student"}!
             </p>
@@ -271,8 +350,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           {/* Stats chips — right */}
           <div className="flex items-center gap-3">
             {([
-              { Icon: CalendarClock, text: `${daysToJEE} days to JEE`, color: "#60a5fa", onClick: undefined, isAchievements: false },
-              { Icon: Flame,         text: "0",                    color: "#fb923c", onClick: undefined, isAchievements: false },
+              { Icon: CalendarClock, text: `${examCountdown.days} days to ${examCountdown.label}`, color: "#60a5fa", onClick: undefined, isAchievements: false },
+              { Icon: Flame,         text: String(streak),         color: "#fb923c", onClick: undefined, isAchievements: false },
               { Icon: Trophy,        text: "0",                    color: "#fbbf24", onClick: () => setAchievementsOpen(o => !o), isAchievements: true },
             ] as const).map(({ Icon, text, color, onClick, isAchievements }) => (
               <div
