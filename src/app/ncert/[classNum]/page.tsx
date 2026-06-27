@@ -26,7 +26,9 @@ export default async function NcertClassPage({ params }: Props) {
 
   if (isNaN(cls) || cls < 6 || cls > 12) notFound();
 
-  const subjects: SubjectRow[] = await sanityClient.fetch(ncertSubjectsByClassQuery, { class: cls });
+  const rows: SubjectRow[] = await sanityClient.fetch(ncertSubjectsByClassQuery, { class: cls });
+  const seen = new Set<string>();
+  const subjects = rows.filter(({ subject }) => seen.has(subject) ? false : (seen.add(subject), true));
 
   if (subjects.length === 0) notFound();
 

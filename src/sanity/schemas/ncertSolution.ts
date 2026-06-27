@@ -74,6 +74,29 @@ export const ncertSolution = defineType({
               type: "array",
               of: [{ type: "block" }, { type: "image" }],
             }),
+            defineField({
+              name: "explanation",
+              title: "Explanation (Why it works)",
+              type: "array",
+              of: [{ type: "block" }],
+              description: "Plain English explanation of the concept behind the answer",
+            }),
+            defineField({
+              name: "steps",
+              title: "Step-by-Step Breakdown",
+              type: "array",
+              of: [
+                {
+                  type: "object",
+                  name: "step",
+                  fields: [
+                    defineField({ name: "stepTitle", title: "Step Title", type: "string" }),
+                    defineField({ name: "content", title: "Content", type: "array", of: [{ type: "block" }] }),
+                  ],
+                  preview: { select: { title: "stepTitle" } },
+                },
+              ],
+            }),
           ],
           preview: {
             select: { title: "questionNumber" },

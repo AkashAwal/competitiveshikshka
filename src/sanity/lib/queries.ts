@@ -4,7 +4,7 @@ export const ncertSubjectsByClassQuery = groq`
   *[_type == "ncertSolution" && class == $class] | order(subject asc) {
     subject,
     "chapters": count(*[_type == "ncertSolution" && class == ^.class && subject == ^.subject])
-  }[!duplicates(subject)]
+  }
 `;
 
 export const ncertChaptersBySubjectQuery = groq`
@@ -24,7 +24,9 @@ export const ncertChapterQuery = groq`
     questions[] {
       questionNumber,
       questionText,
-      answer
+      answer,
+      explanation,
+      steps[] { stepTitle, content }
     }
   }
 `;
