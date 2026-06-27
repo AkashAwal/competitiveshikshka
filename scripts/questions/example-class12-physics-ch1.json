@@ -1,0 +1,20 @@
+{
+  "class": 12,
+  "subject": "Physics",
+  "chapter": 1,
+  "chapterTitle": "Electric Charges and Fields",
+  "questions": [
+    {
+      "number": "1",
+      "text": "What is the force between two small charged spheres having charges of 2 × 10⁻⁷ C and 3 × 10⁻⁷ C placed 30 cm apart in air?"
+    },
+    {
+      "number": "2",
+      "text": "The electrostatic force on a small sphere of charge 0.4 μC due to another small sphere of charge −0.8 μC in air is 0.2 N. (a) What is the distance between the two spheres? (b) What is the force on the second sphere due to the first?"
+    },
+    {
+      "number": "3",
+      "text": "Check that the ratio ke²/Gme mp is dimensionless. Look up a Table of Physical Constants and determine the value of this ratio. What does the ratio signify?"
+    }
+  ]
+}

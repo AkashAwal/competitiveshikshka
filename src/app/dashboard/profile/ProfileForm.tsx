@@ -148,7 +148,7 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
   const subjects = subjectsForStream(stream);
   const currentAvatarUrl = getAvatarUrl(avatarStyle, googleAvatarUrl);
 
-  function dispatchProfileUpdate(detail: { avatar_style?: string; full_name?: string; target_exam?: string; target_year?: string }) {
+  function dispatchProfileUpdate(detail: { avatar_style?: string; full_name?: string; target_exam?: string; target_year?: string; stream?: string; class?: string }) {
     window.dispatchEvent(new CustomEvent("cs-profile-updated", { detail }));
   }
 
@@ -193,7 +193,7 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
       target_year: targetYear ? parseInt(targetYear) : null,
       daily_goal_hours: dailyGoal ? parseInt(dailyGoal) || null : null,
     }).eq("id", userId);
-    dispatchProfileUpdate({ target_exam: targetExam, target_year: targetYear });
+    dispatchProfileUpdate({ target_exam: targetExam, target_year: targetYear, stream, class: cls });
     setSaving(false);
     setSaved(true);
     setTimeout(() => setSaved(false), 2500);

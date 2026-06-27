@@ -38,6 +38,7 @@ interface Profile extends OnboardingProfile {
   avatar_style?: string;
   target_exam?: string;
   target_year?: number;
+  created_at?: string;
 }
 
 const BG = "backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf";
@@ -76,19 +77,34 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [achievementsOpen, setAchievementsOpen] = useState(false);
 
   function getExamCountdown() {
-    const exam = profile?.target_exam;
-    const year = profile?.target_year;
-    if (!exam || !year) {
-      const days = Math.ceil((new Date("2027-01-15").getTime() - Date.now()) / 86_400_000);
-      return { label: "JEE", days };
+    // If user explicitly set target exam + year, use that
+    if (profile?.target_exam && profile?.target_year) {
+      let month = 1, day = 15;
+      if (profile.target_exam === "NEET") { month = 5; day = 5; }
+      else if (profile.target_exam === "JEE Advanced") { month = 5; day = 18; }
+      const target = new Date(profile.target_year, month - 1, day);
+      const days = Math.max(0, Math.ceil((target.getTime() - Date.now()) / 86_400_000));
+      const label = profile.target_exam === "JEE + NEET" ? "JEE" : profile.target_exam === "JEE Mains" ? "JEE" : profile.target_exam;
+      return { label, days };
     }
-    let month = 1, day = 15;
-    if (exam === "NEET") { month = 5; day = 5; }
-    else if (exam === "JEE Advanced") { month = 5; day = 18; }
-    const target = new Date(year, month - 1, day);
-    const days = Math.ceil((target.getTime() - Date.now()) / 86_400_000);
-    const shortLabel = exam === "JEE + NEET" ? "JEE" : exam === "JEE Mains" ? "JEE" : exam;
-    return { label: shortLabel, days };
+
+    // Determine exam from stream
+    const stream = profile?.stream ?? "PCM";
+    const isNEET = stream === "PCB";
+    const examLabel = isNEET ? "NEET" : "JEE";
+    const examMonth = isNEET ? 5 : 1;
+    const examDay   = isNEET ? 5 : 15;
+
+    // Determine exam year from class + profile creation date
+    const classNum = parseInt((profile?.class ?? "Class 12").replace(/\D/g, "")) || 12;
+    const createdDate = profile?.created_at ? new Date(profile.created_at) : new Date();
+    let examYear = createdDate.getFullYear() + (12 - classNum);
+
+    // If that exam date has already passed, push to next year
+    if (new Date(examYear, examMonth - 1, examDay) <= new Date()) examYear++;
+
+    const days = Math.max(0, Math.ceil((new Date(examYear, examMonth - 1, examDay).getTime() - Date.now()) / 86_400_000));
+    return { label: examLabel, days };
   }
   const examCountdown = getExamCountdown();
 
@@ -99,7 +115,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       if (data.user) {
         const { data: profileData } = await supabase
           .from("profiles")
-          .select("class, stream, state, heard_from, strong_subject, weak_subject, coaching, school, onboarding_completed, streak, last_visited_date, avatar_style, target_exam, target_year")
+          .select("class, stream, state, heard_from, strong_subject, weak_subject, coaching, school, onboarding_completed, streak, last_visited_date, avatar_style, target_exam, target_year, created_at")
           .eq("id", data.user.id)
           .single();
         setProfile(profileData ?? null);
@@ -129,17 +145,21 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
     // Listen for profile updates from the profile page
     function onProfileUpdated(e: Event) {
-      const { avatar_style, full_name, target_exam, target_year } = (e as CustomEvent<{ avatar_style?: string; full_name?: string; target_exam?: string; target_year?: string }>).detail;
-      if (avatar_style !== undefined)
-        setProfile(prev => prev ? { ...prev, avatar_style } : prev);
+      const { avatar_style, full_name, target_exam, target_year, stream, class: cls } =
+        (e as CustomEvent<{ avatar_style?: string; full_name?: string; target_exam?: string; target_year?: string; stream?: string; class?: string }>).detail;
       if (full_name !== undefined)
         setUser(prev => prev ? { ...prev, user_metadata: { ...prev.user_metadata, full_name } } : prev);
-      if (target_exam !== undefined || target_year !== undefined)
-        setProfile(prev => prev ? {
+      setProfile(prev => {
+        if (!prev) return prev;
+        return {
           ...prev,
+          ...(avatar_style !== undefined ? { avatar_style } : {}),
           ...(target_exam !== undefined ? { target_exam } : {}),
           ...(target_year !== undefined ? { target_year: parseInt(target_year) } : {}),
-        } : prev);
+          ...(stream !== undefined ? { stream } : {}),
+          ...(cls !== undefined ? { class: cls } : {}),
+        };
+      });
     }
     window.addEventListener("cs-profile-updated", onProfileUpdated);
 
