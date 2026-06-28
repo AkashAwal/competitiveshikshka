@@ -21,7 +21,16 @@ export const ncertChapterQuery = groq`
     subject,
     chapter,
     chapterTitle,
+    "questionCount": count(questions),
+    "exampleCount": count(examples),
     questions[] {
+      questionNumber,
+      questionText,
+      answer,
+      explanation,
+      steps[] { stepTitle, content }
+    },
+    examples[] {
       questionNumber,
       questionText,
       answer,

@@ -19,26 +19,10 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   const { q } = await searchParams;
   const chapterNum = chapter.replace("chapter-", "");
   const subjectTitle = slugToSubject(subject);
-  const questionNum = q ?? "1";
-
-  const ogUrl = new URL("/api/og", process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000");
-  ogUrl.searchParams.set("class", classNum);
-  ogUrl.searchParams.set("subject", subjectTitle);
-  ogUrl.searchParams.set("chapter", chapterNum);
-  ogUrl.searchParams.set("q", questionNum);
 
   return {
-    title: `Class ${classNum} ${subjectTitle} Chapter ${chapterNum} NCERT Solutions`,
-    description: `NCERT solutions for Class ${classNum} ${subjectTitle} Chapter ${chapterNum}.`,
-    openGraph: {
-      title: `Class ${classNum} ${subjectTitle} Chapter ${chapterNum} — Q.${questionNum} | NCERT Solutions`,
-      description: `Step-by-step NCERT solutions for Class ${classNum} ${subjectTitle} Chapter ${chapterNum}.`,
-      images: [{ url: ogUrl.toString(), width: 1200, height: 630 }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      images: [ogUrl.toString()],
-    },
+    title: `Class ${classNum} ${subjectTitle} Chapter ${chapterNum} Worked Examples | NCERT Solutions`,
+    description: `Worked examples for Class ${classNum} ${subjectTitle} Chapter ${chapterNum} NCERT.`,
   };
 }
 
@@ -57,11 +41,10 @@ type ChapterData = {
   subject: string;
   chapter: number;
   chapterTitle: string;
-  questions: QA[];
   examples?: QA[];
 };
 
-export default async function NcertChapterPage({ params, searchParams }: Props) {
+export default async function NcertExamplesPage({ params, searchParams }: Props) {
   const { classNum, subject, chapter } = await params;
   const { q } = await searchParams;
 
@@ -78,48 +61,41 @@ export default async function NcertChapterPage({ params, searchParams }: Props) 
   });
 
   if (!data) notFound();
+  if (!data.examples?.length) notFound();
 
-  const total = data.questions.length;
-  const examples = data.examples ?? [];
+  const examples = data.examples;
+  const total = examples.length;
   const currentIndex = Math.min(Math.max(parseInt(q ?? "1", 10), 1), total) - 1;
-  const qa = data.questions[currentIndex];
+  const qa = examples[currentIndex];
   const current = currentIndex + 1;
 
-  const base = `/ncert/${cls}/${subject}/${chapter}`;
+  const base = `/ncert/${cls}/${subject}/${chapter}/examples`;
+  const exercisesBase = `/ncert/${cls}/${subject}/${chapter}`;
 
   return (
     <div className="flex min-h-screen">
       {/* Left sidebar */}
       <aside className="hidden md:flex flex-col w-64 shrink-0 border-r border-border bg-card px-5 py-10">
-        {examples.length > 0 && (
-          <div className="mb-6">
-            <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-400 mb-3">Worked Examples</p>
-            <div className="flex flex-wrap gap-2">
-              {examples.map((ex, i) => (
-                <Link
-                  key={i}
-                  href={`${base}/examples?q=${i + 1}`}
-                  className="flex h-9 items-center justify-center rounded-lg px-2.5 text-xs font-semibold border transition-colors border-emerald-500/30 bg-emerald-500/5 hover:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400"
-                >
-                  {ex.questionNumber}
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
-        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-4">Questions</p>
+        <Link
+          href={exercisesBase}
+          className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors mb-6"
+        >
+          <BookOpen className="h-3.5 w-3.5" />
+          Back to Exercises
+        </Link>
+        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-4">Examples</p>
         <div className="grid grid-cols-4 gap-2">
-          {data.questions.map((question, i) => (
+          {examples.map((example, i) => (
             <Link
               key={i}
               href={`${base}?q=${i + 1}`}
-              className={`flex h-12 w-12 items-center justify-center rounded-xl text-sm font-semibold border transition-colors ${
+              className={`flex h-12 w-12 items-center justify-center rounded-xl text-xs font-semibold border transition-colors ${
                 i === currentIndex
                   ? "bg-primary text-primary-foreground border-primary"
                   : "border-border bg-background hover:bg-accent text-muted-foreground"
               }`}
             >
-              {question.questionNumber}
+              {example.questionNumber}
             </Link>
           ))}
         </div>
@@ -127,7 +103,7 @@ export default async function NcertChapterPage({ params, searchParams }: Props) 
 
       {/* Main content */}
       <div className="flex-1 px-8 py-10">
-        {/* Breadcrumb — left aligned */}
+        {/* Breadcrumb */}
         <nav className="flex items-center gap-1 text-sm text-muted-foreground mb-10 flex-wrap">
           <Link href="/ncert" className="hover:text-primary transition-colors">NCERT</Link>
           <ChevronRight className="h-4 w-4" />
@@ -135,41 +111,43 @@ export default async function NcertChapterPage({ params, searchParams }: Props) 
           <ChevronRight className="h-4 w-4" />
           <Link href={`/ncert/${cls}/${subject}`} className="hover:text-primary transition-colors capitalize">{subjectTitle}</Link>
           <ChevronRight className="h-4 w-4" />
-          <span className="text-foreground font-semibold">Chapter {chapterNum}</span>
+          <Link href={exercisesBase} className="hover:text-primary transition-colors">Chapter {chapterNum}</Link>
+          <ChevronRight className="h-4 w-4" />
+          <span className="text-foreground font-semibold">Worked Examples</span>
         </nav>
 
-        {/* Chapter header — left aligned */}
+        {/* Chapter header */}
         <div className="mb-10">
-<h1 className="text-2xl font-bold">{data.chapterTitle}</h1>
+          <h1 className="text-2xl font-bold">{data.chapterTitle} — Worked Examples</h1>
           <p className="text-muted-foreground text-sm mt-1">Class {cls} · {subjectTitle}</p>
         </div>
 
-        {/* Q&A — centered column */}
+        {/* Example content */}
         <div className="max-w-2xl mx-auto">
           <p className="text-sm text-muted-foreground mb-6">
-            Question <span className="font-semibold text-foreground">{current}</span> of {total}
+            Example <span className="font-semibold text-foreground">{current}</span> of {total}
           </p>
 
           <div className="mb-10">
             <div className="flex items-start gap-3 mb-8">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-sm font-bold text-primary">
+              <span className="flex h-7 shrink-0 items-center justify-center rounded-md bg-emerald-500/10 px-2 text-xs font-bold text-emerald-600 dark:text-emerald-400">
                 {qa.questionNumber}
               </span>
               <div className="text-base font-medium leading-relaxed">
                 {qa.questionText?.length ? (
                   <PortableText value={qa.questionText as unknown[]} />
                 ) : (
-                  <span className="text-muted-foreground">Question {qa.questionNumber}</span>
+                  <span className="text-muted-foreground">Example {qa.questionNumber}</span>
                 )}
               </div>
             </div>
 
             <div className="border-t border-border pt-8">
-              <p className="mb-3 text-xs font-bold uppercase tracking-wide text-primary">Answer</p>
+              <p className="mb-3 text-xs font-bold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">Solution</p>
               {qa.answer?.length ? (
                 <PortableText value={qa.answer as unknown[]} />
               ) : (
-                <p className="text-muted-foreground text-sm">Answer coming soon.</p>
+                <p className="text-muted-foreground text-sm">Solution coming soon.</p>
               )}
             </div>
 
@@ -199,7 +177,7 @@ export default async function NcertChapterPage({ params, searchParams }: Props) 
 
             {qa.explanation?.length ? (
               <div className="border-t border-border pt-8 mt-8">
-                <p className="mb-3 text-xs font-bold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">Why it works</p>
+                <p className="mb-3 text-xs font-bold uppercase tracking-wide text-primary">Why it works</p>
                 <div className="text-muted-foreground leading-relaxed">
                   <PortableText value={qa.explanation as unknown[]} />
                 </div>
@@ -230,31 +208,20 @@ export default async function NcertChapterPage({ params, searchParams }: Props) 
               </Link>
             ) : (
               <Link
-                href={`/ncert/${cls}/${subject}`}
+                href={exercisesBase}
                 className="flex items-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2.5 text-sm font-medium hover:bg-primary/90 transition-colors ml-auto"
               >
-                All Chapters
+                Go to Exercises
                 <ChevronRight className="h-4 w-4" />
               </Link>
             )}
           </div>
 
-          {/* Share card image */}
-          <div className="mt-8">
-            <img
-              src={`/api/og?class=${cls}&subject=${encodeURIComponent(subjectTitle)}&chapter=${chapterNum}&q=${current}`}
-              alt={`Class ${cls} ${subjectTitle} Chapter ${chapterNum} Q.${current} NCERT Solution`}
-              width={1200}
-              height={630}
-              className="w-full rounded-xl border border-border shadow-sm"
-            />
-          </div>
-
-          {/* Mobile question picker */}
+          {/* Mobile example picker */}
           <div className="md:hidden mt-8">
-            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">Jump to Question</p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">Jump to Example</p>
             <div className="grid grid-cols-8 gap-1.5">
-              {data.questions.map((question, i) => (
+              {examples.map((example, i) => (
                 <Link
                   key={i}
                   href={`${base}?q=${i + 1}`}
@@ -264,9 +231,18 @@ export default async function NcertChapterPage({ params, searchParams }: Props) 
                       : "border-border bg-card hover:bg-accent text-muted-foreground"
                   }`}
                 >
-                  {question.questionNumber}
+                  {example.questionNumber}
                 </Link>
               ))}
+            </div>
+            <div className="mt-4">
+              <Link
+                href={exercisesBase}
+                className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors"
+              >
+                <BookOpen className="h-3.5 w-3.5" />
+                Back to Exercises
+              </Link>
             </div>
           </div>
         </div>

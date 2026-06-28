@@ -105,6 +105,64 @@ export const ncertSolution = defineType({
         },
       ],
     }),
+    defineField({
+      name: "examples",
+      title: "Worked Examples",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "workedExample",
+          title: "Example",
+          fields: [
+            defineField({
+              name: "questionNumber",
+              title: "Example Number",
+              type: "string",
+              description: "e.g. P1.1, Ex1, DA-1",
+            }),
+            defineField({
+              name: "questionText",
+              title: "Problem",
+              type: "array",
+              of: [{ type: "block" }, { type: "image" }],
+            }),
+            defineField({
+              name: "answer",
+              title: "Solution",
+              type: "array",
+              of: [{ type: "block" }, { type: "image" }],
+            }),
+            defineField({
+              name: "explanation",
+              title: "Explanation (Why it works)",
+              type: "array",
+              of: [{ type: "block" }],
+            }),
+            defineField({
+              name: "steps",
+              title: "Step-by-Step Breakdown",
+              type: "array",
+              of: [
+                {
+                  type: "object",
+                  name: "exampleStep",
+                  fields: [
+                    defineField({ name: "stepTitle", title: "Step Title", type: "string" }),
+                    defineField({ name: "content", title: "Content", type: "array", of: [{ type: "block" }] }),
+                  ],
+                  preview: { select: { title: "stepTitle" } },
+                },
+              ],
+            }),
+          ],
+          preview: {
+            select: { title: "questionNumber" },
+            prepare: ({ title }) => ({ title: `Example ${title}` }),
+          },
+        },
+      ],
+    }),
   ],
   preview: {
     select: {
