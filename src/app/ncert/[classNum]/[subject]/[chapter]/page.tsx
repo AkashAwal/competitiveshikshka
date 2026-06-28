@@ -8,6 +8,7 @@ import { ncertChapterQuery } from "@/sanity/lib/queries";
 import { slugToSubject } from "@/lib/subject-slug";
 import { PortableText } from "@/components/portable-text";
 import { ChevronRight, ChevronLeft, BookOpen } from "lucide-react";
+import { StepsSection } from "./StepsSection";
 
 type Props = {
   params: Promise<{ classNum: string; subject: string; chapter: string }>;
@@ -173,29 +174,7 @@ export default async function NcertChapterPage({ params, searchParams }: Props) 
               )}
             </div>
 
-            {qa.steps?.length ? (
-              <div className="border-t border-border pt-8 mt-8">
-                <p className="mb-4 text-xs font-bold uppercase tracking-wide text-blue-600 dark:text-blue-400">Step-by-Step</p>
-                <div className="space-y-2">
-                  {qa.steps.map((step, i) => (
-                    <details key={i} className="group rounded-xl border border-border overflow-hidden">
-                      <summary className="flex cursor-pointer select-none list-none items-center justify-between gap-3 px-4 py-3 hover:bg-accent/50 transition-colors">
-                        <div className="flex items-center gap-3">
-                          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
-                            {i + 1}
-                          </span>
-                          <span className="text-sm font-medium">{step.stepTitle}</span>
-                        </div>
-                        <svg className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-                      </summary>
-                      <div className="px-4 pb-4 pt-2 text-sm text-muted-foreground leading-relaxed border-t border-border bg-muted/20">
-                        <PortableText value={step.content as unknown[]} />
-                      </div>
-                    </details>
-                  ))}
-                </div>
-              </div>
-            ) : null}
+            {qa.steps?.length ? <StepsSection steps={qa.steps} accentColor="blue" /> : null}
 
             {qa.explanation?.length ? (
               <div className="border-t border-border pt-8 mt-8">
