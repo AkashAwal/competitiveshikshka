@@ -10,21 +10,28 @@ const STREAM_SUBJECTS: Record<string, string[]> = {
 
 function getExamDate(exam: string | null, year: number | null): Date {
   if (!exam || !year) return new Date("2027-01-15");
+  const exams = exam.split(",");
   let month = 1, day = 15;
-  if (exam === "NEET") { month = 5; day = 5; }
-  else if (exam === "JEE Advanced") { month = 5; day = 18; }
+  if (exams.includes("NEET") && !exams.some(e => e.includes("JEE"))) { month = 5; day = 5; }
+  else if (exams.includes("JEE Advanced") && !exams.includes("JEE Mains")) { month = 5; day = 18; }
   return new Date(year, month - 1, day);
 }
 
 function getExamLabel(exam: string | null): string {
   if (!exam) return "JEE";
-  if (exam === "JEE + NEET" || exam === "JEE Mains") return "JEE";
-  return exam;
+  const exams = exam.split(",");
+  const hasJee = exams.some(e => e.includes("JEE"));
+  const hasNeet = exams.includes("NEET");
+  if (hasJee && hasNeet) return "JEE + NEET";
+  if (hasNeet) return "NEET";
+  return "JEE";
 }
 
 const card = {
-  backgroundColor: "rgba(255,255,255,0.04)",
-  border: "1px solid rgba(255,255,255,0.07)",
+  background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)",
+  backdropFilter: "blur(16px)",
+  WebkitBackdropFilter: "blur(16px)",
+  border: "1px solid rgba(255,255,255,0.13)",
 };
 
 export default async function AnalyticsPage() {
@@ -160,7 +167,7 @@ export default async function AnalyticsPage() {
             </div>
             <div>
               <p className="text-sm font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>
-                {profile?.target_exam ?? "JEE Mains"}
+                {examLabel}
               </p>
               <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
                 {examDate.toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}

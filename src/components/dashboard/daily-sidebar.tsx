@@ -196,7 +196,7 @@ function DailyTasks() {
   return (
     <div
       className="rounded-xl p-5 flex flex-col gap-3"
-      style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+      style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.13)" }}
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -298,7 +298,7 @@ export function DailySidebar() {
       {/* Formula of the day */}
       <div
         className="rounded-xl p-5 flex flex-col gap-3"
-        style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+        style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.13)" }}
       >
         <div className="flex items-center gap-2">
           <FlaskConical className="h-4 w-4" style={{ color: formula.color }} />
@@ -327,7 +327,7 @@ export function DailySidebar() {
       {/* Problem of the day */}
       <div
         className="rounded-xl p-5 flex flex-col gap-3"
-        style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+        style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.13)" }}
       >
         <div className="flex items-center gap-2">
           <BookOpen className="h-4 w-4" style={{ color: problem.color }} />

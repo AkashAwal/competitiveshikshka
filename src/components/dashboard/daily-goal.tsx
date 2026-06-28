@@ -48,8 +48,8 @@ export function DailyGoal() {
       <div
         className="flex items-center gap-4 px-5 rounded-2xl"
         style={{
-          backgroundColor: "rgba(255,255,255,0.04)",
-          border: "1px solid rgba(255,255,255,0.07)",
+          background: "linear-gradient(145deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%)",
+          border: "1px solid rgba(255,255,255,0.09)",
           height: "64px",
         }}
       >

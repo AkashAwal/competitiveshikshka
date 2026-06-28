@@ -5,7 +5,7 @@ export default function NotesPage() {
       <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.45)" }}>Your study notes, organised by subject and chapter.</p>
       <div
         className="rounded-xl p-8 flex flex-col items-center justify-center text-center gap-3"
-        style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)", minHeight: "300px" }}
+        style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.13)", minHeight: "300px" }}
       >
         <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.4)" }}>Notes coming soon</p>
         <p className="text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>Create and manage your revision notes here.</p>
