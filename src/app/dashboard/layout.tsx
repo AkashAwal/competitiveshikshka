@@ -31,6 +31,9 @@ import { createClient } from "@/lib/supabase/client";
 import type { User } from "@supabase/supabase-js";
 import { OnboardingModal, type OnboardingProfile } from "@/components/dashboard/onboarding-modal";
 
+type AppearPrefs = { theme: string; fontSize: string; compactMode: boolean; reduceAnimations: boolean };
+const APPEAR_DEFAULT: AppearPrefs = { theme: "dark", fontSize: "normal", compactMode: false, reduceAnimations: false };
+
 interface Profile extends OnboardingProfile {
   onboarding_completed: boolean;
   streak?: number;
@@ -76,37 +79,70 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [achievementsOpen, setAchievementsOpen] = useState(false);
 
-  function getExamCountdown() {
-    // If user explicitly set target exam + year, use that
-    if (profile?.target_exam && profile?.target_year) {
-      let month = 1, day = 15;
-      if (profile.target_exam === "NEET") { month = 5; day = 5; }
-      else if (profile.target_exam === "JEE Advanced") { month = 5; day = 18; }
-      const target = new Date(profile.target_year, month - 1, day);
-      const days = Math.max(0, Math.ceil((target.getTime() - Date.now()) / 86_400_000));
-      const label = profile.target_exam === "JEE + NEET" ? "JEE" : profile.target_exam === "JEE Mains" ? "JEE" : profile.target_exam;
-      return { label, days };
+  function daysTo(month: number, day: number, year: number) {
+    return Math.max(0, Math.ceil((new Date(year, month - 1, day).getTime() - Date.now()) / 86_400_000));
+  }
+
+  function getFallbackYear(examMonth: number, examDay: number): number {
+    const cls = profile?.class ?? "Class 12";
+    let yr: number;
+    if (cls.startsWith("Dropper")) {
+      yr = new Date().getFullYear();
+    } else {
+      const classNum = parseInt(cls.replace(/\D/g, "")) || 12;
+      const createdDate = profile?.created_at ? new Date(profile.created_at) : new Date();
+      yr = createdDate.getFullYear() + (12 - classNum);
+    }
+    if (new Date(yr, examMonth - 1, examDay) <= new Date()) yr++;
+    return yr;
+  }
+
+  function getExamCountdowns(): { label: string; days: number }[] {
+    if (profile?.target_exam) {
+      const exams = profile.target_exam.split(",");
+      const hasJee  = exams.some(e => e.includes("JEE"));
+      const hasNeet = exams.includes("NEET");
+
+      const jeeMonth = exams.includes("JEE Mains") ? 1 : 5;
+      const jeeDay   = exams.includes("JEE Mains") ? 15 : 18;
+      const validYear = profile.target_year && !isNaN(profile.target_year) ? profile.target_year : null;
+      const jeeYr    = validYear ?? getFallbackYear(jeeMonth, jeeDay);
+      const neetYr   = validYear ?? getFallbackYear(5, 5);
+
+      if (hasJee && hasNeet) {
+        return [
+          { label: "JEE",  days: daysTo(jeeMonth, jeeDay, jeeYr) },
+          { label: "NEET", days: daysTo(5, 5, neetYr) },
+        ];
+      }
+      if (hasNeet) return [{ label: "NEET", days: daysTo(5, 5, neetYr) }];
+      if (hasJee)  return [{ label: "JEE",  days: daysTo(jeeMonth, jeeDay, jeeYr) }];
     }
 
-    // Determine exam from stream
+    // Fallback from stream
     const stream = profile?.stream ?? "PCM";
     const isNEET = stream === "PCB";
-    const examLabel = isNEET ? "NEET" : "JEE";
     const examMonth = isNEET ? 5 : 1;
     const examDay   = isNEET ? 5 : 15;
-
-    // Determine exam year from class + profile creation date
-    const classNum = parseInt((profile?.class ?? "Class 12").replace(/\D/g, "")) || 12;
-    const createdDate = profile?.created_at ? new Date(profile.created_at) : new Date();
-    let examYear = createdDate.getFullYear() + (12 - classNum);
-
-    // If that exam date has already passed, push to next year
-    if (new Date(examYear, examMonth - 1, examDay) <= new Date()) examYear++;
-
-    const days = Math.max(0, Math.ceil((new Date(examYear, examMonth - 1, examDay).getTime() - Date.now()) / 86_400_000));
-    return { label: examLabel, days };
+    const yr = getFallbackYear(examMonth, examDay);
+    return [{ label: isNEET ? "NEET" : "JEE", days: daysTo(examMonth, examDay, yr) }];
   }
-  const examCountdown = getExamCountdown();
+  const examCountdowns = getExamCountdowns();
+
+  useEffect(() => {
+    function applyAppearPrefs() {
+      try {
+        const raw = localStorage.getItem("cs-appear");
+        const prefs: AppearPrefs = raw ? { ...APPEAR_DEFAULT, ...JSON.parse(raw) } : APPEAR_DEFAULT;
+        document.documentElement.classList.toggle("cs-large-text", prefs.fontSize === "large");
+        document.documentElement.classList.toggle("cs-compact", prefs.compactMode);
+        document.documentElement.classList.toggle("cs-no-anim", prefs.reduceAnimations);
+      } catch { /* noop */ }
+    }
+    applyAppearPrefs();
+    window.addEventListener("storage", applyAppearPrefs);
+    return () => window.removeEventListener("storage", applyAppearPrefs);
+  }, []);
 
   useEffect(() => {
     const supabase = createClient();
@@ -155,7 +191,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           ...prev,
           ...(avatar_style !== undefined ? { avatar_style } : {}),
           ...(target_exam !== undefined ? { target_exam } : {}),
-          ...(target_year !== undefined ? { target_year: parseInt(target_year) } : {}),
+          ...(target_year !== undefined ? { target_year: parseInt(target_year) || null } : {}),
           ...(stream !== undefined ? { stream } : {}),
           ...(cls !== undefined ? { class: cls } : {}),
         };
@@ -370,10 +406,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           {/* Stats chips — right */}
           <div className="flex items-center gap-3">
             {([
-              { Icon: CalendarClock, text: `${examCountdown.days} days to ${examCountdown.label}`, color: "#60a5fa", onClick: undefined, isAchievements: false },
-              { Icon: Flame,         text: String(streak),         color: "#fb923c", onClick: undefined, isAchievements: false },
-              { Icon: Trophy,        text: "0",                    color: "#fbbf24", onClick: () => setAchievementsOpen(o => !o), isAchievements: true },
-            ] as const).map(({ Icon, text, color, onClick, isAchievements }) => (
+              ...examCountdowns.map(({ label, days }) => ({ Icon: CalendarClock, text: `${days} days to ${label}`, color: "#60a5fa", onClick: undefined, isAchievements: false })),
+              { Icon: Flame,  text: String(streak), color: "#fb923c", onClick: undefined,                          isAchievements: false },
+              { Icon: Trophy, text: "0",            color: "#fbbf24", onClick: () => setAchievementsOpen(o => !o), isAchievements: true  },
+            ] as { Icon: React.ElementType; text: string; color: string; onClick: (() => void) | undefined; isAchievements: boolean }[]).map(({ Icon, text, color, onClick, isAchievements }) => (
               <div
                 key={text + color}
                 onClick={onClick}
