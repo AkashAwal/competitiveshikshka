@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Trash2, ShieldAlert } from "lucide-react";
 
-export default function ConfirmDeletePage() {
+function ConfirmDeleteContent() {
   const router = useRouter();
   const params = useSearchParams();
   const [status, setStatus] = useState<"verifying" | "ready" | "deleting" | "error">("verifying");
@@ -119,5 +119,13 @@ export default function ConfirmDeletePage() {
 
       </div>
     </div>
+  );
+}
+
+export default function ConfirmDeletePage() {
+  return (
+    <Suspense>
+      <ConfirmDeleteContent />
+    </Suspense>
   );
 }
