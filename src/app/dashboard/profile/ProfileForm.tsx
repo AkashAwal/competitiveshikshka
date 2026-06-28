@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { Check, Pencil, ChevronDown, ChevronUp, Flame, FlaskConical, BookOpen, Trash2 } from "lucide-react";
+import { Check, Pencil, ChevronDown, ChevronUp, Flame, FlaskConical, BookOpen } from "lucide-react";
 import Image from "next/image";
 
 const PACKS = [
@@ -50,7 +50,11 @@ const coachingOptions = [
   "Allen", "Aakash", "FIITJEE", "Resonance", "Narayana",
   "Vidyamandir", "PW (Physics Wallah)", "Unacademy", "Self-study", "Other",
 ];
-const targetExams = ["JEE Mains", "JEE Advanced", "NEET", "JEE + NEET"];
+function examsForStream(stream: string): string[] {
+  if (stream === "PCM") return ["JEE Mains", "JEE Advanced", "CUET"];
+  if (stream === "PCB") return ["NEET", "CUET"];
+  return ["JEE Mains", "JEE Advanced", "NEET", "CUET"];
+}
 const targetYears = ["2025", "2026", "2027", "2028"];
 const dailyGoals = ["1 hr", "2 hrs", "3 hrs", "4 hrs", "5 hrs", "6+ hrs"];
 
@@ -60,15 +64,17 @@ function subjectsForStream(stream: string) {
   return ["Physics", "Chemistry", "Maths", "Biology"];
 }
 
-function Chip({ label, selected, onClick }: { label: string; selected: boolean; onClick: () => void }) {
+function Chip({ label, selected, onClick, disabled, className }: { label: string; selected: boolean; onClick: () => void; disabled?: boolean; className?: string }) {
   return (
     <button
-      onClick={onClick}
-      className="rounded-xl px-4 py-2.5 text-sm font-semibold text-left transition-colors cursor-pointer"
+      onClick={disabled ? undefined : onClick}
+      className={`rounded-xl px-4 py-2.5 text-sm font-semibold text-center transition-colors ${className ?? ""}`}
       style={{
         backgroundColor: selected ? "#2563eb" : "rgba(255,255,255,0.05)",
         border: `1px solid ${selected ? "#2563eb" : "rgba(255,255,255,0.08)"}`,
-        color: selected ? "#fff" : "rgba(255,255,255,0.7)",
+        color: selected ? "#fff" : disabled ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.7)",
+        cursor: disabled ? "not-allowed" : "pointer",
+        opacity: disabled ? 0.45 : 1,
       }}
     >
       {label}
@@ -80,7 +86,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   return (
     <div
       className="w-full rounded-xl p-6 flex flex-col gap-5"
-      style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+      style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.13)" }}
     >
       <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.35)" }}>{title}</p>
       {children}
@@ -132,18 +138,19 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
   const [weakSub, setWeakSub] = useState(initial.weak_subject ?? "");
   const [coaching, setCoaching] = useState(initial.coaching ?? "");
   const [school, setSchool] = useState(initial.school ?? "");
-  const [targetExam, setTargetExam] = useState(initial.target_exam ?? "");
+  const [selectedExams, setSelectedExams] = useState<string[]>(
+    initial.target_exam ? initial.target_exam.split(",").filter(Boolean) : []
+  );
   const [targetYear, setTargetYear] = useState(initial.target_year ?? "");
   const [dailyGoal, setDailyGoal] = useState(initial.daily_goal_hours ?? "");
 
+  function dirty<T>(setter: React.Dispatch<React.SetStateAction<T>>) {
+    return (val: React.SetStateAction<T>) => { setter(val); setIsDirty(true); };
+  }
+
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
-  // delete flow: idle → typing → otp → deleting
-  const [deleteStep, setDeleteStep] = useState<"idle" | "typing" | "otp" | "deleting">("idle");
-  const [deleteText, setDeleteText] = useState("");
-  const [otpSending, setOtpSending] = useState(false);
-  const [otpValue, setOtpValue] = useState("");
-  const [otpError, setOtpError] = useState("");
+  const [isDirty, setIsDirty] = useState(false);
 
   const subjects = subjectsForStream(stream);
   const currentAvatarUrl = getAvatarUrl(avatarStyle, googleAvatarUrl);
@@ -189,47 +196,17 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
       weak_subject: weakSub || null,
       coaching: coaching || null,
       school: school || null,
-      target_exam: targetExam || null,
+      target_exam: selectedExams.length > 0 ? selectedExams.join(",") : null,
       target_year: targetYear ? parseInt(targetYear) : null,
       daily_goal_hours: dailyGoal ? parseInt(dailyGoal) || null : null,
     }).eq("id", userId);
-    dispatchProfileUpdate({ target_exam: targetExam, target_year: targetYear, stream, class: cls });
+    dispatchProfileUpdate({ target_exam: selectedExams.join(","), target_year: targetYear, stream, class: cls });
     setSaving(false);
     setSaved(true);
+    setIsDirty(false);
     setTimeout(() => setSaved(false), 2500);
   }
 
-  function cancelDelete() {
-    setDeleteStep("idle");
-    setDeleteText("");
-    setOtpValue("");
-    setOtpError("");
-  }
-
-  async function sendOtp() {
-    setOtpSending(true);
-    setOtpError("");
-    const supabase = createClient();
-    const { error } = await supabase.auth.reauthenticate();
-    setOtpSending(false);
-    if (error) { setOtpError(error.message); return; }
-    setDeleteStep("otp");
-  }
-
-  async function confirmDelete() {
-    setOtpError("");
-    setDeleteStep("deleting");
-    const supabase = createClient();
-    const { error } = await supabase.auth.verifyOtp({ email, token: otpValue.trim(), type: "reauthentication" });
-    if (error) {
-      setOtpError(error.message);
-      setDeleteStep("otp");
-      return;
-    }
-    await supabase.from("profiles").delete().eq("id", userId);
-    await supabase.auth.signOut();
-    router.push("/");
-  }
 
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-xl mx-auto">
@@ -316,7 +293,7 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
           { icon: BookOpen,    color: "#a78bfa", label: "Questions Solved", value: "0" },
         ].map(({ icon: Icon, color, label, value }) => (
           <div key={label} className="rounded-xl p-4 flex flex-col gap-1.5 items-center"
-            style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
+            style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.13)" }}>
             <Icon className="h-5 w-5" style={{ color }} />
             <p className="text-2xl font-black" style={{ color: "rgba(255,255,255,0.95)" }}>{value}</p>
             <p className="text-[11px] text-center" style={{ color: "rgba(255,255,255,0.35)" }}>{label}</p>
@@ -328,16 +305,16 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
       <Section title="Academic profile">
         <Field label="Class">
           <div className="grid grid-cols-2 gap-2">
-            {classes.map(c => <Chip key={c} label={c} selected={cls === c} onClick={() => setCls(c)} />)}
+            {classes.map(c => <Chip key={c} label={c} selected={cls === c} onClick={() => dirty(setCls)(c)} />)}
           </div>
         </Field>
         <Field label="Stream">
           <div className="grid grid-cols-3 gap-2">
-            {streams.map(s => <Chip key={s} label={s} selected={stream === s} onClick={() => { setStream(s); setStrongSub(""); setWeakSub(""); }} />)}
+            {streams.map(s => <Chip key={s} label={s} selected={stream === s} onClick={() => { const allowed = examsForStream(s); setStream(s); setStrongSub(""); setWeakSub(""); setSelectedExams(prev => prev.filter(e => allowed.includes(e))); setIsDirty(true); }} />)}
           </div>
         </Field>
         <Field label="State">
-          <select value={state} onChange={e => setState(e.target.value)} className="w-full rounded-xl px-4 py-3 text-sm font-semibold outline-none cursor-pointer"
+          <select value={state} onChange={e => { setState(e.target.value); setIsDirty(true); }} className="w-full rounded-xl px-4 py-3 text-sm font-semibold outline-none cursor-pointer"
             style={{ backgroundColor: state ? "#1e2d45" : "rgba(255,255,255,0.05)", border: `1px solid ${state ? "#2563eb" : "rgba(255,255,255,0.08)"}`, color: state ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.35)" }}>
             <option value="" disabled style={{ backgroundColor: "#1b2027" }}>Select your state</option>
             {states.map(st => <option key={st} value={st} style={{ backgroundColor: "#1b2027", color: "rgba(255,255,255,0.9)" }}>{st}</option>)}
@@ -348,18 +325,31 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
       {/* Target & Goals */}
       <Section title="Target & Goals">
         <Field label="Target exam">
-          <div className="grid grid-cols-2 gap-2">
-            {targetExams.map(e => <Chip key={e} label={e} selected={targetExam === e} onClick={() => setTargetExam(e)} />)}
+          <div className="flex gap-2">
+            {["JEE Mains", "JEE Advanced", "NEET", "CUET"].map(e => {
+              const allowed = stream ? examsForStream(stream) : ["JEE Mains", "JEE Advanced", "NEET", "CUET"];
+              const isDisabled = !allowed.includes(e);
+              return (
+                <Chip
+                  key={e}
+                  label={e}
+                  selected={selectedExams.includes(e)}
+                  disabled={isDisabled}
+                  className="flex-1 whitespace-nowrap"
+                  onClick={() => { setSelectedExams(prev => prev.includes(e) ? prev.filter(x => x !== e) : [...prev, e]); setIsDirty(true); }}
+                />
+              );
+            })}
           </div>
         </Field>
         <Field label="Target year">
           <div className="grid grid-cols-4 gap-2">
-            {targetYears.map(y => <Chip key={y} label={y} selected={targetYear === y} onClick={() => setTargetYear(y)} />)}
+            {targetYears.map(y => <Chip key={y} label={y} selected={targetYear === y} onClick={() => dirty(setTargetYear)(y)} />)}
           </div>
         </Field>
         <Field label="Daily study goal">
           <div className="grid grid-cols-3 gap-2">
-            {dailyGoals.map(g => <Chip key={g} label={g} selected={dailyGoal === g} onClick={() => setDailyGoal(g)} />)}
+            {dailyGoals.map(g => <Chip key={g} label={g} selected={dailyGoal === g} onClick={() => dirty(setDailyGoal)(g)} />)}
           </div>
         </Field>
       </Section>
@@ -368,12 +358,12 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
       <Section title="Subject strengths">
         <Field label="Strongest subject">
           <div className="grid grid-cols-2 gap-2">
-            {subjects.map(s => <Chip key={s} label={s} selected={strongSub === s} onClick={() => { setStrongSub(s); if (weakSub === s) setWeakSub(""); }} />)}
+            {subjects.map(s => <Chip key={s} label={s} selected={strongSub === s} onClick={() => { setStrongSub(s); if (weakSub === s) setWeakSub(""); setIsDirty(true); }} />)}
           </div>
         </Field>
         <Field label="Weakest subject">
           <div className="grid grid-cols-2 gap-2">
-            {subjects.map(s => <Chip key={s} label={s} selected={weakSub === s} onClick={() => { setWeakSub(s); if (strongSub === s) setStrongSub(""); }} />)}
+            {subjects.map(s => <Chip key={s} label={s} selected={weakSub === s} onClick={() => { setWeakSub(s); if (strongSub === s) setStrongSub(""); setIsDirty(true); }} />)}
           </div>
         </Field>
       </Section>
@@ -382,11 +372,11 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
       <Section title="Study background">
         <Field label="Coaching institute">
           <div className="grid grid-cols-2 gap-2">
-            {coachingOptions.map(c => <Chip key={c} label={c} selected={coaching === c} onClick={() => setCoaching(c)} />)}
+            {coachingOptions.map(c => <Chip key={c} label={c} selected={coaching === c} onClick={() => dirty(setCoaching)(c)} />)}
           </div>
         </Field>
         <Field label="School name (optional)">
-          <input type="text" placeholder="e.g. Delhi Public School" value={school} onChange={e => setSchool(e.target.value)}
+          <input type="text" placeholder="e.g. Delhi Public School" value={school} onChange={e => { setSchool(e.target.value); setIsDirty(true); }}
             className="w-full rounded-xl px-4 py-3 text-sm outline-none"
             style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.9)" }} />
         </Field>
@@ -400,85 +390,30 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
         {saving ? "Saving…" : saved ? "Saved" : "Save changes"}
       </button>
 
-      {/* Danger zone */}
-      <div className="w-full rounded-xl p-6 flex flex-col gap-4" style={{ border: "1px solid rgba(239,68,68,0.2)", backgroundColor: "rgba(239,68,68,0.04)" }}>
-        <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "rgba(239,68,68,0.7)" }}>Danger zone</p>
-
-        {deleteStep === "idle" && (
-          <div className="flex items-center justify-between gap-4">
-            <div>
-              <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.85)" }}>Delete account</p>
-              <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.35)" }}>Permanently deletes your profile and all data. This cannot be undone.</p>
-            </div>
-            <button onClick={() => setDeleteStep("typing")} className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold cursor-pointer"
-              style={{ backgroundColor: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.25)", color: "#f87171" }}>
-              <Trash2 className="h-3.5 w-3.5" /> Delete
-            </button>
-          </div>
-        )}
-
-        {deleteStep === "typing" && (
-          <div className="flex flex-col gap-3">
-            <p className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
-              Type <span className="font-black tracking-widest" style={{ color: "#f87171" }}>DELETE</span> to continue
-            </p>
-            <input
-              autoFocus
-              value={deleteText}
-              onChange={e => setDeleteText(e.target.value)}
-              placeholder="DELETE"
-              className="w-full rounded-xl px-4 py-3 text-sm font-bold outline-none"
-              style={{ backgroundColor: "rgba(239,68,68,0.06)", border: "1px solid rgba(239,68,68,0.25)", color: "#f87171", letterSpacing: "0.1em" }}
-            />
-            <div className="flex items-center gap-2">
-              <button onClick={cancelDelete} className="px-4 py-2 rounded-xl text-xs font-bold cursor-pointer" style={{ color: "rgba(255,255,255,0.4)" }}>Cancel</button>
-              <button
-                onClick={sendOtp}
-                disabled={deleteText !== "DELETE" || otpSending}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black cursor-pointer"
-                style={{ backgroundColor: deleteText === "DELETE" ? "#ef4444" : "rgba(239,68,68,0.15)", color: deleteText === "DELETE" ? "#fff" : "rgba(255,255,255,0.3)", transition: "all 0.2s" }}
-              >
-                {otpSending ? "Sending…" : "Send verification code"}
-              </button>
-            </div>
-            {otpError && <p className="text-xs" style={{ color: "#f87171" }}>{otpError}</p>}
-          </div>
-        )}
-
-        {(deleteStep === "otp" || deleteStep === "deleting") && (
-          <div className="flex flex-col gap-3">
-            <p className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
-              Check your email — the 8-digit code is in the <span className="font-semibold" style={{ color: "rgba(255,255,255,0.9)" }}>subject line</span> of the message sent to {email}.
-            </p>
-            <input
-              autoFocus
-              value={otpValue}
-              onChange={e => setOtpValue(e.target.value.replace(/\D/g, "").slice(0, 8))}
-              placeholder="00000000"
-              maxLength={8}
-              className="w-full rounded-xl px-4 py-3 text-xl font-black text-center outline-none tracking-[0.4em]"
-              style={{ backgroundColor: "rgba(239,68,68,0.06)", border: "1px solid rgba(239,68,68,0.25)", color: "#f87171" }}
-            />
-            {otpError && <p className="text-xs" style={{ color: "#f87171" }}>{otpError}</p>}
-            <div className="flex items-center gap-2">
-              <button onClick={cancelDelete} className="px-4 py-2 rounded-xl text-xs font-bold cursor-pointer" style={{ color: "rgba(255,255,255,0.4)" }}>Cancel</button>
-              <button onClick={sendOtp} disabled={otpSending} className="px-4 py-2 rounded-xl text-xs font-semibold cursor-pointer" style={{ color: "rgba(255,255,255,0.4)" }}>
-                {otpSending ? "Resending…" : "Resend code"}
-              </button>
-              <button
-                onClick={confirmDelete}
-                disabled={otpValue.length !== 8 || deleteStep === "deleting"}
-                className="flex-1 px-4 py-2 rounded-xl text-xs font-black cursor-pointer"
-                style={{ backgroundColor: otpValue.length === 8 ? "#ef4444" : "rgba(239,68,68,0.15)", color: otpValue.length === 8 ? "#fff" : "rgba(255,255,255,0.3)", transition: "all 0.2s" }}
-              >
-                {deleteStep === "deleting" ? "Deleting…" : "Confirm deletion"}
-              </button>
-            </div>
-          </div>
-        )}
-      </div>
+      <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.25)" }}>
+        To delete your account, go to{" "}
+        <a href="/dashboard/settings" className="underline" style={{ color: "rgba(255,255,255,0.4)" }}>Settings → Danger zone</a>.
+      </p>
 
       <div className="h-4" />
+
+      {/* Unsaved changes toast */}
+      {isDirty && (
+        <div
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-2xl px-4 py-3 shadow-2xl"
+          style={{ backgroundColor: "#1e2535", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(12px)" }}
+        >
+          <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.7)" }}>Unsaved changes</p>
+          <button
+            onClick={save}
+            disabled={saving}
+            className="rounded-xl px-4 py-1.5 text-sm font-bold transition-opacity"
+            style={{ backgroundColor: "#2563eb", color: "#fff", opacity: saving ? 0.7 : 1 }}
+          >
+            {saving ? "Saving…" : "Save"}
+          </button>
+        </div>
+      )}
     </div>
   );
 }
