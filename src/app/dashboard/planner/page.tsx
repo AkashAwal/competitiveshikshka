@@ -20,10 +20,10 @@ export default function PlannerPage() {
         <div style={{
           borderRadius: 20,
           padding: "36px 32px",
-          background: "linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(234,179,8,0.05) 60%, rgba(255,255,255,0.03) 100%)",
+          background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)",
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
-          border: "1px solid rgba(251,191,36,0.25)",
+          border: "1px solid rgba(255,255,255,0.13)",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
