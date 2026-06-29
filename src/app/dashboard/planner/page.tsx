@@ -20,10 +20,8 @@ export default function PlannerPage() {
         <div style={{
           borderRadius: 20,
           padding: "36px 32px",
-          background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          border: "1px solid rgba(255,255,255,0.13)",
+          background: "#1d2530",
+          border: "1px solid rgba(255,255,255,0.08)",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -66,8 +64,8 @@ export default function PlannerPage() {
               <div key={label} style={{
                 padding: "13px 14px",
                 borderRadius: 12,
-                background: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.09)",
+                background: "#242f3e",
+                border: "1px solid rgba(255,255,255,0.07)",
                 display: "flex",
                 gap: 10,
                 alignItems: "flex-start",
