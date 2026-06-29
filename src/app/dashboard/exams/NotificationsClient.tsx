@@ -166,9 +166,7 @@ function EventCard({ event, isPast }: { event: ExamEvent; isPast: boolean }) {
         gap: 14,
         padding: "14px 16px",
         borderRadius: 12,
-        background: isPast
-          ? "rgba(255,255,255,0.03)"
-          : `linear-gradient(135deg, ${style.bg} 0%, rgba(255,255,255,0.03) 100%)`,
+        background: "#171b20",
         border: `1px solid ${isPast ? "rgba(255,255,255,0.07)" : style.border}`,
         borderLeft: `3px solid ${isPast ? "rgba(255,255,255,0.15)" : style.color}`,
         backdropFilter: "blur(12px)",
@@ -274,10 +272,8 @@ export default function NotificationsClient({ userExams }: { userExams: string[]
   }
 
   const glass = {
-    background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)",
-    backdropFilter: "blur(16px)",
-    WebkitBackdropFilter: "blur(16px)",
-    border: "1px solid rgba(255,255,255,0.13)",
+    background: "#171b20",
+    border: "1px solid rgba(255,255,255,0.08)",
     borderRadius: 16,
   } as React.CSSProperties;
 
@@ -300,8 +296,8 @@ export default function NotificationsClient({ userExams }: { userExams: string[]
             gap: 10,
             padding: "14px 18px",
             marginBottom: 16,
-            borderColor: "rgba(96,165,250,0.25)",
-            background: "linear-gradient(135deg, rgba(96,165,250,0.1) 0%, rgba(255,255,255,0.04) 100%)",
+            borderColor: "rgba(96,165,250,0.2)",
+            background: "#171b20",
           }}>
             <Bell size={15} style={{ color: "#60a5fa", flexShrink: 0 }} />
             <span style={{ fontSize: 13, color: "rgba(255,255,255,0.7)" }}>
@@ -326,8 +322,8 @@ export default function NotificationsClient({ userExams }: { userExams: string[]
             gap: 10,
             padding: "13px 18px",
             marginBottom: 16,
-            borderColor: "rgba(251,191,36,0.25)",
-            background: "linear-gradient(135deg, rgba(251,191,36,0.08) 0%, rgba(255,255,255,0.03) 100%)",
+            borderColor: "rgba(251,191,36,0.2)",
+            background: "#171b20",
           }}>
             <Info size={14} style={{ color: "#fbbf24", flexShrink: 0 }} />
             <span style={{ fontSize: 12.5, color: "rgba(255,255,255,0.6)" }}>

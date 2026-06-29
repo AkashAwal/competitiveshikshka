@@ -20,7 +20,7 @@ export default function PlannerPage() {
         <div style={{
           borderRadius: 20,
           padding: "36px 32px",
-          background: "#1d2530",
+          background: "#171b20",
           border: "1px solid rgba(255,255,255,0.08)",
           display: "flex",
           flexDirection: "column",
@@ -64,7 +64,7 @@ export default function PlannerPage() {
               <div key={label} style={{
                 padding: "13px 14px",
                 borderRadius: 12,
-                background: "#242f3e",
+                background: "#1e2530",
                 border: "1px solid rgba(255,255,255,0.07)",
                 display: "flex",
                 gap: 10,
