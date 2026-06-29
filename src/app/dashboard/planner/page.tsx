@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CalendarDays, Sparkles, UserCheck, Brain, Clock, Bell } from "lucide-react";
+import { CalendarDays, UserCheck, Brain, Bell, Crown, GraduationCap } from "lucide-react";
 
 const perks = [
   { icon: CalendarDays, label: "Personalised weekly timetable", desc: "Built around your exam date, weak subjects, and daily goal hours." },
@@ -40,13 +40,13 @@ export default function PlannerPage() {
             justifyContent: "center",
             marginBottom: 20,
           }}>
-            <Sparkles size={26} style={{ color: "#fbbf24" }} />
+            <Crown size={26} style={{ color: "#fbbf24" }} />
           </div>
 
           <p style={{ fontSize: 22, fontWeight: 900, color: "#fde68a", lineHeight: 1.2, marginBottom: 10 }}>
             Get your personalised study planner
           </p>
-          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", maxWidth: 420, lineHeight: 1.6, marginBottom: 28 }}>
+          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", maxWidth: 460, lineHeight: 1.6, marginBottom: 28 }}>
             Premium members get a customised weekly schedule built by expert mentors —
             tailored to your target exam, weak subjects, and available study hours.
           </p>
@@ -91,27 +91,47 @@ export default function PlannerPage() {
             ))}
           </div>
 
-          {/* CTA */}
-          <Link href="/dashboard/premium" style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
-            padding: "11px 28px",
-            borderRadius: 10,
-            background: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)",
-            color: "#1a1200",
-            fontWeight: 800,
-            fontSize: 13.5,
-            textDecoration: "none",
-            boxShadow: "0 4px 20px rgba(251,191,36,0.3)",
-            transition: "opacity 0.15s",
-          }}>
-            <Sparkles size={15} />
-            Unlock with Premium
-          </Link>
+          {/* CTAs */}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, width: "100%" }}>
+            <Link href="/dashboard/premium" style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "11px 28px",
+              borderRadius: 10,
+              background: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)",
+              color: "#1a1200",
+              fontWeight: 800,
+              fontSize: 13.5,
+              textDecoration: "none",
+              boxShadow: "0 4px 20px rgba(251,191,36,0.3)",
+            }}>
+              <Crown size={15} />
+              Unlock with Premium
+            </Link>
 
-          <p style={{ fontSize: 11, color: "rgba(255,255,255,0.25)", marginTop: 14 }}>
-            Includes mentorship sessions · No ads · Exclusive test series
+            {/* Mentorship standalone option */}
+            <div style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "10px 20px",
+              borderRadius: 10,
+              border: "1px solid rgba(255,255,255,0.1)",
+              background: "rgba(255,255,255,0.04)",
+            }}>
+              <GraduationCap size={14} style={{ color: "rgba(255,255,255,0.5)", flexShrink: 0 }} />
+              <span style={{ fontSize: 12.5, color: "rgba(255,255,255,0.5)" }}>
+                Mentorship is included in Premium —{" "}
+                <Link href="/dashboard/premium" style={{ color: "#a78bfa", textDecoration: "underline", textUnderlineOffset: 3, fontWeight: 600 }}>
+                  or available as a standalone add-on
+                </Link>
+              </span>
+            </div>
+          </div>
+
+          <p style={{ fontSize: 11, color: "rgba(255,255,255,0.2)", marginTop: 16 }}>
+            Premium also includes · No ads · Exclusive test series · Priority support
           </p>
         </div>
 
