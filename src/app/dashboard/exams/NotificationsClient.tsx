@@ -273,207 +273,211 @@ export default function NotificationsClient({ userExams }: { userExams: string[]
     });
   }
 
+  const glass = {
+    background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)",
+    backdropFilter: "blur(16px)",
+    WebkitBackdropFilter: "blur(16px)",
+    border: "1px solid rgba(255,255,255,0.13)",
+    borderRadius: 16,
+  } as React.CSSProperties;
+
   return (
-    <div className="px-6 py-8 max-w-3xl">
-      {/* Header */}
-      <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(255,255,255,0.95)" }}>Notifications</h1>
-      <p className="text-sm mb-6" style={{ color: "rgba(255,255,255,0.45)" }}>
-        Exam dates, registration deadlines, admit cards, results and more.
-      </p>
+    <div className="px-6 py-8 w-full flex flex-col items-center">
+      <div style={{ width: "100%", maxWidth: 680 }}>
 
-      {/* Summary strip */}
-      {nextEvent && (
-        <div style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 10,
-          padding: "12px 16px",
-          borderRadius: 12,
-          background: "linear-gradient(135deg, rgba(96,165,250,0.1) 0%, rgba(255,255,255,0.04) 100%)",
-          border: "1px solid rgba(96,165,250,0.2)",
-          marginBottom: 20,
-        }}>
-          <Bell size={15} style={{ color: "#60a5fa", flexShrink: 0 }} />
-          <span style={{ fontSize: 13, color: "rgba(255,255,255,0.7)" }}>
-            <span style={{ fontWeight: 600, color: "rgba(255,255,255,0.9)" }}>
-              {upcoming.length} upcoming event{upcoming.length !== 1 ? "s" : ""}
-            </span>
-            {" · Next: "}
-            <span style={{ color: EXAM_STYLE[nextEvent.exam].color, fontWeight: 500 }}>
-              {nextEvent.title}
-            </span>
-            {nextDiff === 0 ? " — Today!" : ` in ${nextDiff} days`}
-          </span>
-        </div>
-      )}
+        {/* Header */}
+        <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(255,255,255,0.95)" }}>Notifications</h1>
+        <p className="text-sm mb-6" style={{ color: "rgba(255,255,255,0.45)" }}>
+          Exam dates, registration deadlines, admit cards, results and more.
+        </p>
 
-      {/* Filter row */}
-      <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 20 }}>
-        {/* My / All toggle */}
-        {hasUserExams && (
+        {/* Summary strip */}
+        {nextEvent && (
           <div style={{
+            ...glass,
             display: "flex",
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.1)",
-            borderRadius: 8,
-            padding: 2,
-            gap: 2,
+            alignItems: "center",
+            gap: 10,
+            padding: "14px 18px",
+            marginBottom: 16,
+            borderColor: "rgba(96,165,250,0.25)",
+            background: "linear-gradient(135deg, rgba(96,165,250,0.1) 0%, rgba(255,255,255,0.04) 100%)",
           }}>
-            {(["my", "all"] as const).map(v => (
-              <button
-                key={v}
-                onClick={() => {
-                  setShowMine(v === "my");
-                  if (v === "all") setSelectedExams(new Set(ALL_EXAMS));
-                }}
-                style={{
-                  fontSize: 12,
-                  fontWeight: 600,
-                  padding: "5px 14px",
-                  borderRadius: 6,
-                  border: "none",
-                  cursor: "pointer",
-                  background: (v === "my") === showMine ? "rgba(255,255,255,0.12)" : "transparent",
-                  color: (v === "my") === showMine ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.4)",
-                  transition: "all 0.15s",
-                }}
-              >
-                {v === "my" ? "My Exams" : "All Exams"}
-              </button>
-            ))}
+            <Bell size={15} style={{ color: "#60a5fa", flexShrink: 0 }} />
+            <span style={{ fontSize: 13, color: "rgba(255,255,255,0.7)" }}>
+              <span style={{ fontWeight: 600, color: "rgba(255,255,255,0.9)" }}>
+                {upcoming.length} upcoming event{upcoming.length !== 1 ? "s" : ""}
+              </span>
+              {" · Next: "}
+              <span style={{ color: EXAM_STYLE[nextEvent.exam].color, fontWeight: 500 }}>
+                {nextEvent.title}
+              </span>
+              {nextDiff === 0 ? " — Today!" : ` in ${nextDiff} days`}
+            </span>
           </div>
         )}
 
-        {/* Exam chips — shown in "All" mode */}
-        {!showMine && (
-          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-            {ALL_EXAMS.map(exam => {
-              const s = EXAM_STYLE[exam];
-              const active = selectedExams.has(exam);
-              return (
+        {/* No target exam nudge */}
+        {!hasUserExams && (
+          <div style={{
+            ...glass,
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            padding: "13px 18px",
+            marginBottom: 16,
+            borderColor: "rgba(251,191,36,0.25)",
+            background: "linear-gradient(135deg, rgba(251,191,36,0.08) 0%, rgba(255,255,255,0.03) 100%)",
+          }}>
+            <Info size={14} style={{ color: "#fbbf24", flexShrink: 0 }} />
+            <span style={{ fontSize: 12.5, color: "rgba(255,255,255,0.6)" }}>
+              Set your target exams in{" "}
+              <a href="/dashboard/profile" style={{ color: "#fbbf24", textDecoration: "underline", textUnderlineOffset: 3 }}>
+                Profile
+              </a>{" "}
+              to see personalised alerts.
+            </span>
+          </div>
+        )}
+
+        {/* Filter panel */}
+        <div style={{ ...glass, padding: "14px 18px", marginBottom: 16, display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+          {/* My / All toggle */}
+          {hasUserExams && (
+            <div style={{
+              display: "flex",
+              background: "rgba(255,255,255,0.06)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              borderRadius: 8,
+              padding: 2,
+              gap: 2,
+            }}>
+              {(["my", "all"] as const).map(v => (
                 <button
-                  key={exam}
-                  onClick={() => toggleExam(exam)}
+                  key={v}
+                  onClick={() => {
+                    setShowMine(v === "my");
+                    if (v === "all") setSelectedExams(new Set(ALL_EXAMS));
+                  }}
                   style={{
+                    fontSize: 12,
+                    fontWeight: 600,
+                    padding: "5px 14px",
+                    borderRadius: 6,
+                    border: "none",
+                    cursor: "pointer",
+                    background: (v === "my") === showMine ? "rgba(255,255,255,0.12)" : "transparent",
+                    color: (v === "my") === showMine ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.4)",
+                    transition: "all 0.15s",
+                  }}
+                >
+                  {v === "my" ? "My Exams" : "All Exams"}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Exam chips — shown in "All" mode */}
+          {!showMine && (
+            <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+              {ALL_EXAMS.map(exam => {
+                const s = EXAM_STYLE[exam];
+                const active = selectedExams.has(exam);
+                return (
+                  <button
+                    key={exam}
+                    onClick={() => toggleExam(exam)}
+                    style={{
+                      fontSize: 11.5,
+                      fontWeight: 600,
+                      padding: "5px 12px",
+                      borderRadius: 20,
+                      border: `1px solid ${active ? s.border : "rgba(255,255,255,0.1)"}`,
+                      background: active ? s.bg : "rgba(255,255,255,0.04)",
+                      color: active ? s.color : "rgba(255,255,255,0.35)",
+                      cursor: "pointer",
+                      transition: "all 0.15s",
+                    }}
+                  >
+                    {exam}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          {/* "My Exams" mode: show opted exam chips (read-only) */}
+          {showMine && (
+            <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+              {(userExams as ExamKey[]).map(exam => {
+                const s = EXAM_STYLE[exam];
+                return (
+                  <span key={exam} style={{
                     fontSize: 11.5,
                     fontWeight: 600,
                     padding: "5px 12px",
                     borderRadius: 20,
-                    border: `1px solid ${active ? s.border : "rgba(255,255,255,0.1)"}`,
-                    background: active ? s.bg : "rgba(255,255,255,0.04)",
-                    color: active ? s.color : "rgba(255,255,255,0.35)",
-                    cursor: "pointer",
-                    transition: "all 0.15s",
-                  }}
-                >
-                  {exam}
-                </button>
-              );
-            })}
-          </div>
-        )}
-
-        {/* "My Exams" mode: show opted exam chips (read-only) */}
-        {showMine && (
-          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-            {(userExams as ExamKey[]).map(exam => {
-              const s = EXAM_STYLE[exam];
-              return (
-                <span key={exam} style={{
-                  fontSize: 11.5,
-                  fontWeight: 600,
-                  padding: "5px 12px",
-                  borderRadius: 20,
-                  border: `1px solid ${s.border}`,
-                  background: s.bg,
-                  color: s.color,
-                }}>
-                  {exam}
-                </span>
-              );
-            })}
-          </div>
-        )}
-      </div>
-
-      {/* No target exam nudge */}
-      {!hasUserExams && (
-        <div style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 10,
-          padding: "12px 16px",
-          borderRadius: 10,
-          background: "rgba(251,191,36,0.08)",
-          border: "1px solid rgba(251,191,36,0.2)",
-          marginBottom: 16,
-        }}>
-          <Info size={14} style={{ color: "#fbbf24", flexShrink: 0 }} />
-          <span style={{ fontSize: 12.5, color: "rgba(255,255,255,0.6)" }}>
-            Set your target exams in{" "}
-            <a href="/dashboard/profile" style={{ color: "#fbbf24", textDecoration: "underline", textUnderlineOffset: 3 }}>
-              Profile
-            </a>{" "}
-            to see personalised alerts.
-          </span>
-        </div>
-      )}
-
-      {/* Upcoming events */}
-      <div style={{ marginBottom: 8 }}>
-        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: 10 }}>
-          Upcoming · {upcoming.length}
-        </div>
-        {upcoming.length === 0 ? (
-          <div style={{
-            padding: "32px 20px",
-            textAlign: "center",
-            borderRadius: 12,
-            background: "rgba(255,255,255,0.04)",
-            border: "1px solid rgba(255,255,255,0.08)",
-            color: "rgba(255,255,255,0.3)",
-            fontSize: 13,
-          }}>
-            No upcoming events for the selected exams.
-          </div>
-        ) : (
-          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            {upcoming.map(e => <EventCard key={e.id} event={e} isPast={false} />)}
-          </div>
-        )}
-      </div>
-
-      {/* Past events */}
-      {past.length > 0 && (
-        <div style={{ marginTop: 24 }}>
-          <button
-            onClick={() => setPastExpanded(p => !p)}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 6,
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              padding: "4px 0",
-              marginBottom: pastExpanded ? 10 : 0,
-            }}
-          >
-            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
-              Past · {past.length}
-            </span>
-            {pastExpanded
-              ? <ChevronUp size={13} style={{ color: "rgba(255,255,255,0.3)" }} />
-              : <ChevronDown size={13} style={{ color: "rgba(255,255,255,0.3)" }} />}
-          </button>
-
-          {pastExpanded && (
-            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              {past.map(e => <EventCard key={e.id} event={e} isPast />)}
+                    border: `1px solid ${s.border}`,
+                    background: s.bg,
+                    color: s.color,
+                  }}>
+                    {exam}
+                  </span>
+                );
+              })}
             </div>
           )}
         </div>
-      )}
+
+        {/* Upcoming events panel */}
+        <div style={{ ...glass, padding: "18px 18px", marginBottom: 16 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: 12 }}>
+            Upcoming · {upcoming.length}
+          </div>
+          {upcoming.length === 0 ? (
+            <div style={{ padding: "28px 0", textAlign: "center", color: "rgba(255,255,255,0.3)", fontSize: 13 }}>
+              No upcoming events for the selected exams.
+            </div>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {upcoming.map(e => <EventCard key={e.id} event={e} isPast={false} />)}
+            </div>
+          )}
+        </div>
+
+        {/* Past events panel */}
+        {past.length > 0 && (
+          <div style={{ ...glass, padding: "14px 18px" }}>
+            <button
+              onClick={() => setPastExpanded(p => !p)}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                width: "100%",
+              }}
+            >
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
+                Past · {past.length}
+              </span>
+              {pastExpanded
+                ? <ChevronUp size={13} style={{ color: "rgba(255,255,255,0.3)" }} />
+                : <ChevronDown size={13} style={{ color: "rgba(255,255,255,0.3)" }} />}
+            </button>
+
+            {pastExpanded && (
+              <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 12 }}>
+                {past.map(e => <EventCard key={e.id} event={e} isPast />)}
+              </div>
+            )}
+          </div>
+        )}
+
+      </div>
     </div>
   );
 }
