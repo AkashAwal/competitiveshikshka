@@ -13,8 +13,7 @@ export default async function SettingsPage() {
   const { data: profile } = await supabase.from("profiles").select("stream").eq("id", user.id).single();
 
   return (
-    <div className="px-6 py-8 flex flex-col items-center">
-      <div className="w-full max-w-2xl">
+    <div className="px-6 py-8 max-w-5xl">
       <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(255,255,255,0.95)" }}>Settings</h1>
       <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.45)" }}>Manage your preferences and account.</p>
       <SettingsClient
@@ -23,7 +22,6 @@ export default async function SettingsPage() {
         hasPassword={hasPassword}
         stream={profile?.stream ?? ""}
       />
-      </div>
     </div>
   );
 }
