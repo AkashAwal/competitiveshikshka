@@ -16,7 +16,7 @@ export function ResourcesSection() {
   return (
     <div
       className="rounded-2xl p-5 flex flex-col gap-4"
-      style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.13)" }}
+      style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" }}
     >
       {/* Header */}
       <div className="flex items-start justify-between gap-4">

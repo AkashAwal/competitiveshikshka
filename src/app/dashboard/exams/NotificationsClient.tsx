@@ -169,8 +169,6 @@ function EventCard({ event, isPast }: { event: ExamEvent; isPast: boolean }) {
         background: "#171b20",
         border: `1px solid ${isPast ? "rgba(255,255,255,0.07)" : style.border}`,
         borderLeft: `3px solid ${isPast ? "rgba(255,255,255,0.15)" : style.color}`,
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
         opacity: isPast ? 0.55 : 1,
         transition: "opacity 0.2s",
       }}

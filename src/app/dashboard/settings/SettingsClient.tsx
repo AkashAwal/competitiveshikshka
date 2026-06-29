@@ -100,7 +100,7 @@ function Section({ icon: Icon, title, children }: { icon: React.ElementType; tit
   return (
     <div
       className="rounded-2xl p-6 flex flex-col gap-5"
-      style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.13)" }}
+      style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" }}
     >
       <div className="flex items-center gap-2.5">
         <Icon className="h-4 w-4" style={{ color: "rgba(255,255,255,0.5)" }} />

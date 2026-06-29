@@ -75,7 +75,7 @@ export function ShortNotesSection({ stream }: Props) {
       {/* Card */}
       <div
         style={{
-          backgroundColor: CARD_BG,
+          backgroundColor: "#171b20",
           border: `1px solid ${CARD_BORDER}`,
           borderRadius: "16px",
         }}

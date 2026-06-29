@@ -28,9 +28,7 @@ function getExamLabel(exam: string | null): string {
 }
 
 const card = {
-  background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)",
-  backdropFilter: "blur(16px)",
-  WebkitBackdropFilter: "blur(16px)",
+  background: "#171b20",
   border: "1px solid rgba(255,255,255,0.13)",
 };
 

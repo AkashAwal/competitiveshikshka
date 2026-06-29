@@ -5,7 +5,7 @@ export default function BookmarksPage() {
       <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.45)" }}>Saved questions, solutions and resources for quick revision.</p>
       <div
         className="rounded-xl p-8 flex flex-col items-center justify-center text-center gap-3"
-        style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.13)", minHeight: "300px" }}
+        style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)", minHeight: "300px" }}
       >
         <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.4)" }}>Bookmarks coming soon</p>
         <p className="text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>Save PYQs and NCERT solutions to revisit later.</p>

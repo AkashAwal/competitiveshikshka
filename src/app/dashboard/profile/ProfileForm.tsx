@@ -86,7 +86,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   return (
     <div
       className="w-full rounded-xl p-6 flex flex-col gap-5"
-      style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.13)" }}
+      style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" }}
     >
       <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.35)" }}>{title}</p>
       {children}
@@ -293,7 +293,7 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
           { icon: BookOpen,    color: "#a78bfa", label: "Questions Solved", value: "0" },
         ].map(({ icon: Icon, color, label, value }) => (
           <div key={label} className="rounded-xl p-4 flex flex-col gap-1.5 items-center"
-            style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)", border: "1px solid rgba(255,255,255,0.13)" }}>
+            style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" }}>
             <Icon className="h-5 w-5" style={{ color }} />
             <p className="text-2xl font-black" style={{ color: "rgba(255,255,255,0.95)" }}>{value}</p>
             <p className="text-[11px] text-center" style={{ color: "rgba(255,255,255,0.35)" }}>{label}</p>
