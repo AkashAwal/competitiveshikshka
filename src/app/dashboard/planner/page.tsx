@@ -10,8 +10,8 @@ const perks = [
 
 export default function PlannerPage() {
   return (
-    <div className="px-6 py-8 w-full flex flex-col items-center">
-      <div style={{ width: "100%", maxWidth: 640 }}>
+    <div className="px-6 py-8 max-w-5xl">
+      <div>
 
         <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(255,255,255,0.95)" }}>Planner</h1>
         <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.45)" }}>Plan your weekly study schedule around your exam date.</p>

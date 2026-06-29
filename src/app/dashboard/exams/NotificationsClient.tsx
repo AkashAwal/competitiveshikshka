@@ -278,8 +278,8 @@ export default function NotificationsClient({ userExams }: { userExams: string[]
   } as React.CSSProperties;
 
   return (
-    <div className="px-6 py-8 w-full flex flex-col items-center">
-      <div style={{ width: "100%", maxWidth: 680 }}>
+    <div className="px-6 py-8 max-w-5xl">
+      <div>
 
         {/* Header */}
         <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(255,255,255,0.95)" }}>Notifications</h1>
