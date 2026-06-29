@@ -288,7 +288,7 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
   if (!prefsLoaded) return null;
 
   return (
-    <div className="flex flex-col gap-5 max-w-2xl">
+    <div className="flex flex-col gap-5">
 
       {/* ── Notifications ─────────────────────────────────────────────── */}
       <Section icon={Bell} title="Notifications">
