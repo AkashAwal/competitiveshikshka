@@ -60,7 +60,7 @@ export default async function AnalyticsPage() {
   ];
 
   return (
-    <div className="px-6 py-8 max-w-5xl">
+    <div className="px-6 py-8 max-w-5xl mx-auto">
       <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(255,255,255,0.95)" }}>Analytics</h1>
       <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.4)" }}>
         Your performance across tests, topics and time.

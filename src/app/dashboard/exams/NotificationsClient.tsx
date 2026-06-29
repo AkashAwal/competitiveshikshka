@@ -276,7 +276,7 @@ export default function NotificationsClient({ userExams }: { userExams: string[]
   } as React.CSSProperties;
 
   return (
-    <div className="px-6 py-8 max-w-5xl">
+    <div className="px-6 py-8 max-w-5xl mx-auto">
       <div>
 
         {/* Header */}

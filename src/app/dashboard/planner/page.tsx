@@ -10,7 +10,7 @@ const perks = [
 
 export default function PlannerPage() {
   return (
-    <div className="px-6 py-8 max-w-5xl">
+    <div className="px-6 py-8 max-w-5xl mx-auto">
       <div>
 
         <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(255,255,255,0.95)" }}>Planner</h1>

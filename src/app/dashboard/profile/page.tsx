@@ -14,7 +14,7 @@ export default async function ProfilePage() {
     .single();
 
   return (
-    <div className="px-6 py-8 max-w-5xl">
+    <div className="px-6 py-8 max-w-5xl mx-auto">
       <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(255,255,255,0.95)" }}>Profile</h1>
       <p className="text-sm mb-6" style={{ color: "rgba(255,255,255,0.45)" }}>
         Manage your account and study preferences.
