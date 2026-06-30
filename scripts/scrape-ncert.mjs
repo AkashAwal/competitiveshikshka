@@ -1,18 +1,21 @@
 /**
- * NCERT Solutions Scraper + AI Extractor
+ * NCERT Solutions Scraper + AI Extractor (uses Gemini Flash — free tier)
+ *
+ * Setup: Add GEMINI_API_KEY to .env.local
+ * Get free key at: https://aistudio.google.com/apikey
  *
  * Usage:
  *   node scripts/scrape-ncert.mjs <url> <output.json> [--examples]
  *
  * Examples:
- *   node scripts/scrape-ncert.mjs "https://byjus.com/ncert-solutions/class-11-chemistry-chapter-3/" scripts/data/ch11-chemistry-ch3.json
+ *   node scripts/scrape-ncert.mjs "https://byjus.com/ncert-solutions/class-11-chemistry-chapter-3/" scripts/data/ch11-chemistry-ch3-questions.json
  *   node scripts/scrape-ncert.mjs "https://byjus.com/ncert-solutions/class-11-chemistry-chapter-3/" scripts/data/ch11-chemistry-ch3-examples.json --examples
  *
  * After scraping, import with:
- *   node scripts/import-ncert.mjs 11 Chemistry 3 "Classification of Elements and Periodicity in Properties" scripts/data/ch11-chemistry-ch3.json
+ *   node scripts/import-ncert.mjs 11 Chemistry 3 "Classification of Elements and Periodicity in Properties" scripts/data/ch11-chemistry-ch3-questions.json
  */
 
-import Anthropic from "@anthropic-ai/sdk";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { writeFile } from "fs/promises";
 import { config } from "dotenv";
 import { resolve } from "path";
@@ -31,13 +34,16 @@ if (!url || !outputPath) {
   process.exit(1);
 }
 
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
-if (!ANTHROPIC_API_KEY) {
-  console.error("Set ANTHROPIC_API_KEY in environment");
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+if (!GEMINI_API_KEY) {
+  console.error("Missing GEMINI_API_KEY in .env.local");
+  console.error("Get a free key at: https://aistudio.google.com/apikey");
   process.exit(1);
 }
 
-const client = new Anthropic({ apiKey: ANTHROPIC_API_KEY });
+const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+// gemini-2.0-flash: free tier, 1M token context, fast
+const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
 // ─── 1. Fetch the page ────────────────────────────────────────────────────────
 console.log(`Fetching: ${url}`);
@@ -57,7 +63,7 @@ if (!response.ok) {
 const html = await response.text();
 console.log(`Fetched ${(html.length / 1024).toFixed(0)} KB of HTML`);
 
-// ─── 2. Strip to readable text (remove scripts/styles, collapse whitespace) ──
+// ─── 2. Strip to readable text ────────────────────────────────────────────────
 const text = html
   .replace(/<script[\s\S]*?<\/script>/gi, "")
   .replace(/<style[\s\S]*?<\/style>/gi, "")
@@ -73,74 +79,70 @@ const text = html
   .replace(/\s{3,}/g, "\n\n")
   .trim();
 
-// Claude has a 200k context window — but let's cap at ~120k chars to be safe
-const truncated = text.slice(0, 120000);
+// Gemini 2.0 Flash has a 1M token context — 200k chars is comfortably within limits
+const truncated = text.slice(0, 200000);
 console.log(`Extracted ${(truncated.length / 1024).toFixed(0)} KB of text`);
 
 // ─── 3. Build prompt ──────────────────────────────────────────────────────────
 const questionsPrompt = `You are extracting NCERT textbook exercise questions and their answers from scraped web page text.
 
-Extract ALL numbered exercises (e.g. "2.1", "3.1", "Q1", "Exercise 1", etc.) from the text below.
+Extract ALL numbered exercises (e.g. "3.1", "Q1", "Exercise 1") from the text below.
 
 Return a JSON array where each element has:
-- "questionNumber": string (e.g. "2.1", "3.5", "1")
-- "questionText": string (the full question text, preserve sub-parts like (i)(ii)(a)(b))
-- "answer": string (the full answer/solution, preserve all calculation steps and sub-parts)
-- "explanation": string (optional — include ONLY if there is a separate conceptual explanation beyond the answer steps)
+- "questionNumber": string (e.g. "3.1", "3.5")
+- "questionText": string (full question, preserve sub-parts like (i)(ii)(a)(b))
+- "answer": string (full solution with all calculation steps and sub-parts)
+- "explanation": string (optional — only if there is a separate conceptual explanation)
 
 Rules:
-- Preserve superscripts/subscripts as Unicode (e.g. CO₂, H₂O, 10⁻¹⁹, Fe³⁺)
-- Use newlines (\\n) to separate distinct steps or sub-parts within questionText and answer
-- Do NOT include chapter introductions, summary text, or headers — only Q&A pairs
-- If the same question appears multiple times, take the most complete version
-- Return ONLY valid JSON array, no markdown fences, no preamble
+- Preserve superscripts/subscripts as Unicode (e.g. CO₂, H₂O, 10⁻¹⁹, Fe³⁺, Na⁺)
+- Use \\n to separate distinct steps or sub-parts within strings
+- Skip chapter intros, summaries, headers — only Q&A pairs
+- Return ONLY a valid JSON array, no markdown fences, no extra text
 
 Page text:
 ${truncated}`;
 
-const examplesPrompt = `You are extracting NCERT textbook in-text worked examples/problems and their solutions from scraped web page text.
+const examplesPrompt = `You are extracting NCERT textbook in-text worked examples and their solutions from scraped web page text.
 
-Extract ALL in-text worked examples (e.g. "Example 2.1", "Problem 3.1", "Illustration 1", etc.) from the text below.
+Extract ALL worked examples (e.g. "Example 3.1", "Problem 3.1") from the text below.
 
 Return a JSON array where each element has:
-- "questionNumber": string (e.g. "Ex2.1", "P3.5") — prefix with "Ex" for Example, "P" for Problem
-- "questionText": string (the full example problem statement)
-- "answer": string (the complete worked solution with all steps)
-- "explanation": string (optional — key conceptual insight or common mistake to avoid)
-- "steps": array of {"stepTitle": string, "content": string} objects breaking down the solution
+- "questionNumber": string — prefix "Ex" for examples, "P" for problems (e.g. "Ex3.1", "P3.2")
+- "questionText": string (full problem statement)
+- "answer": string (complete worked solution)
+- "explanation": string (optional — key insight or common mistake)
+- "steps": array of {"stepTitle": string, "content": string} objects
 
 Rules:
-- Preserve superscripts/subscripts as Unicode (e.g. CO₂, H₂O, 10⁻¹⁹)
-- Use newlines (\\n) within strings to separate lines
-- Return ONLY valid JSON array, no markdown fences, no preamble
+- Preserve superscripts/subscripts as Unicode (e.g. CO₂, 10⁻¹⁹)
+- Use \\n within strings to separate lines
+- Return ONLY a valid JSON array, no markdown fences, no extra text
 
 Page text:
 ${truncated}`;
 
-// ─── 4. Call Claude (haiku for speed + cost) ──────────────────────────────────
-console.log(`Sending to Claude (${mode} mode)...`);
+// ─── 4. Call Gemini Flash ─────────────────────────────────────────────────────
+console.log(`Sending to Gemini Flash (${mode} mode)...`);
 
-const message = await client.messages.create({
-  model: "claude-haiku-4-5-20251001",
-  max_tokens: 8192,
-  messages: [
-    {
-      role: "user",
-      content: mode === "examples" ? examplesPrompt : questionsPrompt,
-    },
-  ],
+const result = await model.generateContent({
+  contents: [{ role: "user", parts: [{ text: mode === "examples" ? examplesPrompt : questionsPrompt }] }],
+  generationConfig: {
+    maxOutputTokens: 8192,
+    temperature: 0.1,
+    responseMimeType: "application/json",
+  },
 });
 
-const rawJson = message.content[0].text.trim();
+const rawJson = result.response.text().trim();
 
-// ─── 5. Parse and validate ───────────────────────────────────────────────────
+// ─── 5. Parse and validate ────────────────────────────────────────────────────
 let parsed;
 try {
-  // Strip markdown fences if Claude added them despite instructions
   const cleaned = rawJson.replace(/^```json\n?/, "").replace(/\n?```$/, "").trim();
   parsed = JSON.parse(cleaned);
 } catch (e) {
-  console.error("Claude returned invalid JSON. Raw output saved to scrape-raw.txt");
+  console.error("Gemini returned invalid JSON. Raw output saved to scrape-raw.txt");
   await writeFile("scrape-raw.txt", rawJson, "utf-8");
   process.exit(1);
 }
@@ -150,16 +152,14 @@ if (!Array.isArray(parsed)) {
   process.exit(1);
 }
 
-// ─── 6. Save output ──────────────────────────────────────────────────────────
+// ─── 6. Save output ───────────────────────────────────────────────────────────
 await writeFile(outputPath, JSON.stringify(parsed, null, 2), "utf-8");
 console.log(`\n✓ Extracted ${parsed.length} ${mode}`);
-console.log(`✓ Saved to ${outputPath}`);
-console.log("\nInput token usage:", message.usage.input_tokens);
-console.log("Output token usage:", message.usage.output_tokens);
+console.log(`✓ Saved to: ${outputPath}`);
 
 if (mode === "questions") {
   console.log("\nNext step:");
   console.log(`  node scripts/import-ncert.mjs <class> <Subject> <chapterNum> "<Title>" ${outputPath}`);
 } else {
-  console.log("\nNext step: patch the examples into the existing Sanity document");
+  console.log("\nNext step: patch examples into the existing Sanity document");
 }
