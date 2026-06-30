@@ -84,7 +84,7 @@ export default async function NcertExamplesPage({ params, searchParams }: Props)
           <BookOpen className="h-3.5 w-3.5" />
           Back to Exercises
         </Link>
-        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-4">Examples</p>
+        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-4">Worked Examples</p>
         <div className="grid grid-cols-4 gap-2">
           {examples.map((example, i) => (
             <Link

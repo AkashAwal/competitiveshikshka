@@ -94,13 +94,13 @@ export default async function NcertChapterPage({ params, searchParams }: Props) 
       <aside className="hidden md:flex flex-col w-64 shrink-0 border-r border-border bg-card px-5 py-10">
         {examples.length > 0 && (
           <div className="mb-6">
-            <p className="text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-400 mb-3">Worked Examples</p>
-            <div className="flex flex-wrap gap-2">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">Worked Examples</p>
+            <div className="grid grid-cols-4 gap-2">
               {examples.map((ex, i) => (
                 <Link
                   key={i}
                   href={`${base}/examples?q=${i + 1}`}
-                  className="flex h-9 items-center justify-center rounded-lg px-2.5 text-xs font-semibold border transition-colors border-emerald-500/30 bg-emerald-500/5 hover:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400"
+                  className="flex h-12 w-12 items-center justify-center rounded-xl text-xs font-semibold border transition-colors border-border bg-background hover:bg-accent text-muted-foreground"
                 >
                   {ex.questionNumber}
                 </Link>
