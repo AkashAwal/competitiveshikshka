@@ -1,0 +1,441 @@
+[
+  {
+    "questionNumber": "3.1",
+    "questionText": "What is the basic theme of organisation in the periodic table?",
+    "answer": "The basic theme of organisation in the periodic table is to classify elements according to their properties so that elements with similar properties are placed together in the same vertical column (group). Elements are arranged in order of increasing atomic numbers in seven horizontal rows (periods) and eighteen vertical columns (groups). The periodicity in properties arises due to the periodic repetition of similar electronic configurations of the outermost shells with increasing atomic number.",
+    "steps": [
+      {"stepTitle": "Identify what 'organisation' means here", "content": "The periodic table organises elements so that similar elements appear together, making patterns and trends visible."},
+      {"stepTitle": "State the basis of arrangement", "content": "Elements are arranged in increasing order of atomic number (Modern Periodic Law). This creates periods (horizontal rows) and groups (vertical columns)."},
+      {"stepTitle": "Explain why the organisation works", "content": "Elements in the same group have identical valence shell configuration → similar physical and chemical properties. This recurrence of similar configurations is called periodicity."}
+    ],
+    "explanation": "The periodic table is essentially a map of electronic structure. Because chemical behaviour is determined by valence electrons, elements with the same valence configuration always appear in the same group, making the table a powerful predictive tool."
+  },
+  {
+    "questionNumber": "3.2",
+    "questionText": "Which important property did Mendeleev use to classify the elements in his periodic table and did he stick to that?",
+    "answer": "Mendeleev used atomic mass (atomic weight) as the basis for classification of elements. He arranged elements in the increasing order of their atomic weights such that elements with similar properties occupied the same vertical column (group). No, he did not always stick to that. He sometimes ignored the order of atomic weights when elements did not fit his scheme. For example, iodine (atomic weight 127) was placed after tellurium (atomic weight 128) because iodine's properties were more similar to halogens. He placed elements with similar properties together even if it meant violating the order of atomic weights.",
+    "steps": [
+      {"stepTitle": "State the property Mendeleev used", "content": "Mendeleev used atomic mass (atomic weight) to arrange elements in increasing order."},
+      {"stepTitle": "Did he stick to it?", "content": "No. When placing elements strictly by atomic mass created conflicts (similar elements in different groups), Mendeleev violated the order and gave priority to chemical similarity."},
+      {"stepTitle": "Give a specific example", "content": "Te (atomic mass 128) comes before I (atomic mass 127) in his table — reversed from strict mass order — because I behaves like a halogen and must go in Group 17."}
+    ],
+    "explanation": "Mendeleev prioritised chemical similarity over strict atomic mass order. This was actually a brilliant insight — he was essentially detecting the importance of electronic structure without knowing it. The inconsistencies were later resolved when Moseley showed atomic number (not mass) is the true organising principle."
+  },
+  {
+    "questionNumber": "3.3",
+    "questionText": "What is the basic difference in approach between the Mendeleev's Periodic Law and the Modern Periodic Law?",
+    "answer": "Mendeleev's Periodic Law: 'The properties of the elements are a periodic function of their atomic weights (atomic masses).' Atomic mass was used as the basis of classification. Modern Periodic Law: 'The physical and chemical properties of the elements are periodic functions of their atomic numbers.' Atomic number (number of protons) is used as the basis of classification. The key difference: Mendeleev used atomic mass, while the Modern Periodic Law uses atomic number. Atomic number was shown by Henry Moseley (1913) to be a more fundamental property of an element than its atomic mass.",
+    "steps": [
+      {"stepTitle": "State Mendeleev's law", "content": "Mendeleev's Periodic Law: Properties of elements are a periodic function of their atomic masses."},
+      {"stepTitle": "State the Modern Periodic Law", "content": "Modern Periodic Law (after Moseley, 1913): Properties of elements are a periodic function of their atomic numbers."},
+      {"stepTitle": "Identify the key difference", "content": "The basis changed from atomic mass to atomic number. Atomic number is fundamental (equals number of protons, never varies for an element), while atomic mass can vary (isotopes have different masses)."}
+    ],
+    "explanation": "Moseley's experiment (1913) using X-ray spectra proved that atomic number, not atomic mass, is the true fundamental property of an element. This resolved all the anomalies in Mendeleev's table (e.g., Te/I reversal) and gave the modern periodic law its firm foundation."
+  },
+  {
+    "questionNumber": "3.4",
+    "questionText": "On the basis of quantum numbers, justify that the sixth period of the periodic table should have 32 elements.",
+    "answer": "The sixth period corresponds to n = 6 as the principal quantum number of the outermost shell. For n = 6, the subshells being filled are: 6s, 4f, 5d, 6p (in order of increasing energy). 6s: 1 orbital (2 electrons). 4f: 7 orbitals (14 electrons). 5d: 5 orbitals (10 electrons). 6p: 3 orbitals (6 electrons). Total electrons (elements) = 2 + 14 + 10 + 6 = 32 elements. Hence the sixth period has 32 elements.",
+    "steps": [
+      {"stepTitle": "Identify subshells filling in Period 6", "content": "Aufbau order for Period 6: 6s fills first, then 4f (lanthanoids), then 5d (transition metals), then 6p\nSubshells: 6s, 4f, 5d, 6p"},
+      {"stepTitle": "Count max electrons in each subshell", "content": "6s (l=0): 1 orbital, 2 electrons\n4f (l=3): 7 orbitals, 14 electrons\n5d (l=2): 5 orbitals, 10 electrons\n6p (l=1): 3 orbitals, 6 electrons"},
+      {"stepTitle": "Sum up total elements", "content": "Total = 2 + 14 + 10 + 6 = 32 elements\nPeriod 6 spans from Cs (Z=55) to Rn (Z=86)"}
+    ],
+    "explanation": "Period 6 is the first period where f-block elements appear (lanthanoids, 4f filling). This is why Period 6 has 32 elements instead of 18. The formula for maximum elements in a period accounts for all subshells with energy lower than the next s subshell."
+  },
+  {
+    "questionNumber": "3.5",
+    "questionText": "In terms of period and group where would you locate the element with Z = 114?",
+    "answer": "Element with Z = 114 is Flerovium (Fl). Electronic configuration: [Rn] 5f¹⁴ 6d¹⁰ 7s² 7p². Period: 7 (outermost electrons are in n = 7 shell). Group: 14 (p-block; has ns²np² configuration like carbon, silicon, germanium, tin, lead). Z = 114 is placed in Period 7, Group 14 of the periodic table.",
+    "steps": [
+      {"stepTitle": "Build the electronic configuration", "content": "After [Rn](Z=86): fill 5f¹⁴(14e) + 6d¹⁰(10e) + 7s²(2e) + 7p²(2e) = 86+14+10+2+2 = 114\nConfig: [Rn]5f¹⁴6d¹⁰7s²7p²"},
+      {"stepTitle": "Determine the period", "content": "Outermost electrons are in n=7 (the 7s and 7p subshells) → Period 7"},
+      {"stepTitle": "Determine the group", "content": "Valence configuration is 7s²7p² = ns²np² (like C, Si, Ge, Sn, Pb) → Group 14\nIt is a p-block element in Period 7, Group 14"}
+    ],
+    "explanation": "Group number for p-block elements = 10 + (number of s electrons) + (number of p electrons) = 10 + 2 + 2 = 14. Z=114 (Flerovium) is directly below lead (Pb) in Group 14, Period 7."
+  },
+  {
+    "questionNumber": "3.6",
+    "questionText": "Write the atomic number of the element present in the third period and seventeenth group of the periodic table.",
+    "answer": "Third period means n = 3 (outermost shell). Group 17 (halogens) has ns²np⁵ valence configuration. For Period 3, Group 17: electron configuration = 1s²2s²2p⁶3s²3p⁵. Total electrons = 2 + 2 + 6 + 2 + 5 = 17. Atomic number = 17, which is Chlorine (Cl).",
+    "steps": [
+      {"stepTitle": "Interpret Period 3, Group 17", "content": "Period 3 → outermost shell is n=3\nGroup 17 → ns²np⁵ valence configuration (halogens)"},
+      {"stepTitle": "Write full electronic configuration", "content": "1s²2s²2p⁶3s²3p⁵\nThe 3s²3p⁵ is the valence configuration for Group 17, Period 3"},
+      {"stepTitle": "Count total electrons = atomic number", "content": "2 + 2 + 6 + 2 + 5 = 17\nAtomic number = 17 → Chlorine (Cl)"}
+    ],
+    "explanation": "A quick approach: Period 3 elements span Z=11 (Na) to Z=18 (Ar). Group 17 is one before the noble gas. Noble gas of Period 3 is Ar (Z=18), so Group 17 of Period 3 is Z=17 (Cl)."
+  },
+  {
+    "questionNumber": "3.7",
+    "questionText": "Which element do you think would have been named by\n(i) Lawrence Berkeley Laboratory\n(ii) Seaborg's group?",
+    "answer": "(i) Lawrence Berkeley Laboratory: Element 103 — Lawrencium (Lr), named after Ernest O. Lawrence, who invented the cyclotron and after whom the Lawrence Berkeley Laboratory is named.\n\n(ii) Seaborg's group: Element 106 — Seaborgium (Sg), named after Glenn T. Seaborg, who led the group that discovered many transuranium elements.",
+    "steps": [
+      {"stepTitle": "Lawrence Berkeley Laboratory", "content": "Ernest O. Lawrence invented the cyclotron and founded Lawrence Berkeley Lab\nElement 103 Lawrencium (Lr) honours him — discovered partly at LBL"},
+      {"stepTitle": "Seaborg's group", "content": "Glenn T. Seaborg led the team that synthesised transuranium elements Pu through No\nElement 106 was named Seaborgium (Sg) in his honour — he was the first living person to have an element named after them"}
+    ],
+    "explanation": "Elements beyond uranium (transuranium elements) are synthesised artificially using particle accelerators. It is a tradition in chemistry to name newly discovered elements after the laboratories, scientists, or places associated with their discovery."
+  },
+  {
+    "questionNumber": "3.8",
+    "questionText": "Why do elements in the same group have similar physical and chemical properties?",
+    "answer": "Elements in the same group have similar physical and chemical properties because they have the same number of electrons in their outermost (valence) shell and the same valence shell electronic configuration. For example, all alkali metals (Group 1) have ns¹ configuration and all halogens (Group 17) have ns²np⁵ configuration. Since chemical properties are determined by valence electrons, elements with the same valence shell configuration exhibit similar chemical behaviour — they form compounds with the same formula types, have similar valences, and show similar reactivity patterns. The only difference as you go down a group is the principal quantum number n, which affects atomic size and ionization enthalpy, leading to gradual changes.",
+    "steps": [
+      {"stepTitle": "State the key reason", "content": "Elements in the same group have identical valence shell electronic configuration (same number of valence electrons in same type of orbitals)"},
+      {"stepTitle": "Show with an example", "content": "Group 1: Li(2s¹), Na(3s¹), K(4s¹) — all have ns¹\nGroup 17: F(2s²2p⁵), Cl(3s²3p⁵) — all have ns²np⁵"},
+      {"stepTitle": "Explain the implication", "content": "Chemical properties depend on valence electrons. Same valence configuration → same number and type of bonds formed → similar formulas, valencies, and reaction types\nOnly n increases down the group → gradual changes in atomic size and IE"}
+    ],
+    "explanation": "The periodic table's power comes from this principle: valence electron configuration determines chemistry. Elements in the same group are chemical copies of each other, differing mainly in the scale of their properties (size, IE, reactivity) due to the increasing n value."
+  },
+  {
+    "questionNumber": "3.9",
+    "questionText": "What does atomic radius and ionic radius really mean to you?",
+    "answer": "Atomic Radius: The atomic radius is a measure of the size of an atom. Since atoms do not have a sharp boundary, the atomic radius is defined as half the distance between the nuclei of two identical atoms bonded together. Covalent radius: half the distance between nuclei of two identical atoms joined by a single covalent bond. Metallic radius: half the internuclear distance between adjacent metal atoms in a metallic crystal.\n\nIonic Radius: The ionic radius is the radius of an ion in an ionic crystal. Cations are smaller than the parent neutral atom (fewer electrons, same nuclear charge → electrons drawn in closer). Anions are larger than the parent neutral atom (more electrons → increased repulsion, larger size).",
+    "steps": [
+      {"stepTitle": "Define atomic radius", "content": "Atomic radius = half the internuclear distance between two identical bonded atoms\nCovalent radius (for non-metals): e.g., Cl₂ bond = 198 pm → r(Cl) = 99 pm\nMetallic radius (for metals): half the distance between adjacent atoms in crystal"},
+      {"stepTitle": "Why is it not exact?", "content": "Atoms have no sharp boundary — electron cloud is diffuse\nRadius depends on bonding environment (single vs double bond, ionic vs covalent)"},
+      {"stepTitle": "Define ionic radius", "content": "Ionic radius = effective size of ion in ionic crystal\nCation radius < parent atom (lost electrons, same Z → higher Zeff per electron → cloud contracts)\nAnion radius > parent atom (gained electrons, same Z → more repulsion, cloud expands)"}
+    ],
+    "explanation": "Atomic and ionic radii are measures of how much space an atom/ion occupies. They can't be measured directly — only internuclear distances are measurable, and the radius is derived from those. This makes radii somewhat definition-dependent, which is why different sources may give slightly different values."
+  },
+  {
+    "questionNumber": "3.10",
+    "questionText": "How do atomic radius vary in a period and in a group? How do you explain the variation?",
+    "answer": "Variation across a period (left to right): Atomic radius generally decreases across a period. As we move across a period, the atomic number (nuclear charge) increases while electrons are added to the same principal energy level. The increased nuclear charge attracts the electrons more strongly without a corresponding increase in shielding. Example: Li (152 pm) > Be (111 pm) > B (88 pm) > C (77 pm) > N (74 pm) > O (66 pm) > F (64 pm).\n\nVariation down a group (top to bottom): Atomic radius increases as we go down a group. Each successive element has electrons in a higher principal energy level. The addition of new electron shells means the outermost electrons are farther from the nucleus. Example: Li (152 pm) < Na (186 pm) < K (231 pm) < Rb (244 pm) < Cs (262 pm).",
+    "steps": [
+      {"stepTitle": "Trend across a period", "content": "Left to right: nuclear charge (Z) increases, electrons added to same shell (n constant)\nMore nuclear charge with same shielding → electrons pulled closer → radius DECREASES\nExample: Na(186) > Mg(160) > Al(143) > Si(117) > P(110) > S(104) > Cl(99) pm"},
+      {"stepTitle": "Trend down a group", "content": "Top to bottom: new electron shells added (n increases)\nShielding increases with each new inner shell; new shells extend farther from nucleus\nRadius INCREASES going down\nExample: F(64) < Cl(99) < Br(114) < I(133) pm"},
+      {"stepTitle": "Summarise the two opposing factors", "content": "Across period: nuclear charge wins (n constant) → radius decreases\nDown group: new shells win (shielding increases) → radius increases"}
+    ],
+    "explanation": "The two key factors are: (1) nuclear charge — pulls electrons inward, decreasing radius; (2) number of shells (n) — adds distance, increasing radius. Across a period, only factor 1 changes. Down a group, factor 2 dominates. Together these explain all atomic size trends."
+  },
+  {
+    "questionNumber": "3.11",
+    "questionText": "What do you understand by isoelectronic species? Name a species that will be isoelectronic with each of the following atoms or ions.\n(i) F⁻\n(ii) Ar\n(iii) Mg²⁺\n(iv) Rb⁺",
+    "answer": "Isoelectronic species are atoms, molecules, or ions that have the same number of electrons and the same electronic structure.\n\n(i) F⁻ has 10 electrons. Isoelectronic species: Na⁺ (10 electrons)\n(ii) Ar has 18 electrons. Isoelectronic species: Cl⁻ (18 electrons)\n(iii) Mg²⁺ has 10 electrons. Isoelectronic species: Ne (10 electrons)\n(iv) Rb⁺ has 36 electrons. Isoelectronic species: Kr (36 electrons)",
+    "steps": [
+      {"stepTitle": "Define isoelectronic", "content": "Isoelectronic = same number of electrons (and same electronic configuration)\nTo gain electrons → add to atomic number; to lose electrons → subtract from atomic number"},
+      {"stepTitle": "Count electrons for each species", "content": "F⁻: Z=9, gained 1e → 10 electrons\nAr: Z=18, neutral → 18 electrons\nMg²⁺: Z=12, lost 2e → 10 electrons\nRb⁺: Z=37, lost 1e → 36 electrons"},
+      {"stepTitle": "Name an isoelectronic partner for each", "content": "F⁻ (10e) → Na⁺ (Z=11, lost 1e, 10e) or Ne\nAr (18e) → Cl⁻ (Z=17, gained 1e, 18e) or K⁺\nMg²⁺ (10e) → Ne (Z=10, neutral, 10e)\nRb⁺ (36e) → Kr (Z=36, neutral, 36e)"}
+    ],
+    "explanation": "Isoelectronic species all have the same electronic configuration and thus the same electron-electron repulsion pattern. However, they have different nuclear charges, so their sizes differ — higher nuclear charge means smaller size for the same number of electrons. This is why F⁻ > Ne > Na⁺ even though all have 10 electrons."
+  },
+  {
+    "questionNumber": "3.12",
+    "questionText": "Consider the following species:\nN³⁻, O²⁻, F⁻, Na⁺, Mg²⁺ and Al³⁺\n(a) What is common in them?\n(b) Arrange them in the order of increasing ionic radii.",
+    "answer": "(a) All the species are isoelectronic — they all have 10 electrons and the electronic configuration 1s²2s²2p⁶ (same as neon).\n\n(b) For isoelectronic species, the ionic radius decreases as the nuclear charge (atomic number) increases. Atomic numbers: N(7) < O(8) < F(9) < Na(11) < Mg(12) < Al(13). Order of increasing ionic radii (smallest to largest): Al³⁺ < Mg²⁺ < Na⁺ < F⁻ < O²⁻ < N³⁻",
+    "steps": [
+      {"stepTitle": "Find what is common", "content": "Count electrons: N³⁻: 7+3=10; O²⁻: 8+2=10; F⁻: 9+1=10; Na⁺: 11-1=10; Mg²⁺: 12-2=10; Al³⁺: 13-3=10\nAll have 10 electrons → all isoelectronic (same config as Ne: 1s²2s²2p⁶)"},
+      {"stepTitle": "Apply the isoelectronic size rule", "content": "For isoelectronic species: more protons (higher Z) → electrons pulled in more tightly → smaller size\nZ: N(7) < O(8) < F(9) < Na(11) < Mg(12) < Al(13)"},
+      {"stepTitle": "Write the order of increasing radius", "content": "Increasing radius (smallest first): Al³⁺ < Mg²⁺ < Na⁺ < F⁻ < O²⁻ < N³⁻\nAl³⁺ is smallest (highest Z=13 with 10e); N³⁻ is largest (lowest Z=7 with 10e)"}
+    ],
+    "explanation": "This is a classic isoelectronic series. The rule is: same electrons, higher nuclear charge = smaller ion. Anions (N³⁻, O²⁻, F⁻) are larger than cations (Na⁺, Mg²⁺, Al³⁺) even though all have 10 electrons, simply because the anions have fewer protons to hold the electrons."
+  },
+  {
+    "questionNumber": "3.13",
+    "questionText": "Explain why cations are smaller and anions larger in radii than their parent atoms?",
+    "answer": "Cations are smaller than parent atoms: When an atom loses electrons to form a cation, the number of electrons decreases while the nuclear charge remains the same. With fewer electrons but the same nuclear charge, the remaining electrons experience a greater effective nuclear charge and are pulled closer to the nucleus. Example: Na atom radius = 186 pm; Na⁺ radius = 95 pm.\n\nAnions are larger than parent atoms: When an atom gains electrons to form an anion, the number of electrons increases while the nuclear charge remains unchanged. The extra electrons increase electron-electron repulsion and reduce the effective nuclear charge experienced per electron. Example: F atom radius = 64 pm; F⁻ radius = 136 pm.",
+    "steps": [
+      {"stepTitle": "Cation formation — loss of electrons", "content": "Atom loses electrons → fewer electrons, same nuclear charge\nSame Z pulling fewer electrons → each remaining electron feels stronger attraction\nElectrons pulled inward → cation is SMALLER than parent atom\nNa(186 pm) → Na⁺(95 pm)"},
+      {"stepTitle": "Anion formation — gain of electrons", "content": "Atom gains electrons → more electrons, same nuclear charge\nSame Z now shared among more electrons → effective nuclear charge per electron decreases\nIncreased electron-electron repulsion → electron cloud expands → anion is LARGER than parent atom\nF(64 pm) → F⁻(136 pm)"},
+      {"stepTitle": "Generalise the rule", "content": "Key variable: ratio of nuclear charge to number of electrons\nCation: Z/n_e increases → smaller\nAnion: Z/n_e decreases → larger"}
+    ],
+    "explanation": "The effective nuclear charge per electron is the deciding factor. Adding electrons dilutes the nuclear pull (more electrons competing for the same attractive force), expanding the cloud. Removing electrons concentrates the pull, contracting it. This principle underlies all ion-size trends."
+  },
+  {
+    "questionNumber": "3.14",
+    "questionText": "What is the significance of the terms — 'isolated gaseous atom' and 'ground state' while defining the ionization enthalpy and electron gain enthalpy?",
+    "answer": "'Isolated gaseous atom': The term isolated means the atom is completely separated from other atoms, ions, or molecules — there are no interatomic forces acting on it. This removes the effects of bonding, lattice energy, or solvation. Gaseous state ensures the atom is not affected by intermolecular forces. This ensures that the measured enthalpy value reflects only the inherent property of the atom itself.\n\n'Ground state': The ground state is the lowest energy electronic configuration of the atom. Measuring from the ground state ensures that all atoms start from the same baseline energy, making measurements standardised and reproducible. If atoms were in excited states, additional energy already present in the atom would give incorrect (lower) ionization enthalpy values.",
+    "steps": [
+      {"stepTitle": "Significance of 'isolated'", "content": "In a solid or liquid, atoms interact with neighbours (lattice energy, H-bonds, van der Waals forces)\nThese extra interactions would contaminate the measurement\n'Isolated' removes all external interactions → only the atom's own nuclear-electron interaction is measured"},
+      {"stepTitle": "Significance of 'gaseous'", "content": "Gases have negligible intermolecular forces\nGaseous state ensures 'isolated' condition can be practically achieved"},
+      {"stepTitle": "Significance of 'ground state'", "content": "Ground state = lowest energy configuration (no extra energy stored)\nMeasuring IE from ground state gives the true minimum energy needed to remove an electron\nExcited atoms would give artificially low IE values"}
+    ],
+    "explanation": "These three qualifiers (isolated, gaseous, ground state) together define a perfectly controlled, reproducible reference state. They eliminate all environmental effects so that IE and electron gain enthalpy values reflect only the intrinsic nuclear-electron attraction of the atom — making them true atomic properties."
+  },
+  {
+    "questionNumber": "3.15",
+    "questionText": "Energy of an electron in the ground state of the hydrogen atom is –2.18×10⁻¹⁸ J. Calculate the ionization enthalpy of atomic hydrogen in terms of J mol⁻¹.",
+    "answer": "Energy to ionise one H atom = 0 − (−2.18 × 10⁻¹⁸ J) = 2.18 × 10⁻¹⁸ J\n\nFor one mole of hydrogen atoms:\nIonisation enthalpy = 2.18 × 10⁻¹⁸ J × 6.022 × 10²³ mol⁻¹\n= 13.128 × 10⁵ J mol⁻¹\n= 1.312 × 10⁶ J mol⁻¹ = 1312 kJ mol⁻¹",
+    "steps": [
+      {"stepTitle": "Energy to ionise one H atom", "content": "Ground state energy = −2.18 × 10⁻¹⁸ J\nIonised state (electron at infinity) = 0 J\nEnergy needed = 0 − (−2.18 × 10⁻¹⁸) = +2.18 × 10⁻¹⁸ J per atom"},
+      {"stepTitle": "Scale up to one mole", "content": "IE (per mole) = 2.18 × 10⁻¹⁸ J × 6.022 × 10²³ mol⁻¹\n= 13.128 × 10⁵ J mol⁻¹"},
+      {"stepTitle": "Express in standard units", "content": "= 1.312 × 10⁶ J mol⁻¹ = 1312 kJ mol⁻¹\nThis matches the accepted experimental value for hydrogen ionisation enthalpy"}
+    ],
+    "explanation": "The ground state energy of hydrogen (−2.18×10⁻¹⁸ J) corresponds to −13.6 eV from Bohr's model. Ionisation means bringing the electron to E = 0 (infinity), so the energy required = |E₁| per atom. Multiplying by Nₐ converts to molar energy (J mol⁻¹)."
+  },
+  {
+    "questionNumber": "3.16",
+    "questionText": "Among the second period elements the actual ionization enthalpies are in the order:\nLi < B < Be < C < O < N < F < Ne\nExplain why\n(i) Be has higher ΔᵢH than B\n(ii) O has lower ΔᵢH than N and F?",
+    "answer": "(i) Be has higher ΔᵢH than B: Be has configuration [He]2s². The electron removed is a 2s electron. B has configuration [He]2s²2p¹. The electron removed is the 2p electron. A 2s electron is closer to the nucleus and held more tightly. The 2p electron in B is also shielded by the 2s electrons. Hence Be (899 kJ/mol) > B (801 kJ/mol).\n\n(ii) O has lower ΔᵢH than N: N has configuration [He]2s²2p³ — the three 2p electrons each occupy a separate orbital (Hund's rule), giving a stable half-filled configuration. O has configuration [He]2s²2p⁴ — one 2p orbital has a paired electron which suffers extra electron-electron repulsion, making it easier to remove. Hence IE(O) < IE(N).",
+    "steps": [
+      {"stepTitle": "Explain Be > B (subshell effect)", "content": "Be: removes 2s electron (close to nucleus)\nB: removes 2p electron (higher energy, shielded by 2s electrons below it)\n2p electron requires less energy to remove despite B having higher Z\n→ IE(Be) > IE(B)"},
+      {"stepTitle": "Explain O < N (paired electron effect)", "content": "N: 2p³ — each 2p orbital has exactly 1 electron — no pairing repulsion — extra stable\nO: 2p⁴ — one 2p orbital has 2 paired electrons → extra electron-electron repulsion → easier to remove one\n→ IE(O) < IE(N) despite O having higher Z"},
+      {"stepTitle": "Confirm O is also less than F", "content": "F has Z=9 vs O's Z=8. The higher nuclear charge in F outweighs the pairing effect\nIE(F) = 1681 > IE(O) = 1314 → O < F is the expected trend\nOnly the N > O reversal is the anomaly"}
+    ],
+    "explanation": "These are the two most important anomalies in second period ionisation enthalpies. (1) The 2s to 2p subshell jump causes Be > B. (2) The half-filled 2p³ extra stability causes N > O. The same anomalies repeat in Period 3: Mg > Al (3s to 3p jump) and P > S (half-filled 3p³)."
+  },
+  {
+    "questionNumber": "3.17",
+    "questionText": "How would you explain the fact that the first ionization enthalpy of sodium is lower than that of magnesium but its second ionization enthalpy is higher than that of magnesium?",
+    "answer": "First IE: Na [Ne]3s¹ has IE₁ = 496 kJ/mol. Mg [Ne]3s² has IE₁ = 737 kJ/mol. Mg's higher nuclear charge (Z=12 vs 11) holds the 3s electrons more tightly. Hence IE₁(Na) < IE₁(Mg).\n\nSecond IE: Na⁺ is [Ne] — a completely stable noble gas configuration. Breaking into this requires enormous energy. IE₂(Na) = 4562 kJ/mol. Mg⁺ is [Ne]3s¹ — just like removing Na's first electron. IE₂(Mg) = 1450 kJ/mol. Hence IE₂(Na) >> IE₂(Mg).",
+    "steps": [
+      {"stepTitle": "Compare first IEs", "content": "Na: [Ne]3s¹ — removing 3s¹ electron, moderate energy\nMg: [Ne]3s² — removing one of two 3s electrons, higher Zeff (Z=12) → harder to remove\nIE₁(Na) = 496 < IE₁(Mg) = 737 kJ/mol"},
+      {"stepTitle": "Compare second IEs", "content": "Na⁺: [Ne] — noble gas configuration, fully closed shells — extremely stable\nRemoving 2nd electron means disrupting a noble gas core → very high energy (4562 kJ/mol)\nMg⁺: [Ne]3s¹ — still has a 3s electron available, easy to remove (1450 kJ/mol)"},
+      {"stepTitle": "General principle", "content": "A sudden enormous jump in successive IE indicates the next electron comes from a noble gas core (inner shell)\nThis jump after the 1st IE for Na confirms it has only 1 valence electron → Group 1"}
+    ],
+    "explanation": "The enormous jump in successive IE values is how chemists determine the group of an unknown element. For Na, a huge jump from 1st to 2nd IE → 1 valence electron → Group 1. For Mg, the jump occurs from 2nd to 3rd IE → 2 valence electrons → Group 2. This is completely consistent."
+  },
+  {
+    "questionNumber": "3.18",
+    "questionText": "What are the various factors due to which the ionization enthalpy of the main group elements tends to decrease down a group?",
+    "answer": "The ionization enthalpy decreases down a group due to:\n\n1. Increase in atomic radius: As we go down a group, new electron shells are added (higher n), so the outermost electron is farther from the nucleus. Electrostatic attraction decreases with distance.\n\n2. Increased shielding (screening) effect: As the number of inner shell electrons increases down the group, they shield the outermost electrons from the full nuclear charge. The effective nuclear charge experienced by the valence electron decreases.\n\nCombined effect: The increase in shielding and atomic radius outweighs the increase in nuclear charge. Hence ionization enthalpy decreases down a group.",
+    "steps": [
+      {"stepTitle": "Factor 1: Increasing atomic radius", "content": "Down a group: new electron shells added → outermost electron farther from nucleus\nElectrostatic force decreases with distance → lower IE"},
+      {"stepTitle": "Factor 2: Increasing shielding", "content": "More inner-shell electrons → greater shielding of nuclear charge from valence electrons\nEffective nuclear charge (Zeff) stays roughly constant or increases slowly\nBut the actual distance increase matters more"},
+      {"stepTitle": "Net result with example", "content": "Nuclear charge increases down group, but distance and shielding outweigh it\nIE₁: Li(520) > Na(496) > K(419) > Rb(403) > Cs(376) kJ/mol — clearly decreasing"}
+    ],
+    "explanation": "The decrease in IE down a group explains why heavier alkali metals (Cs, Fr) are more reactive than lighter ones (Li). The valence electron is so weakly held that it is easily lost. Conversely, heavier halogens are less reactive because gaining an electron into a large, diffuse orbital is less energetically favourable."
+  },
+  {
+    "questionNumber": "3.19",
+    "questionText": "The first ionization enthalpy values (in kJ mol⁻¹) of group 13 elements are:\nB = 801, Al = 577, Ga = 579, In = 558, Tl = 589\nHow would you explain this deviation from the general trend?",
+    "answer": "The expected trend is a regular decrease in ionization enthalpy down a group. However, group 13 shows deviations:\n\nGa (579) > Al (577): Between Al and Ga, 3d orbitals are filled (d-block contraction). The 3d electrons shield poorly, so Ga's 4p valence electron feels a higher effective nuclear charge than expected → higher IE than Al.\n\nTl (589) > In (558): Between In and Tl, 4f orbitals are filled (lanthanide contraction). The 4f electrons shield very poorly, causing significant contraction in Tl's atomic radius and increased effective nuclear charge → higher IE than In.",
+    "steps": [
+      {"stepTitle": "Identify the deviations", "content": "Expected: B > Al > Ga > In > Tl (strictly decreasing)\nActual: B(801) > Al(577) < Ga(579) > In(558) < Tl(589)\nDeviations at Ga > Al and Tl > In"},
+      {"stepTitle": "Explain Ga > Al (d-block contraction)", "content": "Between Al(Z=13) and Ga(Z=31), 10 d-electrons are added (3d¹⁰)\nd-electrons shield poorly → Ga feels higher Zeff than expected → slightly higher IE than Al"},
+      {"stepTitle": "Explain Tl > In (lanthanide/f-block contraction)", "content": "Between In(Z=49) and Tl(Z=81), 14 f-electrons are added (4f¹⁴, lanthanoids)\nf-electrons shield even more poorly than d-electrons → Tl has contracted size and high Zeff\nThis lanthanide contraction causes Tl's IE to exceed In's"}
+    ],
+    "explanation": "Poor shielding by d and f electrons is the root cause of both anomalies. The d electrons (added between Al and Ga) and f electrons (added between In and Tl) barely shield the valence electrons, causing the nuclear charge to be felt more strongly than expected, which raises the IE beyond the expected decreasing trend."
+  },
+  {
+    "questionNumber": "3.20",
+    "questionText": "Which of the following pairs of elements would have a more negative electron gain enthalpy?\n(i) O or F\n(ii) F or Cl",
+    "answer": "(i) F has more negative electron gain enthalpy than O. F (ΔₑgH = −328 kJ/mol) vs O (ΔₑgH = −141 kJ/mol). F has a higher nuclear charge and the added electron enters the 2p orbital and is attracted more strongly.\n\n(ii) Cl has more negative electron gain enthalpy than F. Cl (ΔₑgH = −349 kJ/mol) vs F (ΔₑgH = −328 kJ/mol). Although F has a higher nuclear charge, its 2p orbital is very compact and the added electron suffers significant electron-electron repulsion. In Cl, the 3p orbital is larger with less crowding.",
+    "steps": [
+      {"stepTitle": "Compare O vs F", "content": "F(Z=9) has higher nuclear charge than O(Z=8), both adding to 2p orbital\nHigher Z in F → added electron more strongly attracted → ΔₑgH more negative for F\nF: −328 kJ/mol vs O: −141 kJ/mol → F wins"},
+      {"stepTitle": "Compare F vs Cl", "content": "F adds to compact 2p orbital (already 5 electrons in 2p, very crowded)\nCl adds to larger 3p orbital (less crowded, less electron-electron repulsion)\nDespite F's higher Z, the extra repulsion in 2p makes Cl's ΔₑgH more negative\nCl: −349 kJ/mol vs F: −328 kJ/mol → Cl wins"},
+      {"stepTitle": "State the answers clearly", "content": "(i) F has more negative ΔₑgH than O\n(ii) Cl has more negative ΔₑgH than F"}
+    ],
+    "explanation": "The F vs Cl comparison is the most important exception to the general trend. F's tiny 2p orbital is so crowded that adding one more electron causes significant repulsion. This same logic explains why O has less negative ΔₑgH than S, and why the halogens' ΔₑgH order is Cl > F > Br > I."
+  },
+  {
+    "questionNumber": "3.21",
+    "questionText": "Would you expect the second electron gain enthalpy of O as positive, more negative or less negative than the first? Justify your answer.",
+    "answer": "The second electron gain enthalpy of O would be positive (endothermic).\n\nFirst: O(g) + e⁻ → O⁻(g)   ΔₑgH₁ = −141 kJ/mol (exothermic). The electron is attracted to the neutral atom.\n\nSecond: O⁻(g) + e⁻ → O²⁻(g)   ΔₑgH₂ = +780 kJ/mol (endothermic). The second electron must be forced into an already negative O⁻ ion — the electrostatic repulsion is very strong and energy must be supplied.",
+    "steps": [
+      {"stepTitle": "First electron gain enthalpy", "content": "O(g) + e⁻ → O⁻(g)\nNeutral atom attracts the incoming electron → energy released\nΔₑgH₁ = −141 kJ/mol (exothermic)"},
+      {"stepTitle": "Second electron gain enthalpy", "content": "O⁻(g) + e⁻ → O²⁻(g)\nNegative ion repels the incoming electron → energy must be supplied to overcome repulsion\nΔₑgH₂ = +780 kJ/mol (positive, endothermic)"},
+      {"stepTitle": "Conclusion", "content": "Second ΔₑgH is positive — it requires energy input\nO²⁻ exists only in ionic solids where lattice energy compensates for the endothermic 2nd electron addition"}
+    ],
+    "explanation": "All second and higher electron gain enthalpies are positive — once an ion is already negative, repulsion always makes it endothermic to add another electron. O²⁻ is stable in ionic compounds (like MgO) because the lattice energy released more than compensates for the +780 kJ/mol needed to form O²⁻ from O⁻."
+  },
+  {
+    "questionNumber": "3.22",
+    "questionText": "What is the basic difference between the terms electron gain enthalpy and electronegativity?",
+    "answer": "Electron Gain Enthalpy (ΔₑgH): Enthalpy change when an electron is added to an isolated gaseous atom. Refers to isolated atoms. Measurable in kJ mol⁻¹. Equation: X(g) + e⁻ → X⁻(g).\n\nElectronegativity: Qualitative measure of the tendency of an atom in a chemical compound (bonded state) to attract the shared electron pair towards itself. Refers to atoms within molecules. Not directly measurable — assigned on arbitrary scales (e.g., Pauling scale). Relates to bond polarity.\n\nKey difference: ΔₑgH = isolated atom + free electron forming ion. Electronegativity = bonded atom competing with its partner for shared electrons.",
+    "steps": [
+      {"stepTitle": "Define electron gain enthalpy", "content": "ΔₑgH = enthalpy change for: X(g) + e⁻ → X⁻(g)\nApplies to isolated gaseous atoms\nMeasurable in kJ mol⁻¹\nRefers to anion formation"},
+      {"stepTitle": "Define electronegativity", "content": "Tendency of a BONDED atom to attract shared electron pair\nApplies within molecules (bonded state)\nNot directly measurable — assigned values on scales (Pauling: F=4.0, H=2.1)\nRelates to bond polarity"},
+      {"stepTitle": "Compare the two concepts", "content": "ΔₑgH: isolated atom + free electron → ion (thermodynamic, quantitative)\nElectronegativity: atom in bond, competing with partner atom for shared electrons (relative, qualitative)\nBoth increase across a period and up a group, but fundamentally different concepts"}
+    ],
+    "explanation": "Both concepts measure how much an element 'wants' electrons, but in very different contexts. ΔₑgH is absolute and measured thermodynamically. Electronegativity is relative — it only makes sense in comparison to the other atom in the bond. An element can have high ΔₑgH but show moderate electronegativity if its bonding partner is also highly electronegative."
+  },
+  {
+    "questionNumber": "3.23",
+    "questionText": "How would you react to the statement that the electronegativity of N on Pauling scale is 3.0 in all the nitrogen compounds?",
+    "answer": "The statement is incorrect. Electronegativity of an element is not constant — it varies depending on the bonding environment. Electronegativity is influenced by: (1) The hybridization of the atom (sp > sp² > sp³ in electronegativity — more s-character increases electronegativity). (2) The oxidation state. (3) The nature of bonding partners. The value 3.0 is an average/approximate value for nitrogen on the Pauling scale. The actual value varies from compound to compound.",
+    "steps": [
+      {"stepTitle": "Evaluate the statement", "content": "The statement claims electronegativity of N is always 3.0 in all compounds\nThis is an oversimplification — electronegativity is not a fixed atomic constant"},
+      {"stepTitle": "Factors that change electronegativity", "content": "1. Hybridisation: N in HCN (sp, more s-character) is more electronegative than N in NH₃ (sp³)\n2. Oxidation state: N in higher oxidation states is more electronegative\n3. Bonding environment: different bonded atoms cause different sharing of electrons"},
+      {"stepTitle": "Correct interpretation", "content": "3.0 on Pauling scale is a standard/average reference value for N\nActual electronegativity varies from compound to compound\nThe statement is INCORRECT"}
+    ],
+    "explanation": "Pauling scale values are average estimates, not absolute constants. Hybridisation has a particularly strong effect: sp-hybridised atoms are more electronegative than sp² which are more electronegative than sp³. This is why sp carbon (in alkynes) pulls electrons more strongly than sp³ carbon (in alkanes)."
+  },
+  {
+    "questionNumber": "3.24",
+    "questionText": "Describe the theory associated with the radius of an atom as it\n(a) gains an electron\n(b) loses an electron",
+    "answer": "(a) Gains an electron (forms an anion): Number of electrons increases while nuclear charge stays same. Extra electrons increase electron-electron repulsion and reduce effective nuclear charge per electron. The electron cloud expands. Ionic radius becomes larger than atomic radius. Example: F (64 pm) → F⁻ (136 pm).\n\n(b) Loses an electron (forms a cation): Number of electrons decreases while nuclear charge stays same. Remaining electrons experience greater effective nuclear charge and are pulled closer to nucleus. Cationic radius is smaller than atomic radius. Example: Na (186 pm) → Na⁺ (95 pm).",
+    "steps": [
+      {"stepTitle": "Gaining an electron → anion", "content": "Electrons increase, nuclear charge stays same\nMore electrons: more repulsion, each feels less nuclear attraction (Zeff per electron decreases)\nCloud expands → LARGER radius\nF(64 pm) → F⁻(136 pm): more than doubled"},
+      {"stepTitle": "Losing an electron → cation", "content": "Electrons decrease, nuclear charge stays same\nFewer electrons: less repulsion, each electron feels more nuclear attraction (Zeff per electron increases)\nCloud contracts → SMALLER radius\nNa(186 pm) → Na⁺(95 pm): about half the size"},
+      {"stepTitle": "Underlying principle", "content": "Balance between nuclear charge (pulling in) and electron-electron repulsion (pushing out) determines size\nGaining e⁻: repulsion increases → expand\nLosing e⁻: repulsion decreases and Zeff per electron increases → contract"}
+    ],
+    "explanation": "The dramatic size differences between atoms and their ions have major consequences in chemistry. Small, highly charged cations (like Al³⁺, Fe³⁺) have intense electric fields that can polarise anions, making bonds more covalent. Large anions (like I⁻, S²⁻) are easily polarised. This is the basis of Fajans' rules for predicting ionic vs covalent character."
+  },
+  {
+    "questionNumber": "3.25",
+    "questionText": "Would you expect the first ionization enthalpies for two isotopes of the same element to be the same or different? Justify your answer.",
+    "answer": "The first ionization enthalpies for two isotopes of the same element would be the same (or essentially the same). Isotopes have the same atomic number (same protons and electrons) but different mass numbers (different neutrons). IE depends on nuclear charge (Z) and electronic configuration — both identical for isotopes. Neutrons do not affect electronic energy levels. Therefore, both isotopes have essentially the same ionization enthalpy.",
+    "steps": [
+      {"stepTitle": "What are isotopes?", "content": "Isotopes: same Z (same protons, same electrons), different number of neutrons (different mass number A)\nE.g., ¹H and ²H (deuterium): both have Z=1, 1 electron, but different masses"},
+      {"stepTitle": "What determines IE?", "content": "IE depends on: nuclear charge Z, number of electrons, electron configuration, and effective nuclear charge\nAll of these are determined by Z and electron count — NOT by neutron number"},
+      {"stepTitle": "Conclusion", "content": "Neutrons contribute to mass but not to nuclear charge or electron configuration\nTherefore IE values for isotopes are essentially IDENTICAL\n(Tiny isotope mass effects exist but are negligible for chemistry)"}
+    ],
+    "explanation": "This question tests understanding of what determines atomic properties. Since IE is an electronic property (determined by nuclear charge and electron arrangement), and neutrons don't affect either, isotopes have the same IE. This is why isotopes have the same chemical properties — they're chemically indistinguishable."
+  },
+  {
+    "questionNumber": "3.26",
+    "questionText": "What are the major differences between metals and non-metals?",
+    "answer": "Metals: Located on the left side of the periodic table. Usually solids at room temperature (exception: Hg is liquid). Good conductors of heat and electricity. Malleable and ductile. Lustrous. Low ionization enthalpy; tend to lose electrons and form cations. Mostly basic oxides. Low electronegativity.\n\nNon-metals: Located on the upper right side of the periodic table. Usually gases or solids (Br₂ is liquid). Poor conductors of heat and electricity (except graphite). Brittle solids; not malleable or ductile. Non-lustrous. High electron gain enthalpy; tend to gain electrons and form anions. Mostly acidic oxides. High electronegativity.",
+    "steps": [
+      {"stepTitle": "Physical differences", "content": "Metals: solids (except Hg), shiny/lustrous, malleable, ductile, good conductors\nNon-metals: gases or solids (Br₂ liquid), non-lustrous, brittle (if solid), poor conductors (except graphite)"},
+      {"stepTitle": "Chemical differences (electronic)", "content": "Metals: low IE, low electronegativity → lose electrons → form cations (M → Mⁿ⁺ + ne⁻)\nNon-metals: high ΔₑgH, high electronegativity → gain electrons → form anions (X + ne⁻ → Xⁿ⁻)"},
+      {"stepTitle": "Oxide character difference", "content": "Metal oxides: basic (react with acids, give alkalis with water) → e.g., Na₂O + H₂O → 2NaOH\nNon-metal oxides: acidic (react with bases, give acids with water) → e.g., SO₃ + H₂O → H₂SO₄"}
+    ],
+    "explanation": "The metal/non-metal distinction is fundamentally about the tendency to lose vs gain electrons, which is determined by ionisation enthalpy and electron gain enthalpy. Elements near the diagonal from B to At are metalloids — they exhibit intermediate properties. More than 78% of known elements are metals."
+  },
+  {
+    "questionNumber": "3.27",
+    "questionText": "Use the periodic table to answer the following questions.\n(a) Identify an element with five electrons in the outer subshell.\n(b) Identify an element that would tend to lose two electrons.\n(c) Identify an element that would tend to gain two electrons.\n(d) Identify the group having metal, non-metal, liquid as well as gas at the room temperature.",
+    "answer": "(a) Five electrons in the outer subshell: Group 17 halogens (np⁵) such as F or Cl.\n(b) Element that tends to lose two electrons: Group 2 (alkaline earth metals) with ns² configuration. Examples: Mg, Ca.\n(c) Element that tends to gain two electrons: Group 16 (chalcogens) with ns²np⁴ configuration. Examples: O, S.\n(d) Group having metal, non-metal, liquid and gas at room temperature: Group 17 (Halogens). F₂ and Cl₂ are gases, Br₂ is liquid, I₂ is solid non-metal, At has metallic character.",
+    "steps": [
+      {"stepTitle": "Part (a): 5 electrons in outer subshell", "content": "np⁵ configuration → Group 17 halogens (F, Cl, Br, I)\nAlso nd⁵ → e.g., Mn [Ar]3d⁵4s²\nMost commonly expected answer: Group 17 (e.g., Cl)"},
+      {"stepTitle": "Parts (b) and (c)", "content": "(b) Lose 2 electrons → Group 2 (alkaline earth metals, ns²)\nExamples: Be, Mg, Ca form M²⁺ ions\n(c) Gain 2 electrons → Group 16 (chalcogens, ns²np⁴, need 2 more for stable octet)\nExamples: O, S, Se form X²⁻ ions"},
+      {"stepTitle": "Part (d): All states of matter in one group", "content": "Group 17 at room temperature:\nF₂: gas (bp −188°C), Cl₂: gas (bp −34°C)\nBr₂: liquid (bp 59°C)\nI₂: solid (mp 114°C), At: solid with metallic character\n→ Group 17 has gas, liquid, solid non-metal, and metalloid character"}
+    ],
+    "explanation": "Group 17 is unique in having all physical states represented at room temperature — a consequence of increasing molecular mass (F₂ < Cl₂ < Br₂ < I₂) increasing van der Waals forces progressively. This makes halogens ideal for studying how physical properties vary systematically within a group."
+  },
+  {
+    "questionNumber": "3.28",
+    "questionText": "The increasing order of reactivity among group 1 elements is Li < Na < K < Rb < Cs whereas that among group 17 elements is F > Cl > Br > I. Explain.",
+    "answer": "Group 1 elements — reactivity increases down the group (Li < Na < K < Rb < Cs): Alkali metals react by losing electrons. As we go down Group 1, atomic radius increases and ionization enthalpy decreases. The ease of losing the valence electron increases. Cs is most reactive.\n\nGroup 17 elements — reactivity decreases down the group (F > Cl > Br > I): Halogens react by gaining electrons. As we go down Group 17, atomic radius increases and electron gain enthalpy becomes less negative. The tendency to gain an electron decreases. F is most reactive.",
+    "steps": [
+      {"stepTitle": "Group 1: reactivity increases down", "content": "Alkali metals react by LOSING electrons\nDown the group: atomic radius increases, IE decreases → easier to lose valence electron\nCaesium (Cs) has largest radius, lowest IE → most reactive\nLithium (Li) has smallest radius, highest IE → least reactive"},
+      {"stepTitle": "Group 17: reactivity decreases down", "content": "Halogens react by GAINING electrons\nDown the group: atomic radius increases, ΔₑgH less negative → harder to attract an electron\nF has smallest radius, most negative ΔₑgH → most reactive\nI has largest radius, least negative ΔₑgH → least reactive"},
+      {"stepTitle": "Key contrast", "content": "Group 1: reaction = electron LOSS → lower IE (down group) = more reactive\nGroup 17: reaction = electron GAIN → more negative ΔₑgH (up group) = more reactive\nTrends go in opposite directions because the type of reaction is opposite"}
+    ],
+    "explanation": "Reactivity depends on the type of chemical reaction. For electron-donors (metals), losing electrons more easily = more reactive, so reactivity increases down Group 1. For electron-acceptors (non-metals), gaining electrons more easily = more reactive, so reactivity decreases down Group 17. This is a fundamental asymmetry between metallic and non-metallic reactivity."
+  },
+  {
+    "questionNumber": "3.29",
+    "questionText": "Write the general outer electronic configuration of s-, p-, d- and f- block elements.",
+    "answer": "s-block: Group 1: ns¹, Group 2: ns² (n = 1 to 7).\np-block: Groups 13–18, general: ns²np¹⁻⁶ (n = 2 to 6).\nd-block: Groups 3–12, general: (n-1)d¹⁻¹⁰ ns⁰⁻² (n = 4 to 7).\nf-block: Lanthanoids and Actinoids, general: (n-2)f¹⁻¹⁴ (n-1)d⁰⁻¹ ns² (n = 6 or 7).",
+    "steps": [
+      {"stepTitle": "s-block configuration", "content": "Last electron enters s orbital\nGroup 1: ns¹ (1 valence electron) — Li, Na, K, Rb, Cs, Fr and H\nGroup 2: ns² (2 valence electrons) — Be, Mg, Ca, Sr, Ba, Ra"},
+      {"stepTitle": "p-block and d-block configuration", "content": "p-block (Groups 13-18): ns²np¹⁻⁶ (n=2 to 6)\nd-block (Groups 3-12): (n-1)d¹⁻¹⁰ns⁰⁻² (n=4 to 7)\nd-block has exceptions: Cr: [Ar]3d⁵4s¹, Cu: [Ar]3d¹⁰4s¹"},
+      {"stepTitle": "f-block configuration", "content": "Lanthanoids (Period 6): [Xe]4f¹⁻¹⁴5d⁰⁻¹6s²\nActinoids (Period 7): [Rn]5f¹⁻¹⁴6d⁰⁻¹7s²\nMany exceptions due to near-degeneracy of f and d orbitals"}
+    ],
+    "explanation": "The block classification tells you which orbital type receives the last (differentiating) electron. This determines the element's position: s-block on the left, p-block on the right, d-block in the middle (transition metals), f-block at the bottom (lanthanoids/actinoids). The block also correlates strongly with chemical properties."
+  },
+  {
+    "questionNumber": "3.30",
+    "questionText": "Assign the position of the element having outer electronic configuration:\n(i) ns²np⁴ for n=3\n(ii) (n-1)d²ns² for n=4\n(iii) (n-2)f⁷(n-1)d¹ns² for n=6, in the periodic table.",
+    "answer": "(i) ns²np⁴, n=3 → 3s²3p⁴ → 16 electrons → Sulphur (S). Period 3, Group 16.\n(ii) (n-1)d²ns², n=4 → 3d²4s² → 22 electrons → Titanium (Ti). Period 4, Group 4.\n(iii) (n-2)f⁷(n-1)d¹ns², n=6 → 4f⁷5d¹6s² → 64 electrons → Gadolinium (Gd). Period 6, f-block (lanthanoid).",
+    "steps": [
+      {"stepTitle": "Case (i): ns²np⁴, n=3", "content": "Substituting: 3s²3p⁴\nFull config: 1s²2s²2p⁶3s²3p⁴ → total electrons = 16 → Sulphur (S)\nPeriod = n = 3; Group: 6 valence electrons → Group 16"},
+      {"stepTitle": "Case (ii): (n-1)d²ns², n=4", "content": "Substituting: 3d²4s²\nFull config: 1s²2s²2p⁶3s²3p⁶3d²4s² → total = 22 → Titanium (Ti)\nPeriod = n = 4; d-block, 2 d-electrons → Group 4"},
+      {"stepTitle": "Case (iii): (n-2)f⁷(n-1)d¹ns², n=6", "content": "Substituting: 4f⁷5d¹6s²\nTotal electrons = 64 → Gadolinium (Gd)\nPeriod = 6; f-block (lanthanoid series); notable for stable half-filled 4f⁷ configuration"}
+    ],
+    "explanation": "The period number equals n (the principal quantum number of the outermost shell). The block is determined by which orbital type receives the last electron (f in case iii). For d-block: group = (n-1)d electrons + ns electrons. For f-block elements, the position is in the separate lanthanoid/actinoid rows."
+  },
+  {
+    "questionNumber": "3.31",
+    "questionText": "The first (ΔᵢH₁) and the second (ΔᵢH₂) ionization enthalpies (in kJ mol⁻¹) and the (ΔₑgH) electron gain enthalpy (in kJ mol⁻¹) of a few elements are given below:\nElement I: ΔH₁=520, ΔH₂=7300, ΔₑgH=−60\nElement II: ΔH₁=419, ΔH₂=3051, ΔₑgH=−48\nElement III: ΔH₁=1681, ΔH₂=3374, ΔₑgH=−328\nElement IV: ΔH₁=1008, ΔH₂=1846, ΔₑgH=−295\nElement V: ΔH₁=2372, ΔH₂=5251, ΔₑgH=+48\nElement VI: ΔH₁=738, ΔH₂=1451, ΔₑgH=−40\n\nWhich of the above elements is likely to be:\n(a) the least reactive element\n(b) the most reactive metal\n(c) the most reactive non-metal\n(d) the least reactive non-metal\n(e) the metal which can form a stable binary halide of formula MX₂\n(f) the metal which can form a predominantly stable covalent halide of formula MX",
+    "answer": "(a) Element V — very high IE₁(2372) and positive ΔₑgH(+48) → Noble Gas (neither gains nor loses electrons).\n(b) Element II — lowest IE₁(419) → loses electron most easily → most reactive metal (likely K).\n(c) Element III — high IE₁(1681), most negative ΔₑgH(−328) → strongest electron attractor → halogen (likely F).\n(d) Element IV — non-metal (high IE₁, negative ΔₑgH) but less reactive than III (less negative ΔₑgH).\n(e) Element VI — both IE₁(738) and IE₂(1451) moderate → loses 2 electrons readily → Group 2 metal (likely Mg). Forms MX₂.\n(f) Element I — huge jump from IE₁(520) to IE₂(7300) → only 1 valence electron → Group 1 alkali metal. Small size → more covalent halide MX (likely Li).",
+    "steps": [
+      {"stepTitle": "Screen for noble gas (least reactive)", "content": "Positive ΔₑgH = does not accept electrons\nVery high IE₁ = does not give electrons\nElement V (IE₁=2372, ΔₑgH=+48) = Noble Gas → least reactive"},
+      {"stepTitle": "Screen for most reactive metal", "content": "Most reactive metal = lowest IE₁ among metals\nElement II: IE₁=419 (lowest) → most reactive metal (likely K)\nElement I (IE₁=520) is also a metal but less reactive"},
+      {"stepTitle": "Screen for non-metals, then metals by valence", "content": "Most reactive non-metal = most negative ΔₑgH → Element III (ΔₑgH=−328) = F\nLeast reactive non-metal = less negative ΔₑgH among non-metals → Element IV (ΔₑgH=−295)\nMX₂ metal: both IE₁ and IE₂ moderate, big jump at IE₃ → Element VI (Mg, Group 2)\nMX covalent metal: huge jump IE₁→IE₂ (noble gas core disrupted) + small size → Element I (Li, Group 1)"}
+    ],
+    "explanation": "The key diagnostic is successive IE patterns. Huge jump after 1st IE → 1 valence electron (Group 1). Huge jump after 2nd IE → 2 valence electrons (Group 2). Positive ΔₑgH → Noble Gas. Most negative ΔₑgH among non-metals → most reactive halogen. This approach lets you identify an unknown element's group purely from IE and ΔₑgH data."
+  },
+  {
+    "questionNumber": "3.32",
+    "questionText": "Predict the formulas of the stable binary compounds that would be formed by the combination of the following pairs of elements.\n(a) Lithium and oxygen\n(b) Magnesium and nitrogen\n(c) Aluminium and iodine\n(d) Silicon and oxygen\n(e) Phosphorus and fluorine\n(f) Element 71 and fluorine",
+    "answer": "(a) Li (valency 1) + O (valency 2) → Li₂O\n(b) Mg (valency 2) + N (valency 3) → Mg₃N₂\n(c) Al (valency 3) + I (valency 1) → AlI₃\n(d) Si (valency 4) + O (valency 2) → SiO₂\n(e) P (valency 3 or 5) + F (valency 1) → PF₃ or PF₅\n(f) Element 71 = Lutetium (Lu, valency 3) + F (valency 1) → LuF₃",
+    "steps": [
+      {"stepTitle": "Determine valencies from group numbers", "content": "Li(Group 1)=1, O(Group 16)=2, Mg(Group 2)=2, N(Group 15)=3\nAl(Group 13)=3, I(Group 17)=1, Si(Group 14)=4, P(Group 15)=3 or 5\nLu(Z=71, lanthanoid, Group 3)=3, F(Group 17)=1"},
+      {"stepTitle": "Apply cross-valency to get formulas (a-d)", "content": "(a) Li(1) + O(2) → Li₂O (cross: O's valency becomes Li's count)\n(b) Mg(2) + N(3) → Mg₃N₂ (cross: 2×3=3×2=6, balanced)\n(c) Al(3) + I(1) → AlI₃\n(d) Si(4) + O(2) → SiO₂"},
+      {"stepTitle": "Parts (e) and (f)", "content": "(e) P can use valency 3 → PF₃ or valency 5 → PF₅ (both stable compounds; PF₅ uses expanded octet)\n(f) Lu (valency 3) + F (valency 1) → LuF₃"}
+    ],
+    "explanation": "The cross-multiplication method: valency of A becomes subscript of B, and valency of B becomes subscript of A. Simplify if needed. P and other Period 3+ non-metals can use expanded valencies via d-orbitals, allowing higher valency compounds like PF₅ and SF₆ beyond the normal octet."
+  },
+  {
+    "questionNumber": "3.33",
+    "questionText": "In the modern periodic table, the period indicates the value of:\n(a) atomic number\n(b) atomic mass\n(c) principal quantum number\n(d) azimuthal quantum number",
+    "answer": "Answer: (c) principal quantum number\n\nIn the modern periodic table, the period number corresponds to the highest principal quantum number (n) of the elements in that period. Period 1: n=1; Period 2: n=2; Period 3: n=3; Period 4: n=4. The period number = principal quantum number of the outermost shell.",
+    "steps": [
+      {"stepTitle": "Eliminate wrong options", "content": "(a) Atomic number increases within a period, not indicated by period number\n(b) Atomic mass also increases within a period — not what period number shows\n(d) Azimuthal quantum number (l) identifies the block type, not the period"},
+      {"stepTitle": "Confirm correct option", "content": "Period number = n (principal quantum number) of the outermost shell of elements in that period\nPeriod 1 → n=1; Period 2 → n=2; Period 3 → n=3 ... Period 7 → n=7"},
+      {"stepTitle": "Verify with examples", "content": "Na (Z=11): config 1s²2s²2p⁶3s¹ → outermost n=3 → Period 3 ✓\nFe (Z=26): config [Ar]3d⁶4s² → outermost n=4 → Period 4 ✓"}
+    ],
+    "explanation": "The period number directly indicates the principal quantum number of the outermost shell (highest n occupied). This is why elements in the same period have properties that change gradually — they're all adding electrons to the same n shell. The azimuthal quantum number l determines the block, not the period."
+  },
+  {
+    "questionNumber": "3.34",
+    "questionText": "Which of the following statements related to the modern periodic table is incorrect?\n(a) The p-block has 6 columns, because a maximum of 6 electrons can occupy all the orbitals in a p-shell.\n(b) The d-block has 8 columns, because a maximum of 8 electrons can occupy all the orbitals in a d-subshell.\n(c) Each block contains a number of columns equal to the number of electrons that can occupy that subshell.\n(d) The block indicates value of azimuthal quantum number (l) for the last subshell that received electrons in building up the electronic configuration.",
+    "answer": "Answer: (b)\n\nThe d-subshell has 5 orbitals and can accommodate a maximum of 10 electrons, NOT 8. The d-block in the periodic table has 10 columns (Groups 3 to 12), not 8. All other statements are correct.",
+    "steps": [
+      {"stepTitle": "Check each statement", "content": "(a) p-subshell: l=1, orbitals = 2l+1 = 3, max electrons = 6 → p-block has 6 columns (Groups 13-18) ✓\n(b) d-subshell: l=2, orbitals = 2l+1 = 5, max electrons = 10 → d-block has 10 columns (Groups 3-12), NOT 8 ✗"},
+      {"stepTitle": "Confirm other statements are correct", "content": "(c) s: 2 cols, p: 6 cols, d: 10 cols, f: 14 cols — each = max electrons in that subshell ✓\n(d) s(l=0), p(l=1), d(l=2), f(l=3) — block = l value of differentiating electron ✓"},
+      {"stepTitle": "Identify incorrect statement", "content": "Statement (b) is incorrect: d-subshell holds 10 electrons (not 8) → d-block has 10 columns, not 8"}
+    ],
+    "explanation": "A common mistake is confusing d-block with 8 elements. Remember the subshell electron capacity formula: max electrons = 2(2l+1). For s (l=0): 2; p (l=1): 6; d (l=2): 10; f (l=3): 14. The number of columns in each block = max electrons that can fill that subshell."
+  },
+  {
+    "questionNumber": "3.35",
+    "questionText": "Anything that influences the valence electrons will affect the chemistry of the element. Which one of the following factors does not affect the valence shell?\n(a) Valence principal quantum number (n)\n(b) Nuclear charge (Z)\n(c) Nuclear mass\n(d) Number of core electrons",
+    "answer": "Answer: (c) Nuclear mass\n\nNuclear mass (number of neutrons) does not affect the valence electrons or the chemistry of the element. (a) n determines energy level and orbital size. (b) Z determines the attractive force on valence electrons. (d) Core electrons determine the shielding effect. Neutrons affect the mass but not the electronic structure — this is why isotopes have the same chemistry.",
+    "steps": [
+      {"stepTitle": "Check what affects valence electrons", "content": "(a) n (principal quantum number): determines orbital energy and distance from nucleus → directly affects valence electrons ✓\n(b) Z (nuclear charge): determines attractive force on all electrons → affects valence electrons ✓\n(d) Core electrons: cause shielding, reducing effective nuclear charge felt by valence electrons ✓"},
+      {"stepTitle": "Identify what does NOT affect valence electrons", "content": "(c) Nuclear mass = protons + neutrons\nNeutrons contribute to mass but NOT to nuclear charge or electron interactions\nSame Z (same protons) = same nuclear charge = same electron structure"},
+      {"stepTitle": "Confirm with isotope example", "content": "¹²C and ¹³C: same Z=6, same 6 electrons, same valence configuration 2s²2p²\nSame chemistry despite different mass → nuclear mass does NOT affect valence shell"}
+    ],
+    "explanation": "This question is essentially asking: what makes isotopes chemically identical? Neutrons don't participate in atomic interactions — only the protons (nuclear charge) and electrons matter for chemistry. Neutrons only affect nuclear properties (mass, nuclear stability, radioactivity)."
+  },
+  {
+    "questionNumber": "3.36",
+    "questionText": "The size of isoelectronic species — F⁻, Ne and Na⁺ is affected by:\n(a) nuclear charge (Z)\n(b) valence principal quantum number (n)\n(c) electron-electron interaction in the outer orbitals\n(d) none of the factors because their size is the same",
+    "answer": "Answer: (a) nuclear charge (Z)\n\nF⁻, Ne, and Na⁺ are isoelectronic — all have 10 electrons with configuration 1s²2s²2p⁶. They have different nuclear charges: F(Z=9), Ne(Z=10), Na(Z=11). Since all three have the same number of electrons in the same orbitals, the difference in size is entirely due to the different nuclear charges. Higher Z → electrons pulled in closer → smaller size. Order: F⁻ > Ne > Na⁺.",
+    "steps": [
+      {"stepTitle": "Confirm they are isoelectronic", "content": "F⁻: Z=9, +1e → 10 electrons (1s²2s²2p⁶)\nNe: Z=10, neutral → 10 electrons (1s²2s²2p⁶)\nNa⁺: Z=11, −1e → 10 electrons (1s²2s²2p⁶)"},
+      {"stepTitle": "Eliminate wrong options", "content": "(b) n is the same for all three (outermost electrons in n=2 shell) → not the variable here\n(c) electron-electron interactions are the same (same electron count and config) → not the variable\n(d) sizes are NOT the same — F⁻ > Ne > Na⁺"},
+      {"stepTitle": "Confirm nuclear charge (Z) is the differentiating factor", "content": "Z: F(9) < Ne(10) < Na(11)\nHigher Z pulls same 10 electrons closer → smaller size\nF⁻ largest (Z=9), Na⁺ smallest (Z=11)\nAnswer: (a) nuclear charge"}
+    ],
+    "explanation": "For isoelectronic species, since everything else is equal (same electrons, same configuration, same n), only the nuclear charge Z differs. Higher Z = more protons pulling the same electrons inward = smaller size. This is the foundational rule for comparing sizes of isoelectronic species."
+  },
+  {
+    "questionNumber": "3.37",
+    "questionText": "Which one of the following statements is incorrect in relation to ionization enthalpy?\n(a) Ionization enthalpy increases for each successive electron.\n(b) The greatest increase in ionization enthalpy is experienced on removal of electron from core noble gas configuration.\n(c) End of valence electrons is marked by a big jump in ionization enthalpy.\n(d) Removal of electron from orbitals bearing lower n value is easier than from orbital having higher n value.",
+    "answer": "Answer: (d)\n\nStatement (d) is incorrect. Electrons in orbitals with lower n values are closer to the nucleus, experience higher effective nuclear charge, and are held more tightly. Therefore, it requires MORE energy to remove electrons from lower n orbitals, not less. Removal from HIGHER n orbitals is easier. All other statements are correct.",
+    "steps": [
+      {"stepTitle": "Evaluate statements (a), (b), (c)", "content": "(a) Each successive IE increases because removing from an increasingly positive ion → ✓ Correct\n(b) When noble gas core is disrupted, there is a massive jump in IE → ✓ Correct\n(c) Big jump in successive IE = all valence electrons removed, next is core electron → ✓ Correct"},
+      {"stepTitle": "Evaluate statement (d)", "content": "Statement (d): 'lower n value → easier to remove'\nThis is WRONG. Lower n = closer to nucleus = higher Zeff = harder to remove (requires MORE energy)\nHigher n = farther from nucleus, more shielded = easier to remove"},
+      {"stepTitle": "Correct the statement", "content": "The correct statement should be: 'Removal of electron from orbitals bearing HIGHER n value is easier than from orbital having lower n value'\nExample: outer 4s electrons are removed before inner 3d in transition metal ionisation"}
+    ],
+    "explanation": "The farther an electron from the nucleus (higher n), the less tightly it is held and the lower the IE. This is why successive IEs always increase — each electron removed brings the remaining electrons to a lower-n (inner) shell where they are held more tightly. Statement (d) has the relationship reversed."
+  },
+  {
+    "questionNumber": "3.38",
+    "questionText": "Considering the elements B, Al, Mg, and K, the correct order of their metallic character is:\n(a) B > Al > Mg > K\n(b) Al > Mg > B > K\n(c) Mg > Al > K > B\n(d) K > Mg > Al > B",
+    "answer": "Answer: (d) K > Mg > Al > B\n\nMetallic character increases down a group and from right to left across a period. K (Group 1, Period 4): very low IE, most metallic. Mg (Group 2, Period 3): metallic. Al (Group 13, Period 3): less metallic than Mg. B (Group 13, Period 2): metalloid, least metallic.",
+    "steps": [
+      {"stepTitle": "Locate each element", "content": "B: Period 2, Group 13 (metalloid)\nAl: Period 3, Group 13 (metal)\nMg: Period 3, Group 2 (metal)\nK: Period 4, Group 1 (metal)"},
+      {"stepTitle": "Apply metallic character rules", "content": "Rule 1: Down a group → more metallic (Al > B: both Group 13, Al is Period 3)\nRule 2: Left across a period → more metallic (Mg > Al: same period, Mg is left of Al)\nRule 3: K (Period 4, Group 1) → largest atom, lowest IE → most metallic"},
+      {"stepTitle": "Final ranking", "content": "Most metallic: K (Group 1, Period 4)\nThen: Mg (Group 2, Period 3)\nThen: Al (Group 13, Period 3)\nLeast metallic: B (Period 2, metalloid)\nOrder: K > Mg > Al > B → Answer (d)"}
+    ],
+    "explanation": "Both group (vertical) and period (horizontal) position matter for metallic character. K wins because it's in Group 1 (Period 4) — furthest left and in a lower period. B loses because it's in Period 2 and Group 13 — a small, high-IE metalloid. Between Mg and Al (same period), left-of-period position makes Mg more metallic."
+  },
+  {
+    "questionNumber": "3.39",
+    "questionText": "Considering the elements B, C, N, F, and Si, the correct order of their non-metallic character is:\n(a) B > C > Si > N > F\n(b) Si > C > B > N > F\n(c) F > N > C > B > Si\n(d) F > N > C > Si > B",
+    "answer": "Answer: (c) F > N > C > B > Si\n\nNon-metallic character increases across a period from left to right and up a group from bottom to top. F is the most electronegative element and strongest non-metal. Among Period 2: F > N > C > B. Si is in Period 3 (metalloid) — less non-metallic than B (Period 2 metalloid). Order: F > N > C > B > Si.",
+    "steps": [
+      {"stepTitle": "Locate elements and classify", "content": "F: Period 2, Group 17 (strongest non-metal)\nN: Period 2, Group 15 (non-metal)\nC: Period 2, Group 14 (non-metal)\nB: Period 2, Group 13 (metalloid)\nSi: Period 3, Group 14 (metalloid — more metallic than B)"},
+      {"stepTitle": "Apply non-metallic character rules", "content": "Within Period 2: F > N > C > B (non-metallic decreases right to left)\nB vs Si: B is Period 2, Si is Period 3 → same group (14 area), but lower period = less non-metallic\nSi is more metallic than B → B more non-metallic than Si"},
+      {"stepTitle": "Final ranking", "content": "F > N > C > B > Si → Answer (c)"}
+    ],
+    "explanation": "Non-metallic character correlates with electronegativity and tendency to gain electrons. F (electronegativity 4.0) is the ultimate non-metal. Si is a semiconductor/metalloid — on the metal/non-metal boundary. B is also a metalloid but is in Period 2 (smaller, higher effective nuclear charge) making it slightly more non-metallic than Si."
+  },
+  {
+    "questionNumber": "3.40",
+    "questionText": "Considering the elements F, Cl, O and N, the correct order of their chemical reactivity in terms of oxidizing property is:\n(a) F > Cl > O > N\n(b) F > O > Cl > N\n(c) Cl > F > O > N\n(d) O > F > N > Cl",
+    "answer": "Answer: (b) F > O > Cl > N\n\nOxidizing power depends on electronegativity and tendency to gain electrons. F: most electronegative (4.0), strongest oxidiser. O: second most electronegative (3.5), strong oxidiser. Cl: good oxidiser but less than O in overall electronegativity ranking. N: weakest oxidiser among the four. NCERT standard answer: (b) F > O > Cl > N.",
+    "steps": [
+      {"stepTitle": "Understand oxidising power", "content": "Oxidising power = tendency to accept electrons (be reduced)\nHigher electronegativity and more negative electron gain enthalpy → stronger oxidiser"},
+      {"stepTitle": "Rank the elements", "content": "F: electronegativity 4.0, E°(F₂/F⁻) = +2.87 V → strongest oxidiser\nO: electronegativity 3.5, strong oxidiser\nCl: electronegativity 3.0, ΔₑgH = −349 kJ/mol (more negative than F and O but lower electronegativity)\nN: electronegativity 3.0, ΔₑgH = −7 kJ/mol (very low tendency to gain electrons) → weakest"},
+      {"stepTitle": "Select the correct option", "content": "F > O > Cl > N → Answer (b)\nNote: Cl has more negative ΔₑgH than O, but O has higher electronegativity and is a stronger oxidiser in overall chemistry"}
+    ],
+    "explanation": "This question requires balancing multiple factors. Cl has a more negative ΔₑgH than O (−349 vs −141 kJ/mol) yet O is placed above Cl in oxidising power because oxidising power in practice involves reduction potential, which accounts for hydration energies and bond dissociation energies in aqueous reactions. NCERT follows the electronegativity-based ranking: F > O > Cl > N."
+  }
+]

@@ -1,0 +1,348 @@
+[
+  {
+    "questionNumber": "1.1",
+    "questionText": "What is the force between two small charged spheres having charges of 2 × 10⁻⁷ C and 3 × 10⁻⁷ C placed 30 cm apart in air?",
+    "answer": "q₁ = 2 × 10⁻⁷ C, q₂ = 3 × 10⁻⁷ C, r = 30 cm = 0.3 m\nF = kq₁q₂/r² = (9 × 10⁹ × 2 × 10⁻⁷ × 3 × 10⁻⁷) / (0.3)²\nF = (9 × 10⁹ × 6 × 10⁻¹⁴) / 0.09\nF = 5.4 × 10⁻⁴ / 0.09 = 6 × 10⁻³ N\nThe force is repulsive (both charges are positive).",
+    "steps": [
+      { "stepTitle": "Identify given values and apply Coulomb's law", "content": "q₁ = 2×10⁻⁷ C, q₂ = 3×10⁻⁷ C, r = 0.3 m\nF = kq₁q₂/r² where k = 9×10⁹ N·m²/C²" },
+      { "stepTitle": "Substitute and calculate", "content": "F = (9×10⁹ × 2×10⁻⁷ × 3×10⁻⁷) / (0.3)²\n= (9×10⁹ × 6×10⁻¹⁴) / 0.09\n= 5.4×10⁻⁴ / 0.09 = 6×10⁻³ N" },
+      { "stepTitle": "Determine direction", "content": "Both charges are positive → like charges → repulsive force\nF = 6 × 10⁻³ N (repulsive)" }
+    ],
+    "explanation": "Coulomb's law F = kq₁q₂/r² gives the magnitude of the electrostatic force. The direction (attractive or repulsive) depends on the sign of the charges: like charges repel, unlike charges attract."
+  },
+  {
+    "questionNumber": "1.2",
+    "questionText": "The electrostatic force on a small sphere of charge 0.4 μC due to another small sphere of charge –0.8 μC in air is 0.2 N.\n(a) What is the distance between the two spheres?\n(b) What is the force on the second sphere due to the first?",
+    "answer": "q₁ = 0.4 μC = 0.4 × 10⁻⁶ C, q₂ = −0.8 μC = −0.8 × 10⁻⁶ C, F = 0.2 N\n(a) F = k|q₁||q₂|/r²\nr² = k|q₁||q₂|/F = (9 × 10⁹ × 0.4 × 10⁻⁶ × 0.8 × 10⁻⁶)/0.2\nr² = (9 × 10⁹ × 3.2 × 10⁻¹³)/0.2 = 2.88 × 10⁻³/0.2 = 0.0144\nr = 0.12 m = 12 cm\n(b) By Newton's third law, the force on the second sphere is also 0.2 N, directed towards the first sphere (attractive).",
+    "steps": [
+      { "stepTitle": "Rearrange Coulomb's law to find r", "content": "r² = k|q₁||q₂|/F = (9×10⁹ × 0.4×10⁻⁶ × 0.8×10⁻⁶)/0.2\n= 2.88×10⁻³/0.2 = 0.0144\nr = 0.12 m = 12 cm" },
+      { "stepTitle": "Apply Newton's third law for part (b)", "content": "Force on sphere 2 due to sphere 1 = equal in magnitude, opposite in direction\n= 0.2 N directed toward sphere 1 (attractive, since charges are opposite)" }
+    ],
+    "explanation": "Newton's third law applies to electrostatic forces: the force on sphere 1 due to sphere 2 is equal and opposite to the force on sphere 2 due to sphere 1. Opposite charges attract, so both forces point toward each other."
+  },
+  {
+    "questionNumber": "1.3",
+    "questionText": "Check that the ratio ke²/Gmemp is dimensionless. Look up a table of physical constants and determine the value of this ratio. What does the ratio signify?",
+    "answer": "ke² has units of N·m² (force × distance²)\nGmemp also has units of N·m² (gravitational constant × mass × mass = [m³/kg·s²][kg][kg] = N·m²)\nSo the ratio is dimensionless.\n\nValue: k = 9×10⁹ N·m²/C², e = 1.6×10⁻¹⁹ C, G = 6.67×10⁻¹¹ N·m²/kg², me = 9.11×10⁻³¹ kg, mp = 1.67×10⁻²⁷ kg\nke²/Gmemp = (9×10⁹ × (1.6×10⁻¹⁹)²) / (6.67×10⁻¹¹ × 9.11×10⁻³¹ × 1.67×10⁻²⁷)\n= (9×10⁹ × 2.56×10⁻³⁸) / (1.016×10⁻⁶⁷)\n= 2.304×10⁻²⁸ / 1.016×10⁻⁶⁷ ≈ 2.27 × 10³⁹\n\nThis ratio gives the relative strength of the electrostatic force to the gravitational force between a proton and an electron. Electrostatic force is about 10³⁹ times stronger than gravity.",
+    "steps": [
+      { "stepTitle": "Verify the ratio is dimensionless", "content": "ke² → [N·m²/C²][C²] = N·m²\nGmemp → [N·m²/kg²][kg][kg] = N·m²\nRatio = N·m² / N·m² = dimensionless ✓" },
+      { "stepTitle": "Substitute values and calculate", "content": "Numerator: 9×10⁹ × (1.6×10⁻¹⁹)² = 9×10⁹ × 2.56×10⁻³⁸ = 2.304×10⁻²⁸\nDenominator: 6.67×10⁻¹¹ × 9.11×10⁻³¹ × 1.67×10⁻²⁷ ≈ 1.016×10⁻⁶⁷\nRatio ≈ 2.3×10³⁹" },
+      { "stepTitle": "Interpret the result", "content": "The ratio ~10³⁹ means electrostatic force between a proton and electron is 10³⁹ times stronger than the gravitational force between them\nThis is why gravity is negligible in atomic/molecular interactions" }
+    ],
+    "explanation": "The enormous ratio (~10³⁹) between electrostatic and gravitational forces explains why gravity is completely negligible in atomic physics. Despite being so much weaker, gravity dominates at large scales because matter is electrically neutral overall, while gravity is always attractive and never cancels."
+  },
+  {
+    "questionNumber": "1.4",
+    "questionText": "Explain the meaning of the statement 'electric charge of a body is quantised'.",
+    "answer": "Electric charge is quantised means that the total charge on any body is always an integral multiple of the elementary charge e (= 1.6 × 10⁻¹⁹ C).\nMathematically: q = ±ne, where n = 0, 1, 2, 3, ...\nCharge cannot take fractional values like 0.5e or 1.3e. The smallest possible charge is e (the charge of one proton or one electron). Any charge gained or lost is a whole number of electrons being added or removed.",
+    "steps": [
+      { "stepTitle": "State what quantisation means", "content": "Charge can only exist in discrete packets of e = 1.6×10⁻¹⁹ C\nq = ne where n is a whole number (0, ±1, ±2, ...)" },
+      { "stepTitle": "Explain the physical origin", "content": "The electron is the fundamental carrier of charge\nWhen charge is transferred, whole electrons are transferred — not fractions\nSo charge changes in steps of e" },
+      { "stepTitle": "State the implication", "content": "Charges like 0.5e, 1.3e, etc. are physically impossible\nAt macroscopic scales, q seems continuous because n is huge, but fundamentally it's discrete" }
+    ],
+    "explanation": "Charge quantisation was established by Millikan's oil-drop experiment (1909–1913). Although quarks have fractional charge (e/3, 2e/3), they cannot exist in isolation — free particles always carry charge in integer multiples of e."
+  },
+  {
+    "questionNumber": "1.5",
+    "questionText": "When a glass rod is rubbed with a silk cloth, charges appear on both. A similar phenomenon is observed with many other pairs of bodies. Explain how this observation is consistent with the law of conservation of charge.",
+    "answer": "When glass is rubbed with silk, electrons transfer from glass to silk. Glass becomes positively charged and silk becomes negatively charged.\nThe charges appear in equal and opposite amounts: if glass gains +Q charge, silk gains −Q charge, so the net total charge of the system (glass + silk) remains zero — the same as before rubbing.\nThis is consistent with the law of conservation of charge: charge can neither be created nor destroyed; it can only be transferred from one body to another. The algebraic sum of charges in an isolated system is constant.",
+    "steps": [
+      { "stepTitle": "Describe the charge transfer process", "content": "Rubbing glass with silk → friction provides energy for electron transfer\nElectrons move from glass to silk\nGlass: loses electrons → positive charge\nSilk: gains electrons → negative charge" },
+      { "stepTitle": "Show charge is conserved", "content": "Before rubbing: both neutral → total charge = 0\nAfter rubbing: glass has +Q, silk has −Q → total charge = +Q + (−Q) = 0\nTotal charge unchanged → conservation satisfied" }
+    ],
+    "explanation": "Conservation of charge is one of the most fundamental laws of physics. In all known processes — mechanical, chemical, nuclear, or particle — the net charge of an isolated system is always conserved. Charge is neither created nor destroyed, only transferred."
+  },
+  {
+    "questionNumber": "1.6",
+    "questionText": "Four point charges qA = 2 μC, qB = –5 μC, qC = 2 μC, and qD = –5 μC are located at the corners of a square ABCD of side 10 cm. What is the force on a charge of 1 μC placed at the centre of the square?",
+    "answer": "By symmetry:\n- qA = 2 μC and qC = 2 μC are at diagonally opposite corners. They exert equal and opposite forces on the central charge → they cancel.\n- qB = −5 μC and qD = −5 μC are at the other diagonal corners. They also exert equal and opposite forces on the central charge → they cancel.\n\nThe net force on the 1 μC charge at the centre is zero.",
+    "steps": [
+      { "stepTitle": "Identify the geometry and symmetry", "content": "Square ABCD with side 10 cm\nCentre O is equidistant from all 4 corners: r = (10/√2) cm = 7.07 cm" },
+      { "stepTitle": "Use symmetry to cancel forces", "content": "qA = +2 μC at A and qC = +2 μC at C (opposite corners): forces on 1 μC at centre are equal and opposite → net = 0\nqB = −5 μC at B and qD = −5 μC at D (opposite corners): forces equal and opposite → net = 0" },
+      { "stepTitle": "Conclude", "content": "Total net force = 0 + 0 = 0\nThe central charge experiences no net electrostatic force" }
+    ],
+    "explanation": "Symmetry is a powerful tool in electrostatics. Charges placed symmetrically around a point exert forces that cancel. Here, both pairs of equal charges on opposite corners cancel each other's contribution at the centre."
+  },
+  {
+    "questionNumber": "1.7",
+    "questionText": "(a) An electrostatic field line is a continuous curve. That is, a field line cannot have sudden breaks. Why not?\n(b) Explain why two field lines never cross each other at any point.",
+    "answer": "(a) An electric field line represents the path a positive test charge would follow. A sudden break would mean the charge teleports from one point to another, which is physically impossible. The field exists continuously at every point in space, so the field lines must be continuous curves.\n\n(b) If two field lines crossed at a point, there would be two different directions of the electric field at that point. But the electric field at any given point has a unique direction. Therefore, field lines can never cross.",
+    "steps": [
+      { "stepTitle": "Explain continuity of field lines (part a)", "content": "A field line is the path of a positive test charge moving under electrostatic force\nElectric field is defined at every point → no gaps possible\nA break would require the charge to skip from one location to another — physically impossible" },
+      { "stepTitle": "Explain why field lines don't cross (part b)", "content": "At the point of intersection, the tangent to each field line gives a field direction\nTwo crossing lines → two different tangent directions → two different field directions at one point\nBut E-field at any point is unique (vector has one magnitude and direction)\nContradiction → crossing is impossible" }
+    ],
+    "explanation": "These two properties — continuity and non-crossing — are fundamental to electric field lines. They follow directly from the fact that the electric field is a well-defined (unique) vector at every point in space."
+  },
+  {
+    "questionNumber": "1.8",
+    "questionText": "Two point charges qA = 3 μC and qB = –3 μC are located 20 cm apart in vacuum. (a) What is the electric field at the midpoint O of the line AB between the charges? (b) If a negative test charge of magnitude 1.5 × 10⁻⁹ C is placed at this point, what is the force experienced by the test charge?",
+    "answer": "r = 10 cm = 0.1 m from each charge to O\n(a) E_A = kqA/r² = (9×10⁹ × 3×10⁻⁶)/(0.1)² = 2.7×10⁶ N/C (directed from A toward B)\nE_B = kqB/r² = (9×10⁹ × 3×10⁻⁶)/(0.1)² = 2.7×10⁶ N/C (directed from O toward B, since B is negative)\nBoth fields point in the same direction (from A to B), so:\nE_net = 2.7×10⁶ + 2.7×10⁶ = 5.4×10⁶ N/C directed from A to B.\n\n(b) F = qE = 1.5×10⁻⁹ × 5.4×10⁶ = 8.1×10⁻³ N\nSince q is negative, the force is opposite to E, i.e., directed from B to A.",
+    "steps": [
+      { "stepTitle": "Find the field at O due to each charge", "content": "r = 0.1 m from each charge to midpoint O\nE_A = k|qA|/r² = 9×10⁹ × 3×10⁻⁶ / 0.01 = 2.7×10⁶ N/C → from A toward B\nE_B = k|qB|/r² = 2.7×10⁶ N/C → from O toward B (attractive toward −ve charge)" },
+      { "stepTitle": "Add the fields vectorially", "content": "Both E_A and E_B point in the same direction (A→B)\nE_net = 2.7×10⁶ + 2.7×10⁶ = 5.4×10⁶ N/C (from A to B)" },
+      { "stepTitle": "Find force on test charge", "content": "F = qE = 1.5×10⁻⁹ × 5.4×10⁶ = 8.1×10⁻³ N\nTest charge is negative → force is opposite to E → from B toward A" }
+    ],
+    "explanation": "The electric field due to a positive charge points away from it; due to a negative charge, toward it. At the midpoint between opposite charges, both fields add up (same direction) instead of cancelling — maximum field at the midpoint."
+  },
+  {
+    "questionNumber": "1.9",
+    "questionText": "A system has two charges qA = 2.5 × 10⁻⁷ C and qB = –2.5 × 10⁻⁷ C located at points A: (0, 0, –15 cm) and B: (0, 0, +15 cm), respectively. What are the total charge and electric dipole moment of the system?",
+    "answer": "Total charge = qA + qB = 2.5×10⁻⁷ + (–2.5×10⁻⁷) = 0\n\nElectric dipole moment:\np = q × d = 2.5×10⁻⁷ C × 2r = 2.5×10⁻⁷ × (2 × 0.15) = 2.5×10⁻⁷ × 0.30\np = 7.5×10⁻⁸ C·m\n\nDirection: from negative charge (B) to positive charge (A), i.e., from (0,0,+15cm) to (0,0,−15cm) → along −z direction.\np = 7.5×10⁻⁸ C·m in the −z direction.",
+    "steps": [
+      { "stepTitle": "Calculate total charge", "content": "q_total = qA + qB = 2.5×10⁻⁷ − 2.5×10⁻⁷ = 0" },
+      { "stepTitle": "Calculate dipole moment: p = q × 2l", "content": "2l = distance between charges = 30 cm = 0.30 m\np = q × 2l = 2.5×10⁻⁷ × 0.30 = 7.5×10⁻⁸ C·m" },
+      { "stepTitle": "Determine direction", "content": "Dipole moment points from −q to +q: from B (negative) at z=+15 cm to A (positive) at z=−15 cm\nDirection: −z axis\np = 7.5×10⁻⁸ C·m along −z direction" }
+    ],
+    "explanation": "An electric dipole has equal and opposite charges. The net charge is zero, but the dipole moment p = q×2l is non-zero and carries directional information. The direction convention: p points from the negative to the positive charge."
+  },
+  {
+    "questionNumber": "1.10",
+    "questionText": "An electric dipole with dipole moment 4 × 10⁻⁹ C·m is aligned at 30° with the direction of a uniform electric field of magnitude 5 × 10⁴ N/C. Calculate the magnitude of the torque acting on the dipole.",
+    "answer": "τ = pE sin θ\nτ = 4×10⁻⁹ × 5×10⁴ × sin 30°\nτ = 4×10⁻⁹ × 5×10⁴ × 0.5\nτ = 10⁻⁴ N·m",
+    "steps": [
+      { "stepTitle": "Apply torque formula: τ = pE sin θ", "content": "p = 4×10⁻⁹ C·m, E = 5×10⁴ N/C, θ = 30°\nτ = pE sin θ" },
+      { "stepTitle": "Substitute and calculate", "content": "τ = 4×10⁻⁹ × 5×10⁴ × sin 30°\n= 4×10⁻⁹ × 5×10⁴ × 0.5\n= 10⁻⁴ N·m" }
+    ],
+    "explanation": "The torque on a dipole τ = p × E (cross product) has magnitude pE sin θ. The torque acts to align the dipole with the field (θ→0). Maximum torque occurs at θ=90° (perpendicular); zero torque at θ=0° (aligned) or θ=180° (anti-aligned)."
+  },
+  {
+    "questionNumber": "1.11",
+    "questionText": "A charge of 17.7 μC is uniformly distributed over a large plane sheet of area 200 cm². Find (a) the surface charge density (b) the electric field on the surface just above the sheet.",
+    "answer": "(a) σ = Q/A = 17.7×10⁻⁶ C / (200×10⁻⁴ m²) = 17.7×10⁻⁶ / 2×10⁻² = 8.85×10⁻⁴ C/m²\n\n(b) E = σ/2ε₀ (field just above a plane sheet)\nε₀ = 8.854×10⁻¹² C²/N·m²\nE = 8.85×10⁻⁴ / (2 × 8.854×10⁻¹²) = 8.85×10⁻⁴ / 1.77×10⁻¹¹ ≈ 5×10⁷ N/C",
+    "steps": [
+      { "stepTitle": "Calculate surface charge density σ = Q/A", "content": "Q = 17.7×10⁻⁶ C, A = 200 cm² = 200×10⁻⁴ m² = 2×10⁻² m²\nσ = 17.7×10⁻⁶ / 2×10⁻² = 8.85×10⁻⁴ C/m²" },
+      { "stepTitle": "Apply field formula for an infinite plane sheet: E = σ/2ε₀", "content": "E = σ/2ε₀ = 8.85×10⁻⁴ / (2 × 8.854×10⁻¹²)\n= 8.85×10⁻⁴ / 1.77×10⁻¹¹ ≈ 5×10⁷ N/C" }
+    ],
+    "explanation": "For an infinite plane sheet with surface charge density σ, the electric field is E = σ/2ε₀ perpendicular to the sheet on each side. This result comes from Gauss's law with a pillbox Gaussian surface straddling the sheet."
+  },
+  {
+    "questionNumber": "1.12",
+    "questionText": "Two large thin metal plates are parallel and close to each other. On their inner faces, the plates have surface charge densities of opposite signs and of magnitude 17.0 × 10⁻²² C/m². What is E: (a) in the outer region of the first plate, (b) in the outer region of the second plate, and (c) between the plates?",
+    "answer": "σ = 17.0 × 10⁻²² C/m² (one plate +σ, other −σ)\nField from one plate: E₀ = σ/2ε₀\n\n(a) Outer region of first plate (+σ): fields from both plates point away from +σ plate and toward −σ plate.\nE = σ/2ε₀ − σ/2ε₀ = 0 (they cancel)\n\n(b) Outer region of second plate (−σ): same cancellation.\nE = 0\n\n(c) Between the plates: fields from both plates point in the same direction (from + to −).\nE = σ/2ε₀ + σ/2ε₀ = σ/ε₀\nE = 17.0×10⁻²² / 8.854×10⁻¹² = 1.92×10⁻¹¹ N/C",
+    "steps": [
+      { "stepTitle": "Field from one infinite plane: E₀ = σ/2ε₀ on each side", "content": "+σ plate: field points away (outward on both sides)\n−σ plate: field points inward (toward the plate on both sides)" },
+      { "stepTitle": "Superpose fields in each region", "content": "Outer regions: fields from the two plates are opposite → cancel → E = 0\nInner (between) region: fields from both plates point the same way (from + to −) → add → E = σ/ε₀" },
+      { "stepTitle": "Calculate E between the plates", "content": "E = σ/ε₀ = 17.0×10⁻²² / 8.854×10⁻¹² = 1.92×10⁻¹¹ N/C" }
+    ],
+    "explanation": "The parallel-plate capacitor has E = σ/ε₀ between the plates and E ≈ 0 outside (ideal case). This is why capacitors can store energy in the confined electric field — the field exists only between the plates."
+  },
+  {
+    "questionNumber": "1.13",
+    "questionText": "An oil drop of 12 excess electrons is held stationary under a constant electric field of 2.55 × 10⁴ N/C in Millikan's oil drop experiment. The density of the oil is 1.26 g/cm³. Find the radius of the drop. (g = 9.81 m/s², e = 1.60 × 10⁻¹⁹ C)",
+    "answer": "At equilibrium: Electric force = Gravitational force\nqE = mg\nCharge q = 12e = 12 × 1.60×10⁻¹⁹ = 1.92×10⁻¹⁸ C\nMass m = (4/3)πr³ρ\n\nqE = (4/3)πr³ρg\nr³ = 3qE / (4πρg)\nr³ = (3 × 1.92×10⁻¹⁸ × 2.55×10⁴) / (4π × 1.26×10³ × 9.81)\nr³ = 1.469×10⁻¹⁴ / (1.554×10⁵)\nr³ = 9.45×10⁻²⁰ m³\nr = (9.45×10⁻²⁰)^(1/3) = 9.81×10⁻⁷ m ≈ 0.98 μm",
+    "steps": [
+      { "stepTitle": "Set up equilibrium condition: qE = mg", "content": "q = 12 × 1.60×10⁻¹⁹ = 1.92×10⁻¹⁸ C\nm = (4/3)πr³ρ where ρ = 1.26×10³ kg/m³" },
+      { "stepTitle": "Solve for r³", "content": "qE = (4/3)πr³ρg\nr³ = 3qE/(4πρg) = (3 × 1.92×10⁻¹⁸ × 2.55×10⁴)/(4π × 1.26×10³ × 9.81)\n= 1.469×10⁻¹⁴ / 1.554×10⁵ = 9.45×10⁻²⁰ m³" },
+      { "stepTitle": "Find r", "content": "r = (9.45×10⁻²⁰)^(1/3) ≈ 9.81×10⁻⁷ m ≈ 0.98 μm" }
+    ],
+    "explanation": "Millikan's oil-drop experiment demonstrated charge quantisation by showing that charge always came in integer multiples of e. At equilibrium, the upward electric force exactly balances gravity, allowing calculation of the charge (and hence drop radius)."
+  },
+  {
+    "questionNumber": "1.14",
+    "questionText": "Which among the curves shown cannot possibly represent electrostatic field lines?",
+    "answer": "The following cannot represent electrostatic field lines:\n(a) Closed loops — electric field lines cannot form closed loops (unlike magnetic field lines). They always start on positive charges and end on negative charges (or at infinity).\n(b) Field lines that cross each other — this would imply two different field directions at the same point, which is impossible.\n(c) Field lines starting or ending in empty space (not on a charge) — electric field lines must begin on positive charges and end on negative charges.\n(d) Lines showing a tangential component along an equipotential surface — field lines must be perpendicular to equipotential surfaces.",
+    "steps": [
+      { "stepTitle": "Recall properties of valid electric field lines", "content": "1. Start only on +ve charges (or from ∞), end on −ve charges (or at ∞)\n2. Never cross each other\n3. Never form closed loops\n4. Always perpendicular to equipotential surfaces\n5. Density (closeness) indicates field strength" },
+      { "stepTitle": "Identify violations in each curve", "content": "Closed loops → violates rule 3 (not possible for electrostatic E-field)\nCrossing lines → violates rule 2\nLines not starting/ending on charges → violates rule 1\nLines not ⊥ to conductor surface → violates rule 4" }
+    ],
+    "explanation": "Electric field lines obey strict geometric rules derived from Maxwell's equations. These rules make field line diagrams a reliable visual tool for understanding electric field patterns around charge configurations."
+  },
+  {
+    "questionNumber": "1.15",
+    "questionText": "In a certain region of space, electric field is along the z-direction throughout. The magnitude of electric field is, however, not constant but increases uniformly along the positive z-direction, at the rate of 10⁵ N/C per metre. What are the force and torque experienced by a system having a total dipole moment equal to 10⁻⁷ C·m in the negative z-direction?",
+    "answer": "p = 10⁻⁷ C·m in the −z direction, E along +z direction, non-uniform\n\nTorque: τ = p × E\nSince p is along −z and E is along +z, they are anti-parallel (θ = 180°)\nτ = pE sin 180° = 0\n\nForce: F = p(dE/dz) along z (for a dipole in non-uniform field)\ndE/dz = 10⁵ N/C per m (given)\nF = p × dE/dz = 10⁻⁷ × 10⁵ = 10⁻² N\nDirection: p is along −z, and E increases along +z\nF = p·(dE/dz) in the direction of p → F is along −z direction\nF = 10⁻² N in the −z direction",
+    "steps": [
+      { "stepTitle": "Find the torque", "content": "p is along −z, E is along +z → they are antiparallel (θ = 180°)\nτ = pE sin 180° = 0" },
+      { "stepTitle": "Find the force in non-uniform field", "content": "F = p(dE/dx) for dipole in field gradient\ndE/dz = 10⁵ N/C/m\nF = 10⁻⁷ × 10⁵ = 10⁻² N" },
+      { "stepTitle": "Determine direction of force", "content": "p points in −z; E gradient is in +z direction\nF = (p·∇)E → force is in −z direction (antiparallel to E gradient)\nF = 10⁻² N in −z direction" }
+    ],
+    "explanation": "In a uniform field, a dipole experiences only torque (no net force). In a non-uniform field, it experiences both. The force F = p(dE/dx) tends to pull the dipole toward stronger field regions if p is parallel to E, or push it toward weaker field regions if antiparallel."
+  },
+  {
+    "questionNumber": "1.16",
+    "questionText": "(a) A conductor A with a cavity as shown in the figure has no charge. A charge +3 μC is introduced into the cavity through a small hole. What is the charge on the outer surface and the inner surface of A?\n(b) Is the electric field inside the cavity (with no charge) zero, even if an electric field is applied externally?\n(c) Show that the electric field at the surface of a charged conductor is E = σ/ε₀ n̂.",
+    "answer": "(a) The +3 μC charge inside induces −3 μC on the inner surface and +3 μC on the outer surface of conductor A.\n\n(b) Yes. The electric field inside a cavity (with no charge inside) in a conductor is zero, regardless of the external field. This is electrostatic shielding — the conductor's free charges redistribute to cancel any external field inside the cavity.\n\n(c) Using Gauss's law with a small pillbox surface over the conductor: The field inside = 0, field outside = E (normal to surface).\nE × A = σA/ε₀ → E = σ/ε₀",
+    "steps": [
+      { "stepTitle": "Part (a): Charge distribution by induction", "content": "+3 μC in cavity induces −3 μC on inner surface of conductor\nConductor itself has no net charge, so outer surface gets +3 μC" },
+      { "stepTitle": "Part (b): Electrostatic shielding", "content": "Inside a conductor, E = 0 always in electrostatics\nThis shielding applies to the cavity too — free charges on the conductor redistribute to cancel any external E inside the cavity" },
+      { "stepTitle": "Part (c): Gauss's law derivation", "content": "Gaussian surface: pillbox with faces just inside and outside conductor surface\nInside: E = 0; Outside: E = E (normal)\nFlux = E·A = σA/ε₀\nTherefore E = σ/ε₀" }
+    ],
+    "explanation": "Electrostatic shielding — zero field inside a conductor cavity — is used in Faraday cages to protect sensitive electronics from external electromagnetic interference. The field at a conductor's surface is σ/ε₀, twice the field of an isolated sheet (σ/2ε₀), because the conductor confines field to one side only."
+  },
+  {
+    "questionNumber": "1.17",
+    "questionText": "A long charged cylinder of linear charge density λ is surrounded by a hollow coaxial conducting cylinder. What is the electric field in the space between the two cylinders?",
+    "answer": "Using Gauss's law with a cylindrical Gaussian surface of radius r and length L (where inner radius < r < outer radius):\n\nCharge enclosed = λL\nFlux = E × 2πrL\n\nE × 2πrL = λL/ε₀\nE = λ/(2πε₀r)\n\nDirection: radially outward for positive λ, radially inward for negative λ.",
+    "steps": [
+      { "stepTitle": "Choose cylindrical Gaussian surface", "content": "Gaussian surface: coaxial cylinder of radius r (inner < r < outer) and length L\nBy symmetry, E is radial and uniform on this surface" },
+      { "stepTitle": "Apply Gauss's law", "content": "Q_enc = λL (from inner cylinder)\nE × 2πrL = λL/ε₀\nE = λ/(2πε₀r)" },
+      { "stepTitle": "State the result", "content": "E = λ/(2πε₀r) directed radially\nField decreases as 1/r between the cylinders" }
+    ],
+    "explanation": "The coaxial cable design uses this principle: the field exists only between the inner conductor and outer shield, not outside. This confines the signal field and prevents interference with or from external fields."
+  },
+  {
+    "questionNumber": "1.18",
+    "questionText": "In a hydrogen atom, the electron and proton are bound at a distance of about 0.53 Å. (a) Estimate the potential energy of the system in eV, taking the zero of potential energy at infinite separation of the electron from the proton. (b) What is the minimum work required to free the electron, given that its kinetic energy in the orbit is half the magnitude of the potential energy obtained in (a)? (c) What are the answers to (a) and (b) above if the zero of potential energy is taken at 1.06 Å separation?",
+    "answer": "(a) U = kq₁q₂/r = k(−e²)/r = (9×10⁹)(−1.6×10⁻¹⁹)²/(0.53×10⁻¹⁰)\nU = −9×10⁹ × 2.56×10⁻³⁸ / 5.3×10⁻¹¹\nU = −4.35×10⁻¹⁸ J = −4.35×10⁻¹⁸/1.6×10⁻¹⁹ eV = −27.2 eV\n\n(b) KE = |U|/2 = 27.2/2 = 13.6 eV\nTotal energy = KE + U = 13.6 − 27.2 = −13.6 eV\nWork to free electron = 0 − (−13.6) = 13.6 eV (ionisation energy of hydrogen)\n\n(c) With zero at 1.06 Å:\nU at 1.06 Å = k(−e²)/(1.06×10⁻¹⁰) = −13.6 eV\nU at 0.53 Å relative to new zero = −27.2 − (−13.6) = −13.6 eV\nMinimum work = same = 13.6 eV (work done doesn't change with choice of reference)",
+    "steps": [
+      { "stepTitle": "Calculate potential energy at r = 0.53 Å", "content": "U = kq₁q₂/r = 9×10⁹ × (−e²)/(0.53×10⁻¹⁰)\n= −9×10⁹ × 2.56×10⁻³⁸/5.3×10⁻¹¹ = −4.35×10⁻¹⁸ J = −27.2 eV" },
+      { "stepTitle": "Find total energy and work to free electron", "content": "KE = |U|/2 = 13.6 eV (virial theorem)\nTotal E = 13.6 − 27.2 = −13.6 eV\nIonisation energy = +13.6 eV" },
+      { "stepTitle": "Recalculate with reference at 1.06 Å", "content": "Differences in PE depend on choice of reference; actual work done = 13.6 eV (invariant)\nU relative to new reference = U_old − U_at_1.06Å = −27.2 − (−13.6) = −13.6 eV" }
+    ],
+    "explanation": "The ionisation energy of hydrogen (13.6 eV) is independent of the choice of zero for potential energy — only differences in energy have physical meaning. This 13.6 eV value matches the Rydberg energy and is confirmed by spectroscopic measurements."
+  },
+  {
+    "questionNumber": "1.19",
+    "questionText": "If one of the two electrons of a H₂ molecule is removed, we get a hydrogen molecular ion H₂⁺. In the ground state of H₂⁺, the two protons are separated by roughly 1.5 Å, and the electron is roughly 1 Å from each proton. Determine the potential energy of the system. Specify your choice of zero of potential energy.",
+    "answer": "Taking zero PE at infinite separation:\nPE(e−p₁) = k(−e)(+e)/r₁ = −ke²/1Å = −9×10⁹ × (1.6×10⁻¹⁹)² / 10⁻¹⁰\n= −2.304×10⁻¹⁸/10⁻¹⁰ = −2.304×10⁻⁸ J... \n\nLet me use eV directly:\nPE = k(-e²)/r in eV = −14.4/r(Å) eV per pair\nPE(e−p₁) = −14.4/1 = −14.4 eV\nPE(e−p₂) = −14.4/1 = −14.4 eV\nPE(p₁−p₂) = +14.4/1.5 = +9.6 eV\nTotal PE = −14.4 − 14.4 + 9.6 = −19.2 eV",
+    "steps": [
+      { "stepTitle": "Identify all charge pairs and their separations", "content": "Electron−proton₁: r = 1 Å\nElectron−proton₂: r = 1 Å\nProton₁−proton₂: r = 1.5 Å" },
+      { "stepTitle": "Use PE = ke²/r ≈ 14.4/r(Å) eV for each pair", "content": "e−p₁: −14.4/1 = −14.4 eV (attractive)\ne−p₂: −14.4/1 = −14.4 eV (attractive)\np₁−p₂: +14.4/1.5 = +9.6 eV (repulsive)" },
+      { "stepTitle": "Sum all contributions", "content": "Total PE = −14.4 − 14.4 + 9.6 = −19.2 eV\n(Reference: zero at infinite separation)" }
+    ],
+    "explanation": "The total potential energy of a multi-particle system is the sum of pair-wise interactions. For H₂⁺, despite the proton-proton repulsion, the electron's attraction to both protons creates a net bonding energy — this is why H₂⁺ is a stable ion."
+  },
+  {
+    "questionNumber": "1.20",
+    "questionText": "Two charged conducting spheres of radii a and b are connected to each other by a wire. What is the ratio of electric fields at the surfaces of the two spheres? Use the result obtained to explain why charge density on the sharp and pointed ends of a conductor is higher than on its flatter portions.",
+    "answer": "When connected, both spheres reach the same potential V.\nV = kQ_a/a = kQ_b/b → Q_a/Q_b = a/b\n\nElectric field at surface: E = σ/ε₀ = Q/(4πR²ε₀) = V/R\nE_a = V/a, E_b = V/b\nE_a/E_b = b/a\n\nSmaller radius → larger E. Sharp points have very small radius → very large electric field → charge density is highest there.\n\nSurface charge density: σ = Q/(4πR²)\nσ_a/σ_b = (Q_a/a²)/(Q_b/b²) = (a/b)(b²/a²) = b/a\nSo smaller sphere has higher charge density.",
+    "steps": [
+      { "stepTitle": "Equal potential condition when connected by wire", "content": "Both spheres at same potential V = kQa/a = kQb/b\n→ Qa/Qb = a/b" },
+      { "stepTitle": "Calculate surface field ratio", "content": "E_surface = V/R (since V = kQ/R and E = kQ/R² = V/R)\nE_a/E_b = (V/a)/(V/b) = b/a\nSmaller sphere (smaller R) → larger E" },
+      { "stepTitle": "Apply to pointed ends of conductors", "content": "Sharp points ≈ very small radius of curvature\n→ very high electric field → Corona discharge possible\nThis is why lightning rods have pointed tips: point discharge equalises charge safely" }
+    ],
+    "explanation": "The electric field is inversely proportional to the radius of curvature on a conductor at the same potential. Sharp points concentrate charge and create intense fields — used in lightning rods (point discharge) and dangerous in high-voltage equipment (corona losses)."
+  },
+  {
+    "questionNumber": "1.21",
+    "questionText": "Two large parallel conducting plates P and Q are maintained at potentials of 50 V and 0 V respectively. A small test charge −q is placed at the center. (a) Is the electrostatic potential at the center of the gap, equal to 25 V? (b) What is the work done in moving the charge q from the plate P to the center? From the center to Q?",
+    "answer": "(a) Yes. The potential varies linearly between parallel plates.\nAt the centre (halfway between), V = 50/2 = 25 V.\n\n(b) Work done moving −q from P (50V) to centre (25V):\nW = q × (V_initial − V_final) = (−q)(50 − 25) = −25q J (if q in C and V in volts)\n\nWork done moving from centre (25V) to Q (0V):\nW = (−q)(25 − 0) = −25q J\n\n(Note: q here represents magnitude; actual work depends on sign.)",
+    "steps": [
+      { "stepTitle": "Determine potential at centre", "content": "Potential varies linearly between plates: V(x) = 50 − 50x/d\nAt centre (x = d/2): V = 50 − 25 = 25 V" },
+      { "stepTitle": "Calculate work done moving charge", "content": "W = q_charge × (V_i − V_f) where q_charge = −q\nP to centre: W = (−q)(50 − 25) = −25q J\nCentre to Q: W = (−q)(25 − 0) = −25q J" }
+    ],
+    "explanation": "Between ideal parallel plates, the potential varies linearly with position (uniform field). Work done moving a charge = charge × potential difference = qΔV. For a negative charge, moving from high potential to low potential does negative work (field pushes it toward high potential)."
+  },
+  {
+    "questionNumber": "1.22",
+    "questionText": "A spherical conducting shell of inner radius r₁ and outer radius r₂ has a charge Q. (a) A charge q is placed at the centre of the shell. What is the surface charge density on the inner and outer surfaces of the shell? (b) Is the electric field inside a cavity (with no charge) zero, even if the shell is not spherical? Explain.",
+    "answer": "(a) Charge q at centre induces −q on inner surface and the outer surface carries (Q + q).\nInner surface charge density: σ_inner = −q/(4πr₁²)\nOuter surface charge density: σ_outer = (Q + q)/(4πr₂²)\n\n(b) Yes. For any shaped conducting shell (cavity), the field inside is zero regardless of external charges. This follows from Gauss's law: any closed surface inside the conductor has E = 0, so the flux (and enclosed charge) is zero. The induced charges on the inner surface create zero field inside.",
+    "steps": [
+      { "stepTitle": "Find induced charges on inner and outer surfaces", "content": "q at centre induces −q on inner surface (Gauss's law: E=0 inside conductor)\nConductor has charge Q, so outer surface has Q − (−q) = Q + q" },
+      { "stepTitle": "Calculate surface charge densities", "content": "σ_inner = −q/(4πr₁²)\nσ_outer = (Q+q)/(4πr₂²)" },
+      { "stepTitle": "Address part (b) — non-spherical cavity", "content": "Gauss's law guarantees E=0 inside any conductor, regardless of shape\nThe induced charges on any cavity surface always arrange to give zero internal field\nShape doesn't matter — the conductor's free electrons always find the right distribution" }
+    ],
+    "explanation": "Electrostatic shielding works for any shaped cavity. The conductor's free electrons redistribute to ensure zero field inside. This is why Faraday cages — even simple metal boxes — protect against electric fields regardless of their exact shape."
+  },
+  {
+    "questionNumber": "1.23",
+    "questionText": "The electrostatic field is zero everywhere inside a charged conductor. Is this consistent with the statement that for a closed Gaussian surface, the net charge must be zero inside it?",
+    "answer": "Yes, it is perfectly consistent. \nSince E = 0 everywhere inside the conductor, by Gauss's law:\nΦ = ∮E·dA = 0 for any Gaussian surface drawn inside the conductor.\nSince Φ = Q_enclosed/ε₀, this means Q_enclosed = 0.\n\nTherefore any Gaussian surface drawn inside the conductor encloses zero net charge. All charges reside on the surface of the conductor — consistent with E = 0 inside.",
+    "steps": [
+      { "stepTitle": "State Gauss's law", "content": "∮E·dA = Q_enc/ε₀\nIf E = 0 everywhere on a Gaussian surface: ∮E·dA = 0 → Q_enc = 0" },
+      { "stepTitle": "Apply to conductor", "content": "Inside conductor: E = 0 at every point\nFor any Gaussian surface inside the conductor: Q_enc = 0\nConclusion: No free charges exist inside the bulk of a conductor — they all sit on the surface" }
+    ],
+    "explanation": "This is one of the most important results in electrostatics: charge in a conductor resides entirely on its surface. It's the reason metals are used as Faraday cages and why hollow conductors can shield their interiors from electric fields."
+  },
+  {
+    "questionNumber": "1.24",
+    "questionText": "A uniformly charged conducting sphere of 2.4 m diameter has a surface charge density of 80.0 μC/m². (a) Find the charge on the sphere. (b) What is the total electric flux leaving the surface of the sphere?",
+    "answer": "(a) r = 1.2 m, σ = 80.0 μC/m² = 80.0 × 10⁻⁶ C/m²\nQ = σ × 4πr² = 80.0 × 10⁻⁶ × 4π × (1.2)²\nQ = 80.0 × 10⁻⁶ × 4π × 1.44\nQ = 80.0 × 10⁻⁶ × 18.096 = 1.448 × 10⁻³ C ≈ 1.45 mC\n\n(b) Φ = Q/ε₀ = 1.448 × 10⁻³ / (8.854 × 10⁻¹²) = 1.63 × 10⁸ N·m²/C",
+    "steps": [
+      { "stepTitle": "Calculate total charge", "content": "r = 1.2 m, A = 4πr² = 4π × 1.44 = 18.096 m²\nQ = σA = 80×10⁻⁶ × 18.096 = 1.448×10⁻³ C" },
+      { "stepTitle": "Find total electric flux using Gauss's law", "content": "Φ = Q/ε₀ = 1.448×10⁻³ / 8.854×10⁻¹² = 1.63×10⁸ N·m²/C" }
+    ],
+    "explanation": "By Gauss's law, the total electric flux through any closed surface equals the enclosed charge divided by ε₀. For a spherical conductor, all the charge Q is on the surface, and the flux through the sphere is simply Q/ε₀."
+  },
+  {
+    "questionNumber": "1.25",
+    "questionText": "An infinite line charge produces a field of 9 × 10⁴ N/C at a distance of 2 cm. Calculate the linear charge density.",
+    "answer": "E = λ/(2πε₀r)\nλ = E × 2πε₀ × r\nλ = 9 × 10⁴ × 2π × 8.854 × 10⁻¹² × 0.02\nλ = 9 × 10⁴ × 2 × 3.1416 × 8.854 × 10⁻¹² × 0.02\nλ = 9 × 10⁴ × 1.113 × 10⁻¹²\nλ = 10⁻⁷ C/m = 0.1 μC/m",
+    "steps": [
+      { "stepTitle": "Apply field formula for infinite line charge: E = λ/(2πε₀r)", "content": "E = 9×10⁴ N/C, r = 2 cm = 0.02 m" },
+      { "stepTitle": "Solve for λ", "content": "λ = E × 2πε₀r = 9×10⁴ × 2π × 8.854×10⁻¹² × 0.02\n= 9×10⁴ × 1.113×10⁻¹² = 10⁻⁷ C/m" }
+    ],
+    "explanation": "The electric field from an infinite line charge decreases as 1/r (not 1/r² like a point charge). This is a consequence of the line geometry — the field spreads out in a cylindrical, not spherical, pattern. This result is directly obtained from Gauss's law with a cylindrical Gaussian surface."
+  },
+  {
+    "questionNumber": "1.26",
+    "questionText": "Two large thin metal plates are parallel and close to each other with surface charge densities +17.7 × 10⁻¹¹ C/m² on one and –17.7 × 10⁻¹¹ C/m² on the other. Electric field between the plates?",
+    "answer": "σ = 17.7 × 10⁻¹¹ C/m²\nE_between = σ/ε₀ = 17.7 × 10⁻¹¹ / 8.854 × 10⁻¹² = 20 N/C\n(directed from +σ plate to −σ plate)",
+    "steps": [
+      { "stepTitle": "Apply formula for field between parallel plates", "content": "E = σ/ε₀ (for a parallel plate capacitor with ±σ)\nσ = 17.7×10⁻¹¹ C/m², ε₀ = 8.854×10⁻¹² C²/N·m²" },
+      { "stepTitle": "Calculate", "content": "E = 17.7×10⁻¹¹ / 8.854×10⁻¹² = 20 N/C\nDirection: from positive to negative plate" }
+    ],
+    "explanation": "Between parallel plates with opposite surface charge densities ±σ, the fields from both plates add constructively to give E = σ/ε₀, while outside both plates the fields cancel to give E = 0."
+  },
+  {
+    "questionNumber": "1.27",
+    "questionText": "An electric field is uniform, and in the positive x-direction for positive x, and uniform with the same magnitude but in the negative x-direction for negative x. It is given that E = 200 N/C for x > 0 and E = –200 N/C for x < 0. A right circular cylinder of length 20 cm and radius 5 cm has its centre at the origin and its axis along the x-axis. Find the net outward electric flux through the cylinder. What net charge is enclosed?",
+    "answer": "The field is symmetric: E = +200 N/C for x > 0 and E = −200 N/C for x < 0.\nThe cylinder's axis is along x, centre at origin.\n\nFlux through left circular end (at x = −10 cm, area A = πr²):\nE is in −x direction and outward normal is in −x direction: Φ_left = +200 × π(0.05)² = +200 × 7.854×10⁻³ = +1.571 N·m²/C\n\nFlux through right circular end (at x = +10 cm):\nE is in +x direction and outward normal is in +x direction: Φ_right = +200 × π(0.05)² = +1.571 N·m²/C\n\nFlux through curved surface = 0 (E is perpendicular to the normal)\n\nTotal Φ = 2 × 1.571 = 3.14 N·m²/C\n\nEnclosed charge Q = ε₀Φ = 8.854×10⁻¹² × 3.14 = 2.78×10⁻¹¹ C",
+    "steps": [
+      { "stepTitle": "Identify flux contributions", "content": "Left end (x=−0.1 m): E = −200x̂, outward normal = −x̂ → positive flux\nRight end (x=+0.1 m): E = +200x̂, outward normal = +x̂ → positive flux\nCurved surface: E ⊥ normal → zero flux" },
+      { "stepTitle": "Calculate flux through each end", "content": "A = πr² = π(0.05)² = 7.854×10⁻³ m²\nΦ_each end = 200 × 7.854×10⁻³ = 1.571 N·m²/C\nTotal Φ = 2 × 1.571 = 3.14 N·m²/C" },
+      { "stepTitle": "Find enclosed charge", "content": "Q = ε₀ × Φ = 8.854×10⁻¹² × 3.14 = 2.78×10⁻¹¹ C ≈ 27.8 pC" }
+    ],
+    "explanation": "The field configuration (pointing outward in both x directions) is as if positive charge exists near the origin. Gauss's law confirms this: positive net outward flux implies positive enclosed charge. The 'V-shaped' field pattern occurs near a plane of positive charge."
+  },
+  {
+    "questionNumber": "1.28",
+    "questionText": "An electric field is given by E⃗ = 3×10³î N/C. Calculate the electric flux through a square surface of side 10 cm parallel to the Y-Z plane.",
+    "answer": "E = 3×10³ N/C in x-direction\nSurface is parallel to Y-Z plane → normal to surface is in x-direction\nSide = 10 cm = 0.1 m → Area = (0.1)² = 0.01 m²\n\nΦ = E · A = E × A × cos θ = 3×10³ × 0.01 × cos 0° = 30 N·m²/C",
+    "steps": [
+      { "stepTitle": "Identify field and surface orientation", "content": "E = 3×10³ î N/C (in x-direction)\nSurface parallel to YZ plane → area vector A = A î (in x-direction)\nθ = 0° between E and A" },
+      { "stepTitle": "Calculate flux", "content": "Φ = E·A cos θ = 3×10³ × 0.01 × 1 = 30 N·m²/C" }
+    ],
+    "explanation": "Electric flux Φ = E·A = EA cos θ, where θ is the angle between the field and the surface normal. Maximum flux occurs when field is perpendicular to the surface (θ=0°). Zero flux when field is parallel to the surface (θ=90°)."
+  },
+  {
+    "questionNumber": "1.29",
+    "questionText": "Careful measurement of the electric field at the surface of a black box indicates that the net outward flux through the surface of the box is 8.0 × 10³ N·m²/C. (i) What is the net charge inside the box? (ii) If the net outward flux through the surface of the box were zero, could you conclude that there were no charges inside the box? Why or why not?",
+    "answer": "(i) By Gauss's law: Q = ε₀ × Φ = 8.854×10⁻¹² × 8×10³ = 7.08×10⁻⁸ C ≈ 70.8 nC\n\n(ii) No, you cannot conclude there are no charges inside. Zero net flux means zero NET enclosed charge — there could be equal positive and negative charges inside that cancel to give zero net charge. Example: a dipole (+q and −q) inside would give zero net flux but has charges inside.",
+    "steps": [
+      { "stepTitle": "Part (i): Find Q from Gauss's law", "content": "Φ = Q/ε₀ → Q = ε₀Φ = 8.854×10⁻¹² × 8×10³ = 7.08×10⁻⁸ C" },
+      { "stepTitle": "Part (ii): Interpret zero net flux", "content": "Zero flux → Q_net = 0 (not necessarily Q = 0)\nCould have +q and −q inside: net Q = 0, net flux = 0\nGauss's law only tells us the NET enclosed charge, not whether individual charges exist" }
+    ],
+    "explanation": "Gauss's law relates flux to NET enclosed charge. Zero flux means zero net charge inside, not zero charge. This is a crucial distinction — the law is about the algebraic sum of charges, not their absolute values."
+  },
+  {
+    "questionNumber": "1.30",
+    "questionText": "A point charge +10 μC is a distance 5 cm directly above the centre of a square of side 10 cm, as shown. What is the magnitude of the electric flux through the square? (Hint: Think of the square as one face of a cube with edge 10 cm.)",
+    "answer": "Using the hint: place the charge at the centre of a cube of side 10 cm.\nThe total flux through the cube = Q/ε₀ = 10×10⁻⁶ / 8.854×10⁻¹² = 1.13×10⁶ N·m²/C\n\nBy symmetry, the flux is equally distributed among the 6 faces.\nFlux through the square = (1/6) × 1.13×10⁶ = 1.88×10⁵ N·m²/C",
+    "steps": [
+      { "stepTitle": "Use symmetry with a cube", "content": "Charge is 5 cm above the centre of a 10 cm square → it's at the centre of a cube with the square as one face\nTotal flux through cube = Q/ε₀ = 10×10⁻⁶ / 8.854×10⁻¹² = 1.13×10⁶ N·m²/C" },
+      { "stepTitle": "Divide by 6 for the square face", "content": "By symmetry, each face of the cube gets 1/6 of the total flux\nΦ_square = 1.13×10⁶ / 6 = 1.88×10⁵ N·m²/C" }
+    ],
+    "explanation": "The cube symmetry trick is elegant: instead of integrating over the square directly (complex), we use the fact that if the charge is at the cube's centre, all six faces are equivalent. Gauss's law makes the total flux trivial, and symmetry distributes it equally."
+  },
+  {
+    "questionNumber": "1.31",
+    "questionText": "A point charge of 2.0 μC is at the centre of a cubic Gaussian surface 9.0 cm on a side. What is the net electric flux through the surface?",
+    "answer": "By Gauss's law, the flux through any closed surface surrounding a charge q is q/ε₀, regardless of the shape or size of the surface.\nΦ = Q/ε₀ = 2.0×10⁻⁶ / 8.854×10⁻¹² = 2.26×10⁵ N·m²/C",
+    "steps": [
+      { "stepTitle": "Apply Gauss's law directly", "content": "Φ = Q_enc/ε₀\nQ_enc = 2.0×10⁻⁶ C (the charge at the centre)" },
+      { "stepTitle": "Calculate", "content": "Φ = 2.0×10⁻⁶ / 8.854×10⁻¹² = 2.26×10⁵ N·m²/C\nNote: the shape and size of the surface do not matter!" }
+    ],
+    "explanation": "Gauss's law is powerful because the flux depends only on the enclosed charge, not the shape or size of the Gaussian surface. This universality makes it ideal for problems with high symmetry but also valid for any closed surface."
+  },
+  {
+    "questionNumber": "1.32",
+    "questionText": "A point charge causes an electric flux of –1.0 × 10³ N·m²/C to pass through a spherical Gaussian surface of 10.0 cm radius centred on the charge. (a) If the radius of the Gaussian surface were doubled, how much flux would pass through the surface? (b) What is the value of the point charge?",
+    "answer": "(a) Flux = Q/ε₀ — depends only on the enclosed charge, not the radius.\nIf radius is doubled, flux = same = −1.0 × 10³ N·m²/C\n\n(b) Q = ε₀ × Φ = 8.854×10⁻¹² × (−1.0×10³) = −8.854×10⁻⁹ C ≈ −8.85 nC",
+    "steps": [
+      { "stepTitle": "Part (a): Flux is independent of surface size", "content": "Gauss's law: Φ = Q_enc/ε₀\nDoubling radius doesn't change Q_enc → Φ remains −1.0×10³ N·m²/C" },
+      { "stepTitle": "Part (b): Find charge from flux", "content": "Q = ε₀ × Φ = 8.854×10⁻¹² × (−1.0×10³)\n= −8.854×10⁻⁹ C ≈ −8.85 nC (negative charge)" }
+    ],
+    "explanation": "The independence of electric flux from Gaussian surface size is the power of Gauss's law. The negative flux indicates the charge is negative — field lines point inward (toward the charge) so the net outward flux is negative."
+  },
+  {
+    "questionNumber": "1.33",
+    "questionText": "A conducting sphere of radius 10 cm has an unknown charge. If the electric field 20 cm from the centre of the sphere is 1.5 × 10³ N/C and points radially inward, what is the net charge on the sphere?",
+    "answer": "The field points inward → negative charge.\nAt r = 20 cm = 0.20 m outside the sphere:\nE = k|Q|/r²\n|Q| = Er²/k = (1.5×10³ × (0.20)²) / (9×10⁹)\n= (1.5×10³ × 0.04) / (9×10⁹)\n= 60 / (9×10⁹)\n= 6.67×10⁻⁹ C\n\nSince field points inward, Q = −6.67×10⁻⁹ C ≈ −6.67 nC",
+    "steps": [
+      { "stepTitle": "Apply Coulomb's law for field outside a conductor", "content": "Outside a conductor, E = k|Q|/r² (same as a point charge at the centre)\nE = 1.5×10³ N/C (inward → negative charge), r = 0.20 m" },
+      { "stepTitle": "Solve for Q", "content": "|Q| = Er²/k = 1.5×10³ × 0.04 / 9×10⁹ = 60/(9×10⁹) = 6.67×10⁻⁹ C\nField inward → Q = −6.67 nC" }
+    ],
+    "explanation": "Outside a conducting sphere, the electric field is identical to that of a point charge Q at the centre (shell theorem). The direction of the field tells us the sign: inward means negative, outward means positive."
+  }
+]
