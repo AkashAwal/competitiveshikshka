@@ -5,19 +5,19 @@ import { Check } from "lucide-react";
 import { updateExamDetails, type ExamDetailsInput } from "../actions";
 
 const inputClass = "w-full rounded-lg px-3 py-2 text-sm outline-none";
-const inputStyle = { backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.9)" };
-const card = { background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" };
+const inputStyle = { backgroundColor: "rgba(var(--fg-rgb),0.05)", border: "1px solid rgba(var(--fg-rgb),0.08)", color: "rgba(var(--fg-rgb),0.9)" };
+const card = { background: "var(--surface-card)", border: "1px solid rgba(var(--fg-rgb),0.13)" };
 
 const CATEGORIES = ["Engineering", "Medical", "Other"];
 
 function Label({ children }: { children: React.ReactNode }) {
-  return <label className="text-xs font-semibold uppercase tracking-wide mb-1.5 block" style={{ color: "rgba(255,255,255,0.4)" }}>{children}</label>;
+  return <label className="text-xs font-semibold uppercase tracking-wide mb-1.5 block" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>{children}</label>;
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="rounded-2xl p-6 flex flex-col gap-4" style={card}>
-      <p className="text-sm font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>{title}</p>
+      <p className="text-sm font-bold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>{title}</p>
       {children}
     </div>
   );
@@ -71,7 +71,7 @@ export function ExamEditForm({ exam }: { exam: ExamDetails }) {
           <div>
             <Label>Category</Label>
             <select className={inputClass} style={inputStyle} value={form.category} onChange={e => setForm({ ...form, category: e.target.value })}>
-              {CATEGORIES.map(c => <option key={c} value={c} style={{ backgroundColor: "#1b2027" }}>{c}</option>)}
+              {CATEGORIES.map(c => <option key={c} value={c} style={{ backgroundColor: "var(--surface-content)" }}>{c}</option>)}
             </select>
           </div>
         </div>

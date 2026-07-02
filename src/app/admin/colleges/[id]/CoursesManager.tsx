@@ -15,10 +15,10 @@ const EMPTY: CourseInput = {
 };
 
 const inputClass = "w-full rounded-lg px-3 py-2 text-sm outline-none";
-const inputStyle = { backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.9)" };
+const inputStyle = { backgroundColor: "rgba(var(--fg-rgb),0.05)", border: "1px solid rgba(var(--fg-rgb),0.08)", color: "rgba(var(--fg-rgb),0.9)" };
 
 function Label({ children }: { children: React.ReactNode }) {
-  return <label className="text-xs font-semibold uppercase tracking-wide mb-1.5 block" style={{ color: "rgba(255,255,255,0.4)" }}>{children}</label>;
+  return <label className="text-xs font-semibold uppercase tracking-wide mb-1.5 block" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>{children}</label>;
 }
 
 export function CoursesManager({ collegeId, rows }: { collegeId: string; rows: CourseRow[] }) {
@@ -67,9 +67,9 @@ export function CoursesManager({ collegeId, rows }: { collegeId: string; rows: C
   }
 
   return (
-    <div className="rounded-2xl p-6 flex flex-col gap-4" style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" }}>
+    <div className="rounded-2xl p-6 flex flex-col gap-4" style={{ background: "var(--surface-card)", border: "1px solid rgba(var(--fg-rgb),0.13)" }}>
       <div className="flex items-center justify-between">
-        <p className="text-sm font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>Courses & seats</p>
+        <p className="text-sm font-bold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>Courses & seats</p>
         <button
           onClick={openCreate}
           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-white cursor-pointer"
@@ -79,10 +79,10 @@ export function CoursesManager({ collegeId, rows }: { collegeId: string; rows: C
         </button>
       </div>
 
-      <div className="overflow-x-auto rounded-xl" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+      <div className="overflow-x-auto rounded-xl" style={{ border: "1px solid rgba(var(--fg-rgb),0.06)" }}>
         <table className="w-full text-sm">
           <thead>
-            <tr style={{ color: "rgba(255,255,255,0.4)" }}>
+            <tr style={{ color: "rgba(var(--fg-rgb),0.4)" }}>
               {["Course", "Duration", "Seats", "Cutoff", "Fees (LPA)", ""].map(h => (
                 <th key={h} className="text-left font-semibold px-3 py-2.5 text-xs uppercase tracking-wide whitespace-nowrap">{h}</th>
               ))}
@@ -90,15 +90,15 @@ export function CoursesManager({ collegeId, rows }: { collegeId: string; rows: C
           </thead>
           <tbody>
             {rows.map(row => (
-              <tr key={row.id} className="border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-                <td className="px-3 py-2.5 font-medium" style={{ color: "rgba(255,255,255,0.85)" }}>{row.name}</td>
-                <td className="px-3 py-2.5" style={{ color: "rgba(255,255,255,0.55)" }}>{row.duration || "—"}</td>
-                <td className="px-3 py-2.5" style={{ color: "rgba(255,255,255,0.55)" }}>{row.seats ?? "—"}</td>
-                <td className="px-3 py-2.5" style={{ color: "rgba(255,255,255,0.55)" }}>{row.cutoff_general || "—"}</td>
-                <td className="px-3 py-2.5" style={{ color: "rgba(255,255,255,0.55)" }}>{row.fees_total_lpa ?? "—"}</td>
+              <tr key={row.id} className="border-t" style={{ borderColor: "rgba(var(--fg-rgb),0.06)" }}>
+                <td className="px-3 py-2.5 font-medium" style={{ color: "rgba(var(--fg-rgb),0.85)" }}>{row.name}</td>
+                <td className="px-3 py-2.5" style={{ color: "rgba(var(--fg-rgb),0.55)" }}>{row.duration || "—"}</td>
+                <td className="px-3 py-2.5" style={{ color: "rgba(var(--fg-rgb),0.55)" }}>{row.seats ?? "—"}</td>
+                <td className="px-3 py-2.5" style={{ color: "rgba(var(--fg-rgb),0.55)" }}>{row.cutoff_general || "—"}</td>
+                <td className="px-3 py-2.5" style={{ color: "rgba(var(--fg-rgb),0.55)" }}>{row.fees_total_lpa ?? "—"}</td>
                 <td className="px-3 py-2.5">
                   <div className="flex items-center gap-1 justify-end">
-                    <button onClick={() => openEdit(row)} className="p-1 rounded-lg cursor-pointer" style={{ color: "rgba(255,255,255,0.5)" }}>
+                    <button onClick={() => openEdit(row)} className="p-1 rounded-lg cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
                       <Pencil className="h-3.5 w-3.5" />
                     </button>
                     <button onClick={() => remove(row)} className="p-1 rounded-lg cursor-pointer" style={{ color: "#f87171" }}>
@@ -111,22 +111,22 @@ export function CoursesManager({ collegeId, rows }: { collegeId: string; rows: C
           </tbody>
         </table>
         {rows.length === 0 && (
-          <p className="text-center py-8 text-sm" style={{ color: "rgba(255,255,255,0.3)" }}>No courses added yet.</p>
+          <p className="text-center py-8 text-sm" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>No courses added yet.</p>
         )}
       </div>
 
       <Dialog.Root open={open} onOpenChange={setOpen}>
         <Dialog.Portal>
-          <Dialog.Backdrop className="fixed inset-0 z-50" style={{ backgroundColor: "rgba(0,0,0,0.6)" }} />
+          <Dialog.Backdrop className="fixed inset-0 z-50" style={{ backgroundColor: "var(--overlay)" }} />
           <Dialog.Popup
             className="fixed left-1/2 top-1/2 z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-2xl p-6 max-h-[85vh] overflow-y-auto"
-            style={{ backgroundColor: "#1b2027", border: "1px solid rgba(255,255,255,0.1)" }}
+            style={{ backgroundColor: "var(--surface-content)", border: "1px solid rgba(var(--fg-rgb),0.1)" }}
           >
             <div className="flex items-center justify-between mb-5">
-              <Dialog.Title className="text-lg font-black" style={{ color: "rgba(255,255,255,0.95)" }}>
+              <Dialog.Title className="text-lg font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>
                 {editing ? "Edit course" : "Add course"}
               </Dialog.Title>
-              <Dialog.Close className="p-1 rounded-lg cursor-pointer" style={{ color: "rgba(255,255,255,0.5)" }}>
+              <Dialog.Close className="p-1 rounded-lg cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
                 <X className="h-4 w-4" />
               </Dialog.Close>
             </div>

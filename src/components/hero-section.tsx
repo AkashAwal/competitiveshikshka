@@ -140,7 +140,7 @@ export function HeroSection() {
 
           {/* Left: copy */}
           <div className="flex flex-col gap-6">
-            <h1 className="text-5xl font-black leading-[1.1] tracking-tight text-zinc-900">
+            <h1 className="text-5xl font-black leading-[1.1] tracking-tight text-foreground">
               Everything you need to crack<br />
               <span className="text-[#2563EB]">JEE, NEET and more.</span>
             </h1>

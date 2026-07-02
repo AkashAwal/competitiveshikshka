@@ -28,8 +28,8 @@ function getExamLabel(exam: string | null): string {
 }
 
 const card = {
-  background: "#171b20",
-  border: "1px solid rgba(255,255,255,0.13)",
+  background: "var(--surface-card)",
+  border: "1px solid rgba(var(--fg-rgb),0.13)",
 };
 
 export default async function AnalyticsPage() {
@@ -61,8 +61,8 @@ export default async function AnalyticsPage() {
 
   return (
     <div className="px-6 py-8 max-w-5xl mx-auto">
-      <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(255,255,255,0.95)" }}>Analytics</h1>
-      <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.4)" }}>
+      <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>Analytics</h1>
+      <p className="text-sm mb-8" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>
         Your performance across tests, topics and time.
       </p>
 
@@ -80,9 +80,9 @@ export default async function AnalyticsPage() {
               </span>
             </div>
             <div>
-              <p className="text-3xl font-black" style={{ color: "rgba(255,255,255,0.95)" }}>
+              <p className="text-3xl font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>
                 {value}
-                {unit && <span className="text-sm font-semibold ml-1.5" style={{ color: "rgba(255,255,255,0.4)" }}>{unit}</span>}
+                {unit && <span className="text-sm font-semibold ml-1.5" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>{unit}</span>}
               </p>
             </div>
           </div>
@@ -94,21 +94,21 @@ export default async function AnalyticsPage() {
 
         {/* Subject Strength */}
         <div className="rounded-2xl p-6 flex flex-col gap-4" style={card}>
-          <p className="text-sm font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>Subject Strength</p>
+          <p className="text-sm font-bold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>Subject Strength</p>
           <div className="flex flex-col gap-3">
             {subjects.map((subject) => {
               const isStrong = subject === profile?.strong_subject;
               const isWeak   = subject === profile?.weak_subject;
               const label    = isStrong ? "Strong" : isWeak ? "Needs Work" : "Tracking soon";
-              const color    = isStrong ? "#34d399" : isWeak ? "#f87171" : "rgba(255,255,255,0.25)";
-              const bg       = isStrong ? "rgba(52,211,153,0.1)" : isWeak ? "rgba(248,113,113,0.1)" : "rgba(255,255,255,0.04)";
+              const color    = isStrong ? "#34d399" : isWeak ? "#f87171" : "rgba(var(--fg-rgb),0.25)";
+              const bg       = isStrong ? "rgba(52,211,153,0.1)" : isWeak ? "rgba(248,113,113,0.1)" : "rgba(var(--fg-rgb),0.04)";
               const barWidth = isStrong ? "85%" : isWeak ? "30%" : "55%";
-              const barColor = isStrong ? "#34d399" : isWeak ? "#f87171" : "rgba(255,255,255,0.12)";
+              const barColor = isStrong ? "#34d399" : isWeak ? "#f87171" : "rgba(var(--fg-rgb),0.12)";
 
               return (
                 <div key={subject} className="flex flex-col gap-1.5">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.8)" }}>{subject}</span>
+                    <span className="text-sm font-medium" style={{ color: "rgba(var(--fg-rgb),0.8)" }}>{subject}</span>
                     <span
                       className="text-[11px] font-semibold px-2 py-0.5 rounded-full"
                       style={{ backgroundColor: bg, color }}
@@ -116,7 +116,7 @@ export default async function AnalyticsPage() {
                       {label}
                     </span>
                   </div>
-                  <div className="h-1.5 rounded-full w-full" style={{ backgroundColor: "rgba(255,255,255,0.06)" }}>
+                  <div className="h-1.5 rounded-full w-full" style={{ backgroundColor: "rgba(var(--fg-rgb),0.06)" }}>
                     <div
                       className="h-1.5 rounded-full transition-all"
                       style={{ width: barWidth, backgroundColor: barColor }}
@@ -126,26 +126,26 @@ export default async function AnalyticsPage() {
               );
             })}
           </div>
-          <p className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.2)" }}>
+          <p className="text-xs mt-1" style={{ color: "rgba(var(--fg-rgb),0.2)" }}>
             Bars will reflect real test data once you attempt tests.
           </p>
         </div>
 
         {/* Exam Countdown */}
         <div className="rounded-2xl p-6 flex flex-col gap-5" style={card}>
-          <p className="text-sm font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>Exam Countdown</p>
+          <p className="text-sm font-bold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>Exam Countdown</p>
 
           <div className="flex items-end gap-2">
-            <p className="text-5xl font-black" style={{ color: "rgba(255,255,255,0.95)" }}>{daysLeft}</p>
-            <p className="text-sm mb-2 font-semibold" style={{ color: "rgba(255,255,255,0.4)" }}>days left</p>
+            <p className="text-5xl font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>{daysLeft}</p>
+            <p className="text-sm mb-2 font-semibold" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>days left</p>
           </div>
 
           <div className="flex flex-col gap-2">
-            <div className="flex items-center justify-between text-xs font-semibold" style={{ color: "rgba(255,255,255,0.35)" }}>
+            <div className="flex items-center justify-between text-xs font-semibold" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>
               <span>Preparation progress</span>
               <span>{progressPct}%</span>
             </div>
-            <div className="h-2 rounded-full w-full" style={{ backgroundColor: "rgba(255,255,255,0.06)" }}>
+            <div className="h-2 rounded-full w-full" style={{ backgroundColor: "rgba(var(--fg-rgb),0.06)" }}>
               <div
                 className="h-2 rounded-full"
                 style={{ width: `${progressPct}%`, background: "linear-gradient(90deg, #2563eb, #818cf8)" }}
@@ -164,17 +164,17 @@ export default async function AnalyticsPage() {
               {examLabel[0]}
             </div>
             <div>
-              <p className="text-sm font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>
+              <p className="text-sm font-bold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>
                 {examLabel}
               </p>
-              <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
+              <p className="text-xs" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>
                 {examDate.toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
               </p>
             </div>
           </div>
 
           {!profile?.target_exam && (
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
+            <p className="text-xs" style={{ color: "rgba(var(--fg-rgb),0.25)" }}>
               Set your target exam in Profile to personalise this.
             </p>
           )}
@@ -184,10 +184,10 @@ export default async function AnalyticsPage() {
       {/* ── Test Performance (empty state) ── */}
       <div className="rounded-2xl p-8 flex flex-col gap-6" style={card}>
         <div className="flex items-center justify-between">
-          <p className="text-sm font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>Test Performance</p>
+          <p className="text-sm font-bold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>Test Performance</p>
           <span
             className="text-xs font-semibold px-2.5 py-1 rounded-full"
-            style={{ backgroundColor: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.3)" }}
+            style={{ backgroundColor: "rgba(var(--fg-rgb),0.06)", color: "rgba(var(--fg-rgb),0.3)" }}
           >
             No data yet
           </span>
@@ -199,16 +199,16 @@ export default async function AnalyticsPage() {
             <div
               key={i}
               className="flex-1 rounded-t-md"
-              style={{ height: `${h}%`, backgroundColor: "rgba(255,255,255,0.05)" }}
+              style={{ height: `${h}%`, backgroundColor: "rgba(var(--fg-rgb),0.05)" }}
             />
           ))}
         </div>
 
         <div className="flex flex-col items-center gap-2 py-4">
-          <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.35)" }}>
+          <p className="text-sm font-semibold" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>
             Attempt your first test to see score trends here
           </p>
-          <p className="text-xs" style={{ color: "rgba(255,255,255,0.2)" }}>
+          <p className="text-xs" style={{ color: "rgba(var(--fg-rgb),0.2)" }}>
             Subject-wise accuracy · Score over time · Time per question
           </p>
         </div>
@@ -219,16 +219,16 @@ export default async function AnalyticsPage() {
 
         {/* Recent Tests */}
         <div className="rounded-2xl p-6 flex flex-col gap-4" style={card}>
-          <p className="text-sm font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>Recent Tests</p>
+          <p className="text-sm font-bold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>Recent Tests</p>
           <div className="flex flex-col items-center justify-center gap-2 py-8">
             <span className="text-3xl">📝</span>
-            <p className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.3)" }}>No tests attempted yet</p>
+            <p className="text-sm font-medium" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>No tests attempted yet</p>
           </div>
         </div>
 
         {/* Weak Topics */}
         <div className="rounded-2xl p-6 flex flex-col gap-4" style={card}>
-          <p className="text-sm font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>Weak Topics</p>
+          <p className="text-sm font-bold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>Weak Topics</p>
           {profile?.weak_subject ? (
             <div className="flex flex-col gap-2">
               <div
@@ -237,22 +237,22 @@ export default async function AnalyticsPage() {
               >
                 <span className="text-lg">⚠️</span>
                 <div>
-                  <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.85)" }}>
+                  <p className="text-sm font-semibold" style={{ color: "rgba(var(--fg-rgb),0.85)" }}>
                     {profile.weak_subject}
                   </p>
-                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>
+                  <p className="text-xs" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>
                     Marked as weak in your profile
                   </p>
                 </div>
               </div>
-              <p className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.2)" }}>
+              <p className="text-xs mt-1" style={{ color: "rgba(var(--fg-rgb),0.2)" }}>
                 Chapter-level weak topics will appear here after you attempt tests.
               </p>
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center gap-2 py-8">
               <span className="text-3xl">🎯</span>
-              <p className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.3)" }}>
+              <p className="text-sm font-medium" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>
                 Set your weak subject in Profile
               </p>
             </div>

@@ -70,9 +70,9 @@ function Chip({ label, selected, onClick, disabled, className }: { label: string
       onClick={disabled ? undefined : onClick}
       className={`rounded-xl px-4 py-2.5 text-sm font-semibold text-center transition-colors ${className ?? ""}`}
       style={{
-        backgroundColor: selected ? "#2563eb" : "rgba(255,255,255,0.05)",
-        border: `1px solid ${selected ? "#2563eb" : "rgba(255,255,255,0.08)"}`,
-        color: selected ? "#fff" : disabled ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.7)",
+        backgroundColor: selected ? "#2563eb" : "rgba(var(--fg-rgb),0.05)",
+        border: `1px solid ${selected ? "#2563eb" : "rgba(var(--fg-rgb),0.08)"}`,
+        color: selected ? "#fff" : disabled ? "rgba(var(--fg-rgb),0.2)" : "rgba(var(--fg-rgb),0.7)",
         cursor: disabled ? "not-allowed" : "pointer",
         opacity: disabled ? 0.45 : 1,
       }}
@@ -86,9 +86,9 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   return (
     <div
       className="w-full rounded-xl p-6 flex flex-col gap-5"
-      style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" }}
+      style={{ background: "var(--surface-card)", border: "1px solid rgba(var(--fg-rgb),0.13)" }}
     >
-      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.35)" }}>{title}</p>
+      <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>{title}</p>
       {children}
     </div>
   );
@@ -97,7 +97,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-2">
-      <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.5)" }}>{label}</p>
+      <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>{label}</p>
       {children}
     </div>
   );
@@ -214,7 +214,7 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
       {/* Avatar + name */}
       <div className="flex flex-col items-center gap-4 pt-4">
         <div className="flex flex-col items-center gap-2">
-          <div className="h-24 w-24 rounded-full overflow-hidden" style={{ border: "2px solid rgba(255,255,255,0.1)" }}>
+          <div className="h-24 w-24 rounded-full overflow-hidden" style={{ border: "2px solid rgba(var(--fg-rgb),0.1)" }}>
             <Image src={currentAvatarUrl} alt="Avatar" width={96} height={96} className="w-full h-full object-cover" unoptimized />
           </div>
 
@@ -230,30 +230,30 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
           {pickerOpen && (
             <div
               className="p-4 rounded-2xl flex flex-col gap-5"
-              style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", maxHeight: "420px", overflowY: "auto", width: "320px" }}
+              style={{ backgroundColor: "rgba(var(--fg-rgb),0.05)", border: "1px solid rgba(var(--fg-rgb),0.08)", maxHeight: "420px", overflowY: "auto", width: "320px" }}
             >
               {googleAvatarUrl && (
                 <div className="flex flex-col gap-2">
-                  <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.3)" }}>Google</p>
+                  <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>Google</p>
                   <button onClick={pickGoogle} className="flex flex-col items-center gap-1.5 cursor-pointer w-fit">
-                    <div className="h-14 w-14 rounded-full overflow-hidden" style={{ border: `2px solid ${avatarStyle === "google" ? "#2563eb" : "rgba(255,255,255,0.1)"}`, boxShadow: avatarStyle === "google" ? "0 0 0 3px rgba(37,99,235,0.3)" : "none" }}>
+                    <div className="h-14 w-14 rounded-full overflow-hidden" style={{ border: `2px solid ${avatarStyle === "google" ? "#2563eb" : "rgba(var(--fg-rgb),0.1)"}`, boxShadow: avatarStyle === "google" ? "0 0 0 3px rgba(37,99,235,0.3)" : "none" }}>
                       <Image src={googleAvatarUrl} alt="Google" width={56} height={56} className="w-full h-full object-cover" unoptimized />
                     </div>
-                    <span className="text-[10px]" style={{ color: avatarStyle === "google" ? "#60a5fa" : "rgba(255,255,255,0.35)" }}>Your photo</span>
+                    <span className="text-[10px]" style={{ color: avatarStyle === "google" ? "#60a5fa" : "rgba(var(--fg-rgb),0.35)" }}>Your photo</span>
                   </button>
                 </div>
               )}
 
               {PACKS.map(({ id, label }) => (
                 <div key={id} className="flex flex-col gap-2">
-                  <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.3)" }}>{label}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>{label}</p>
                   <div className="grid grid-cols-4 gap-2">
                     {SEEDS.map(seed => {
                       const encoded = encodeChoice(id, seed);
                       const isSelected = avatarStyle === encoded;
                       return (
                         <button key={seed} onClick={() => pickAvatar(id, seed)} className="flex items-center justify-center cursor-pointer">
-                          <div className="h-14 w-14 rounded-full overflow-hidden" style={{ border: `2px solid ${isSelected ? "#2563eb" : "rgba(255,255,255,0.1)"}`, boxShadow: isSelected ? "0 0 0 3px rgba(37,99,235,0.3)" : "none" }}>
+                          <div className="h-14 w-14 rounded-full overflow-hidden" style={{ border: `2px solid ${isSelected ? "#2563eb" : "rgba(var(--fg-rgb),0.1)"}`, boxShadow: isSelected ? "0 0 0 3px rgba(37,99,235,0.3)" : "none" }}>
                             <Image src={dicebearUrl(id, seed)} alt={seed} width={56} height={56} className="w-full h-full object-cover" unoptimized />
                           </div>
                         </button>
@@ -270,20 +270,20 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
           {editingName ? (
             <input autoFocus value={displayName} onChange={e => setDisplayName(e.target.value)} onBlur={saveName} onKeyDown={e => e.key === "Enter" && saveName()}
               className="text-2xl font-black text-center bg-transparent outline-none border-b"
-              style={{ color: "rgba(255,255,255,0.95)", borderColor: "#2563eb", minWidth: "160px" }} />
+              style={{ color: "rgba(var(--fg-rgb),0.95)", borderColor: "#2563eb", minWidth: "160px" }} />
           ) : (
-            <p className="text-2xl font-black" style={{ color: "rgba(255,255,255,0.95)" }}>{displayName}</p>
+            <p className="text-2xl font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>{displayName}</p>
           )}
           {!editingName && (
-            <button onClick={() => setEditingName(true)} className="cursor-pointer transition-opacity hover:opacity-100 opacity-40" style={{ color: "rgba(255,255,255,0.8)" }}>
+            <button onClick={() => setEditingName(true)} className="cursor-pointer transition-opacity hover:opacity-100 opacity-40" style={{ color: "rgba(var(--fg-rgb),0.8)" }}>
               <Pencil className="h-4 w-4" />
             </button>
           )}
         </div>
-        <p className="text-sm" style={{ color: "rgba(255,255,255,0.35)" }}>{email}</p>
+        <p className="text-sm" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>{email}</p>
       </div>
 
-      <div className="w-full h-px" style={{ backgroundColor: "rgba(255,255,255,0.06)" }} />
+      <div className="w-full h-px" style={{ backgroundColor: "rgba(var(--fg-rgb),0.06)" }} />
 
       {/* Stats mini-card */}
       <div className="w-full grid grid-cols-3 gap-3">
@@ -293,10 +293,10 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
           { icon: BookOpen,    color: "#a78bfa", label: "Questions Solved", value: "0" },
         ].map(({ icon: Icon, color, label, value }) => (
           <div key={label} className="rounded-xl p-4 flex flex-col gap-1.5 items-center"
-            style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" }}>
+            style={{ background: "var(--surface-card)", border: "1px solid rgba(var(--fg-rgb),0.13)" }}>
             <Icon className="h-5 w-5" style={{ color }} />
-            <p className="text-2xl font-black" style={{ color: "rgba(255,255,255,0.95)" }}>{value}</p>
-            <p className="text-[11px] text-center" style={{ color: "rgba(255,255,255,0.35)" }}>{label}</p>
+            <p className="text-2xl font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>{value}</p>
+            <p className="text-[11px] text-center" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>{label}</p>
           </div>
         ))}
       </div>
@@ -315,9 +315,9 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
         </Field>
         <Field label="State">
           <select value={state} onChange={e => { setState(e.target.value); setIsDirty(true); }} className="w-full rounded-xl px-4 py-3 text-sm font-semibold outline-none cursor-pointer"
-            style={{ backgroundColor: state ? "#1e2d45" : "rgba(255,255,255,0.05)", border: `1px solid ${state ? "#2563eb" : "rgba(255,255,255,0.08)"}`, color: state ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.35)" }}>
-            <option value="" disabled style={{ backgroundColor: "#1b2027" }}>Select your state</option>
-            {states.map(st => <option key={st} value={st} style={{ backgroundColor: "#1b2027", color: "rgba(255,255,255,0.9)" }}>{st}</option>)}
+            style={{ backgroundColor: state ? "#1e2d45" : "rgba(var(--fg-rgb),0.05)", border: `1px solid ${state ? "#2563eb" : "rgba(var(--fg-rgb),0.08)"}`, color: state ? "rgba(var(--fg-rgb),0.9)" : "rgba(var(--fg-rgb),0.35)" }}>
+            <option value="" disabled style={{ backgroundColor: "var(--surface-content)" }}>Select your state</option>
+            {states.map(st => <option key={st} value={st} style={{ backgroundColor: "var(--surface-content)", color: "rgba(var(--fg-rgb),0.9)" }}>{st}</option>)}
           </select>
         </Field>
       </Section>
@@ -378,7 +378,7 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
         <Field label="School name (optional)">
           <input type="text" placeholder="e.g. Delhi Public School" value={school} onChange={e => { setSchool(e.target.value); setIsDirty(true); }}
             className="w-full rounded-xl px-4 py-3 text-sm outline-none"
-            style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.9)" }} />
+            style={{ backgroundColor: "rgba(var(--fg-rgb),0.05)", border: "1px solid rgba(var(--fg-rgb),0.08)", color: "rgba(var(--fg-rgb),0.9)" }} />
         </Field>
       </Section>
 
@@ -390,9 +390,9 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
         {saving ? "Saving…" : saved ? "Saved" : "Save changes"}
       </button>
 
-      <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.25)" }}>
+      <p className="text-xs text-center" style={{ color: "rgba(var(--fg-rgb),0.25)" }}>
         To delete your account, go to{" "}
-        <a href="/dashboard/settings" className="underline" style={{ color: "rgba(255,255,255,0.4)" }}>Settings → Danger zone</a>.
+        <a href="/dashboard/settings" className="underline" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>Settings → Danger zone</a>.
       </p>
 
       <div className="h-4" />
@@ -401,9 +401,9 @@ export function ProfileForm({ userId, email, initialName, initialAvatarStyle, go
       {isDirty && (
         <div
           className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-2xl px-4 py-3 shadow-2xl"
-          style={{ backgroundColor: "#1e2535", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(12px)" }}
+          style={{ backgroundColor: "#1e2535", border: "1px solid rgba(var(--fg-rgb),0.1)", backdropFilter: "blur(12px)" }}
         >
-          <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.7)" }}>Unsaved changes</p>
+          <p className="text-sm font-semibold" style={{ color: "rgba(var(--fg-rgb),0.7)" }}>Unsaved changes</p>
           <button
             onClick={save}
             disabled={saving}

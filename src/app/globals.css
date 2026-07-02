@@ -2,6 +2,8 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 
 @theme inline {
   --color-background: var(--background);
@@ -80,8 +82,71 @@
   --sidebar-accent-foreground: oklch(0.2 0 0);
   --sidebar-border: oklch(0.88 0 0);
   --sidebar-ring: #2563eb;
+
+  /* Structural tokens used by dashboard/admin inline styles */
+  --surface-sidebar: #ffffff;
+  --surface-content: #f5f6f8;
+  --surface-card: #ffffff;
+  --text-primary: #10131a;
+  --text-secondary: rgba(16, 19, 26, 0.72);
+  --text-muted: rgba(16, 19, 26, 0.48);
+  --border-subtle: rgba(16, 19, 26, 0.1);
+  --hover-bg: rgba(16, 19, 26, 0.05);
+  --overlay: rgba(0, 0, 0, 0.35);
+  /* Raw RGB triplet so existing rgba(255,255,255,X) opacity steps can be reused verbatim
+     via rgba(var(--fg-rgb), X) — preserves every hand-tuned opacity value across themes. */
+  --fg-rgb: 16, 19, 26;
+  --surface-active-bg: #10131a;
+  --surface-active-fg: #ffffff;
 }
 
+.dark {
+  --background: oklch(0.14 0 0);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.17 0 0);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.17 0 0);
+  --popover-foreground: oklch(0.98 0 0);
+  --primary: #2563eb;
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.22 0 0);
+  --secondary-foreground: oklch(0.95 0 0);
+  --muted: oklch(0.22 0 0);
+  --muted-foreground: oklch(0.65 0 0);
+  --accent: oklch(0.24 0 0);
+  --accent-foreground: oklch(0.95 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.28 0 0);
+  --input: oklch(0.28 0 0);
+  --ring: #2563eb;
+  --chart-1: #2563eb;
+  --chart-2: oklch(0.72 0.15 60);
+  --chart-3: oklch(0.55 0.18 35);
+  --chart-4: oklch(0.78 0.1 50);
+  --chart-5: oklch(0.45 0.15 30);
+  --sidebar: oklch(0.16 0 0);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: #2563eb;
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.24 0 0);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.28 0 0);
+  --sidebar-ring: #2563eb;
+
+  /* Structural tokens used by dashboard/admin inline styles — today's existing dark constants */
+  --surface-sidebar: #15191e;
+  --surface-content: #1b2027;
+  --surface-card: #171b20;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.75);
+  --text-muted: rgba(255, 255, 255, 0.4);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --hover-bg: rgba(255, 255, 255, 0.06);
+  --overlay: rgba(0, 0, 0, 0.5);
+  --fg-rgb: 255, 255, 255;
+  --surface-active-bg: #ffffff;
+  --surface-active-fg: #0f1318;
+}
 
 
 @layer base {

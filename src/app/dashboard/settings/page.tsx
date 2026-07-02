@@ -14,8 +14,8 @@ export default async function SettingsPage() {
 
   return (
     <div className="px-6 py-8 max-w-5xl mx-auto">
-      <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(255,255,255,0.95)" }}>Settings</h1>
-      <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.45)" }}>Manage your preferences and account.</p>
+      <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>Settings</h1>
+      <p className="text-sm mb-8" style={{ color: "rgba(var(--fg-rgb),0.45)" }}>Manage your preferences and account.</p>
       <SettingsClient
         email={user.email ?? ""}
         providers={providers}

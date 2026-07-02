@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 import { createClient } from "@/lib/supabase/client";
 import {
   Bell, Palette, BookOpen, Shield, Database, Trash2,
@@ -53,9 +54,9 @@ function save<T>(key: string, val: T) {
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
 const selectStyle: React.CSSProperties = {
-  backgroundColor: "rgba(255,255,255,0.07)",
-  border: "1px solid rgba(255,255,255,0.1)",
-  color: "rgba(255,255,255,0.8)",
+  backgroundColor: "rgba(var(--fg-rgb),0.07)",
+  border: "1px solid rgba(var(--fg-rgb),0.1)",
+  color: "rgba(var(--fg-rgb),0.8)",
   borderRadius: "8px",
   padding: "5px 8px",
   fontSize: "12px",
@@ -79,18 +80,18 @@ function TimePicker({ value, onChange }: { value: string; onChange: (v: string) 
     <div className="flex items-center gap-1.5 shrink-0">
       <select value={h12} onChange={e => update(parseInt(e.target.value), isPM, mStr)} style={selectStyle}>
         {Array.from({ length: 12 }, (_, i) => i + 1).map(h => (
-          <option key={h} value={h} style={{ backgroundColor: "#1b2027" }}>{h}</option>
+          <option key={h} value={h} style={{ backgroundColor: "var(--surface-content)" }}>{h}</option>
         ))}
       </select>
-      <span className="text-xs font-bold" style={{ color: "rgba(255,255,255,0.3)" }}>:</span>
+      <span className="text-xs font-bold" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>:</span>
       <select value={mStr} onChange={e => update(h12, isPM, e.target.value)} style={selectStyle}>
         {["00", "15", "30", "45"].map(m => (
-          <option key={m} value={m} style={{ backgroundColor: "#1b2027" }}>{m}</option>
+          <option key={m} value={m} style={{ backgroundColor: "var(--surface-content)" }}>{m}</option>
         ))}
       </select>
       <select value={isPM ? "PM" : "AM"} onChange={e => update(h12, e.target.value === "PM", mStr)} style={selectStyle}>
-        <option value="AM" style={{ backgroundColor: "#1b2027" }}>AM</option>
-        <option value="PM" style={{ backgroundColor: "#1b2027" }}>PM</option>
+        <option value="AM" style={{ backgroundColor: "var(--surface-content)" }}>AM</option>
+        <option value="PM" style={{ backgroundColor: "var(--surface-content)" }}>PM</option>
       </select>
     </div>
   );
@@ -100,11 +101,11 @@ function Section({ icon: Icon, title, children }: { icon: React.ElementType; tit
   return (
     <div
       className="rounded-2xl p-6 flex flex-col gap-5"
-      style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" }}
+      style={{ background: "var(--surface-card)", border: "1px solid rgba(var(--fg-rgb),0.13)" }}
     >
       <div className="flex items-center gap-2.5">
-        <Icon className="h-4 w-4" style={{ color: "rgba(255,255,255,0.5)" }} />
-        <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.35)" }}>{title}</p>
+        <Icon className="h-4 w-4" style={{ color: "rgba(var(--fg-rgb),0.5)" }} />
+        <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>{title}</p>
       </div>
       {children}
     </div>
@@ -115,8 +116,8 @@ function Row({ label, description, children }: { label: string; description?: st
   return (
     <div className="flex items-center justify-between gap-4">
       <div className="flex flex-col gap-0.5 flex-1 min-w-0">
-        <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.85)" }}>{label}</p>
-        {description && <p className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>{description}</p>}
+        <p className="text-sm font-semibold" style={{ color: "rgba(var(--fg-rgb),0.85)" }}>{label}</p>
+        {description && <p className="text-xs" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>{description}</p>}
       </div>
       {children}
     </div>
@@ -128,7 +129,7 @@ function Toggle({ on, onChange }: { on: boolean; onChange: (v: boolean) => void 
     <button
       onClick={() => onChange(!on)}
       className="relative shrink-0 rounded-full transition-colors duration-200 cursor-pointer"
-      style={{ width: 42, height: 24, backgroundColor: on ? "#2563eb" : "rgba(255,255,255,0.12)" }}
+      style={{ width: 42, height: 24, backgroundColor: on ? "#2563eb" : "rgba(var(--fg-rgb),0.12)" }}
     >
       <span
         className="absolute top-[3px] rounded-full transition-transform duration-200"
@@ -139,7 +140,7 @@ function Toggle({ on, onChange }: { on: boolean; onChange: (v: boolean) => void 
 }
 
 function Divider() {
-  return <div className="h-px" style={{ backgroundColor: "rgba(255,255,255,0.06)" }} />;
+  return <div className="h-px" style={{ backgroundColor: "rgba(var(--fg-rgb),0.06)" }} />;
 }
 
 function Pill({ label, selected, onClick }: { label: string; selected: boolean; onClick: () => void }) {
@@ -148,9 +149,9 @@ function Pill({ label, selected, onClick }: { label: string; selected: boolean; 
       onClick={onClick}
       className="px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
       style={{
-        backgroundColor: selected ? "#2563eb" : "rgba(255,255,255,0.07)",
-        border: `1px solid ${selected ? "#2563eb" : "rgba(255,255,255,0.1)"}`,
-        color: selected ? "#fff" : "rgba(255,255,255,0.6)",
+        backgroundColor: selected ? "#2563eb" : "rgba(var(--fg-rgb),0.07)",
+        border: `1px solid ${selected ? "#2563eb" : "rgba(var(--fg-rgb),0.1)"}`,
+        color: selected ? "#fff" : "rgba(var(--fg-rgb),0.6)",
       }}
     >
       {label}
@@ -171,6 +172,7 @@ interface Props {
 
 export function SettingsClient({ email, providers, hasPassword, stream }: Props) {
   const router = useRouter();
+  const { theme: activeTheme, setTheme } = useTheme();
 
   // Preferences state (localStorage)
   const [notif, setNotifRaw]     = useState<NotifPrefs>(D_NOTIF);
@@ -327,7 +329,7 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
           ) : notifPermission === "denied" ? (
             <span className="text-xs font-bold px-3 py-1.5 rounded-lg shrink-0" style={{ backgroundColor: "rgba(248,113,113,0.1)", color: "#f87171" }}>Blocked</span>
           ) : notifPermission === "unsupported" ? (
-            <span className="text-xs font-bold px-3 py-1.5 rounded-lg shrink-0" style={{ backgroundColor: "rgba(255,255,255,0.06)", color: "rgba(255,255,255,0.3)" }}>N/A</span>
+            <span className="text-xs font-bold px-3 py-1.5 rounded-lg shrink-0" style={{ backgroundColor: "rgba(var(--fg-rgb),0.06)", color: "rgba(var(--fg-rgb),0.3)" }}>N/A</span>
           ) : (
             <button onClick={requestNotifPermission} className="text-xs font-bold px-3 py-1.5 rounded-lg shrink-0 cursor-pointer transition-opacity hover:opacity-80" style={{ backgroundColor: "#2563eb", color: "#fff" }}>
               Enable
@@ -338,7 +340,7 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
 
       {/* ── Appearance ────────────────────────────────────────────────── */}
       <Section icon={Palette} title="Appearance">
-        <Row label="Theme" description="Light mode coming soon.">
+        <Row label="Theme" description="Applies across the whole site, not just the dashboard.">
           <div className="flex gap-2">
             {([
               { val: "dark",   Icon: Moon,    label: "Dark"   },
@@ -347,14 +349,12 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
             ] as const).map(({ val, Icon, label }) => (
               <button
                 key={val}
-                onClick={() => val === "dark" && setAppear({ theme: val })}
-                className="flex flex-col items-center gap-1 px-3 py-2 rounded-xl text-[10px] font-bold transition-colors"
+                onClick={() => { setTheme(val); setAppear({ theme: val }); }}
+                className="flex flex-col items-center gap-1 px-3 py-2 rounded-xl text-[10px] font-bold transition-colors cursor-pointer"
                 style={{
-                  backgroundColor: appear.theme === val ? "#2563eb" : "rgba(255,255,255,0.06)",
-                  border: `1px solid ${appear.theme === val ? "#2563eb" : "rgba(255,255,255,0.1)"}`,
-                  color: appear.theme === val ? "#fff" : val === "dark" ? "rgba(255,255,255,0.5)" : "rgba(255,255,255,0.2)",
-                  cursor: val === "dark" ? "pointer" : "not-allowed",
-                  opacity: val === "dark" ? 1 : 0.4,
+                  backgroundColor: activeTheme === val ? "#2563eb" : "rgba(var(--fg-rgb),0.06)",
+                  border: `1px solid ${activeTheme === val ? "#2563eb" : "rgba(var(--fg-rgb),0.1)"}`,
+                  color: activeTheme === val ? "#fff" : "rgba(var(--fg-rgb),0.5)",
                 }}
               >
                 <Icon className="h-3.5 w-3.5" />
@@ -432,15 +432,15 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
 
         {/* Connected accounts */}
         <div className="flex flex-col gap-2">
-          <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.4)" }}>Connected accounts</p>
+          <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>Connected accounts</p>
           <div className="flex flex-col gap-2">
             {providers.map(p => (
-              <div key={p} className="flex items-center justify-between px-4 py-3 rounded-xl" style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <div key={p} className="flex items-center justify-between px-4 py-3 rounded-xl" style={{ backgroundColor: "rgba(var(--fg-rgb),0.05)", border: "1px solid rgba(var(--fg-rgb),0.08)" }}>
                 <div className="flex items-center gap-3">
-                  <span className="text-sm font-semibold capitalize" style={{ color: "rgba(255,255,255,0.8)" }}>{p}</span>
+                  <span className="text-sm font-semibold capitalize" style={{ color: "rgba(var(--fg-rgb),0.8)" }}>{p}</span>
                   <span className="text-xs px-2 py-0.5 rounded-full font-semibold" style={{ backgroundColor: "rgba(52,211,153,0.1)", color: "#34d399" }}>Connected</span>
                 </div>
-                <span className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>{email}</span>
+                <span className="text-xs" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>{email}</span>
               </div>
             ))}
           </div>
@@ -454,13 +454,13 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
             <div className="flex flex-col gap-3">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.85)" }}>Change password</p>
-                  <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.35)" }}>Update your login password.</p>
+                  <p className="text-sm font-semibold" style={{ color: "rgba(var(--fg-rgb),0.85)" }}>Change password</p>
+                  <p className="text-xs mt-0.5" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>Update your login password.</p>
                 </div>
                 <button
                   onClick={() => { setShowPwForm(o => !o); setPwMsg(null); }}
                   className="px-4 py-1.5 rounded-xl text-xs font-bold cursor-pointer transition-opacity hover:opacity-80"
-                  style={{ backgroundColor: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.7)" }}
+                  style={{ backgroundColor: "rgba(var(--fg-rgb),0.08)", border: "1px solid rgba(var(--fg-rgb),0.1)", color: "rgba(var(--fg-rgb),0.7)" }}
                 >
                   {showPwForm ? "Cancel" : "Change"}
                 </button>
@@ -474,9 +474,9 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
                       value={newPw}
                       onChange={e => setNewPw(e.target.value)}
                       className="w-full rounded-xl px-4 py-3 text-sm outline-none pr-11"
-                      style={{ backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.9)" }}
+                      style={{ backgroundColor: "rgba(var(--fg-rgb),0.06)", border: "1px solid rgba(var(--fg-rgb),0.1)", color: "rgba(var(--fg-rgb),0.9)" }}
                     />
-                    <button onClick={() => setShowPw(o => !o)} className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer" style={{ color: "rgba(255,255,255,0.3)" }}>
+                    <button onClick={() => setShowPw(o => !o)} className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>
                       {showPw ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                     </button>
                   </div>
@@ -486,7 +486,7 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
                     value={confirmPw}
                     onChange={e => setConfirmPw(e.target.value)}
                     className="w-full rounded-xl px-4 py-3 text-sm outline-none"
-                    style={{ backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.9)" }}
+                    style={{ backgroundColor: "rgba(var(--fg-rgb),0.06)", border: "1px solid rgba(var(--fg-rgb),0.1)", color: "rgba(var(--fg-rgb),0.9)" }}
                   />
                   {pwMsg && (
                     <p className="text-xs font-semibold" style={{ color: pwMsg.ok ? "#34d399" : "#f87171" }}>{pwMsg.text}</p>
@@ -512,7 +512,7 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
             onClick={signOutAll}
             disabled={signingOutAll}
             className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold cursor-pointer transition-opacity hover:opacity-80 shrink-0"
-            style={{ backgroundColor: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.7)" }}
+            style={{ backgroundColor: "rgba(var(--fg-rgb),0.07)", border: "1px solid rgba(var(--fg-rgb),0.1)", color: "rgba(var(--fg-rgb),0.7)" }}
           >
             <LogOut className="h-3.5 w-3.5" />
             {signingOutAll ? "Signing out…" : "Sign out all"}
@@ -525,7 +525,7 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
         <Row label="Export your progress" description="Download your study data as a CSV file.">
           <button
             className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold cursor-not-allowed shrink-0"
-            style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.3)" }}
+            style={{ backgroundColor: "rgba(var(--fg-rgb),0.05)", border: "1px solid rgba(var(--fg-rgb),0.08)", color: "rgba(var(--fg-rgb),0.3)" }}
           >
             <Download className="h-3.5 w-3.5" />
             Coming soon
@@ -536,7 +536,7 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
           <button
             onClick={clearAppData}
             className="px-4 py-2 rounded-xl text-xs font-bold cursor-pointer transition-opacity hover:opacity-80 shrink-0"
-            style={{ backgroundColor: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.6)" }}
+            style={{ backgroundColor: "rgba(var(--fg-rgb),0.07)", border: "1px solid rgba(var(--fg-rgb),0.1)", color: "rgba(var(--fg-rgb),0.6)" }}
           >
             Reset
           </button>
@@ -553,8 +553,8 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
         {deleteStep === "idle" && (
           <div className="flex items-center justify-between gap-4">
             <div>
-              <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.85)" }}>Delete account</p>
-              <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.35)" }}>Permanently deletes your profile and all data. Cannot be undone.</p>
+              <p className="text-sm font-semibold" style={{ color: "rgba(var(--fg-rgb),0.85)" }}>Delete account</p>
+              <p className="text-xs mt-0.5" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>Permanently deletes your profile and all data. Cannot be undone.</p>
             </div>
             <button
               onClick={() => setDeleteStep("typing")}
@@ -568,7 +568,7 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
 
         {deleteStep === "typing" && (
           <div className="flex flex-col gap-3">
-            <p className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
+            <p className="text-sm" style={{ color: "rgba(var(--fg-rgb),0.7)" }}>
               Type <span className="font-black tracking-widest" style={{ color: "#f87171" }}>DELETE</span> to continue
             </p>
             <input
@@ -580,12 +580,12 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
               style={{ backgroundColor: "rgba(239,68,68,0.06)", border: "1px solid rgba(239,68,68,0.25)", color: "#f87171", letterSpacing: "0.1em" }}
             />
             <div className="flex items-center gap-2">
-              <button onClick={cancelDelete} className="px-4 py-2 rounded-xl text-xs font-bold cursor-pointer" style={{ color: "rgba(255,255,255,0.4)" }}>Cancel</button>
+              <button onClick={cancelDelete} className="px-4 py-2 rounded-xl text-xs font-bold cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>Cancel</button>
               <button
                 onClick={sendOtp}
                 disabled={deleteText !== "DELETE" || otpSending}
                 className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black cursor-pointer"
-                style={{ backgroundColor: deleteText === "DELETE" ? "#ef4444" : "rgba(239,68,68,0.15)", color: deleteText === "DELETE" ? "#fff" : "rgba(255,255,255,0.3)", transition: "all 0.2s" }}
+                style={{ backgroundColor: deleteText === "DELETE" ? "#ef4444" : "rgba(239,68,68,0.15)", color: deleteText === "DELETE" ? "#fff" : "rgba(var(--fg-rgb),0.3)", transition: "all 0.2s" }}
               >
                 {otpSending ? "Sending…" : "Send verification code"}
               </button>
@@ -596,8 +596,8 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
 
         {(deleteStep === "otp" || deleteStep === "deleting") && (
           <div className="flex flex-col gap-3">
-            <p className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
-              Enter the 8-digit code from the email sent to <span className="font-semibold" style={{ color: "rgba(255,255,255,0.9)" }}>{email}</span>.
+            <p className="text-sm" style={{ color: "rgba(var(--fg-rgb),0.7)" }}>
+              Enter the 8-digit code from the email sent to <span className="font-semibold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>{email}</span>.
             </p>
             <input
               autoFocus
@@ -610,15 +610,15 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
             />
             {otpError && <p className="text-xs" style={{ color: "#f87171" }}>{otpError}</p>}
             <div className="flex items-center gap-2">
-              <button onClick={cancelDelete} className="px-4 py-2 rounded-xl text-xs font-bold cursor-pointer" style={{ color: "rgba(255,255,255,0.4)" }}>Cancel</button>
-              <button onClick={sendOtp} disabled={otpSending} className="px-4 py-2 rounded-xl text-xs font-semibold cursor-pointer" style={{ color: "rgba(255,255,255,0.4)" }}>
+              <button onClick={cancelDelete} className="px-4 py-2 rounded-xl text-xs font-bold cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>Cancel</button>
+              <button onClick={sendOtp} disabled={otpSending} className="px-4 py-2 rounded-xl text-xs font-semibold cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>
                 {otpSending ? "Resending…" : "Resend"}
               </button>
               <button
                 onClick={confirmDelete}
                 disabled={otpValue.length !== 8 || deleteStep === "deleting"}
                 className="flex-1 px-4 py-2 rounded-xl text-xs font-black cursor-pointer"
-                style={{ backgroundColor: otpValue.length === 8 ? "#ef4444" : "rgba(239,68,68,0.15)", color: otpValue.length === 8 ? "#fff" : "rgba(255,255,255,0.3)", transition: "all 0.2s" }}
+                style={{ backgroundColor: otpValue.length === 8 ? "#ef4444" : "rgba(239,68,68,0.15)", color: otpValue.length === 8 ? "#fff" : "rgba(var(--fg-rgb),0.3)", transition: "all 0.2s" }}
               >
                 {deleteStep === "deleting" ? "Deleting…" : "Confirm deletion"}
               </button>
@@ -631,10 +631,10 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
       {prefsSaved && (
         <div
           className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-2xl px-4 py-3 shadow-2xl"
-          style={{ backgroundColor: "#1e2535", border: "1px solid rgba(52,211,153,0.3)" }}
+          style={{ backgroundColor: "var(--surface-card)", border: "1px solid rgba(52,211,153,0.3)" }}
         >
           <Check className="h-4 w-4" style={{ color: "#34d399" }} />
-          <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.8)" }}>Preferences saved</p>
+          <p className="text-sm font-semibold" style={{ color: "rgba(var(--fg-rgb),0.8)" }}>Preferences saved</p>
         </div>
       )}
     </div>

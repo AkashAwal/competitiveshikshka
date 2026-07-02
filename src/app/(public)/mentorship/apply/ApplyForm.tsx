@@ -39,7 +39,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 }
 
 const inputClass =
-  "w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-[#2563eb]";
+  "w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-zinc-400 focus:border-[#2563eb]";
 
 export function ApplyForm({ userId, initialName, initialEmail }: Props) {
   const [fullName, setFullName] = useState(initialName);
@@ -91,12 +91,12 @@ export function ApplyForm({ userId, initialName, initialEmail }: Props) {
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center gap-4 rounded-xl border border-border bg-white p-10 text-center">
+      <div className="flex flex-col items-center gap-4 rounded-xl border border-border bg-card p-10 text-center">
         <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-green-50">
           <CheckCircle2 className="h-7 w-7 text-green-600" />
         </span>
         <div>
-          <p className="text-lg font-black text-zinc-900">Thank you for applying!</p>
+          <p className="text-lg font-black text-foreground">Thank you for applying!</p>
           <p className="mt-1 text-sm text-muted-foreground">
             We will contact you shortly — usually within 24 hours.
           </p>
@@ -109,7 +109,7 @@ export function ApplyForm({ userId, initialName, initialEmail }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5 rounded-xl border border-border bg-white p-6 sm:p-8">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5 rounded-xl border border-border bg-card p-6 sm:p-8">
       <Field label="Full name">
         <input type="text" required value={fullName} onChange={e => setFullName(e.target.value)} placeholder="Your full name" className={inputClass} />
       </Field>
@@ -138,7 +138,7 @@ export function ApplyForm({ userId, initialName, initialEmail }: Props) {
                 "rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors cursor-pointer",
                 studentClass === c
                   ? "border-[#2563eb] bg-[#2563eb] text-white"
-                  : "border-border bg-white text-zinc-700 hover:border-[#2563eb]"
+                  : "border-border bg-card text-muted-foreground hover:border-[#2563eb]"
               )}
             >
               {c}
@@ -156,13 +156,13 @@ export function ApplyForm({ userId, initialName, initialEmail }: Props) {
               onClick={() => setPlan(id)}
               className={cn(
                 "flex flex-col gap-2 rounded-xl border p-4 text-left transition-colors cursor-pointer",
-                plan === id ? "border-[#2563eb] bg-[#2563eb]/5" : "border-border bg-white hover:border-[#2563eb]"
+                plan === id ? "border-[#2563eb] bg-[#2563eb]/5" : "border-border bg-card hover:border-[#2563eb]"
               )}
             >
               <span className={cn("flex h-8 w-8 items-center justify-center rounded-lg", plan === id ? "bg-[#2563eb]/15" : "bg-zinc-100")}>
                 <Icon className={cn("h-4 w-4", plan === id ? "text-[#2563eb]" : "text-zinc-500")} />
               </span>
-              <span className="text-sm font-bold text-zinc-900">{title}</span>
+              <span className="text-sm font-bold text-foreground">{title}</span>
               <span className="text-xs text-muted-foreground leading-relaxed">{desc}</span>
             </button>
           ))}

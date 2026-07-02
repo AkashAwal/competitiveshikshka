@@ -3,13 +3,13 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Flame, GraduationCap, MapPin, BookOpen } from "lucide-react";
 import { createAdminClient } from "@/lib/supabase/admin";
 
-const card = { background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" };
+const card = { background: "var(--surface-card)", border: "1px solid rgba(var(--fg-rgb),0.13)" };
 
 function Field({ label, value }: { label: string; value: string | number | null | undefined }) {
   return (
     <div>
-      <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: "rgba(255,255,255,0.35)" }}>{label}</p>
-      <p className="text-sm mt-1 font-medium" style={{ color: "rgba(255,255,255,0.85)" }}>{value || "—"}</p>
+      <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>{label}</p>
+      <p className="text-sm mt-1 font-medium" style={{ color: "rgba(var(--fg-rgb),0.85)" }}>{value || "—"}</p>
     </div>
   );
 }
@@ -30,7 +30,7 @@ export default async function AdminStudentDetailPage({ params }: { params: Promi
 
   return (
     <div className="px-6 py-8 max-w-4xl mx-auto">
-      <Link href="/admin/students" className="inline-flex items-center gap-1.5 text-sm font-semibold mb-6" style={{ color: "rgba(255,255,255,0.5)" }}>
+      <Link href="/admin/students" className="inline-flex items-center gap-1.5 text-sm font-semibold mb-6" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
         <ArrowLeft className="h-4 w-4" /> Back to students
       </Link>
 
@@ -39,8 +39,8 @@ export default async function AdminStudentDetailPage({ params }: { params: Promi
           {(user.user_metadata?.full_name?.[0] ?? user.email?.[0] ?? "S").toUpperCase()}
         </div>
         <div>
-          <h1 className="text-2xl font-black" style={{ color: "rgba(255,255,255,0.95)" }}>{user.user_metadata?.full_name ?? "Unnamed student"}</h1>
-          <p className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>{user.email}</p>
+          <h1 className="text-2xl font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>{user.user_metadata?.full_name ?? "Unnamed student"}</h1>
+          <p className="text-sm" style={{ color: "rgba(var(--fg-rgb),0.45)" }}>{user.email}</p>
         </div>
       </div>
 
@@ -54,15 +54,15 @@ export default async function AdminStudentDetailPage({ params }: { params: Promi
           <div key={label} className="rounded-2xl p-4 flex flex-col gap-2" style={card}>
             <Icon className="h-4 w-4" style={{ color }} />
             <div>
-              <p className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>{label}</p>
-              <p className="text-sm font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>{value}</p>
+              <p className="text-xs" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>{label}</p>
+              <p className="text-sm font-bold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>{value}</p>
             </div>
           </div>
         ))}
       </div>
 
       <div className="rounded-2xl p-6 mb-4" style={card}>
-        <p className="text-sm font-bold mb-4" style={{ color: "rgba(255,255,255,0.9)" }}>Profile</p>
+        <p className="text-sm font-bold mb-4" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>Profile</p>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
           <Field label="Target exam" value={profile.target_exam} />
           <Field label="Target year" value={profile.target_year} />
@@ -77,16 +77,16 @@ export default async function AdminStudentDetailPage({ params }: { params: Promi
       </div>
 
       <div className="rounded-2xl p-6" style={card}>
-        <p className="text-sm font-bold mb-4" style={{ color: "rgba(255,255,255,0.9)" }}>Mentorship applications</p>
+        <p className="text-sm font-bold mb-4" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>Mentorship applications</p>
         {!applications || applications.length === 0 ? (
-          <p className="text-sm" style={{ color: "rgba(255,255,255,0.3)" }}>No mentorship applications from this account.</p>
+          <p className="text-sm" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>No mentorship applications from this account.</p>
         ) : (
           <div className="flex flex-col gap-3">
             {applications.map(app => (
-              <div key={app.id} className="flex items-center justify-between rounded-xl p-4" style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)" }}>
+              <div key={app.id} className="flex items-center justify-between rounded-xl p-4" style={{ backgroundColor: "rgba(var(--fg-rgb),0.04)", border: "1px solid rgba(var(--fg-rgb),0.06)" }}>
                 <div>
-                  <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.85)" }}>{app.plan === "premium" ? "Premium" : "Mentorship only"} · {app.class}</p>
-                  <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.4)" }}>{app.city} · {app.contact_no}</p>
+                  <p className="text-sm font-semibold" style={{ color: "rgba(var(--fg-rgb),0.85)" }}>{app.plan === "premium" ? "Premium" : "Mentorship only"} · {app.class}</p>
+                  <p className="text-xs mt-0.5" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>{app.city} · {app.contact_no}</p>
                 </div>
                 <span className="text-xs font-semibold px-2.5 py-1 rounded-full" style={{ backgroundColor: "rgba(96,165,250,0.12)", color: "#60a5fa" }}>{app.status}</span>
               </div>

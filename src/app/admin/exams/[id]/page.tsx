@@ -13,14 +13,14 @@ export default async function AdminExamDetailPage({ params }: { params: Promise<
 
   return (
     <div className="px-6 py-8 max-w-4xl mx-auto">
-      <Link href="/admin/exams" className="inline-flex items-center gap-1.5 text-sm font-semibold mb-6" style={{ color: "rgba(255,255,255,0.5)" }}>
+      <Link href="/admin/exams" className="inline-flex items-center gap-1.5 text-sm font-semibold mb-6" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
         <ArrowLeft className="h-4 w-4" /> Back to exams
       </Link>
 
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-black" style={{ color: "rgba(255,255,255,0.95)" }}>{exam.name}</h1>
-          <p className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>{exam.category}</p>
+          <h1 className="text-2xl font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>{exam.name}</h1>
+          <p className="text-sm mt-1" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>{exam.category}</p>
         </div>
         {exam.slug && (
           <Link

@@ -43,7 +43,7 @@ export function CollegesList({ colleges }: { colleges: CollegeCard[] }) {
             value={query}
             onChange={e => setQuery(e.target.value)}
             placeholder="Search by college, city or state..."
-            className="w-full rounded-xl border border-border bg-white pl-10 pr-4 py-3 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-[#2563eb]"
+            className="w-full rounded-xl border border-border bg-card pl-10 pr-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-zinc-400 focus:border-[#2563eb]"
           />
         </div>
 
@@ -54,7 +54,7 @@ export function CollegesList({ colleges }: { colleges: CollegeCard[] }) {
               onClick={() => setType(t)}
               className={cn(
                 "px-3.5 py-1.5 rounded-full text-sm font-semibold transition-colors cursor-pointer border",
-                type === t ? "bg-[#2563eb] text-white border-[#2563eb]" : "bg-white text-zinc-600 border-border hover:border-[#2563eb]"
+                type === t ? "bg-[#2563eb] text-white border-[#2563eb]" : "bg-card text-muted-foreground border-border hover:border-[#2563eb]"
               )}
             >
               {t}
@@ -66,7 +66,7 @@ export function CollegesList({ colleges }: { colleges: CollegeCard[] }) {
       <p className="text-sm text-muted-foreground mb-4">{filtered.length} college{filtered.length === 1 ? "" : "s"} found</p>
 
       {filtered.length === 0 ? (
-        <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-white p-16 text-center">
+        <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card p-16 text-center">
           <GraduationCap className="h-8 w-8 text-zinc-300" />
           <p className="text-sm font-semibold text-zinc-500">No colleges match your search.</p>
         </div>
@@ -76,17 +76,17 @@ export function CollegesList({ colleges }: { colleges: CollegeCard[] }) {
             <Link
               key={c.slug}
               href={`/colleges/${c.slug}`}
-              className="group flex flex-col gap-4 rounded-xl border border-border bg-white p-6 transition-all duration-200 hover:border-[#2563eb] hover:shadow-sm"
+              className="group flex flex-col gap-4 rounded-xl border border-border bg-card p-6 transition-all duration-200 hover:border-[#2563eb] hover:shadow-sm"
             >
               <div className="flex items-start justify-between gap-3">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#2563eb]/10">
                   <GraduationCap className="h-5 w-5 text-[#2563eb]" />
                 </span>
-                <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-zinc-100 text-zinc-600">{c.type}</span>
+                <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-zinc-100 text-muted-foreground">{c.type}</span>
               </div>
 
               <div>
-                <h3 className="font-bold text-zinc-900 mb-1 leading-snug">{c.name}</h3>
+                <h3 className="font-bold text-foreground mb-1 leading-snug">{c.name}</h3>
                 <p className="flex items-center gap-1 text-sm text-muted-foreground">
                   <MapPin className="h-3.5 w-3.5" /> {c.city ?? "—"}{c.state ? `, ${c.state}` : ""}
                 </p>

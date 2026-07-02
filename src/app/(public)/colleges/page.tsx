@@ -12,7 +12,7 @@ export default async function CollegesPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
-      <h1 className="text-5xl font-black tracking-tight text-zinc-900 mb-2">
+      <h1 className="text-5xl font-black tracking-tight text-foreground mb-2">
         Find your <span className="text-[#2563eb]">college</span>
       </h1>
       <p className="text-muted-foreground mb-10 max-w-2xl">

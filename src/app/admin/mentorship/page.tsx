@@ -10,8 +10,8 @@ export default async function AdminMentorshipPage() {
 
   return (
     <div className="px-6 py-8 max-w-6xl mx-auto">
-      <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(255,255,255,0.95)" }}>Mentorship applications</h1>
-      <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.4)" }}>{applications?.length ?? 0} applications received.</p>
+      <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>Mentorship applications</h1>
+      <p className="text-sm mb-8" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>{applications?.length ?? 0} applications received.</p>
 
       <MentorshipTable rows={applications ?? []} />
     </div>

@@ -74,10 +74,10 @@ export default function MentorshipPage() {
       <section className="w-full">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16 lg:py-20">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-white px-3 py-1 text-xs font-bold text-[#2563eb]">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1 text-xs font-bold text-[#2563eb]">
               <GraduationCap className="h-3.5 w-3.5" /> 1-on-1 mentorship
             </span>
-            <h1 className="mt-4 text-5xl font-black leading-[1.1] tracking-tight text-zinc-900">
+            <h1 className="mt-4 text-5xl font-black leading-[1.1] tracking-tight text-foreground">
               Learn from students who&apos;ve<br />
               <span className="text-[#2563eb]">already cracked it.</span>
             </h1>
@@ -98,8 +98,8 @@ export default function MentorshipPage() {
           {/* Stats */}
           <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-5">
             {stats.map(({ value, label }) => (
-              <div key={label} className="rounded-xl border border-border bg-white p-5">
-                <p className="text-3xl font-black text-zinc-900">{value}</p>
+              <div key={label} className="rounded-xl border border-border bg-card p-5">
+                <p className="text-3xl font-black text-foreground">{value}</p>
                 <p className="mt-1 text-xs text-muted-foreground">{label}</p>
               </div>
             ))}
@@ -110,18 +110,18 @@ export default function MentorshipPage() {
       {/* Problems mentorship solves */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
         <div className="mb-10">
-          <h2 className="text-4xl font-black leading-[1.1] tracking-tight text-zinc-900">
+          <h2 className="text-4xl font-black leading-[1.1] tracking-tight text-foreground">
             Studying alone makes every mistake <span className="text-[#2563eb]">expensive.</span>
           </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           {problems.map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="flex flex-col gap-4 rounded-xl border border-border bg-white p-6">
+            <div key={title} className="flex flex-col gap-4 rounded-xl border border-border bg-card p-6">
               <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-50">
                 <Icon className="h-5 w-5 text-red-500" />
               </span>
               <div>
-                <h3 className="font-bold text-zinc-900 mb-1">{title}</h3>
+                <h3 className="font-bold text-foreground mb-1">{title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
               </div>
             </div>
@@ -132,17 +132,17 @@ export default function MentorshipPage() {
       {/* What you get */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
         <div className="mb-10">
-          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-zinc-900">What you <span className="text-[#2563eb]">get</span></h2>
+          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-foreground">What you <span className="text-[#2563eb]">get</span></h2>
           <p className="mt-2 text-muted-foreground">A dedicated mentor in your corner, every week, until exam day.</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {perks.map(({ icon: Icon, label, desc }) => (
-            <div key={label} className="flex flex-col gap-4 rounded-xl border border-border bg-white p-6">
+            <div key={label} className="flex flex-col gap-4 rounded-xl border border-border bg-card p-6">
               <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#2563eb]/10">
                 <Icon className="h-5 w-5 text-[#2563eb]" />
               </span>
               <div>
-                <h3 className="font-bold text-zinc-900 mb-1">{label}</h3>
+                <h3 className="font-bold text-foreground mb-1">{label}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
               </div>
             </div>
@@ -153,18 +153,18 @@ export default function MentorshipPage() {
       {/* How it works */}
       <section id="how-it-works" className="mx-auto max-w-6xl px-4 sm:px-6 py-16 scroll-mt-20">
         <div className="mb-12">
-          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-zinc-900">How it <span className="text-[#2563eb]">works</span></h2>
+          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-foreground">How it <span className="text-[#2563eb]">works</span></h2>
           <p className="mt-2 text-muted-foreground">From application to your first call in under a week.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
           {steps.map(({ step, title, desc }) => (
-            <div key={step} className="relative flex flex-col gap-4 p-8 border border-border bg-white first:rounded-l-xl last:rounded-r-xl -ml-px first:ml-0">
+            <div key={step} className="relative flex flex-col gap-4 p-8 border border-border bg-card first:rounded-l-xl last:rounded-r-xl -ml-px first:ml-0">
               <div className="flex items-center gap-4">
                 <span className="text-xs font-black text-[#2563eb] tracking-widest">{step}</span>
                 <div className="flex-1 h-px bg-border" />
               </div>
               <div>
-                <h3 className="font-black text-zinc-900 text-lg mb-1">{title}</h3>
+                <h3 className="font-black text-foreground text-lg mb-1">{title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
               </div>
             </div>
@@ -175,17 +175,17 @@ export default function MentorshipPage() {
       {/* Mentors */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
         <div className="mb-10">
-          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-zinc-900">Meet your <span className="text-[#2563eb]">mentors</span></h2>
+          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-foreground">Meet your <span className="text-[#2563eb]">mentors</span></h2>
           <p className="mt-2 text-muted-foreground">A small sample of the rankers you could be paired with.</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {mentors.map(({ name, tag, college, initials }) => (
-            <div key={name} className="flex flex-col items-center text-center gap-3 rounded-xl border border-border bg-white p-6">
+            <div key={name} className="flex flex-col items-center text-center gap-3 rounded-xl border border-border bg-card p-6">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#2563eb]/10 text-lg font-black text-[#2563eb]">
                 {initials}
               </div>
               <div>
-                <h3 className="font-bold text-zinc-900">{name}</h3>
+                <h3 className="font-bold text-foreground">{name}</h3>
                 <p className="text-xs font-semibold text-[#2563eb] mt-0.5">{tag}</p>
                 <p className="text-xs text-muted-foreground mt-1">{college}</p>
               </div>
@@ -197,19 +197,19 @@ export default function MentorshipPage() {
       {/* Testimonials */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
         <div className="mb-10">
-          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-zinc-900">Trusted by <span className="text-[#2563eb]">aspirants</span></h2>
+          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-foreground">Trusted by <span className="text-[#2563eb]">aspirants</span></h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           {testimonials.map(({ quote, name }) => (
-            <div key={name} className="flex flex-col gap-4 rounded-xl border border-border bg-white p-6">
+            <div key={name} className="flex flex-col gap-4 rounded-xl border border-border bg-card p-6">
               <Quote className="h-6 w-6 text-[#2563eb]/30" />
-              <p className="text-sm text-zinc-700 leading-relaxed flex-1">&ldquo;{quote}&rdquo;</p>
+              <p className="text-sm text-muted-foreground leading-relaxed flex-1">&ldquo;{quote}&rdquo;</p>
               <div className="flex gap-0.5 pt-2 border-t border-border">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="h-3.5 w-3.5 fill-[#fbbf24] text-[#fbbf24]" />
                 ))}
               </div>
-              <p className="text-xs font-semibold text-zinc-900">{name}</p>
+              <p className="text-xs font-semibold text-foreground">{name}</p>
             </div>
           ))}
         </div>
@@ -217,13 +217,13 @@ export default function MentorshipPage() {
 
       {/* Pricing tie-in */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
-        <div className="rounded-xl border border-border bg-white p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="rounded-xl border border-border bg-card p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#2563eb]/10">
               <GraduationCap className="h-6 w-6 text-[#2563eb]" />
             </span>
             <div>
-              <h3 className="font-black text-zinc-900 text-lg">Included in Premium</h3>
+              <h3 className="font-black text-foreground text-lg">Included in Premium</h3>
               <p className="text-sm text-muted-foreground mt-1 max-w-md">
                 Mentorship comes bundled with CompetitiveShiksha Premium — or apply for
                 it on its own as a standalone add-on.
@@ -239,12 +239,12 @@ export default function MentorshipPage() {
       {/* FAQ */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
         <div className="mb-10">
-          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-zinc-900">Frequently <span className="text-[#2563eb]">asked</span></h2>
+          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-foreground">Frequently <span className="text-[#2563eb]">asked</span></h2>
         </div>
         <div className="flex flex-col gap-3 max-w-3xl">
           {faqs.map(({ q, a }) => (
-            <details key={q} className="group rounded-xl border border-border bg-white p-5">
-              <summary className="flex items-center justify-between cursor-pointer font-bold text-zinc-900 list-none [&::-webkit-details-marker]:hidden">
+            <details key={q} className="group rounded-xl border border-border bg-card p-5">
+              <summary className="flex items-center justify-between cursor-pointer font-bold text-foreground list-none [&::-webkit-details-marker]:hidden">
                 {q}
                 <ChevronDown className="h-4 w-4 text-muted-foreground shrink-0 transition-transform group-open:rotate-180" />
               </summary>

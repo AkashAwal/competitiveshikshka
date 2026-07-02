@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import { Menu, X, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/client";
+import { ThemeToggle } from "@/components/theme-toggle";
 import type { User } from "@supabase/supabase-js";
 
 const navLinks = [
@@ -69,11 +70,19 @@ export function Navbar() {
       <div className="w-full pl-[35px] pr-4 sm:pr-6 h-[64px] flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <Image
-            src="/logo-white-mode.svg"
+            src="/logo_br_dark.png"
             alt="CompetitiveShiksha"
             width={200}
             height={265}
-            className="h-[62px] w-auto"
+            className="h-[62px] w-auto dark:hidden"
+            priority
+          />
+          <Image
+            src="/logo_br_light.png"
+            alt="CompetitiveShiksha"
+            width={200}
+            height={265}
+            className="hidden h-[62px] w-auto dark:block"
             priority
           />
         </Link>
@@ -85,10 +94,13 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-3 py-1.5 rounded-md text-sm font-semibold transition-all cursor-pointer text-white"
-                style={{ backgroundColor: isActive ? "#2563eb" : "transparent", color: isActive ? "white" : "#18181b" }}
-                onMouseEnter={e => { if (!isActive) { (e.currentTarget as HTMLElement).style.backgroundColor = "#2563eb"; (e.currentTarget as HTMLElement).style.color = "white"; } }}
-                onMouseLeave={e => { if (!isActive) { (e.currentTarget as HTMLElement).style.backgroundColor = "transparent"; (e.currentTarget as HTMLElement).style.color = "#18181b"; } }}
+                className={cn(
+                  "px-3 py-1.5 rounded-md text-sm font-semibold transition-all cursor-pointer",
+                  isActive ? "text-white" : "text-foreground"
+                )}
+                style={{ backgroundColor: isActive ? "#2563eb" : "transparent" }}
+                onMouseEnter={e => { if (!isActive) { (e.currentTarget as HTMLElement).style.backgroundColor = "#2563eb"; e.currentTarget.classList.remove("text-foreground"); e.currentTarget.classList.add("text-white"); } }}
+                onMouseLeave={e => { if (!isActive) { (e.currentTarget as HTMLElement).style.backgroundColor = "transparent"; e.currentTarget.classList.remove("text-white"); e.currentTarget.classList.add("text-foreground"); } }}
               >
                 {link.label}
               </Link>
@@ -97,6 +109,7 @@ export function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
+          <ThemeToggle />
           {user ? (
             <>
               <div className="relative" ref={dropdownRef}>
@@ -120,29 +133,29 @@ export function Navbar() {
                 </button>
 
                 {dropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-52 rounded-xl border border-border bg-white shadow-lg py-1 z-50">
+                  <div className="absolute right-0 mt-2 w-52 rounded-xl border border-border bg-popover shadow-lg py-1 z-50">
                     <div className="px-4 py-2.5 border-b border-border">
-                      <p className="text-sm font-semibold text-zinc-900 truncate">{user.user_metadata.full_name ?? "Student"}</p>
+                      <p className="text-sm font-semibold text-foreground truncate">{user.user_metadata.full_name ?? "Student"}</p>
                       <p className="text-xs text-muted-foreground truncate">{user.email}</p>
                     </div>
                     <Link
                       href="/dashboard/profile"
                       onClick={() => setDropdownOpen(false)}
-                      className="flex items-center px-4 py-2 text-sm text-zinc-700 hover:bg-accent transition-colors"
+                      className="flex items-center px-4 py-2 text-sm text-foreground/80 hover:bg-accent transition-colors"
                     >
                       My Profile
                     </Link>
                     <Link
                       href="/dashboard/todo"
                       onClick={() => setDropdownOpen(false)}
-                      className="flex items-center px-4 py-2 text-sm text-zinc-700 hover:bg-accent transition-colors"
+                      className="flex items-center px-4 py-2 text-sm text-foreground/80 hover:bg-accent transition-colors"
                     >
                       To Do List
                     </Link>
                     <Link
                       href="/dashboard/settings"
                       onClick={() => setDropdownOpen(false)}
-                      className="flex items-center px-4 py-2 text-sm text-zinc-700 hover:bg-accent transition-colors"
+                      className="flex items-center px-4 py-2 text-sm text-foreground/80 hover:bg-accent transition-colors"
                     >
                       Settings
                     </Link>
@@ -150,7 +163,7 @@ export function Navbar() {
                       <Link
                         href="/admin"
                         onClick={() => setDropdownOpen(false)}
-                        className="flex items-center gap-1.5 px-4 py-2 text-sm text-zinc-700 hover:bg-accent transition-colors"
+                        className="flex items-center gap-1.5 px-4 py-2 text-sm text-foreground/80 hover:bg-accent transition-colors"
                       >
                         <ShieldCheck className="h-3.5 w-3.5 text-[#2563eb]" />
                         Admin
@@ -187,13 +200,16 @@ export function Navbar() {
           )}
         </div>
 
-        <button
-          className="md:hidden p-2 rounded-md hover:bg-accent transition-colors cursor-pointer"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-1 md:hidden">
+          <ThemeToggle />
+          <button
+            className="p-2 rounded-md hover:bg-accent transition-colors cursor-pointer"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       {menuOpen && (
@@ -207,7 +223,7 @@ export function Navbar() {
                 "px-3 py-2 rounded-md text-sm font-semibold transition-colors cursor-pointer",
                 pathname.startsWith(link.href)
                   ? "text-white"
-                  : "text-zinc-900 hover:bg-accent"
+                  : "text-foreground hover:bg-accent"
               )}
               style={pathname.startsWith(link.href) ? { backgroundColor: "#2563eb" } : undefined}
             >
@@ -216,11 +232,11 @@ export function Navbar() {
           ))}
           {user ? (
             <>
-              <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-zinc-900 hover:bg-accent">Dashboard</Link>
-              <Link href="/dashboard/profile" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-zinc-700 hover:bg-accent">My Profile</Link>
-              <Link href="/dashboard/settings" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-zinc-700 hover:bg-accent">Settings</Link>
+              <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-foreground hover:bg-accent">Dashboard</Link>
+              <Link href="/dashboard/profile" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-foreground/80 hover:bg-accent">My Profile</Link>
+              <Link href="/dashboard/settings" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-foreground/80 hover:bg-accent">Settings</Link>
               {isAdmin && (
-                <Link href="/admin" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-zinc-700 hover:bg-accent">Admin</Link>
+                <Link href="/admin" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-foreground/80 hover:bg-accent">Admin</Link>
               )}
               <button onClick={signOut} className="text-left px-3 py-2 rounded-md text-sm font-semibold text-red-500 hover:bg-red-50 cursor-pointer">Sign out</button>
             </>

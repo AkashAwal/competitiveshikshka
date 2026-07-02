@@ -33,10 +33,10 @@ export function AdminSidebar({ email }: { email: string }) {
   }
 
   return (
-    <aside className="flex flex-col h-full" style={{ backgroundColor: "#15191e", width: "240px", minWidth: "240px" }}>
+    <aside className="flex flex-col h-full" style={{ backgroundColor: "var(--surface-sidebar)", width: "240px", minWidth: "240px" }}>
       <div className="px-5 py-5">
-        <p className="text-lg font-black" style={{ color: "rgba(255,255,255,0.95)" }}>Admin</p>
-        <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.35)" }}>CompetitiveShiksha</p>
+        <p className="text-lg font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>Admin</p>
+        <p className="text-xs mt-0.5" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>CompetitiveShiksha</p>
       </div>
 
       <nav className="flex-1 px-3 py-2 flex flex-col gap-0.5">
@@ -48,35 +48,35 @@ export function AdminSidebar({ email }: { email: string }) {
               href={href}
               className="flex items-center gap-3 px-3 py-2 rounded-lg text-[15px] transition-all"
               style={{
-                backgroundColor: active ? "#ffffff" : "transparent",
-                color: active ? "#0f1318" : "rgba(255,255,255,0.75)",
+                backgroundColor: active ? "var(--surface-active-bg)" : "transparent",
+                color: active ? "var(--surface-active-fg)" : "rgba(var(--fg-rgb),0.75)",
                 fontWeight: active ? 600 : 400,
               }}
-              onMouseEnter={e => { if (!active) { (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(255,255,255,0.07)"; (e.currentTarget as HTMLElement).style.color = "#fff"; } }}
-              onMouseLeave={e => { if (!active) { (e.currentTarget as HTMLElement).style.backgroundColor = "transparent"; (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.75)"; } }}
+              onMouseEnter={e => { if (!active) { (e.currentTarget as HTMLElement).style.backgroundColor = "var(--hover-bg)"; (e.currentTarget as HTMLElement).style.color = "var(--text-primary)"; } }}
+              onMouseLeave={e => { if (!active) { (e.currentTarget as HTMLElement).style.backgroundColor = "transparent"; (e.currentTarget as HTMLElement).style.color = "rgba(var(--fg-rgb),0.75)"; } }}
             >
-              <Icon className="h-4.5 w-4.5 shrink-0" style={{ color: active ? "#000" : "rgba(255,255,255,0.5)" }} />
+              <Icon className="h-4.5 w-4.5 shrink-0" style={{ color: active ? "var(--surface-active-fg)" : "rgba(var(--fg-rgb),0.5)" }} />
               {label}
             </Link>
           );
         })}
       </nav>
 
-      <div className="px-3 pb-3 flex flex-col gap-0.5 border-t" style={{ borderColor: "rgba(255,255,255,0.15)", paddingTop: "10px" }}>
+      <div className="px-3 pb-3 flex flex-col gap-0.5 border-t" style={{ borderColor: "rgba(var(--fg-rgb),0.15)", paddingTop: "10px" }}>
         <Link
           href="/dashboard"
           className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all"
-          style={{ color: "rgba(255,255,255,0.6)" }}
-          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(255,255,255,0.07)"; }}
+          style={{ color: "rgba(var(--fg-rgb),0.6)" }}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(var(--fg-rgb),0.07)"; }}
           onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "transparent"; }}
         >
           <ArrowLeft className="h-4 w-4 shrink-0" />
           Back to site
         </Link>
 
-        <div className="mt-1 pt-2 border-t" style={{ borderColor: "rgba(255,255,255,0.15)" }}>
+        <div className="mt-1 pt-2 border-t" style={{ borderColor: "rgba(var(--fg-rgb),0.15)" }}>
           <div className="px-3 py-2 mb-1">
-            <p className="text-xs truncate" style={{ color: "rgba(255,255,255,0.35)" }}>{email}</p>
+            <p className="text-xs truncate" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>{email}</p>
           </div>
           <button
             onClick={signOut}

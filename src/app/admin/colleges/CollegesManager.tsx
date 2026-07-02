@@ -22,10 +22,10 @@ const COLLEGE_TYPES = ["IIT", "NIT", "IIIT", "GFTI", "State", "Private", "Medica
 const EMPTY: CollegeCoreInput = { name: "", type: "IIT", city: "", state: "", website: "" };
 
 const inputClass = "w-full rounded-lg px-3 py-2 text-sm outline-none";
-const inputStyle = { backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.9)" };
+const inputStyle = { backgroundColor: "rgba(var(--fg-rgb),0.05)", border: "1px solid rgba(var(--fg-rgb),0.08)", color: "rgba(var(--fg-rgb),0.9)" };
 
 function Label({ children }: { children: React.ReactNode }) {
-  return <label className="text-xs font-semibold uppercase tracking-wide mb-1.5 block" style={{ color: "rgba(255,255,255,0.4)" }}>{children}</label>;
+  return <label className="text-xs font-semibold uppercase tracking-wide mb-1.5 block" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>{children}</label>;
 }
 
 export function CollegesManager({ rows }: { rows: CollegeRow[] }) {
@@ -77,11 +77,11 @@ export function CollegesManager({ rows }: { rows: CollegeRow[] }) {
         </button>
       </div>
 
-      <div className="rounded-2xl overflow-hidden" style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" }}>
+      <div className="rounded-2xl overflow-hidden" style={{ background: "var(--surface-card)", border: "1px solid rgba(var(--fg-rgb),0.13)" }}>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr style={{ color: "rgba(255,255,255,0.4)" }}>
+              <tr style={{ color: "rgba(var(--fg-rgb),0.4)" }}>
                 {["Name", "Type", "Location", "NIRF", "Fees (LPA)", ""].map(h => (
                   <th key={h} className="text-left font-semibold px-4 py-3 text-xs uppercase tracking-wide whitespace-nowrap">{h}</th>
                 ))}
@@ -89,16 +89,16 @@ export function CollegesManager({ rows }: { rows: CollegeRow[] }) {
             </thead>
             <tbody>
               {rows.map(row => (
-                <tr key={row.id} className="border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+                <tr key={row.id} className="border-t" style={{ borderColor: "rgba(var(--fg-rgb),0.06)" }}>
                   <td className="px-4 py-3">
-                    <Link href={`/admin/colleges/${row.id}`} className="flex items-center gap-1.5 font-semibold hover:underline" style={{ color: "rgba(255,255,255,0.9)" }}>
-                      {row.name} <ArrowRight className="h-3.5 w-3.5" style={{ color: "rgba(255,255,255,0.3)" }} />
+                    <Link href={`/admin/colleges/${row.id}`} className="flex items-center gap-1.5 font-semibold hover:underline" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>
+                      {row.name} <ArrowRight className="h-3.5 w-3.5" style={{ color: "rgba(var(--fg-rgb),0.3)" }} />
                     </Link>
                   </td>
-                  <td className="px-4 py-3" style={{ color: "rgba(255,255,255,0.6)" }}>{row.type}</td>
-                  <td className="px-4 py-3" style={{ color: "rgba(255,255,255,0.6)" }}>{row.city}, {row.state}</td>
-                  <td className="px-4 py-3" style={{ color: "rgba(255,255,255,0.6)" }}>{row.nirf_rank ?? "—"}</td>
-                  <td className="px-4 py-3" style={{ color: "rgba(255,255,255,0.6)" }}>{row.avg_fees_lpa ?? "—"}</td>
+                  <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.type}</td>
+                  <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.city}, {row.state}</td>
+                  <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.nirf_rank ?? "—"}</td>
+                  <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.avg_fees_lpa ?? "—"}</td>
                   <td className="px-4 py-3">
                     <div className="flex items-center justify-end">
                       <button onClick={() => remove(row)} className="p-1.5 rounded-lg cursor-pointer" style={{ color: "#f87171" }}>
@@ -111,26 +111,26 @@ export function CollegesManager({ rows }: { rows: CollegeRow[] }) {
             </tbody>
           </table>
           {rows.length === 0 && (
-            <p className="text-center py-10 text-sm" style={{ color: "rgba(255,255,255,0.3)" }}>No colleges added yet.</p>
+            <p className="text-center py-10 text-sm" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>No colleges added yet.</p>
           )}
         </div>
       </div>
 
       <Dialog.Root open={open} onOpenChange={setOpen}>
         <Dialog.Portal>
-          <Dialog.Backdrop className="fixed inset-0 z-50" style={{ backgroundColor: "rgba(0,0,0,0.6)" }} />
+          <Dialog.Backdrop className="fixed inset-0 z-50" style={{ backgroundColor: "var(--overlay)" }} />
           <Dialog.Popup
             className="fixed left-1/2 top-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 rounded-2xl p-6"
-            style={{ backgroundColor: "#1b2027", border: "1px solid rgba(255,255,255,0.1)" }}
+            style={{ backgroundColor: "var(--surface-content)", border: "1px solid rgba(var(--fg-rgb),0.1)" }}
           >
             <div className="flex items-center justify-between mb-5">
-              <Dialog.Title className="text-lg font-black" style={{ color: "rgba(255,255,255,0.95)" }}>Add college</Dialog.Title>
-              <Dialog.Close className="p-1 rounded-lg cursor-pointer" style={{ color: "rgba(255,255,255,0.5)" }}>
+              <Dialog.Title className="text-lg font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>Add college</Dialog.Title>
+              <Dialog.Close className="p-1 rounded-lg cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
                 <X className="h-4 w-4" />
               </Dialog.Close>
             </div>
 
-            <p className="text-xs mb-4" style={{ color: "rgba(255,255,255,0.35)" }}>
+            <p className="text-xs mb-4" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>
               Add the basics now — address, overview, courses, cutoffs and placements can be filled in on the next screen.
             </p>
 
@@ -144,7 +144,7 @@ export function CollegesManager({ rows }: { rows: CollegeRow[] }) {
                 <div>
                   <Label>Type</Label>
                   <select className={inputClass} style={inputStyle} value={form.type} onChange={e => setForm({ ...form, type: e.target.value })}>
-                    {COLLEGE_TYPES.map(t => <option key={t} value={t} style={{ backgroundColor: "#1b2027" }}>{t}</option>)}
+                    {COLLEGE_TYPES.map(t => <option key={t} value={t} style={{ backgroundColor: "var(--surface-content)" }}>{t}</option>)}
                   </select>
                 </div>
                 <div>

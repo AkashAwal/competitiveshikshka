@@ -51,7 +51,7 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
         <div className="mb-10">
-          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-zinc-900">What we <span className="text-[#2563eb]">offer</span></h2>
+          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-foreground">What we <span className="text-[#2563eb]">offer</span></h2>
           <p className="mt-2 text-muted-foreground">Everything in one place — free, structured and exam-ready.</p>
         </div>
 
@@ -60,13 +60,13 @@ export default function HomePage() {
             <Link
               key={label}
               href={href}
-              className="group flex flex-col gap-4 rounded-xl border border-border bg-white p-6 transition-all duration-200 hover:border-[#2563eb] hover:shadow-sm"
+              className="group flex flex-col gap-4 rounded-xl border border-border bg-card p-6 transition-all duration-200 hover:border-[#2563eb] hover:shadow-sm"
             >
               <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#2563eb]/10 transition-colors">
                 <Icon className="h-5 w-5 text-[#2563eb]" />
               </span>
               <div>
-                <h3 className="font-bold text-zinc-900 mb-1">{label}</h3>
+                <h3 className="font-bold text-foreground mb-1">{label}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
               </div>
               <span className="mt-auto flex items-center gap-1 text-sm font-semibold text-[#2563eb] opacity-0 group-hover:opacity-100 transition-opacity">
@@ -80,7 +80,7 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
         <div className="mb-12">
-          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-zinc-900">Your personal <span className="text-[#2563eb]">study space</span></h2>
+          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-foreground">Your personal <span className="text-[#2563eb]">study space</span></h2>
           <p className="mt-2 text-muted-foreground">Everything organised around you — your exam, your class, your pace.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
@@ -101,13 +101,13 @@ export default function HomePage() {
               description: "See your test scores, completed topics and weak areas. Know exactly where you stand every day.",
             },
           ].map(({ step, title, description }) => (
-            <div key={step} className="relative flex flex-col gap-4 p-8 border border-border bg-white first:rounded-l-xl last:rounded-r-xl -ml-px first:ml-0">
+            <div key={step} className="relative flex flex-col gap-4 p-8 border border-border bg-card first:rounded-l-xl last:rounded-r-xl -ml-px first:ml-0">
               <div className="flex items-center gap-4">
                 <span className="text-xs font-black text-[#2563eb] tracking-widest">{step}</span>
                 <div className="flex-1 h-px bg-border" />
               </div>
               <div>
-                <h3 className="font-black text-zinc-900 text-lg mb-1">{title}</h3>
+                <h3 className="font-black text-foreground text-lg mb-1">{title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
         <div className="mb-10">
-          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-zinc-900">Join the <span className="text-[#2563eb]">community</span></h2>
+          <h2 className="text-5xl font-black leading-[1.1] tracking-tight text-foreground">Join the <span className="text-[#2563eb]">community</span></h2>
           <p className="mt-2 text-muted-foreground">Study with thousands of JEE and NEET aspirants. Ask doubts, share notes, stay motivated.</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">

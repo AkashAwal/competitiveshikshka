@@ -1,6 +1,6 @@
 import { createAdminClient } from "@/lib/supabase/admin";
 
-const card = { background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" };
+const card = { background: "var(--surface-card)", border: "1px solid rgba(var(--fg-rgb),0.13)" };
 
 function daysAgo(n: number) {
   return new Date(Date.now() - n * 86_400_000).toISOString();
@@ -21,18 +21,18 @@ function BarList({ title, data, color }: { title: string; data: { label: string;
   const max = Math.max(1, ...data.map(d => d.count));
   return (
     <div className="rounded-2xl p-6 flex flex-col gap-4" style={card}>
-      <p className="text-sm font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>{title}</p>
+      <p className="text-sm font-bold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>{title}</p>
       {data.length === 0 ? (
-        <p className="text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>No data yet.</p>
+        <p className="text-xs" style={{ color: "rgba(var(--fg-rgb),0.25)" }}>No data yet.</p>
       ) : (
         <div className="flex flex-col gap-3">
           {data.slice(0, 8).map(({ label, count }) => (
             <div key={label} className="flex flex-col gap-1.5">
-              <div className="flex items-center justify-between text-xs font-semibold" style={{ color: "rgba(255,255,255,0.7)" }}>
+              <div className="flex items-center justify-between text-xs font-semibold" style={{ color: "rgba(var(--fg-rgb),0.7)" }}>
                 <span>{label}</span>
-                <span style={{ color: "rgba(255,255,255,0.4)" }}>{count}</span>
+                <span style={{ color: "rgba(var(--fg-rgb),0.4)" }}>{count}</span>
               </div>
-              <div className="h-1.5 rounded-full w-full" style={{ backgroundColor: "rgba(255,255,255,0.06)" }}>
+              <div className="h-1.5 rounded-full w-full" style={{ backgroundColor: "rgba(var(--fg-rgb),0.06)" }}>
                 <div className="h-1.5 rounded-full" style={{ width: `${(count / max) * 100}%`, backgroundColor: color }} />
               </div>
             </div>
@@ -90,8 +90,8 @@ export default async function AdminOverviewPage() {
 
   return (
     <div className="px-6 py-8 max-w-6xl mx-auto">
-      <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(255,255,255,0.95)" }}>Overview</h1>
-      <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.4)" }}>Usage analytics across CompetitiveShiksha.</p>
+      <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>Overview</h1>
+      <p className="text-sm mb-8" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>Usage analytics across CompetitiveShiksha.</p>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
         {stats.map(({ label, value, color, bg, icon }) => (
@@ -100,7 +100,7 @@ export default async function AdminOverviewPage() {
               <span className="text-xl">{icon}</span>
               <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full text-right" style={{ backgroundColor: bg, color }}>{label}</span>
             </div>
-            <p className="text-3xl font-black" style={{ color: "rgba(255,255,255,0.95)" }}>{value}</p>
+            <p className="text-3xl font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>{value}</p>
           </div>
         ))}
       </div>

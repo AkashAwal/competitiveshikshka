@@ -13,8 +13,8 @@ const extras = ["No ads", "Exclusive test series", "Priority support"];
 export default function PlannerPage() {
   return (
     <div className="px-6 py-8 max-w-5xl mx-auto">
-      <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(255,255,255,0.95)" }}>Planner</h1>
-      <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.45)" }}>Plan your weekly study schedule around your exam date.</p>
+      <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>Planner</h1>
+      <p className="text-sm mb-8" style={{ color: "rgba(var(--fg-rgb),0.45)" }}>Plan your weekly study schedule around your exam date.</p>
 
       {/* Gradient border wrapper */}
       <div style={{
@@ -26,7 +26,7 @@ export default function PlannerPage() {
         <div style={{
           borderRadius: 23,
           padding: "52px 44px 40px",
-          background: "radial-gradient(ellipse 90% 45% at 50% -8%, rgba(202,138,4,0.09) 0%, transparent 60%), #171b20",
+          background: "radial-gradient(ellipse 90% 45% at 50% -8%, rgba(202,138,4,0.09) 0%, transparent 60%), var(--surface-card)",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -42,7 +42,7 @@ export default function PlannerPage() {
             left: "8%",
             right: "8%",
             height: 1,
-            background: "linear-gradient(90deg, transparent, rgba(202,138,4,0.6), rgba(255,255,255,0.25), rgba(202,138,4,0.6), transparent)",
+            background: "linear-gradient(90deg, transparent, rgba(202,138,4,0.6), rgba(var(--fg-rgb),0.25), rgba(202,138,4,0.6), transparent)",
           }} />
 
           {/* Background glow orb */}
@@ -75,7 +75,7 @@ export default function PlannerPage() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              boxShadow: "0 0 28px rgba(202,138,4,0.22), 0 0 0 1px rgba(202,138,4,0.08), inset 0 1px 0 rgba(255,255,255,0.07)",
+              boxShadow: "0 0 28px rgba(202,138,4,0.22), 0 0 0 1px rgba(202,138,4,0.08), inset 0 1px 0 rgba(var(--fg-rgb),0.07)",
               position: "relative",
             }}>
               <Crown size={29} style={{ color: "#ca8a04" }} />
@@ -103,7 +103,7 @@ export default function PlannerPage() {
             fontWeight: 900,
             lineHeight: 1.15,
             marginBottom: 14,
-            background: "linear-gradient(180deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.58) 100%)",
+            background: "linear-gradient(180deg, rgba(var(--fg-rgb),0.97) 0%, rgba(var(--fg-rgb),0.58) 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             letterSpacing: "-0.022em",
@@ -111,7 +111,7 @@ export default function PlannerPage() {
             Get your personalised<br />study planner
           </h2>
 
-          <p style={{ fontSize: 14.5, color: "rgba(255,255,255,0.42)", maxWidth: 400, lineHeight: 1.7, marginBottom: 40 }}>
+          <p style={{ fontSize: 14.5, color: "rgba(var(--fg-rgb),0.42)", maxWidth: 400, lineHeight: 1.7, marginBottom: 40 }}>
             A customised weekly schedule built by expert mentors — tailored to your target exam, weak subjects, and available study hours.
           </p>
 
@@ -128,8 +128,8 @@ export default function PlannerPage() {
               <div key={label} style={{
                 padding: "15px 16px",
                 borderRadius: 14,
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.07)",
+                background: "rgba(var(--fg-rgb),0.03)",
+                border: "1px solid rgba(var(--fg-rgb),0.07)",
                 borderLeft: "2px solid rgba(202,138,4,0.38)",
                 display: "flex",
                 gap: 12,
@@ -150,8 +150,8 @@ export default function PlannerPage() {
                   <Icon size={14} style={{ color: "#ca8a04" }} />
                 </div>
                 <div>
-                  <p style={{ fontSize: 12.5, fontWeight: 700, color: "rgba(255,255,255,0.82)", marginBottom: 4 }}>{label}</p>
-                  <p style={{ fontSize: 11, color: "rgba(255,255,255,0.32)", lineHeight: 1.5 }}>{desc}</p>
+                  <p style={{ fontSize: 12.5, fontWeight: 700, color: "rgba(var(--fg-rgb),0.82)", marginBottom: 4 }}>{label}</p>
+                  <p style={{ fontSize: 11, color: "rgba(var(--fg-rgb),0.32)", lineHeight: 1.5 }}>{desc}</p>
                 </div>
               </div>
             ))}
@@ -172,7 +172,7 @@ export default function PlannerPage() {
               fontWeight: 800,
               fontSize: 14,
               textDecoration: "none",
-              boxShadow: "0 4px 32px rgba(202,138,4,0.32), 0 1px 0 rgba(255,255,255,0.14) inset",
+              boxShadow: "0 4px 32px rgba(202,138,4,0.32), 0 1px 0 rgba(var(--fg-rgb),0.14) inset",
               letterSpacing: "-0.01em",
               cursor: "pointer",
             }}>
@@ -186,13 +186,13 @@ export default function PlannerPage() {
               gap: 7,
               padding: "9px 18px",
               borderRadius: 10,
-              border: "1px solid rgba(255,255,255,0.07)",
-              background: "rgba(255,255,255,0.025)",
+              border: "1px solid rgba(var(--fg-rgb),0.07)",
+              background: "rgba(var(--fg-rgb),0.025)",
               width: "100%",
               justifyContent: "center",
             }}>
-              <GraduationCap size={12} style={{ color: "rgba(255,255,255,0.35)", flexShrink: 0 }} />
-              <span style={{ fontSize: 11.5, color: "rgba(255,255,255,0.38)" }}>
+              <GraduationCap size={12} style={{ color: "rgba(var(--fg-rgb),0.35)", flexShrink: 0 }} />
+              <span style={{ fontSize: 11.5, color: "rgba(var(--fg-rgb),0.38)" }}>
                 Mentorship included —{" "}
                 <Link href="/dashboard/premium" style={{ color: "#a78bfa", textDecoration: "underline", textUnderlineOffset: 3, fontWeight: 600 }}>
                   also a standalone add-on
@@ -205,9 +205,9 @@ export default function PlannerPage() {
           <div style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 22, flexWrap: "wrap", justifyContent: "center" }}>
             {extras.map((e, i) => (
               <span key={e} style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
-                {i > 0 && <span style={{ color: "rgba(255,255,255,0.12)", margin: "0 4px" }}>·</span>}
+                {i > 0 && <span style={{ color: "rgba(var(--fg-rgb),0.12)", margin: "0 4px" }}>·</span>}
                 <Check size={9} style={{ color: "rgba(202,138,4,0.55)" }} />
-                <span style={{ fontSize: 10.5, color: "rgba(255,255,255,0.22)" }}>{e}</span>
+                <span style={{ fontSize: 10.5, color: "rgba(var(--fg-rgb),0.22)" }}>{e}</span>
               </span>
             ))}
           </div>

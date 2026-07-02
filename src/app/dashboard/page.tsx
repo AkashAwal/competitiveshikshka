@@ -54,11 +54,11 @@ export default async function DashboardPage() {
                 Premium
               </span>
             </div>
-            <p className="text-2xl font-black leading-tight" style={{ color: "rgba(255,255,255,0.95)" }}>
+            <p className="text-2xl font-black leading-tight" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>
               Crack JEE with an<br />
               <span style={{ color: "#818cf8" }}>IIT Alumni by your side</span>
             </p>
-            <p className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
+            <p className="text-sm" style={{ color: "rgba(var(--fg-rgb),0.45)" }}>
               Live sessions · Curated DPPs · Personal mentorship
             </p>
           </div>
@@ -71,7 +71,7 @@ export default async function DashboardPage() {
             >
               Upgrade Now →
             </button>
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>Cancel anytime</p>
+            <p className="text-xs" style={{ color: "rgba(var(--fg-rgb),0.25)" }}>Cancel anytime</p>
           </div>
         </div>
         <ShortNotesSection stream={stream} />

@@ -21,10 +21,10 @@ const EMPTY: QuestionInput = {
 };
 
 const inputClass = "w-full rounded-lg px-3 py-2 text-sm outline-none";
-const inputStyle = { backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.9)" };
+const inputStyle = { backgroundColor: "rgba(var(--fg-rgb),0.05)", border: "1px solid rgba(var(--fg-rgb),0.08)", color: "rgba(var(--fg-rgb),0.9)" };
 
 function Label({ children }: { children: React.ReactNode }) {
-  return <label className="text-xs font-semibold uppercase tracking-wide mb-1.5 block" style={{ color: "rgba(255,255,255,0.4)" }}>{children}</label>;
+  return <label className="text-xs font-semibold uppercase tracking-wide mb-1.5 block" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>{children}</label>;
 }
 
 export function QuestionsManager({ rows }: { rows: QuestionRow[] }) {
@@ -88,8 +88,8 @@ export function QuestionsManager({ rows }: { rows: QuestionRow[] }) {
               onClick={() => setBankFilter(b)}
               className="px-3 py-1.5 rounded-lg text-sm font-semibold cursor-pointer transition-colors"
               style={{
-                backgroundColor: bankFilter === b ? "#2563eb" : "rgba(255,255,255,0.05)",
-                color: bankFilter === b ? "#fff" : "rgba(255,255,255,0.6)",
+                backgroundColor: bankFilter === b ? "#2563eb" : "rgba(var(--fg-rgb),0.05)",
+                color: bankFilter === b ? "#fff" : "rgba(var(--fg-rgb),0.6)",
               }}
             >
               {b === "all" ? "All" : b === "pyq" ? "PYQ" : "Practice"}
@@ -105,11 +105,11 @@ export function QuestionsManager({ rows }: { rows: QuestionRow[] }) {
         </button>
       </div>
 
-      <div className="rounded-2xl overflow-hidden" style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" }}>
+      <div className="rounded-2xl overflow-hidden" style={{ background: "var(--surface-card)", border: "1px solid rgba(var(--fg-rgb),0.13)" }}>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr style={{ color: "rgba(255,255,255,0.4)" }}>
+              <tr style={{ color: "rgba(var(--fg-rgb),0.4)" }}>
                 {["Question", "Bank", "Exam", "Subject", "Difficulty", ""].map(h => (
                   <th key={h} className="text-left font-semibold px-4 py-3 text-xs uppercase tracking-wide whitespace-nowrap">{h}</th>
                 ))}
@@ -117,15 +117,15 @@ export function QuestionsManager({ rows }: { rows: QuestionRow[] }) {
             </thead>
             <tbody>
               {filtered.map(row => (
-                <tr key={row.id} className="border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-                  <td className="px-4 py-3 max-w-sm truncate font-medium" style={{ color: "rgba(255,255,255,0.9)" }}>{row.question}</td>
-                  <td className="px-4 py-3" style={{ color: "rgba(255,255,255,0.6)" }}>{row.bank === "pyq" ? "PYQ" : "Practice"}</td>
-                  <td className="px-4 py-3" style={{ color: "rgba(255,255,255,0.6)" }}>{row.exam}{row.year ? ` · ${row.year}` : ""}</td>
-                  <td className="px-4 py-3" style={{ color: "rgba(255,255,255,0.6)" }}>{row.subject}</td>
-                  <td className="px-4 py-3" style={{ color: "rgba(255,255,255,0.6)" }}>{row.difficulty}</td>
+                <tr key={row.id} className="border-t" style={{ borderColor: "rgba(var(--fg-rgb),0.06)" }}>
+                  <td className="px-4 py-3 max-w-sm truncate font-medium" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>{row.question}</td>
+                  <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.bank === "pyq" ? "PYQ" : "Practice"}</td>
+                  <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.exam}{row.year ? ` · ${row.year}` : ""}</td>
+                  <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.subject}</td>
+                  <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.difficulty}</td>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-1 justify-end">
-                      <button onClick={() => openEdit(row)} className="p-1.5 rounded-lg cursor-pointer" style={{ color: "rgba(255,255,255,0.5)" }}>
+                      <button onClick={() => openEdit(row)} className="p-1.5 rounded-lg cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
                         <Pencil className="h-4 w-4" />
                       </button>
                       <button onClick={() => remove(row)} className="p-1.5 rounded-lg cursor-pointer" style={{ color: "#f87171" }}>
@@ -138,23 +138,23 @@ export function QuestionsManager({ rows }: { rows: QuestionRow[] }) {
             </tbody>
           </table>
           {filtered.length === 0 && (
-            <p className="text-center py-10 text-sm" style={{ color: "rgba(255,255,255,0.3)" }}>No questions here yet.</p>
+            <p className="text-center py-10 text-sm" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>No questions here yet.</p>
           )}
         </div>
       </div>
 
       <Dialog.Root open={open} onOpenChange={setOpen}>
         <Dialog.Portal>
-          <Dialog.Backdrop className="fixed inset-0 z-50" style={{ backgroundColor: "rgba(0,0,0,0.6)" }} />
+          <Dialog.Backdrop className="fixed inset-0 z-50" style={{ backgroundColor: "var(--overlay)" }} />
           <Dialog.Popup
             className="fixed left-1/2 top-1/2 z-50 w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 rounded-2xl p-6 max-h-[85vh] overflow-y-auto"
-            style={{ backgroundColor: "#1b2027", border: "1px solid rgba(255,255,255,0.1)" }}
+            style={{ backgroundColor: "var(--surface-content)", border: "1px solid rgba(var(--fg-rgb),0.1)" }}
           >
             <div className="flex items-center justify-between mb-5">
-              <Dialog.Title className="text-lg font-black" style={{ color: "rgba(255,255,255,0.95)" }}>
+              <Dialog.Title className="text-lg font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>
                 {editing ? "Edit question" : "Add question"}
               </Dialog.Title>
-              <Dialog.Close className="p-1 rounded-lg cursor-pointer" style={{ color: "rgba(255,255,255,0.5)" }}>
+              <Dialog.Close className="p-1 rounded-lg cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
                 <X className="h-4 w-4" />
               </Dialog.Close>
             </div>
@@ -164,20 +164,20 @@ export function QuestionsManager({ rows }: { rows: QuestionRow[] }) {
                 <div>
                   <Label>Bank</Label>
                   <select className={inputClass} style={inputStyle} value={form.bank} onChange={e => setForm({ ...form, bank: e.target.value as "pyq" | "practice" })}>
-                    <option value="pyq" style={{ backgroundColor: "#1b2027" }}>PYQ</option>
-                    <option value="practice" style={{ backgroundColor: "#1b2027" }}>Practice</option>
+                    <option value="pyq" style={{ backgroundColor: "var(--surface-content)" }}>PYQ</option>
+                    <option value="practice" style={{ backgroundColor: "var(--surface-content)" }}>Practice</option>
                   </select>
                 </div>
                 <div>
                   <Label>Exam</Label>
                   <select className={inputClass} style={inputStyle} value={form.exam} onChange={e => setForm({ ...form, exam: e.target.value })}>
-                    {EXAMS.map(x => <option key={x} value={x} style={{ backgroundColor: "#1b2027" }}>{x}</option>)}
+                    {EXAMS.map(x => <option key={x} value={x} style={{ backgroundColor: "var(--surface-content)" }}>{x}</option>)}
                   </select>
                 </div>
                 <div>
                   <Label>Subject</Label>
                   <select className={inputClass} style={inputStyle} value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })}>
-                    {SUBJECTS.map(s => <option key={s} value={s} style={{ backgroundColor: "#1b2027" }}>{s}</option>)}
+                    {SUBJECTS.map(s => <option key={s} value={s} style={{ backgroundColor: "var(--surface-content)" }}>{s}</option>)}
                   </select>
                 </div>
                 <div>
@@ -209,13 +209,13 @@ export function QuestionsManager({ rows }: { rows: QuestionRow[] }) {
                 <div>
                   <Label>Correct option</Label>
                   <select className={inputClass} style={inputStyle} value={form.correct_option} onChange={e => setForm({ ...form, correct_option: e.target.value as "A" | "B" | "C" | "D" })}>
-                    {OPTIONS.map(o => <option key={o} value={o} style={{ backgroundColor: "#1b2027" }}>{o}</option>)}
+                    {OPTIONS.map(o => <option key={o} value={o} style={{ backgroundColor: "var(--surface-content)" }}>{o}</option>)}
                   </select>
                 </div>
                 <div>
                   <Label>Difficulty</Label>
                   <select className={inputClass} style={inputStyle} value={form.difficulty} onChange={e => setForm({ ...form, difficulty: e.target.value as typeof DIFFICULTIES[number] })}>
-                    {DIFFICULTIES.map(d => <option key={d} value={d} style={{ backgroundColor: "#1b2027" }}>{d}</option>)}
+                    {DIFFICULTIES.map(d => <option key={d} value={d} style={{ backgroundColor: "var(--surface-content)" }}>{d}</option>)}
                   </select>
                 </div>
               </div>

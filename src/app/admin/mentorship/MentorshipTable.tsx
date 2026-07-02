@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useTransition } from "react";
 import { updateApplicationStatus, type ApplicationStatus } from "./actions";
@@ -32,11 +32,11 @@ export function MentorshipTable({ rows }: { rows: ApplicationRow[] }) {
   }
 
   return (
-    <div className="rounded-2xl overflow-hidden" style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" }}>
+    <div className="rounded-2xl overflow-hidden" style={{ background: "var(--surface-card)", border: "1px solid rgba(var(--fg-rgb),0.13)" }}>
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
-            <tr style={{ color: "rgba(255,255,255,0.4)" }}>
+            <tr style={{ color: "rgba(var(--fg-rgb),0.4)" }}>
               {["Name", "Contact", "Email", "City", "Class", "Plan", "Applied", "Status"].map(h => (
                 <th key={h} className="text-left font-semibold px-4 py-3 text-xs uppercase tracking-wide whitespace-nowrap">{h}</th>
               ))}
@@ -46,14 +46,14 @@ export function MentorshipTable({ rows }: { rows: ApplicationRow[] }) {
             {rows.map(row => {
               const colors = STATUS_COLORS[row.status];
               return (
-                <tr key={row.id} className="border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-                  <td className="px-4 py-3 font-semibold" style={{ color: "rgba(255,255,255,0.9)" }}>{row.full_name}</td>
-                  <td className="px-4 py-3" style={{ color: "rgba(255,255,255,0.6)" }}>{row.contact_no}</td>
-                  <td className="px-4 py-3" style={{ color: "rgba(255,255,255,0.6)" }}>{row.email}</td>
-                  <td className="px-4 py-3" style={{ color: "rgba(255,255,255,0.6)" }}>{row.city}</td>
-                  <td className="px-4 py-3" style={{ color: "rgba(255,255,255,0.6)" }}>{row.class}</td>
-                  <td className="px-4 py-3" style={{ color: "rgba(255,255,255,0.6)" }}>{row.plan === "premium" ? "Premium" : "Mentorship only"}</td>
-                  <td className="px-4 py-3 whitespace-nowrap" style={{ color: "rgba(255,255,255,0.4)" }}>
+                <tr key={row.id} className="border-t" style={{ borderColor: "rgba(var(--fg-rgb),0.06)" }}>
+                  <td className="px-4 py-3 font-semibold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>{row.full_name}</td>
+                  <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.contact_no}</td>
+                  <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.email}</td>
+                  <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.city}</td>
+                  <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.class}</td>
+                  <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.plan === "premium" ? "Premium" : "Mentorship only"}</td>
+                  <td className="px-4 py-3 whitespace-nowrap" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>
                     {new Date(row.created_at).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
                   </td>
                   <td className="px-4 py-3">
@@ -65,7 +65,7 @@ export function MentorshipTable({ rows }: { rows: ApplicationRow[] }) {
                       style={{ backgroundColor: colors.bg, color: colors.color, border: "none" }}
                     >
                       {(["new", "contacted", "enrolled", "rejected"] as const).map(s => (
-                        <option key={s} value={s} style={{ backgroundColor: "#1b2027", color: "#fff" }}>{s}</option>
+                        <option key={s} value={s} style={{ backgroundColor: "var(--surface-content)", color: "var(--text-primary)" }}>{s}</option>
                       ))}
                     </select>
                   </td>
@@ -75,7 +75,7 @@ export function MentorshipTable({ rows }: { rows: ApplicationRow[] }) {
           </tbody>
         </table>
         {rows.length === 0 && (
-          <p className="text-center py-10 text-sm" style={{ color: "rgba(255,255,255,0.3)" }}>No mentorship applications yet.</p>
+          <p className="text-center py-10 text-sm" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>No mentorship applications yet.</p>
         )}
       </div>
     </div>

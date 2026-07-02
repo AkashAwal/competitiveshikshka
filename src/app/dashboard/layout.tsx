@@ -220,21 +220,26 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const Sidebar = () => (
     <aside
       className="flex flex-col h-full"
-      style={{ backgroundColor: "#15191e", width: "240px", minWidth: "240px" }}
+      style={{ backgroundColor: "var(--surface-sidebar)", width: "240px", minWidth: "240px" }}
     >
       {/* Logo */}
       <div className="px-5 py-3">
         <Link href="/" onClick={() => setSidebarOpen(false)}>
           <Image
-            src="/logo-dark-mode.svg"
+            src="/logo_br_light.png"
             alt="CompetitiveShiksha"
             width={160}
             height={44}
-            className="h-[44px] w-auto"
+            className="hidden h-[44px] w-auto dark:block"
             priority
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).src = "/logo-white-mode.svg";
-            }}
+          />
+          <Image
+            src="/logo_br_dark.png"
+            alt="CompetitiveShiksha"
+            width={160}
+            height={44}
+            className="h-[44px] w-auto dark:hidden"
+            priority
           />
         </Link>
       </div>
@@ -250,26 +255,26 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               onClick={() => setSidebarOpen(false)}
               className="flex items-center gap-3 px-3 py-2 rounded-lg text-[15px] transition-all"
               style={{
-                backgroundColor: active ? "#ffffff" : "transparent",
-                color: active ? "#0f1318" : "rgba(255,255,255,0.75)",
+                backgroundColor: active ? "var(--surface-active-bg)" : "transparent",
+                color: active ? "var(--surface-active-fg)" : "rgba(var(--fg-rgb),0.75)",
                 fontWeight: active ? 600 : 400,
               }}
               onMouseEnter={e => {
                 if (!active) {
-                  (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(255,255,255,0.07)";
-                  (e.currentTarget as HTMLElement).style.color = "#fff";
+                  (e.currentTarget as HTMLElement).style.backgroundColor = "var(--hover-bg)";
+                  (e.currentTarget as HTMLElement).style.color = "var(--text-primary)";
                 }
               }}
               onMouseLeave={e => {
                 if (!active) {
                   (e.currentTarget as HTMLElement).style.backgroundColor = "transparent";
-                  (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.75)";
+                  (e.currentTarget as HTMLElement).style.color = "rgba(var(--fg-rgb),0.75)";
                 }
               }}
             >
               <Icon
                 className="h-4.5 w-4.5 shrink-0"
-                style={{ color: active ? "#000" : "rgba(255,255,255,0.5)" }}
+                style={{ color: active ? "var(--surface-active-fg)" : "rgba(var(--fg-rgb),0.5)" }}
               />
               {label}
             </Link>
@@ -278,7 +283,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </nav>
 
       {/* Bottom section */}
-      <div className="px-3 pb-2 flex flex-col gap-0.5 border-t" style={{ borderColor: "rgba(255,255,255,0.15)", paddingTop: "8px" }}>
+      <div className="px-3 pb-2 flex flex-col gap-0.5 border-t" style={{ borderColor: "rgba(var(--fg-rgb),0.15)", paddingTop: "8px" }}>
         {bottomItems.map(({ icon: Icon, label, href, gold }) => {
           const active = isActive(href);
           return (
@@ -288,26 +293,26 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               onClick={() => setSidebarOpen(false)}
               className="flex items-center gap-3 px-3 py-2 rounded-lg text-[15px] transition-all"
               style={{
-                backgroundColor: active ? "#ffffff" : gold ? "rgba(234,179,8,0.08)" : "transparent",
-                color: active ? "#0f1318" : gold ? "#fbbf24" : "rgba(255,255,255,0.75)",
+                backgroundColor: active ? "var(--surface-active-bg)" : gold ? "rgba(234,179,8,0.08)" : "transparent",
+                color: active ? "var(--surface-active-fg)" : gold ? "#fbbf24" : "rgba(var(--fg-rgb),0.75)",
                 fontWeight: active ? 600 : 400,
               }}
               onMouseEnter={e => {
                 if (!active) {
-                  (e.currentTarget as HTMLElement).style.backgroundColor = gold ? "rgba(234,179,8,0.15)" : "rgba(255,255,255,0.07)";
-                  (e.currentTarget as HTMLElement).style.color = gold ? "#fde68a" : "#fff";
+                  (e.currentTarget as HTMLElement).style.backgroundColor = gold ? "rgba(234,179,8,0.15)" : "var(--hover-bg)";
+                  (e.currentTarget as HTMLElement).style.color = gold ? "#fde68a" : "var(--text-primary)";
                 }
               }}
               onMouseLeave={e => {
                 if (!active) {
                   (e.currentTarget as HTMLElement).style.backgroundColor = gold ? "rgba(234,179,8,0.08)" : "transparent";
-                  (e.currentTarget as HTMLElement).style.color = gold ? "#fbbf24" : "rgba(255,255,255,0.75)";
+                  (e.currentTarget as HTMLElement).style.color = gold ? "#fbbf24" : "rgba(var(--fg-rgb),0.75)";
                 }
               }}
             >
               <Icon
                 className="h-4.5 w-4.5 shrink-0"
-                style={{ color: active ? "#000" : gold ? "#fbbf24" : "rgba(255,255,255,0.5)" }}
+                style={{ color: active ? "var(--surface-active-fg)" : gold ? "#fbbf24" : "rgba(var(--fg-rgb),0.5)" }}
               />
               {label}
             </Link>
@@ -315,13 +320,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         })}
 
         {/* User + sign out */}
-        <div className="mt-2 pt-2 border-t" style={{ borderColor: "rgba(255,255,255,0.15)" }}>
+        <div className="mt-2 pt-2 border-t" style={{ borderColor: "rgba(var(--fg-rgb),0.15)" }}>
           {user && (
             <div className="px-3 py-2 mb-1">
-              <p className="text-xs font-semibold truncate" style={{ color: "rgba(255,255,255,0.9)" }}>
+              <p className="text-xs font-semibold truncate" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>
                 {user.user_metadata.full_name ?? "Student"}
               </p>
-              <p className="text-xs truncate" style={{ color: "rgba(255,255,255,0.35)" }}>
+              <p className="text-xs truncate" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>
                 {user.email}
               </p>
             </div>
@@ -349,7 +354,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   return (
     /* Outer bg = sidebar color so the curved corner blends seamlessly */
-    <div className="flex h-screen overflow-hidden" style={{ backgroundColor: "#15191e" }}>
+    <div className="flex h-screen overflow-hidden" style={{ backgroundColor: "var(--surface-sidebar)" }}>
       {/* Desktop sidebar */}
       <div className="hidden md:flex h-full">
         <Sidebar />
@@ -360,7 +365,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="md:hidden fixed inset-0 z-50 flex">
           <div
             className="absolute inset-0"
-            style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+            style={{ backgroundColor: "var(--overlay)" }}
             onClick={() => setSidebarOpen(false)}
           />
           <div className="relative z-10 h-full">
@@ -375,7 +380,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         {/* Topbar — sits in sidebar bg color */}
         <div
           className="hidden md:flex items-center justify-end px-6 shrink-0 relative"
-          style={{ height: "65px", backgroundColor: "#15191e" }}
+          style={{ height: "65px", backgroundColor: "var(--surface-sidebar)" }}
         >
           {/* Greeting — centred across full viewport */}
           <div className="fixed left-1/2 -translate-x-1/2 flex items-center gap-3">
@@ -390,15 +395,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 </div>
               );
             })()}
-            <p className="text-xl font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>
+            <p className="text-xl font-bold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>
               Hey {user?.user_metadata?.full_name?.split(" ")[0] ?? "Student"}!
             </p>
             {profile?.onboarding_completed && (
               <>
-                <span style={{ color: "rgba(255,255,255,0.2)" }}>·</span>
-                <span className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.45)" }}>{profile.class}</span>
-                <span style={{ color: "rgba(255,255,255,0.2)" }}>·</span>
-                <span className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.45)" }}>{profile.stream}</span>
+                <span style={{ color: "rgba(var(--fg-rgb),0.2)" }}>·</span>
+                <span className="text-sm font-semibold" style={{ color: "rgba(var(--fg-rgb),0.45)" }}>{profile.class}</span>
+                <span style={{ color: "rgba(var(--fg-rgb),0.2)" }}>·</span>
+                <span className="text-sm font-semibold" style={{ color: "rgba(var(--fg-rgb),0.45)" }}>{profile.stream}</span>
               </>
             )}
           </div>
@@ -415,12 +420,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 onClick={onClick}
                 className="flex items-center gap-2 px-3 py-2 rounded-xl transition-colors"
                 style={{
-                  backgroundColor: isAchievements && achievementsOpen ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.06)",
+                  backgroundColor: isAchievements && achievementsOpen ? "rgba(var(--fg-rgb),0.12)" : "rgba(var(--fg-rgb),0.06)",
                   cursor: onClick ? "pointer" : "default",
                 }}
               >
                 <Icon className="h-4 w-4 shrink-0" style={{ color }} />
-                <span className="text-xs font-semibold" style={{ color: "rgba(255,255,255,0.85)" }}>{text}</span>
+                <span className="text-xs font-semibold" style={{ color: "rgba(var(--fg-rgb),0.85)" }}>{text}</span>
               </div>
             ))}
           </div>
@@ -429,30 +434,34 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         {/* Main content — rounded top-left corner cuts into the sidebar bg */}
         <div
           className="flex-1 flex flex-col overflow-hidden"
-          style={{ backgroundColor: "#1b2027", borderTopLeftRadius: "18px" }}
+          style={{ backgroundColor: "var(--surface-content)", borderTopLeftRadius: "18px" }}
         >
           {/* Mobile top bar */}
           <header
             className="md:hidden flex items-center gap-3 px-4 h-14 border-b shrink-0"
-            style={{ backgroundColor: "#1b2027", borderColor: "rgba(255,255,255,0.07)", borderTopLeftRadius: "18px" }}
+            style={{ backgroundColor: "var(--surface-content)", borderColor: "rgba(var(--fg-rgb),0.07)", borderTopLeftRadius: "18px" }}
           >
             <button
               onClick={() => setSidebarOpen(true)}
               className="p-1.5 rounded-md cursor-pointer"
-              style={{ color: "rgba(255,255,255,0.6)" }}
+              style={{ color: "rgba(var(--fg-rgb),0.6)" }}
             >
               <Menu className="h-5 w-5" />
             </button>
             <Link href="/">
               <Image
-                src="/logo-dark-mode.svg"
+                src="/logo_br_light.png"
                 alt="CompetitiveShiksha"
                 width={120}
                 height={32}
-                className="h-8 w-auto"
-                onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = "/logo-white-mode.svg";
-                }}
+                className="hidden h-8 w-auto dark:block"
+              />
+              <Image
+                src="/logo_br_dark.png"
+                alt="CompetitiveShiksha"
+                width={120}
+                height={32}
+                className="h-8 w-auto dark:hidden"
               />
             </Link>
           </header>
@@ -460,7 +469,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           {/* Page content */}
           <main
             className="flex-1 overflow-y-auto"
-            style={{ color: "rgba(255,255,255,0.87)" }}
+            style={{ color: "rgba(var(--fg-rgb),0.87)" }}
           >
             {children}
           </main>
@@ -483,16 +492,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             />
             <div
               className="fixed top-0 right-0 h-full z-50 flex flex-col"
-              style={{ width: "320px", backgroundColor: "#15191e", borderLeft: "1px solid rgba(255,255,255,0.08)" }}
+              style={{ width: "320px", backgroundColor: "var(--surface-sidebar)", borderLeft: "1px solid rgba(var(--fg-rgb),0.08)" }}
             >
               {/* Header */}
-              <div className="flex items-center justify-between px-5 py-4 border-b" style={{ borderColor: "rgba(255,255,255,0.08)" }}>
-                <p className="font-bold text-base" style={{ color: "rgba(255,255,255,0.9)" }}>Achievements</p>
+              <div className="flex items-center justify-between px-5 py-4 border-b" style={{ borderColor: "rgba(var(--fg-rgb),0.08)" }}>
+                <p className="font-bold text-base" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>Achievements</p>
                 <button
                   onClick={() => setAchievementsOpen(false)}
                   className="p-1.5 rounded-lg cursor-pointer transition-colors"
-                  style={{ color: "rgba(255,255,255,0.5)" }}
-                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(255,255,255,0.07)"}
+                  style={{ color: "rgba(var(--fg-rgb),0.5)" }}
+                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(var(--fg-rgb),0.07)"}
                   onMouseLeave={e => (e.currentTarget as HTMLElement).style.backgroundColor = "transparent"}
                 >
                   <X className="h-4 w-4" />
@@ -512,8 +521,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     key={title}
                     className="flex items-center gap-4 p-4 rounded-xl"
                     style={{
-                      backgroundColor: earned ? "rgba(37,99,235,0.12)" : "rgba(255,255,255,0.04)",
-                      border: `1px solid ${earned ? "rgba(37,99,235,0.3)" : "rgba(255,255,255,0.06)"}`,
+                      backgroundColor: earned ? "rgba(37,99,235,0.12)" : "rgba(var(--fg-rgb),0.04)",
+                      border: `1px solid ${earned ? "rgba(37,99,235,0.3)" : "rgba(var(--fg-rgb),0.06)"}`,
                     }}
                   >
                     <span
@@ -523,14 +532,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                       <Icon className="h-4.5 w-4.5" style={{ color: iconColor }} />
                     </span>
                     <div className="flex-1">
-                      <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.9)" }}>{title}</p>
-                      <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.4)" }}>{desc}</p>
+                      <p className="text-sm font-semibold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>{title}</p>
+                      <p className="text-xs mt-0.5" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>{desc}</p>
                     </div>
                     {/* Checkmark box */}
                     <div
                       className="flex h-5 w-5 items-center justify-center rounded shrink-0"
                       style={{
-                        border: `1.5px solid ${earned ? "#60a5fa" : "rgba(255,255,255,0.2)"}`,
+                        border: `1.5px solid ${earned ? "#60a5fa" : "rgba(var(--fg-rgb),0.2)"}`,
                         backgroundColor: earned ? "#2563eb" : "transparent",
                       }}
                     >
@@ -542,7 +551,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     </div>
                   </div>
                 ))}
-                <p className="text-xs text-center mt-2" style={{ color: "rgba(255,255,255,0.2)" }}>More achievements coming soon</p>
+                <p className="text-xs text-center mt-2" style={{ color: "rgba(var(--fg-rgb),0.2)" }}>More achievements coming soon</p>
               </div>
             </div>
           </>

@@ -131,7 +131,7 @@ function formatDate(dateStr: string): string {
 function DaysBadge({ diff, type, isPast }: { diff: number; type: EventType; isPast: boolean }) {
   if (isPast) {
     return (
-      <span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.06)", borderRadius: 6, padding: "2px 8px", whiteSpace: "nowrap" }}>
+      <span style={{ fontSize: 11, color: "rgba(var(--fg-rgb),0.3)", background: "rgba(var(--fg-rgb),0.06)", borderRadius: 6, padding: "2px 8px", whiteSpace: "nowrap" }}>
         {Math.abs(diff)}d ago
       </span>
     );
@@ -166,9 +166,9 @@ function EventCard({ event, isPast }: { event: ExamEvent; isPast: boolean }) {
         gap: 14,
         padding: "14px 16px",
         borderRadius: 12,
-        background: "#171b20",
-        border: `1px solid ${isPast ? "rgba(255,255,255,0.07)" : style.border}`,
-        borderLeft: `3px solid ${isPast ? "rgba(255,255,255,0.15)" : style.color}`,
+        background: "var(--surface-card)",
+        border: `1px solid ${isPast ? "rgba(var(--fg-rgb),0.07)" : style.border}`,
+        borderLeft: `3px solid ${isPast ? "rgba(var(--fg-rgb),0.15)" : style.color}`,
         opacity: isPast ? 0.55 : 1,
         transition: "opacity 0.2s",
       }}
@@ -182,11 +182,11 @@ function EventCard({ event, isPast }: { event: ExamEvent; isPast: boolean }) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: isPast ? "rgba(255,255,255,0.06)" : style.bg,
-        border: `1px solid ${isPast ? "rgba(255,255,255,0.1)" : style.border}`,
+        background: isPast ? "rgba(var(--fg-rgb),0.06)" : style.bg,
+        border: `1px solid ${isPast ? "rgba(var(--fg-rgb),0.1)" : style.border}`,
         marginTop: 1,
       }}>
-        <Icon size={16} strokeWidth={2} style={{ color: isPast ? "rgba(255,255,255,0.3)" : style.color }} />
+        <Icon size={16} strokeWidth={2} style={{ color: isPast ? "rgba(var(--fg-rgb),0.3)" : style.color }} />
       </div>
 
       {/* Content */}
@@ -197,9 +197,9 @@ function EventCard({ event, isPast }: { event: ExamEvent; isPast: boolean }) {
             fontWeight: 700,
             letterSpacing: "0.04em",
             textTransform: "uppercase",
-            color: isPast ? "rgba(255,255,255,0.3)" : style.color,
-            background: isPast ? "rgba(255,255,255,0.06)" : style.bg,
-            border: `1px solid ${isPast ? "rgba(255,255,255,0.08)" : style.border}`,
+            color: isPast ? "rgba(var(--fg-rgb),0.3)" : style.color,
+            background: isPast ? "rgba(var(--fg-rgb),0.06)" : style.bg,
+            border: `1px solid ${isPast ? "rgba(var(--fg-rgb),0.08)" : style.border}`,
             borderRadius: 5,
             padding: "1px 6px",
           }}>
@@ -207,25 +207,25 @@ function EventCard({ event, isPast }: { event: ExamEvent; isPast: boolean }) {
           </span>
           <span style={{
             fontSize: 10,
-            color: "rgba(255,255,255,0.35)",
-            background: "rgba(255,255,255,0.05)",
+            color: "rgba(var(--fg-rgb),0.35)",
+            background: "rgba(var(--fg-rgb),0.05)",
             borderRadius: 5,
             padding: "1px 6px",
           }}>
             {EVENT_LABEL[event.type]}
           </span>
         </div>
-        <div style={{ fontSize: 13.5, fontWeight: 600, color: isPast ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.88)", marginBottom: 2, lineHeight: 1.3 }}>
+        <div style={{ fontSize: 13.5, fontWeight: 600, color: isPast ? "rgba(var(--fg-rgb),0.4)" : "rgba(var(--fg-rgb),0.88)", marginBottom: 2, lineHeight: 1.3 }}>
           {event.title}
         </div>
         {event.note && (
-          <div style={{ fontSize: 11.5, color: "rgba(255,255,255,0.3)", marginTop: 2 }}>{event.note}</div>
+          <div style={{ fontSize: 11.5, color: "rgba(var(--fg-rgb),0.3)", marginTop: 2 }}>{event.note}</div>
         )}
       </div>
 
       {/* Date + badge */}
       <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4, marginTop: 2 }}>
-        <span style={{ fontSize: 11.5, fontWeight: 500, color: isPast ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.6)", whiteSpace: "nowrap" }}>
+        <span style={{ fontSize: 11.5, fontWeight: 500, color: isPast ? "rgba(var(--fg-rgb),0.3)" : "rgba(var(--fg-rgb),0.6)", whiteSpace: "nowrap" }}>
           {formatDate(event.date)}
         </span>
         <DaysBadge diff={diff} type={event.type} isPast={isPast} />
@@ -270,8 +270,8 @@ export default function NotificationsClient({ userExams }: { userExams: string[]
   }
 
   const glass = {
-    background: "#171b20",
-    border: "1px solid rgba(255,255,255,0.08)",
+    background: "var(--surface-card)",
+    border: "1px solid rgba(var(--fg-rgb),0.08)",
     borderRadius: 16,
   } as React.CSSProperties;
 
@@ -280,8 +280,8 @@ export default function NotificationsClient({ userExams }: { userExams: string[]
       <div>
 
         {/* Header */}
-        <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(255,255,255,0.95)" }}>Notifications</h1>
-        <p className="text-sm mb-6" style={{ color: "rgba(255,255,255,0.45)" }}>
+        <h1 className="text-3xl font-black mb-1" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>Notifications</h1>
+        <p className="text-sm mb-6" style={{ color: "rgba(var(--fg-rgb),0.45)" }}>
           Exam dates, registration deadlines, admit cards, results and more.
         </p>
 
@@ -295,11 +295,11 @@ export default function NotificationsClient({ userExams }: { userExams: string[]
             padding: "14px 18px",
             marginBottom: 16,
             borderColor: "rgba(96,165,250,0.2)",
-            background: "#171b20",
+            background: "var(--surface-card)",
           }}>
             <Bell size={15} style={{ color: "#60a5fa", flexShrink: 0 }} />
-            <span style={{ fontSize: 13, color: "rgba(255,255,255,0.7)" }}>
-              <span style={{ fontWeight: 600, color: "rgba(255,255,255,0.9)" }}>
+            <span style={{ fontSize: 13, color: "rgba(var(--fg-rgb),0.7)" }}>
+              <span style={{ fontWeight: 600, color: "rgba(var(--fg-rgb),0.9)" }}>
                 {upcoming.length} upcoming event{upcoming.length !== 1 ? "s" : ""}
               </span>
               {" · Next: "}
@@ -321,10 +321,10 @@ export default function NotificationsClient({ userExams }: { userExams: string[]
             padding: "13px 18px",
             marginBottom: 16,
             borderColor: "rgba(251,191,36,0.2)",
-            background: "#171b20",
+            background: "var(--surface-card)",
           }}>
             <Info size={14} style={{ color: "#fbbf24", flexShrink: 0 }} />
-            <span style={{ fontSize: 12.5, color: "rgba(255,255,255,0.6)" }}>
+            <span style={{ fontSize: 12.5, color: "rgba(var(--fg-rgb),0.6)" }}>
               Set your target exams in{" "}
               <a href="/dashboard/profile" style={{ color: "#fbbf24", textDecoration: "underline", textUnderlineOffset: 3 }}>
                 Profile
@@ -340,8 +340,8 @@ export default function NotificationsClient({ userExams }: { userExams: string[]
           {hasUserExams && (
             <div style={{
               display: "flex",
-              background: "rgba(255,255,255,0.06)",
-              border: "1px solid rgba(255,255,255,0.1)",
+              background: "rgba(var(--fg-rgb),0.06)",
+              border: "1px solid rgba(var(--fg-rgb),0.1)",
               borderRadius: 8,
               padding: 2,
               gap: 2,
@@ -360,8 +360,8 @@ export default function NotificationsClient({ userExams }: { userExams: string[]
                     borderRadius: 6,
                     border: "none",
                     cursor: "pointer",
-                    background: (v === "my") === showMine ? "rgba(255,255,255,0.12)" : "transparent",
-                    color: (v === "my") === showMine ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.4)",
+                    background: (v === "my") === showMine ? "rgba(var(--fg-rgb),0.12)" : "transparent",
+                    color: (v === "my") === showMine ? "rgba(var(--fg-rgb),0.9)" : "rgba(var(--fg-rgb),0.4)",
                     transition: "all 0.15s",
                   }}
                 >
@@ -386,9 +386,9 @@ export default function NotificationsClient({ userExams }: { userExams: string[]
                       fontWeight: 600,
                       padding: "5px 12px",
                       borderRadius: 20,
-                      border: `1px solid ${active ? s.border : "rgba(255,255,255,0.1)"}`,
-                      background: active ? s.bg : "rgba(255,255,255,0.04)",
-                      color: active ? s.color : "rgba(255,255,255,0.35)",
+                      border: `1px solid ${active ? s.border : "rgba(var(--fg-rgb),0.1)"}`,
+                      background: active ? s.bg : "rgba(var(--fg-rgb),0.04)",
+                      color: active ? s.color : "rgba(var(--fg-rgb),0.35)",
                       cursor: "pointer",
                       transition: "all 0.15s",
                     }}
@@ -425,11 +425,11 @@ export default function NotificationsClient({ userExams }: { userExams: string[]
 
         {/* Upcoming events panel */}
         <div style={{ ...glass, padding: "18px 18px", marginBottom: 16 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.35)", marginBottom: 12 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(var(--fg-rgb),0.35)", marginBottom: 12 }}>
             Upcoming · {upcoming.length}
           </div>
           {upcoming.length === 0 ? (
-            <div style={{ padding: "28px 0", textAlign: "center", color: "rgba(255,255,255,0.3)", fontSize: 13 }}>
+            <div style={{ padding: "28px 0", textAlign: "center", color: "rgba(var(--fg-rgb),0.3)", fontSize: 13 }}>
               No upcoming events for the selected exams.
             </div>
           ) : (
@@ -455,12 +455,12 @@ export default function NotificationsClient({ userExams }: { userExams: string[]
                 width: "100%",
               }}
             >
-              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)" }}>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(var(--fg-rgb),0.3)" }}>
                 Past · {past.length}
               </span>
               {pastExpanded
-                ? <ChevronUp size={13} style={{ color: "rgba(255,255,255,0.3)" }} />
-                : <ChevronDown size={13} style={{ color: "rgba(255,255,255,0.3)" }} />}
+                ? <ChevronUp size={13} style={{ color: "rgba(var(--fg-rgb),0.3)" }} />
+                : <ChevronDown size={13} style={{ color: "rgba(var(--fg-rgb),0.3)" }} />}
             </button>
 
             {pastExpanded && (
