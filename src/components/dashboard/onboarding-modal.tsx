@@ -48,9 +48,9 @@ function ChipButton({ label, selected, onClick }: { label: string; selected: boo
       onClick={onClick}
       className="rounded-xl px-4 py-2.5 text-sm font-semibold text-left transition-colors cursor-pointer"
       style={{
-        backgroundColor: selected ? "#2563eb" : "rgba(255,255,255,0.05)",
-        border: `1px solid ${selected ? "#2563eb" : "rgba(255,255,255,0.08)"}`,
-        color: selected ? "#fff" : "rgba(255,255,255,0.7)",
+        backgroundColor: selected ? "#2563eb" : "rgba(var(--fg-rgb),0.05)",
+        border: `1px solid ${selected ? "#2563eb" : "rgba(var(--fg-rgb),0.08)"}`,
+        color: selected ? "#fff" : "rgba(var(--fg-rgb),0.7)",
       }}
     >
       {label}
@@ -117,7 +117,7 @@ export function OnboardingModal({ userId, onComplete }: Props) {
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4" style={{ backgroundColor: "rgba(0,0,0,0.7)" }}>
       <div
         className="w-full max-w-md rounded-2xl p-7 flex flex-col gap-6"
-        style={{ backgroundColor: "#1b2027", border: "1px solid rgba(255,255,255,0.1)" }}
+        style={{ backgroundColor: "var(--surface-content)", border: "1px solid rgba(var(--fg-rgb),0.1)" }}
       >
         {/* Progress dots */}
         <div className="flex items-center gap-2">
@@ -128,7 +128,7 @@ export function OnboardingModal({ userId, onComplete }: Props) {
               style={{
                 height: "4px",
                 flex: i === step ? 2 : 1,
-                backgroundColor: i <= step ? "#2563eb" : "rgba(255,255,255,0.1)",
+                backgroundColor: i <= step ? "#2563eb" : "rgba(var(--fg-rgb),0.1)",
               }}
             />
           ))}
@@ -139,39 +139,39 @@ export function OnboardingModal({ userId, onComplete }: Props) {
           <>
             <div>
               <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#60a5fa" }}>Step 1 of 4</p>
-              <h2 className="text-xl font-black" style={{ color: "rgba(255,255,255,0.95)" }}>Let's set up your profile</h2>
-              <p className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>Takes 10 seconds. Helps us personalise your dashboard.</p>
+              <h2 className="text-xl font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>Let's set up your profile</h2>
+              <p className="text-sm mt-1" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>Takes 10 seconds. Helps us personalise your dashboard.</p>
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.5)" }}>Your class</p>
+              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>Your class</p>
               <div className="grid grid-cols-2 gap-2">
                 {classes.map(c => <ChipButton key={c} label={c} selected={selectedClass === c} onClick={() => setSelectedClass(c)} />)}
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.5)" }}>Your stream</p>
+              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>Your stream</p>
               <div className="grid grid-cols-3 gap-2">
                 {streams.map(s => <ChipButton key={s} label={s} selected={selectedStream === s} onClick={() => setSelectedStream(s)} />)}
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.5)" }}>Your state</p>
+              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>Your state</p>
               <select
                 value={selectedState}
                 onChange={e => setSelectedState(e.target.value)}
                 className="w-full rounded-xl px-4 py-3 text-sm font-semibold outline-none cursor-pointer"
                 style={{
-                  backgroundColor: selectedState ? "#1e2d45" : "rgba(255,255,255,0.05)",
-                  border: `1px solid ${selectedState ? "#2563eb" : "rgba(255,255,255,0.08)"}`,
-                  color: selectedState ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.35)",
+                  backgroundColor: selectedState ? "#1e2d45" : "rgba(var(--fg-rgb),0.05)",
+                  border: `1px solid ${selectedState ? "#2563eb" : "rgba(var(--fg-rgb),0.08)"}`,
+                  color: selectedState ? "rgba(var(--fg-rgb),0.9)" : "rgba(var(--fg-rgb),0.35)",
                 }}
               >
-                <option value="" disabled style={{ backgroundColor: "#1b2027" }}>Select your state</option>
+                <option value="" disabled style={{ backgroundColor: "var(--surface-content)" }}>Select your state</option>
                 {states.map(st => (
-                  <option key={st} value={st} style={{ backgroundColor: "#1b2027", color: "rgba(255,255,255,0.9)" }}>{st}</option>
+                  <option key={st} value={st} style={{ backgroundColor: "var(--surface-content)", color: "rgba(var(--fg-rgb),0.9)" }}>{st}</option>
                 ))}
               </select>
             </div>
@@ -181,8 +181,8 @@ export function OnboardingModal({ userId, onComplete }: Props) {
               disabled={!card1Valid}
               className="w-full py-3 rounded-xl text-sm font-bold transition-opacity"
               style={{
-                backgroundColor: card1Valid ? "#2563eb" : "rgba(255,255,255,0.07)",
-                color: card1Valid ? "#fff" : "rgba(255,255,255,0.25)",
+                backgroundColor: card1Valid ? "#2563eb" : "rgba(var(--fg-rgb),0.07)",
+                color: card1Valid ? "#fff" : "rgba(var(--fg-rgb),0.25)",
                 cursor: card1Valid ? "pointer" : "not-allowed",
               }}
             >
@@ -196,8 +196,8 @@ export function OnboardingModal({ userId, onComplete }: Props) {
           <>
             <div>
               <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#60a5fa" }}>Step 2 of 4</p>
-              <h2 className="text-xl font-black" style={{ color: "rgba(255,255,255,0.95)" }}>Where did you find us?</h2>
-              <p className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>Helps us understand how students discover CompetitiveShiksha.</p>
+              <h2 className="text-xl font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>Where did you find us?</h2>
+              <p className="text-sm mt-1" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>Helps us understand how students discover CompetitiveShiksha.</p>
             </div>
 
             <div className="flex flex-col gap-2">
@@ -210,8 +210,8 @@ export function OnboardingModal({ userId, onComplete }: Props) {
                 disabled={!heardFrom}
                 className="w-full py-3 rounded-xl text-sm font-bold transition-opacity"
                 style={{
-                  backgroundColor: heardFrom ? "#2563eb" : "rgba(255,255,255,0.07)",
-                  color: heardFrom ? "#fff" : "rgba(255,255,255,0.25)",
+                  backgroundColor: heardFrom ? "#2563eb" : "rgba(var(--fg-rgb),0.07)",
+                  color: heardFrom ? "#fff" : "rgba(var(--fg-rgb),0.25)",
                   cursor: heardFrom ? "pointer" : "not-allowed",
                 }}
               >
@@ -220,7 +220,7 @@ export function OnboardingModal({ userId, onComplete }: Props) {
               <button
                 onClick={() => setStep(3)}
                 className="text-sm cursor-pointer transition-opacity hover:opacity-100"
-                style={{ color: "rgba(255,255,255,0.3)" }}
+                style={{ color: "rgba(var(--fg-rgb),0.3)" }}
               >
                 Skip
               </button>
@@ -233,19 +233,19 @@ export function OnboardingModal({ userId, onComplete }: Props) {
           <>
             <div>
               <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#60a5fa" }}>Step 3 of 4</p>
-              <h2 className="text-xl font-black" style={{ color: "rgba(255,255,255,0.95)" }}>Your subject strengths</h2>
-              <p className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>We'll use this to personalise your practice and tips.</p>
+              <h2 className="text-xl font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>Your subject strengths</h2>
+              <p className="text-sm mt-1" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>We'll use this to personalise your practice and tips.</p>
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.5)" }}>Strongest subject</p>
+              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>Strongest subject</p>
               <div className="grid grid-cols-2 gap-2">
                 {subjects.map(s => <ChipButton key={s} label={s} selected={strongSub === s} onClick={() => { setStrongSub(s); if (weakSub === s) setWeakSub(""); }} />)}
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.5)" }}>Weakest subject</p>
+              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>Weakest subject</p>
               <div className="grid grid-cols-2 gap-2">
                 {subjects.map(s => (
                   <ChipButton
@@ -264,8 +264,8 @@ export function OnboardingModal({ userId, onComplete }: Props) {
                 disabled={!strongSub || !weakSub}
                 className="w-full py-3 rounded-xl text-sm font-bold transition-opacity"
                 style={{
-                  backgroundColor: strongSub && weakSub ? "#2563eb" : "rgba(255,255,255,0.07)",
-                  color: strongSub && weakSub ? "#fff" : "rgba(255,255,255,0.25)",
+                  backgroundColor: strongSub && weakSub ? "#2563eb" : "rgba(var(--fg-rgb),0.07)",
+                  color: strongSub && weakSub ? "#fff" : "rgba(var(--fg-rgb),0.25)",
                   cursor: strongSub && weakSub ? "pointer" : "not-allowed",
                 }}
               >
@@ -274,7 +274,7 @@ export function OnboardingModal({ userId, onComplete }: Props) {
               <button
                 onClick={() => setStep(4)}
                 className="text-sm cursor-pointer transition-opacity hover:opacity-100"
-                style={{ color: "rgba(255,255,255,0.3)" }}
+                style={{ color: "rgba(var(--fg-rgb),0.3)" }}
               >
                 Skip
               </button>
@@ -287,19 +287,19 @@ export function OnboardingModal({ userId, onComplete }: Props) {
           <>
             <div>
               <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#60a5fa" }}>Step 4 of 4</p>
-              <h2 className="text-xl font-black" style={{ color: "rgba(255,255,255,0.95)" }}>Your study background</h2>
-              <p className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>Almost done!</p>
+              <h2 className="text-xl font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>Your study background</h2>
+              <p className="text-sm mt-1" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>Almost done!</p>
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.5)" }}>Coaching institute (if any)</p>
+              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>Coaching institute (if any)</p>
               <div className="grid grid-cols-2 gap-2">
                 {coachingOptions.map(c => <ChipButton key={c} label={c} selected={coaching === c} onClick={() => setCoaching(c)} />)}
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.5)" }}>School name <span style={{ color: "rgba(255,255,255,0.25)", textTransform: "none", letterSpacing: 0 }}>(optional)</span></p>
+              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>School name <span style={{ color: "rgba(var(--fg-rgb),0.25)", textTransform: "none", letterSpacing: 0 }}>(optional)</span></p>
               <input
                 type="text"
                 placeholder="e.g. Delhi Public School"
@@ -307,9 +307,9 @@ export function OnboardingModal({ userId, onComplete }: Props) {
                 onChange={e => setSchool(e.target.value)}
                 className="w-full rounded-xl px-4 py-3 text-sm outline-none"
                 style={{
-                  backgroundColor: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  color: "rgba(255,255,255,0.9)",
+                  backgroundColor: "rgba(var(--fg-rgb),0.05)",
+                  border: "1px solid rgba(var(--fg-rgb),0.08)",
+                  color: "rgba(var(--fg-rgb),0.9)",
                 }}
               />
             </div>
@@ -326,7 +326,7 @@ export function OnboardingModal({ userId, onComplete }: Props) {
               <button
                 onClick={() => saveAndFinish()}
                 className="text-sm cursor-pointer transition-opacity hover:opacity-100"
-                style={{ color: "rgba(255,255,255,0.3)" }}
+                style={{ color: "rgba(var(--fg-rgb),0.3)" }}
               >
                 Skip
               </button>

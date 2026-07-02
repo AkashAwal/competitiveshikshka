@@ -158,29 +158,33 @@ export function HeroSection() {
           {/* Right: animated phrase grid */}
           <div className="flex justify-center lg:justify-end">
             <div
-              className="grid gap-3"
+              className="grid gap-[clamp(6px,2vw,12px)]"
               style={{
-                gridTemplateColumns: `repeat(${COLS}, 68px)`,
-                gridTemplateRows:    `repeat(${ROWS}, 68px)`,
+                gridTemplateColumns: `repeat(${COLS}, clamp(40px,11vw,68px))`,
+                gridTemplateRows:    `repeat(${ROWS}, clamp(40px,11vw,68px))`,
               }}
             >
               {grid.map((row, r) =>
-                row.map((cell, c) => (
-                  <div
-                    key={`${r}-${c}`}
-                    className="rounded-xl flex items-center justify-center cursor-pointer"
-                    style={{ backgroundColor: cell.bg }}
-                    onClick={() => runTransition((phraseIdxRef.current + 1) % phrases.length)}
-                    onMouseEnter={() => handleMouseEnter(r, c)}
-                    onMouseLeave={() => handleMouseLeave(r, c)}
-                  >
-                    {cell.char && cell.bg === EMPTY_BG && (
-                      <span className="text-3xl font-semibold text-black">
-                        {cell.char}
-                      </span>
-                    )}
-                  </div>
-                ))
+                row.map((cell, c) => {
+                  const atRest = cell.bg === EMPTY_BG;
+                  const structurallyEmpty = atRest && !cell.char;
+                  return (
+                    <div
+                      key={`${r}-${c}`}
+                      className="rounded-xl flex items-center justify-center cursor-pointer transition-colors"
+                      style={{ backgroundColor: structurallyEmpty ? "transparent" : cell.bg }}
+                      onClick={() => runTransition((phraseIdxRef.current + 1) % phrases.length)}
+                      onMouseEnter={() => handleMouseEnter(r, c)}
+                      onMouseLeave={() => handleMouseLeave(r, c)}
+                    >
+                      {cell.char && atRest && (
+                        <span className="text-[clamp(1.1rem,4vw,1.875rem)] font-semibold text-black">
+                          {cell.char}
+                        </span>
+                      )}
+                    </div>
+                  );
+                })
               )}
             </div>
           </div>

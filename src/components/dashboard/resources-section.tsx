@@ -16,15 +16,15 @@ export function ResourcesSection() {
   return (
     <div
       className="rounded-2xl p-5 flex flex-col gap-4"
-      style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" }}
+      style={{ background: "var(--surface-card)", border: "1px solid rgba(var(--fg-rgb),0.13)" }}
     >
       {/* Header */}
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="font-bold text-base" style={{ color: "rgba(255,255,255,0.95)" }}>
+          <p className="font-bold text-base" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>
             Most Imp Digital Books for IIT-JEE
           </p>
-          <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.4)" }}>
+          <p className="text-xs mt-0.5" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>
             No need to buy bulky physical books. Get them all in one place!
           </p>
         </div>
@@ -63,11 +63,11 @@ export function ResourcesSection() {
             {/* Title */}
             <p
               className="text-[11px] leading-tight line-clamp-2"
-              style={{ color: "rgba(255,255,255,0.7)" }}
+              style={{ color: "rgba(var(--fg-rgb),0.7)" }}
             >
               {book.title}
             </p>
-            <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.3)" }}>
+            <p className="text-[10px]" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>
               {book.author}
             </p>
           </div>

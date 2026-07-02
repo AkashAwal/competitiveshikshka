@@ -2,8 +2,10 @@
 
 import { useMemo, useState, useTransition } from "react";
 import { Dialog } from "@base-ui/react/dialog";
-import { Plus, Pencil, Trash2, X } from "lucide-react";
+import { Plus, Pencil, Trash2, X, Upload } from "lucide-react";
 import { createQuestion, updateQuestion, deleteQuestion, type QuestionInput } from "./actions";
+import { BulkAddDialog } from "./BulkAddDialog";
+import { ConfirmDialog } from "@/components/admin/ConfirmDialog";
 
 export interface QuestionRow extends QuestionInput {
   id: string;
@@ -30,10 +32,12 @@ function Label({ children }: { children: React.ReactNode }) {
 export function QuestionsManager({ rows }: { rows: QuestionRow[] }) {
   const [bankFilter, setBankFilter] = useState<"all" | "pyq" | "practice">("all");
   const [open, setOpen] = useState(false);
+  const [bulkOpen, setBulkOpen] = useState(false);
   const [editing, setEditing] = useState<QuestionRow | null>(null);
   const [form, setForm] = useState<QuestionInput>(EMPTY);
   const [error, setError] = useState("");
   const [pending, startTransition] = useTransition();
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 
   const filtered = useMemo(
     () => bankFilter === "all" ? rows : rows.filter(r => r.bank === bankFilter),
@@ -71,10 +75,15 @@ export function QuestionsManager({ rows }: { rows: QuestionRow[] }) {
     });
   }
 
-  function remove(row: QuestionRow) {
-    if (!confirm("Delete this question? This can't be undone.")) return;
+  function remove(id: string) {
+    setError("");
     startTransition(async () => {
-      await deleteQuestion(row.id);
+      try {
+        await deleteQuestion(id);
+        setConfirmDeleteId(null);
+      } catch (e) {
+        setError(e instanceof Error ? e.message : "Something went wrong.");
+      }
     });
   }
 
@@ -96,14 +105,25 @@ export function QuestionsManager({ rows }: { rows: QuestionRow[] }) {
             </button>
           ))}
         </div>
-        <button
-          onClick={openCreate}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-white cursor-pointer"
-          style={{ backgroundColor: "#2563eb" }}
-        >
-          <Plus className="h-4 w-4" /> Add question
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setBulkOpen(true)}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold cursor-pointer"
+            style={{ backgroundColor: "rgba(var(--fg-rgb),0.06)", color: "rgba(var(--fg-rgb),0.8)" }}
+          >
+            <Upload className="h-4 w-4" /> Bulk add
+          </button>
+          <button
+            onClick={openCreate}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-white cursor-pointer"
+            style={{ backgroundColor: "#2563eb" }}
+          >
+            <Plus className="h-4 w-4" /> Add question
+          </button>
+        </div>
       </div>
+
+      <BulkAddDialog open={bulkOpen} onOpenChange={setBulkOpen} />
 
       <div className="rounded-2xl overflow-hidden" style={{ background: "var(--surface-card)", border: "1px solid rgba(var(--fg-rgb),0.13)" }}>
         <div className="overflow-x-auto">
@@ -128,7 +148,7 @@ export function QuestionsManager({ rows }: { rows: QuestionRow[] }) {
                       <button onClick={() => openEdit(row)} className="p-1.5 rounded-lg cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
                         <Pencil className="h-4 w-4" />
                       </button>
-                      <button onClick={() => remove(row)} className="p-1.5 rounded-lg cursor-pointer" style={{ color: "#f87171" }}>
+                      <button onClick={() => { setError(""); setConfirmDeleteId(row.id); }} className="p-1.5 rounded-lg cursor-pointer" style={{ color: "#f87171" }}>
                         <Trash2 className="h-4 w-4" />
                       </button>
                     </div>
@@ -239,6 +259,16 @@ export function QuestionsManager({ rows }: { rows: QuestionRow[] }) {
           </Dialog.Popup>
         </Dialog.Portal>
       </Dialog.Root>
+
+      <ConfirmDialog
+        open={confirmDeleteId !== null}
+        onOpenChange={o => { if (!o) { setConfirmDeleteId(null); setError(""); } }}
+        title="Delete question"
+        description="Delete this question? This can't be undone."
+        onConfirm={() => { if (confirmDeleteId) remove(confirmDeleteId); }}
+        pending={pending}
+        error={error}
+      />
     </div>
   );
 }

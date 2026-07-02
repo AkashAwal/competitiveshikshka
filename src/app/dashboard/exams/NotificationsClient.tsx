@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import {
   FileText, FileX, Edit3, CreditCard, BookOpen, Trophy, Users,
-  ChevronDown, ChevronUp, Bell, Info,
+  ChevronDown, ChevronUp, Bell, Info, AlertTriangle,
 } from "lucide-react";
 
 type ExamKey = "JEE Mains" | "JEE Advanced" | "NEET" | "CUET";
@@ -140,14 +140,16 @@ function DaysBadge({ diff, type, isPast }: { diff: number; type: EventType; isPa
     return <span style={{ fontSize: 11, fontWeight: 700, color: "#fbbf24", background: "rgba(251,191,36,0.15)", borderRadius: 6, padding: "2px 8px", whiteSpace: "nowrap" }}>Today</span>;
   }
   const urgency = EVENT_URGENCY[type];
-  const color = urgency === "critical" && diff <= 7 ? "#f87171"
+  const isUrgent = urgency === "critical" && diff <= 7;
+  const color = isUrgent ? "#f87171"
     : urgency === "critical" && diff <= 30 ? "#fb923c"
     : "#60a5fa";
-  const bg = urgency === "critical" && diff <= 7 ? "rgba(248,113,113,0.12)"
+  const bg = isUrgent ? "rgba(248,113,113,0.12)"
     : urgency === "critical" && diff <= 30 ? "rgba(249,115,22,0.12)"
     : "rgba(96,165,250,0.10)";
   return (
-    <span style={{ fontSize: 11, fontWeight: 600, color, background: bg, borderRadius: 6, padding: "2px 8px", whiteSpace: "nowrap" }}>
+    <span style={{ display: "inline-flex", alignItems: "center", gap: 3, fontSize: 11, fontWeight: 600, color, background: bg, borderRadius: 6, padding: "2px 8px", whiteSpace: "nowrap" }}>
+      {isUrgent && <AlertTriangle className="h-2.5 w-2.5" />}
       in {diff}d
     </span>
   );

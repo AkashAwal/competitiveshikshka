@@ -46,3 +46,23 @@ export async function deleteQuestion(id: string) {
   if (error) throw new Error(error.message);
   revalidatePath("/admin/questions");
 }
+
+export interface BulkRowResult {
+  row: number;
+  ok: boolean;
+  error?: string;
+}
+
+export async function createQuestionsBulk(inputs: QuestionInput[]): Promise<BulkRowResult[]> {
+  await requireAdmin();
+  const supabase = createAdminClient();
+
+  const results: BulkRowResult[] = [];
+  for (let i = 0; i < inputs.length; i++) {
+    const { error } = await supabase.from("questions").insert(inputs[i]);
+    results.push({ row: i, ok: !error, error: error?.message });
+  }
+
+  revalidatePath("/admin/questions");
+  return results;
+}

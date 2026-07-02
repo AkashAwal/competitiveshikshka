@@ -158,7 +158,7 @@ const STORAGE_KEY = `cs-tasks-${TODAY}`;
 
 interface Task { id: string; text: string; done: boolean }
 
-function DailyTasks() {
+export function DailyTasks() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -196,7 +196,7 @@ function DailyTasks() {
   return (
     <div
       className="rounded-xl p-5 flex flex-col gap-3"
-      style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" }}
+      style={{ background: "var(--surface-card)", border: "1px solid rgba(var(--fg-rgb),0.13)" }}
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -206,7 +206,7 @@ function DailyTasks() {
           </span>
         </div>
         {tasks.length > 0 && (
-          <span className="text-[11px] font-semibold" style={{ color: "rgba(255,255,255,0.3)" }}>
+          <span className="text-[11px] font-semibold" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>
             {done}/{tasks.length}
           </span>
         )}
@@ -214,7 +214,7 @@ function DailyTasks() {
 
       {/* Progress bar */}
       {tasks.length > 0 && (
-        <div className="h-1 rounded-full overflow-hidden" style={{ backgroundColor: "rgba(255,255,255,0.07)" }}>
+        <div className="h-1 rounded-full overflow-hidden" style={{ backgroundColor: "rgba(var(--fg-rgb),0.07)" }}>
           <div
             className="h-full rounded-full transition-all duration-500"
             style={{ width: `${(done / tasks.length) * 100}%`, backgroundColor: "#a78bfa" }}
@@ -225,7 +225,7 @@ function DailyTasks() {
       {/* Task list */}
       <div className="flex flex-col gap-1.5">
         {tasks.length === 0 && (
-          <p className="text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>No tasks yet — add one below.</p>
+          <p className="text-xs" style={{ color: "rgba(var(--fg-rgb),0.25)" }}>No tasks yet — add one below.</p>
         )}
         {tasks.map(task => (
           <div key={task.id} className="flex items-center gap-2 group">
@@ -233,7 +233,7 @@ function DailyTasks() {
               onClick={() => toggle(task.id)}
               className="flex h-4 w-4 shrink-0 items-center justify-center rounded cursor-pointer transition-colors"
               style={{
-                border: `1.5px solid ${task.done ? "#a78bfa" : "rgba(255,255,255,0.2)"}`,
+                border: `1.5px solid ${task.done ? "#a78bfa" : "rgba(var(--fg-rgb),0.2)"}`,
                 backgroundColor: task.done ? "#a78bfa" : "transparent",
               }}
             >
@@ -242,7 +242,7 @@ function DailyTasks() {
             <span
               className="flex-1 text-xs leading-snug"
               style={{
-                color: task.done ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.75)",
+                color: task.done ? "rgba(var(--fg-rgb),0.25)" : "rgba(var(--fg-rgb),0.75)",
                 textDecoration: task.done ? "line-through" : "none",
               }}
             >
@@ -251,7 +251,7 @@ function DailyTasks() {
             <button
               onClick={() => remove(task.id)}
               className="opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
-              style={{ color: "rgba(255,255,255,0.3)" }}
+              style={{ color: "rgba(var(--fg-rgb),0.3)" }}
             >
               <X className="h-3 w-3" />
             </button>
@@ -268,7 +268,7 @@ function DailyTasks() {
           onKeyDown={e => e.key === "Enter" && addTask()}
           placeholder="Add a task…"
           className="flex-1 text-xs bg-transparent outline-none placeholder:opacity-30"
-          style={{ color: "rgba(255,255,255,0.8)" }}
+          style={{ color: "rgba(var(--fg-rgb),0.8)" }}
         />
         <button
           onClick={addTask}
@@ -293,12 +293,12 @@ export function DailySidebar() {
   const problem = problems[getDailyIndex(problems)];
 
   return (
-    <div className="flex flex-col gap-4" style={{ width: "300px", minWidth: "300px" }}>
+    <div className="flex flex-col gap-4 w-full md:w-[300px] md:min-w-[300px] md:shrink-0">
 
       {/* Formula of the day */}
       <div
         className="rounded-xl p-5 flex flex-col gap-3"
-        style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" }}
+        style={{ background: "var(--surface-card)", border: "1px solid rgba(var(--fg-rgb),0.13)" }}
       >
         <div className="flex items-center gap-2">
           <FlaskConical className="h-4 w-4" style={{ color: formula.color }} />
@@ -308,18 +308,18 @@ export function DailySidebar() {
         </div>
 
         <div>
-          <p className="text-[11px] mb-1" style={{ color: "rgba(255,255,255,0.35)" }}>
+          <p className="text-[11px] mb-1" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>
             {formula.subject} · {formula.topic}
           </p>
           <p
             className="text-lg font-black tracking-tight"
-            style={{ color: "rgba(255,255,255,0.95)", fontFamily: "monospace" }}
+            style={{ color: "rgba(var(--fg-rgb),0.95)", fontFamily: "monospace" }}
           >
             {formula.formula}
           </p>
         </div>
 
-        <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
+        <p className="text-xs leading-relaxed" style={{ color: "rgba(var(--fg-rgb),0.45)" }}>
           {formula.note}
         </p>
       </div>
@@ -327,7 +327,7 @@ export function DailySidebar() {
       {/* Problem of the day */}
       <div
         className="rounded-xl p-5 flex flex-col gap-3"
-        style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" }}
+        style={{ background: "var(--surface-card)", border: "1px solid rgba(var(--fg-rgb),0.13)" }}
       >
         <div className="flex items-center gap-2">
           <BookOpen className="h-4 w-4" style={{ color: problem.color }} />
@@ -337,10 +337,10 @@ export function DailySidebar() {
         </div>
 
         <div>
-          <p className="text-[11px] mb-2" style={{ color: "rgba(255,255,255,0.35)" }}>
+          <p className="text-[11px] mb-2" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>
             {problem.subject}
           </p>
-          <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
+          <p className="text-sm leading-relaxed" style={{ color: "rgba(var(--fg-rgb),0.85)" }}>
             {problem.question}
           </p>
         </div>
@@ -362,7 +362,7 @@ export function DailySidebar() {
               style={{
                 backgroundColor: `${problem.color}10`,
                 border: `1px solid ${problem.color}25`,
-                color: "rgba(255,255,255,0.75)",
+                color: "rgba(var(--fg-rgb),0.75)",
               }}
             >
               {problem.answer}

@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Dialog } from "@base-ui/react/dialog";
-import { Plus, Trash2, X, ArrowRight } from "lucide-react";
+import { Plus, Search, Trash2, X, ArrowRight } from "lucide-react";
 import { createExam, deleteExam, type ExamCoreInput } from "./actions";
+import { ConfirmDialog } from "@/components/admin/ConfirmDialog";
 
 export interface ExamRow {
   id: string;
@@ -31,6 +32,17 @@ export function ExamsManager({ rows }: { rows: ExamRow[] }) {
   const [form, setForm] = useState<ExamCoreInput>(EMPTY);
   const [error, setError] = useState("");
   const [pending, startTransition] = useTransition();
+  const [query, setQuery] = useState("");
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return rows;
+    return rows.filter(r =>
+      r.name.toLowerCase().includes(q) ||
+      r.category.toLowerCase().includes(q)
+    );
+  }, [rows, query]);
 
   function openCreate() {
     setForm(EMPTY);
@@ -55,19 +67,35 @@ export function ExamsManager({ rows }: { rows: ExamRow[] }) {
     });
   }
 
-  function remove(row: ExamRow) {
-    if (!confirm(`Delete ${row.name}? This can't be undone.`)) return;
+  function remove(id: string) {
+    setError("");
     startTransition(async () => {
-      await deleteExam(row.id);
+      try {
+        await deleteExam(id);
+        setConfirmDeleteId(null);
+      } catch (e) {
+        setError(e instanceof Error ? e.message : "Something went wrong.");
+      }
     });
   }
 
   return (
     <div>
-      <div className="flex justify-end mb-4">
+      <div className="flex items-center justify-between gap-4 mb-4">
+        <div className="relative max-w-sm w-full">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4" style={{ color: "rgba(var(--fg-rgb),0.3)" }} />
+          <input
+            type="text"
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            placeholder="Search name, category..."
+            className="w-full rounded-lg pl-9 pr-3 py-2 text-sm outline-none"
+            style={{ backgroundColor: "rgba(var(--fg-rgb),0.05)", border: "1px solid rgba(var(--fg-rgb),0.08)", color: "rgba(var(--fg-rgb),0.9)" }}
+          />
+        </div>
         <button
           onClick={openCreate}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-white cursor-pointer"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-white cursor-pointer shrink-0"
           style={{ backgroundColor: "#2563eb" }}
         >
           <Plus className="h-4 w-4" /> Add exam
@@ -85,7 +113,7 @@ export function ExamsManager({ rows }: { rows: ExamRow[] }) {
               </tr>
             </thead>
             <tbody>
-              {rows.map(row => (
+              {filtered.map(row => (
                 <tr key={row.id} className="border-t" style={{ borderColor: "rgba(var(--fg-rgb),0.06)" }}>
                   <td className="px-4 py-3">
                     <Link href={`/admin/exams/${row.id}`} className="flex items-center gap-1.5 font-semibold hover:underline" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>
@@ -96,7 +124,7 @@ export function ExamsManager({ rows }: { rows: ExamRow[] }) {
                   <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.conducting_body || "—"}</td>
                   <td className="px-4 py-3">
                     <div className="flex items-center justify-end">
-                      <button onClick={() => remove(row)} className="p-1.5 rounded-lg cursor-pointer" style={{ color: "#f87171" }}>
+                      <button onClick={() => { setError(""); setConfirmDeleteId(row.id); }} className="p-1.5 rounded-lg cursor-pointer" style={{ color: "#f87171" }}>
                         <Trash2 className="h-4 w-4" />
                       </button>
                     </div>
@@ -105,8 +133,10 @@ export function ExamsManager({ rows }: { rows: ExamRow[] }) {
               ))}
             </tbody>
           </table>
-          {rows.length === 0 && (
-            <p className="text-center py-10 text-sm" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>No exams added yet.</p>
+          {filtered.length === 0 && (
+            <p className="text-center py-10 text-sm" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>
+              {rows.length === 0 ? "No exams added yet." : "No exams match your search."}
+            </p>
           )}
         </div>
       </div>
@@ -162,6 +192,16 @@ export function ExamsManager({ rows }: { rows: ExamRow[] }) {
           </Dialog.Popup>
         </Dialog.Portal>
       </Dialog.Root>
+
+      <ConfirmDialog
+        open={confirmDeleteId !== null}
+        onOpenChange={o => { if (!o) { setConfirmDeleteId(null); setError(""); } }}
+        title="Delete exam"
+        description="Delete this exam? This can't be undone."
+        onConfirm={() => { if (confirmDeleteId) remove(confirmDeleteId); }}
+        pending={pending}
+        error={error}
+      />
     </div>
   );
 }

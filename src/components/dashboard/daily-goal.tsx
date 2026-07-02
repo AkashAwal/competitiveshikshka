@@ -48,8 +48,8 @@ export function DailyGoal() {
       <div
         className="flex items-center gap-4 px-5 rounded-2xl"
         style={{
-          background: "#171b20",
-          border: "1px solid rgba(255,255,255,0.09)",
+          background: "var(--surface-card)",
+          border: "1px solid rgba(var(--fg-rgb),0.09)",
           height: "64px",
         }}
       >
@@ -58,15 +58,15 @@ export function DailyGoal() {
           onClick={() => setModalOpen(true)}
           className="flex items-center gap-1.5 shrink-0 cursor-pointer group"
         >
-          <span className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
+          <span className="text-sm" style={{ color: "rgba(var(--fg-rgb),0.7)" }}>
             Your Daily Goal{" "}
-            <strong style={{ color: "rgba(255,255,255,0.95)" }}>
+            <strong style={{ color: "rgba(var(--fg-rgb),0.95)" }}>
               ({count}/{goal} Qs)
             </strong>
           </span>
           <ChevronRight
             className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-            style={{ color: "rgba(255,255,255,0.4)" }}
+            style={{ color: "rgba(var(--fg-rgb),0.4)" }}
           />
         </button>
 
@@ -75,7 +75,7 @@ export function DailyGoal() {
           {/* Base track line */}
           <div
             className="absolute w-full rounded-full"
-            style={{ height: "3px", backgroundColor: "rgba(255,255,255,0.08)", top: "50%", transform: "translateY(-50%)" }}
+            style={{ height: "3px", backgroundColor: "rgba(var(--fg-rgb),0.08)", top: "50%", transform: "translateY(-50%)" }}
           />
           {/* Progress fill */}
           <div
@@ -145,15 +145,15 @@ export function DailyGoal() {
         <div className="fixed inset-0 z-50 flex items-center justify-center" style={{ backgroundColor: "rgba(0,0,0,0.6)" }}>
           <div
             className="rounded-2xl p-6 flex flex-col gap-4 w-80"
-            style={{ backgroundColor: "#1e2530", border: "1px solid rgba(255,255,255,0.1)" }}
+            style={{ backgroundColor: "#1e2530", border: "1px solid rgba(var(--fg-rgb),0.1)" }}
           >
             <div className="flex items-center justify-between">
-              <p className="font-bold" style={{ color: "rgba(255,255,255,0.9)" }}>Set Daily Goal</p>
-              <button onClick={() => setModalOpen(false)} className="cursor-pointer" style={{ color: "rgba(255,255,255,0.4)" }}>
+              <p className="font-bold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>Set Daily Goal</p>
+              <button onClick={() => setModalOpen(false)} className="cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>
                 <X className="h-4 w-4" />
               </button>
             </div>
-            <p className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
+            <p className="text-sm" style={{ color: "rgba(var(--fg-rgb),0.45)" }}>
               How many questions do you want to solve each day?
             </p>
             <input
@@ -165,9 +165,9 @@ export function DailyGoal() {
               onKeyDown={e => e.key === "Enter" && saveGoal()}
               className="w-full rounded-xl px-4 py-3 text-sm font-bold outline-none"
               style={{
-                backgroundColor: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                color: "rgba(255,255,255,0.9)",
+                backgroundColor: "rgba(var(--fg-rgb),0.06)",
+                border: "1px solid rgba(var(--fg-rgb),0.1)",
+                color: "rgba(var(--fg-rgb),0.9)",
               }}
               autoFocus
             />

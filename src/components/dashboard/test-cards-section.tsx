@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FileText, ClipboardList, ChevronRight } from "lucide-react";
 
-const PAGE_BG = "#1b2027";
+const PAGE_BG = "var(--surface-content)";
 
 function TestCard({
   icon: Icon,
@@ -66,7 +66,7 @@ function TestCard({
         style={{ backgroundColor: PAGE_BG }}
       >
         <Icon className="h-5 w-5 shrink-0" style={{ color: iconColor }} />
-        <p className="text-sm font-bold flex-1" style={{ color: "rgba(255,255,255,0.9)" }}>
+        <p className="text-sm font-bold flex-1" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>
           {title}
         </p>
         <div className="flex items-center gap-2 shrink-0">
@@ -76,7 +76,7 @@ function TestCard({
           >
             {badge}
           </span>
-          <ChevronRight className="h-4 w-4" style={{ color: "rgba(255,255,255,0.3)" }} />
+          <ChevronRight className="h-4 w-4" style={{ color: "rgba(var(--fg-rgb),0.3)" }} />
         </div>
       </div>
     </div>

@@ -19,11 +19,11 @@ export function PYQBankSection() {
   return (
     <div
       className="rounded-2xl p-5 flex flex-col gap-4"
-      style={{ background: "#171b20", border: "1px solid rgba(255,255,255,0.13)" }}
+      style={{ background: "var(--surface-card)", border: "1px solid rgba(var(--fg-rgb),0.13)" }}
     >
       {/* Header */}
       <div className="flex items-center justify-between">
-        <p className="font-bold text-base" style={{ color: "rgba(255,255,255,0.95)" }}>
+        <p className="font-bold text-base" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>
           Chapter wise PYQ Bank
         </p>
         <button
@@ -52,14 +52,14 @@ export function PYQBankSection() {
               key={i}
               className="flex flex-col justify-between rounded-xl p-3 cursor-pointer transition-colors"
               style={{
-                background: "linear-gradient(145deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%)",
-                border: "1px solid rgba(255,255,255,0.09)",
+                background: "linear-gradient(145deg, rgba(var(--fg-rgb),0.07) 0%, rgba(var(--fg-rgb),0.03) 100%)",
+                border: "1px solid rgba(var(--fg-rgb),0.09)",
                 height: "72px",
               }}
-              onMouseEnter={e => (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(255,255,255,0.08)"}
-              onMouseLeave={e => (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(255,255,255,0.04)"}
+              onMouseEnter={e => (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(var(--fg-rgb),0.08)"}
+              onMouseLeave={e => (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(var(--fg-rgb),0.04)"}
             >
-              <p className="text-sm font-semibold leading-tight" style={{ color: "rgba(255,255,255,0.9)" }}>
+              <p className="text-sm font-semibold leading-tight" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>
                 {exam.name}
               </p>
               <p className="text-[10px] font-bold uppercase tracking-wide" style={{ color: "#60a5fa" }}>

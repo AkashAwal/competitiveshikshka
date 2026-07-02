@@ -476,7 +476,7 @@ export function SettingsClient({ email, providers, hasPassword, stream }: Props)
                       className="w-full rounded-xl px-4 py-3 text-sm outline-none pr-11"
                       style={{ backgroundColor: "rgba(var(--fg-rgb),0.06)", border: "1px solid rgba(var(--fg-rgb),0.1)", color: "rgba(var(--fg-rgb),0.9)" }}
                     />
-                    <button onClick={() => setShowPw(o => !o)} className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>
+                    <button onClick={() => setShowPw(o => !o)} aria-label={showPw ? "Hide password" : "Show password"} className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.3)" }}>
                       {showPw ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                     </button>
                   </div>

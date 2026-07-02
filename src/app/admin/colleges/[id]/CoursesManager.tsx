@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { Dialog } from "@base-ui/react/dialog";
 import { Plus, Pencil, Trash2, X } from "lucide-react";
 import { createCourse, updateCourse, deleteCourse, type CourseInput } from "../actions";
+import { ConfirmDialog } from "@/components/admin/ConfirmDialog";
 
 export interface CourseRow extends CourseInput {
   id: string;
@@ -27,6 +28,7 @@ export function CoursesManager({ collegeId, rows }: { collegeId: string; rows: C
   const [form, setForm] = useState<CourseInput>(EMPTY);
   const [error, setError] = useState("");
   const [pending, startTransition] = useTransition();
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 
   function openCreate() {
     setEditing(null);
@@ -59,10 +61,15 @@ export function CoursesManager({ collegeId, rows }: { collegeId: string; rows: C
     });
   }
 
-  function remove(row: CourseRow) {
-    if (!confirm(`Delete ${row.name}? This can't be undone.`)) return;
+  function remove(id: string) {
+    setError("");
     startTransition(async () => {
-      await deleteCourse(row.id, collegeId);
+      try {
+        await deleteCourse(id, collegeId);
+        setConfirmDeleteId(null);
+      } catch (e) {
+        setError(e instanceof Error ? e.message : "Something went wrong.");
+      }
     });
   }
 
@@ -101,7 +108,7 @@ export function CoursesManager({ collegeId, rows }: { collegeId: string; rows: C
                     <button onClick={() => openEdit(row)} className="p-1 rounded-lg cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
                       <Pencil className="h-3.5 w-3.5" />
                     </button>
-                    <button onClick={() => remove(row)} className="p-1 rounded-lg cursor-pointer" style={{ color: "#f87171" }}>
+                    <button onClick={() => { setError(""); setConfirmDeleteId(row.id); }} className="p-1 rounded-lg cursor-pointer" style={{ color: "#f87171" }}>
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>
                   </div>
@@ -188,6 +195,16 @@ export function CoursesManager({ collegeId, rows }: { collegeId: string; rows: C
           </Dialog.Popup>
         </Dialog.Portal>
       </Dialog.Root>
+
+      <ConfirmDialog
+        open={confirmDeleteId !== null}
+        onOpenChange={o => { if (!o) { setConfirmDeleteId(null); setError(""); } }}
+        title="Delete course"
+        description="Delete this course? This can't be undone."
+        onConfirm={() => { if (confirmDeleteId) remove(confirmDeleteId); }}
+        pending={pending}
+        error={error}
+      />
     </div>
   );
 }

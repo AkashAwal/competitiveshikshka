@@ -16,8 +16,8 @@ const subjectMeta: Record<string, { color: string; iconBg: string; icon: React.E
   Biology:   { color: "#ef4444", iconBg: "#b91c1c", icon: Microscope },
 };
 
-const CARD_BG = "rgba(255,255,255,0.04)";
-const CARD_BORDER = "rgba(255,255,255,0.08)";
+const CARD_BG = "rgba(var(--fg-rgb),0.04)";
+const CARD_BORDER = "rgba(var(--fg-rgb),0.08)";
 
 interface Props {
   stream: string;
@@ -62,7 +62,7 @@ export function ShortNotesSection({ stream }: Props) {
                 className="text-sm"
                 style={{
                   fontWeight: isActive ? 700 : 400,
-                  color: isActive ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.5)",
+                  color: isActive ? "rgba(var(--fg-rgb),0.95)" : "rgba(var(--fg-rgb),0.5)",
                 }}
               >
                 {subject}
@@ -75,13 +75,13 @@ export function ShortNotesSection({ stream }: Props) {
       {/* Card */}
       <div
         style={{
-          backgroundColor: "#171b20",
+          backgroundColor: "var(--surface-card)",
           border: `1px solid ${CARD_BORDER}`,
           borderRadius: "16px",
         }}
       >
         <div className="flex items-center justify-between px-5 pt-5 pb-4">
-          <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.5)" }}>Recent chapters</p>
+          <p className="text-sm font-semibold" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>Recent chapters</p>
           <button
             className="text-xs font-bold cursor-pointer transition-opacity hover:opacity-70"
             style={{ color: "#60a5fa" }}
@@ -90,7 +90,7 @@ export function ShortNotesSection({ stream }: Props) {
           </button>
         </div>
 
-        <div style={{ height: "1px", backgroundColor: "rgba(255,255,255,0.06)" }} />
+        <div style={{ height: "1px", backgroundColor: "rgba(var(--fg-rgb),0.06)" }} />
 
         <div className="flex flex-col items-center justify-center py-12 gap-3">
           <div
@@ -99,10 +99,10 @@ export function ShortNotesSection({ stream }: Props) {
           >
             <BookOpen className="h-5 w-5" style={{ color: meta.color }} />
           </div>
-          <p className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.35)" }}>
+          <p className="text-sm font-semibold" style={{ color: "rgba(var(--fg-rgb),0.35)" }}>
             {active} notes coming soon
           </p>
-          <p className="text-xs text-center max-w-xs" style={{ color: "rgba(255,255,255,0.2)" }}>
+          <p className="text-xs text-center max-w-xs" style={{ color: "rgba(var(--fg-rgb),0.2)" }}>
             Chapter-wise short notes will appear here once uploaded.
           </p>
         </div>

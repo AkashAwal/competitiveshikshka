@@ -129,6 +129,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }
   const examCountdowns = getExamCountdowns();
 
+  const achievements = [
+    { Icon: Target,   iconColor: "#f87171", title: "First Test",   desc: "Complete your first practice test",   earned: false, locked: "Unlocks once Tests are live" },
+    { Icon: Flame,    iconColor: "#fb923c", title: "3 Day Streak", desc: "Study 3 days in a row",               earned: streak >= 3, locked: null },
+    { Icon: BookOpen, iconColor: "#60a5fa", title: "Note Taker",   desc: "Create your first note",              earned: false, locked: "Unlocks once Notes are live" },
+    { Icon: Zap,      iconColor: "#facc15", title: "Speed Run",    desc: "Finish a test in under 30 minutes",   earned: false, locked: "Unlocks once Tests are live" },
+    { Icon: Medal,    iconColor: "#a78bfa", title: "Top Scorer",   desc: "Score above 90% on any test",         earned: false, locked: "Unlocks once Tests are live" },
+  ] as const;
+  const earnedCount = achievements.filter(a => a.earned).length;
+
   useEffect(() => {
     function applyAppearPrefs() {
       try {
@@ -149,12 +158,21 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     supabase.auth.getUser().then(async ({ data }) => {
       setUser(data.user);
       if (data.user) {
-        const { data: profileData } = await supabase
+        const { data: profileData, error: profileError } = await supabase
           .from("profiles")
           .select("class, stream, state, heard_from, strong_subject, weak_subject, coaching, school, onboarding_completed, streak, last_visited_date, avatar_style, target_exam, target_year, created_at")
           .eq("id", data.user.id)
           .single();
-        setProfile(profileData ?? null);
+
+        if (profileData) {
+          setProfile(profileData);
+        } else if (profileError?.code === "PGRST116") {
+          // Genuinely no profile row yet — a real new-user case, safe to trigger onboarding.
+          setProfile(null);
+        }
+        // Any other error (network blip, RLS hiccup) leaves `profile` as `undefined` —
+        // that intentionally keeps the onboarding-gate check pending instead of
+        // misfiring the onboarding modal for an already-onboarded returning student.
 
         if (profileData) {
           const today = new Date().toISOString().slice(0, 10);
@@ -410,24 +428,33 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
           {/* Stats chips — right */}
           <div className="flex items-center gap-3">
-            {([
-              ...examCountdowns.map(({ label, days }) => ({ Icon: CalendarClock, text: `${days} days to ${label}`, color: "#60a5fa", onClick: undefined, isAchievements: false })),
-              { Icon: Flame,  text: String(streak), color: "#fb923c", onClick: undefined,                          isAchievements: false },
-              { Icon: Trophy, text: "0",            color: "#fbbf24", onClick: () => setAchievementsOpen(o => !o), isAchievements: true  },
-            ] as { Icon: React.ElementType; text: string; color: string; onClick: (() => void) | undefined; isAchievements: boolean }[]).map(({ Icon, text, color, onClick, isAchievements }) => (
+            {examCountdowns.map(({ label, days }) => (
               <div
-                key={text + color}
-                onClick={onClick}
-                className="flex items-center gap-2 px-3 py-2 rounded-xl transition-colors"
-                style={{
-                  backgroundColor: isAchievements && achievementsOpen ? "rgba(var(--fg-rgb),0.12)" : "rgba(var(--fg-rgb),0.06)",
-                  cursor: onClick ? "pointer" : "default",
-                }}
+                key={label}
+                className="flex items-center gap-2 px-3 py-2 rounded-xl"
+                style={{ backgroundColor: "rgba(var(--fg-rgb),0.06)" }}
               >
-                <Icon className="h-4 w-4 shrink-0" style={{ color }} />
-                <span className="text-xs font-semibold" style={{ color: "rgba(var(--fg-rgb),0.85)" }}>{text}</span>
+                <CalendarClock className="h-4 w-4 shrink-0" style={{ color: "#60a5fa" }} />
+                <span className="text-xs font-semibold" style={{ color: "rgba(var(--fg-rgb),0.85)" }}>{days} days to {label}</span>
               </div>
             ))}
+            <div
+              className="flex items-center gap-2 px-3 py-2 rounded-xl"
+              style={{ backgroundColor: "rgba(var(--fg-rgb),0.06)" }}
+            >
+              <Flame className="h-4 w-4 shrink-0" style={{ color: "#fb923c" }} />
+              <span className="text-xs font-semibold" style={{ color: "rgba(var(--fg-rgb),0.85)" }}>{streak}</span>
+            </div>
+            <button
+              onClick={() => setAchievementsOpen(o => !o)}
+              aria-label={`Achievements — ${earnedCount} earned`}
+              aria-expanded={achievementsOpen}
+              className="flex items-center gap-2 px-3 py-2 rounded-xl transition-colors cursor-pointer"
+              style={{ backgroundColor: achievementsOpen ? "rgba(var(--fg-rgb),0.12)" : "rgba(var(--fg-rgb),0.06)" }}
+            >
+              <Trophy className="h-4 w-4 shrink-0" style={{ color: "#fbbf24" }} />
+              <span className="text-xs font-semibold" style={{ color: "rgba(var(--fg-rgb),0.85)" }}>{earnedCount}</span>
+            </button>
           </div>
         </div>
 
@@ -443,6 +470,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           >
             <button
               onClick={() => setSidebarOpen(true)}
+              aria-label="Open sidebar menu"
               className="p-1.5 rounded-md cursor-pointer"
               style={{ color: "rgba(var(--fg-rgb),0.6)" }}
             >
@@ -499,6 +527,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <p className="font-bold text-base" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>Achievements</p>
                 <button
                   onClick={() => setAchievementsOpen(false)}
+                  aria-label="Close achievements panel"
                   className="p-1.5 rounded-lg cursor-pointer transition-colors"
                   style={{ color: "rgba(var(--fg-rgb),0.5)" }}
                   onMouseEnter={e => (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(var(--fg-rgb),0.07)"}
@@ -510,19 +539,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
               {/* Content */}
               <div className="flex-1 overflow-y-auto px-5 py-4 flex flex-col gap-3">
-                {([
-                  { Icon: Target,   iconColor: "#f87171", title: "First Test",   desc: "Complete your first practice test",   earned: false },
-                  { Icon: Flame,    iconColor: "#fb923c", title: "3 Day Streak", desc: "Study 3 days in a row",               earned: false },
-                  { Icon: BookOpen, iconColor: "#60a5fa", title: "Note Taker",   desc: "Create your first note",              earned: false },
-                  { Icon: Zap,      iconColor: "#facc15", title: "Speed Run",    desc: "Finish a test in under 30 minutes",   earned: false },
-                  { Icon: Medal,    iconColor: "#a78bfa", title: "Top Scorer",   desc: "Score above 90% on any test",         earned: false },
-                ] as const).map(({ Icon, iconColor, title, desc, earned }) => (
+                {achievements.map(({ Icon, iconColor, title, desc, earned, locked }) => (
                   <div
                     key={title}
                     className="flex items-center gap-4 p-4 rounded-xl"
                     style={{
                       backgroundColor: earned ? "rgba(37,99,235,0.12)" : "rgba(var(--fg-rgb),0.04)",
                       border: `1px solid ${earned ? "rgba(37,99,235,0.3)" : "rgba(var(--fg-rgb),0.06)"}`,
+                      opacity: locked ? 0.55 : 1,
                     }}
                   >
                     <span
@@ -533,7 +557,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     </span>
                     <div className="flex-1">
                       <p className="text-sm font-semibold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>{title}</p>
-                      <p className="text-xs mt-0.5" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>{desc}</p>
+                      <p className="text-xs mt-0.5" style={{ color: "rgba(var(--fg-rgb),0.4)" }}>{locked ?? desc}</p>
                     </div>
                     {/* Checkmark box */}
                     <div
@@ -551,7 +575,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     </div>
                   </div>
                 ))}
-                <p className="text-xs text-center mt-2" style={{ color: "rgba(var(--fg-rgb),0.2)" }}>More achievements coming soon</p>
+                <p className="text-xs text-center mt-2" style={{ color: "rgba(var(--fg-rgb),0.2)" }}>More achievements unlock as new features ship</p>
               </div>
             </div>
           </>
