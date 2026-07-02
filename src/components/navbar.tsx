@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/client";
 import type { User } from "@supabase/supabase-js";
@@ -23,14 +23,26 @@ export function Navbar() {
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const supabase = createClient();
-    supabase.auth.getUser().then(({ data }) => setUser(data.user));
+
+    async function loadAdminFlag(userId: string) {
+      const { data } = await supabase.from("profiles").select("is_admin").eq("id", userId).single();
+      setIsAdmin(data?.is_admin ?? false);
+    }
+
+    supabase.auth.getUser().then(({ data }) => {
+      setUser(data.user);
+      if (data.user) loadAdminFlag(data.user.id);
+    });
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_, session) => {
       setUser(session?.user ?? null);
+      if (session?.user) loadAdminFlag(session.user.id);
+      else setIsAdmin(false);
     });
     return () => subscription.unsubscribe();
   }, []);
@@ -134,6 +146,16 @@ export function Navbar() {
                     >
                       Settings
                     </Link>
+                    {isAdmin && (
+                      <Link
+                        href="/admin"
+                        onClick={() => setDropdownOpen(false)}
+                        className="flex items-center gap-1.5 px-4 py-2 text-sm text-zinc-700 hover:bg-accent transition-colors"
+                      >
+                        <ShieldCheck className="h-3.5 w-3.5 text-[#2563eb]" />
+                        Admin
+                      </Link>
+                    )}
                     <div className="border-t border-border mt-1 pt-1">
                       <button
                         onClick={signOut}
@@ -197,6 +219,9 @@ export function Navbar() {
               <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-zinc-900 hover:bg-accent">Dashboard</Link>
               <Link href="/dashboard/profile" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-zinc-700 hover:bg-accent">My Profile</Link>
               <Link href="/dashboard/settings" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-zinc-700 hover:bg-accent">Settings</Link>
+              {isAdmin && (
+                <Link href="/admin" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-zinc-700 hover:bg-accent">Admin</Link>
+              )}
               <button onClick={signOut} className="text-left px-3 py-2 rounded-md text-sm font-semibold text-red-500 hover:bg-red-50 cursor-pointer">Sign out</button>
             </>
           ) : (

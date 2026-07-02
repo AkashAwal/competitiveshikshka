@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
 
   const supabase = createServerClient(
@@ -32,6 +32,22 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
+  // Protect /admin routes — full is_admin check happens again server-side
+  // in requireAdmin(); this is just a fast, optimistic bounce.
+  if (request.nextUrl.pathname.startsWith("/admin")) {
+    if (!user) {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("is_admin")
+      .eq("id", user.id)
+      .single();
+    if (!profile?.is_admin) {
+      return NextResponse.redirect(new URL("/dashboard", request.url));
+    }
+  }
+
   // Redirect logged-in users away from login page
   if (user && request.nextUrl.pathname === "/login") {
     return NextResponse.redirect(new URL("/dashboard", request.url));
@@ -41,5 +57,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/login"],
+  matcher: ["/dashboard/:path*", "/login", "/admin/:path*"],
 };
