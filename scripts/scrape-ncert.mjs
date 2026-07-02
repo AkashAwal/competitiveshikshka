@@ -42,7 +42,7 @@ if (!GEMINI_API_KEY) {
 }
 
 const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
-// gemini-2.0-flash: free tier, 1M token context, fast
+// gemini-2.0-flash: free tier, 1M token context, 1500 req/day
 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
 // ─── 1. Fetch the page ────────────────────────────────────────────────────────
@@ -122,19 +122,33 @@ Rules:
 Page text:
 ${truncated}`;
 
-// ─── 4. Call Gemini Flash ─────────────────────────────────────────────────────
+// ─── 4. Call Gemini Flash (with auto-retry on rate limit) ────────────────────
 console.log(`Sending to Gemini Flash (${mode} mode)...`);
 
-const result = await model.generateContent({
-  contents: [{ role: "user", parts: [{ text: mode === "examples" ? examplesPrompt : questionsPrompt }] }],
-  generationConfig: {
-    maxOutputTokens: 8192,
-    temperature: 0.1,
-    responseMimeType: "application/json",
-  },
-});
+async function callGeminiWithRetry(prompt, maxAttempts = 5) {
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      const result = await model.generateContent({
+        contents: [{ role: "user", parts: [{ text: prompt }] }],
+        generationConfig: { maxOutputTokens: 8192, temperature: 0.1, responseMimeType: "application/json" },
+      });
+      return result.response.text().trim();
+    } catch (err) {
+      const is429 = err.status === 429 || (err.message && err.message.includes("429"));
+      if (is429 && attempt < maxAttempts) {
+        // Parse retry delay from error, default to 65s
+        const match = err.message?.match(/retryDelay.*?(\d+)s/);
+        const wait = match ? (parseInt(match[1]) + 5) : 65;
+        console.log(`Rate limited. Waiting ${wait}s before retry ${attempt + 1}/${maxAttempts}...`);
+        await new Promise(r => setTimeout(r, wait * 1000));
+      } else {
+        throw err;
+      }
+    }
+  }
+}
 
-const rawJson = result.response.text().trim();
+const rawJson = await callGeminiWithRetry(mode === "examples" ? examplesPrompt : questionsPrompt);
 
 // ─── 5. Parse and validate ────────────────────────────────────────────────────
 let parsed;
