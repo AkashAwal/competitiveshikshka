@@ -82,7 +82,7 @@ const EXAM_STYLE: Record<ExamKey, { color: string; dimColor: string; bg: string;
   "CUET":         { color: "#fb923c", dimColor: "#ad6030", bg: "rgba(249,115,22,0.12)", border: "rgba(249,115,22,0.35)" },
 };
 
-const EVENT_ICON: Record<EventType, React.ComponentType<{ size?: number; strokeWidth?: number }>> = {
+const EVENT_ICON: Record<EventType, React.ComponentType<{ size?: number; strokeWidth?: number; style?: React.CSSProperties }>> = {
   form_out:    FileText,
   form_end:    FileX,
   correction:  Edit3,

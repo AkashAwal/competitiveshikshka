@@ -191,7 +191,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           ...prev,
           ...(avatar_style !== undefined ? { avatar_style } : {}),
           ...(target_exam !== undefined ? { target_exam } : {}),
-          ...(target_year !== undefined ? { target_year: parseInt(target_year) || null } : {}),
+          ...(target_year !== undefined ? { target_year: parseInt(target_year) || undefined } : {}),
           ...(stream !== undefined ? { stream } : {}),
           ...(cls !== undefined ? { class: cls } : {}),
         };
