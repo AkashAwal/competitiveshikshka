@@ -26,7 +26,10 @@ import {
   BookOpen,
   Zap,
   Medal,
+  Sun,
+  Moon,
 } from "lucide-react";
+import { useTheme } from "next-themes";
 import { createClient } from "@/lib/supabase/client";
 import type { User } from "@supabase/supabase-js";
 import { OnboardingModal, type OnboardingProfile } from "@/components/dashboard/onboarding-modal";
@@ -73,11 +76,15 @@ const bottomItems = [
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
+  const { theme, setTheme } = useTheme();
+  const [mountedTheme, setMountedTheme] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null | undefined>(undefined);
   const [streak, setStreak] = useState(0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [achievementsOpen, setAchievementsOpen] = useState(false);
+
+  useEffect(() => setMountedTheme(true), []);
 
   function daysTo(month: number, day: number, year: number) {
     return Math.max(0, Math.ceil((new Date(year, month - 1, day).getTime() - Date.now()) / 86_400_000));
@@ -455,6 +462,20 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <Trophy className="h-4 w-4 shrink-0" style={{ color: "#fbbf24" }} />
               <span className="text-xs font-semibold" style={{ color: "rgba(var(--fg-rgb),0.85)" }}>{earnedCount}</span>
             </button>
+            {mountedTheme && (
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                aria-label="Toggle theme"
+                className="flex items-center justify-center p-2 rounded-xl transition-colors cursor-pointer"
+                style={{ backgroundColor: "rgba(var(--fg-rgb),0.06)" }}
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-4 w-4 shrink-0" style={{ color: "#fbbf24" }} />
+                ) : (
+                  <Moon className="h-4 w-4 shrink-0" style={{ color: "rgba(var(--fg-rgb),0.6)" }} />
+                )}
+              </button>
+            )}
           </div>
         </div>
 
