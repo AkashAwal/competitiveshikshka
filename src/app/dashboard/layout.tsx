@@ -84,7 +84,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [achievementsOpen, setAchievementsOpen] = useState(false);
 
-  useEffect(() => setMountedTheme(true), []);
+  useEffect(() => {
+    setMountedTheme(true);
+    if (!localStorage.getItem("theme")) setTheme("dark");
+  }, [setTheme]);
 
   function daysTo(month: number, day: number, year: number) {
     return Math.max(0, Math.ceil((new Date(year, month - 1, day).getTime() - Date.now()) / 86_400_000));
