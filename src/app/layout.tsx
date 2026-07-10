@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import { Providers } from "@/components/providers";
 import "./globals.css";
+import "katex/dist/katex.min.css";
 
 const dmSans = DM_Sans({
   variable: "--font-urbanist",

@@ -1,5 +1,50 @@
 import { defineField, defineType } from "sanity";
 
+const equationType = {
+  type: "object",
+  name: "equation",
+  title: "Equation",
+  fields: [
+    defineField({
+      name: "latex",
+      title: "LaTeX",
+      type: "text",
+      description: "LaTeX source, e.g. \\frac{P_1 V_1}{V_2}",
+      validation: (r) => r.required(),
+    }),
+  ],
+  preview: {
+    select: { title: "latex" },
+    prepare: ({ title }: { title?: string }) => ({ title: `∑ ${title ?? ""}` }),
+  },
+};
+
+// A standalone equation (above) always renders on its own centered line —
+// right for a full derivation step, wrong for a short formula embedded mid-
+// sentence ("the molar mass of H2O is..."). This variant is a `block` child
+// (declared via `of` below), so it renders inline within the paragraph flow
+// instead of breaking it into a new block.
+const inlineEquationType = {
+  type: "object",
+  name: "inlineEquation",
+  title: "Inline Equation",
+  fields: [
+    defineField({
+      name: "latex",
+      title: "LaTeX",
+      type: "text",
+      validation: (r) => r.required(),
+    }),
+  ],
+  preview: {
+    select: { title: "latex" },
+    prepare: ({ title }: { title?: string }) => ({ title: `∑ ${title ?? ""}` }),
+  },
+};
+
+const richTextOf = [{ type: "block", of: [inlineEquationType] }, { type: "image" }, equationType];
+const plainTextOf = [{ type: "block", of: [inlineEquationType] }, equationType];
+
 export const ncertSolution = defineType({
   name: "ncertSolution",
   title: "NCERT Solution",
@@ -66,19 +111,19 @@ export const ncertSolution = defineType({
               name: "questionText",
               title: "Question",
               type: "array",
-              of: [{ type: "block" }, { type: "image" }],
+              of: richTextOf,
             }),
             defineField({
               name: "answer",
               title: "Answer",
               type: "array",
-              of: [{ type: "block" }, { type: "image" }],
+              of: richTextOf,
             }),
             defineField({
               name: "explanation",
               title: "Explanation (Why it works)",
               type: "array",
-              of: [{ type: "block" }],
+              of: plainTextOf,
               description: "Plain English explanation of the concept behind the answer",
             }),
             defineField({
@@ -91,7 +136,7 @@ export const ncertSolution = defineType({
                   name: "step",
                   fields: [
                     defineField({ name: "stepTitle", title: "Step Title", type: "string" }),
-                    defineField({ name: "content", title: "Content", type: "array", of: [{ type: "block" }] }),
+                    defineField({ name: "content", title: "Content", type: "array", of: plainTextOf }),
                   ],
                   preview: { select: { title: "stepTitle" } },
                 },
@@ -125,19 +170,19 @@ export const ncertSolution = defineType({
               name: "questionText",
               title: "Problem",
               type: "array",
-              of: [{ type: "block" }, { type: "image" }],
+              of: richTextOf,
             }),
             defineField({
               name: "answer",
               title: "Solution",
               type: "array",
-              of: [{ type: "block" }, { type: "image" }],
+              of: richTextOf,
             }),
             defineField({
               name: "explanation",
               title: "Explanation (Why it works)",
               type: "array",
-              of: [{ type: "block" }],
+              of: plainTextOf,
             }),
             defineField({
               name: "steps",
@@ -149,7 +194,7 @@ export const ncertSolution = defineType({
                   name: "exampleStep",
                   fields: [
                     defineField({ name: "stepTitle", title: "Step Title", type: "string" }),
-                    defineField({ name: "content", title: "Content", type: "array", of: [{ type: "block" }] }),
+                    defineField({ name: "content", title: "Content", type: "array", of: plainTextOf }),
                   ],
                   preview: { select: { title: "stepTitle" } },
                 },

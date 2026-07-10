@@ -1,6 +1,22 @@
 import { PortableText as SanityPortableText, PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
+import katex from "katex";
 import { urlFor } from "@/sanity/lib/image";
+
+function Equation({ latex }: { latex: string }) {
+  const html = katex.renderToString(latex, { throwOnError: false, displayMode: true });
+  return (
+    <div
+      className="my-4 overflow-x-auto"
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
+}
+
+function InlineEquation({ latex }: { latex: string }) {
+  const html = katex.renderToString(latex, { throwOnError: false, displayMode: false });
+  return <span className="whitespace-normal" dangerouslySetInnerHTML={{ __html: html }} />;
+}
 
 const components: PortableTextComponents = {
   types: {
@@ -15,6 +31,8 @@ const components: PortableTextComponents = {
         />
       </div>
     ),
+    equation: ({ value }) => <Equation latex={value.latex} />,
+    inlineEquation: ({ value }) => <InlineEquation latex={value.latex} />,
   },
   block: {
     normal: ({ children }) => <p className="mb-3 leading-relaxed">{children}</p>,
