@@ -40,6 +40,7 @@ const SKIP_EXACT = new Set([
   "Number of photons per second = P/E = 100 / (3.374 × 10⁻¹⁹) = 2.96 × 10²⁰ photons/s", // trailing "photons/s" wrongly stacks into a fraction
   "N = Power/Energy per photon = 100 W / 3.374×10⁻¹⁹ J = 2.96×10²⁰ photons/s", // "J" left dangling outside its fraction denominator, plus "photons/s" issue above
   "C=O double bond = 121 pm; C≡O triple bond = 110 pm; observed CO2 bond length = 115 pm — between the two.", // "C=O" is bond notation, not an equation — parser can't tell it apart from the real "= 121 pm" that follows
+  "Arrange the following: (i) CaH2, BeH2 and TiH2 in order of increasing electrical conductance. (ii) LiH, NaH and CsH in order of increasing ionic character. (iii) H–H, D–D and F–F in order of increasing bond dissociation enthalpy. (iv) NaH, MgH2 and H2O in order of increasing reducing properties.", // aggressive comma-split only cleanly parses the first formula in the list, fragmenting the rest of this sentence — better left to subscript-formulas.mjs, which inlines formulas without breaking prose flow
 ]);
 
 let converted = 0, unchanged = 0;

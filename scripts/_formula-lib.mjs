@@ -14,7 +14,11 @@ const ELEMENTS = new Set([
   "Cs","Ba","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu",
   "Hf","Ta","W","Re","Os","Ir","Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn",
   "Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr",
-  "Rf","Db","Sg","Bh","Hs","Mt","Ds","Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og",
+  // Synthetic/superheavy elements (Rf onward) are deliberately excluded — none
+  // appear in this NCERT-level corpus, and including them (esp. "Cn" =
+  // Copernicium) causes false-positive collisions with generic placeholder
+  // notation like "CnH2n+2" (C sub n, an alkane formula variable), which is
+  // common in this content but would never legitimately refer to element 112.
 ]);
 
 // Exact substrings (a formula + its charge, written the way this corpus
@@ -75,7 +79,10 @@ function matchSymbolOnly(str, i) {
 function matchUnitWithCount(str, i) {
   const sym = matchSymbolOnly(str, i);
   if (!sym) return null;
-  const d = /^\d+/.exec(str.slice(sym.end));
+  // Allows a decimal count ("TiH1.5", "LaH2.87") for non-stoichiometric
+  // hydride notation — a bare "\d+" would truncate at the decimal point,
+  // leaving the fractional part dangling outside the subscript.
+  const d = /^\d+(?:\.\d+)?/.exec(str.slice(sym.end));
   const count = d ? d[0] : "";
   return { isGroup: false, symbol: sym.symbol, count, end: sym.end + count.length };
 }
@@ -127,6 +134,13 @@ function scanNeutralFormula(str, start) {
   // producing a multi-unit chain of bare "I"s with no counts, which this
   // check now correctly discards.
   if (!hasSomethingToSubscript) return null;
+  // Reject if a lowercase letter directly abuts the end of the match with no
+  // separator — real formulas in this corpus are always followed by a space,
+  // punctuation, or another formula, never butted against a lowercase letter.
+  // This rejects algebraic placeholder notation like "H2n+2" (part of the
+  // generic alkane formula "CnH2n+2"), where "2" is not a real element count
+  // and converting just the "H2" fragment would render misleadingly.
+  if (/[a-z]/.test(str[i] || "")) return null;
   return { units, end: i };
 }
 
@@ -152,7 +166,12 @@ export function convertFormulasInText(text) {
   while (i < text.length) {
     let hit = null;
     for (const key of EXCEPTION_KEYS) {
-      if (text.startsWith(key, i)) { hit = key; break; }
+      // Reject a match immediately followed by a lowercase letter — a real
+      // charge suffix is always a word boundary ("Cl- ions", "Cl-(aq)"), so a
+      // lowercase letter right after means this is actually a hyphenated
+      // compound word ("F-centre") that happens to start with the same
+      // substring, not an ion.
+      if (text.startsWith(key, i) && !/[a-z]/.test(text[i + key.length] || "")) { hit = key; break; }
     }
     if (hit) {
       if (i > flush) pieces.push({ type: "text", text: text.slice(flush, i) });
