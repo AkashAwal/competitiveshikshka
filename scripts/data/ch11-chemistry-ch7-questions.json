@@ -1,0 +1,352 @@
+[
+  {
+    "questionNumber": "1",
+    "questionText": "A liquid is in equilibrium with its vapour in a sealed container at a fixed temperature. The volume of the container is suddenly increased.\n(a) What is the initial effect of the change on vapour pressure?\n(b) How do the rates of evaporation and condensation change initially?\n(c) What happens when equilibrium is restored finally, and what will be the final vapour pressure?",
+    "answer": "(a) On increasing the volume of the container, the vapour pressure will initially decrease, because the same amount of vapour is now distributed over a larger space.\n(b) On increasing the volume, the rate of evaporation increases initially because more space becomes available. Since the amount of vapour per unit volume decreases as the volume increases, the rate of condensation decreases initially.\n(c) Equilibrium is finally restored when the rates of the forward and backward processes become equal again. However, the vapour pressure remains unchanged, because it depends only on the temperature and not on the volume of the container."
+  },
+  {
+    "questionNumber": "2",
+    "questionText": "What is Kc for the following equilibrium when the equilibrium concentration of each substance is: [SO₂] = 0.60 M, [O₂] = 0.82 M and [SO₃] = 1.90 M?\n2SO₂(g) + O₂(g) ⇌ 2SO₃(g)",
+    "answer": "As per the reaction, the equilibrium constant expression is:\nKc = [SO₃]²/([SO₂]²[O₂])\nSubstituting the given equilibrium concentrations:\nKc = (1.90)²/((0.60)²(0.82)) M⁻¹ = 12.229 M⁻¹ (approximately)\nHence, Kc for the equilibrium is 12.229 M⁻¹."
+  },
+  {
+    "questionNumber": "3",
+    "questionText": "At a certain temperature and total pressure of 10⁵ Pa, iodine vapour contains 40% by volume of I atoms.\nI₂(g) ⇌ 2I(g)\nCalculate Kp for the equilibrium.",
+    "answer": "The partial pressure of iodine atoms (I):\npI = (40/100) × ptotal = (40/100) × 10⁵ = 4 × 10⁴ Pa\nThe partial pressure of I₂ molecules:\npI₂ = (60/100) × ptotal = (60/100) × 10⁵ = 6 × 10⁴ Pa\nNow, for the given reaction:\nKp = (pI)²/pI₂ = (4 × 10⁴ Pa)²/(6 × 10⁴ Pa) = 2.67 × 10⁴ Pa"
+  },
+  {
+    "questionNumber": "4",
+    "questionText": "Write the expression for the equilibrium constant, Kc, for each of the following reactions:\n(i) 2NOCl(g) ⇌ 2NO(g) + Cl₂(g)\n(ii) 2Cu(NO₃)₂(s) ⇌ 2CuO(s) + 4NO₂(g) + O₂(g)\n(iii) CH₃COOC₂H₅(aq) + H₂O(l) ⇌ CH₃COOH(aq) + C₂H₅OH(aq)\n(iv) Fe³⁺(aq) + 3OH⁻(aq) ⇌ Fe(OH)₃(s)\n(v) I₂(s) + 5F₂(g) ⇌ 2IF₅",
+    "answer": "(i) Kc = [NO]²[Cl₂]/[NOCl]²\n(ii) (Since CuO(s) and Cu(NO₃)₂(s) are solids, their concentrations are omitted:)\nKc = [NO₂]⁴[O₂]\n(iii) (Since H₂O(l) is a pure liquid, its concentration is omitted:)\nKc = [CH₃COOH][C₂H₅OH]/[CH₃COOC₂H₅]\n(iv) (Since Fe(OH)₃(s) is a solid, its concentration is omitted:)\nKc = 1/([Fe³⁺][OH⁻]³)\n(v) (Since I₂(s) is a solid, its concentration is omitted:)\nKc = [IF₅]²/[F₂]⁵"
+  },
+  {
+    "questionNumber": "5",
+    "questionText": "Find out the value of Kc for each of the following equilibria from the value of Kp:\n(i) 2NOCl(g) ⇌ 2NO(g) + Cl₂(g); Kp = 1.8×10⁻² at 500 K\n(ii) CaCO₃(s) ⇌ CaO(s) + CO₂(g); Kp = 167 at 1073 K",
+    "answer": "The relation between Kp and Kc is:\nKp = Kc(RT)^Δn\n(i) Given: R = 0.0831 bar L mol⁻¹K⁻¹, Δn = 3-2 = 1, T = 500 K, Kp = 1.8×10⁻²\n1.8 × 10⁻² = Kc(0.0831 × 500)¹\nKc = (1.8 × 10⁻²)/(0.0831 × 500) = 4.33 × 10⁻⁴ (approximately)\n(ii) Here: Δn = 2-1 = 1, R = 0.0831 bar L mol⁻¹K⁻¹, T = 1073 K, Kp = 167\n167 = Kc(0.0831 × 1073)¹\nKc = 167/(0.0831 × 1073) = 1.87 (approximately)"
+  },
+  {
+    "questionNumber": "6",
+    "questionText": "For the following equilibrium, Kc = 6.3×10¹⁴ at 1000 K:\nNO(g) + O₃(g) ⇌ NO₂(g) + O₂(g)\nBoth the forward and reverse reactions in the equilibrium are elementary bimolecular reactions. What is Kc for the reverse reaction?",
+    "answer": "For the reverse reaction:\nKc' = 1/Kc = 1/(6.3 × 10¹⁴) = 1.59 × 10⁻¹⁵"
+  },
+  {
+    "questionNumber": "7",
+    "questionText": "Explain why solids and pure liquids can be ignored while writing the equilibrium constant expression.",
+    "answer": "Solids and pure liquids can be ignored while writing the equilibrium constant expression because the molar concentration of a pure solid or liquid is independent of the amount present, i.e., it is constant.\nMolar concentration = (Number of moles)/Volume = (Mass/Molecular mass)/Volume = Mass/(Volume × Molecular mass) = Density/Molecular mass\nAs the density of a solid or pure liquid is fixed, and its molar mass is also fixed, its molar concentration is constant. This constant is therefore merged into the equilibrium constant itself instead of being written separately."
+  },
+  {
+    "questionNumber": "8",
+    "questionText": "The reaction between N₂ and O₂ takes place as follows:\n2N₂(g) + O₂(g) ⇌ 2N₂O(g)\nIf a mixture of 0.482 mol of N₂ and 0.933 mol of O₂ is placed in a 10 L reaction vessel and allowed to form N₂O at a temperature for which Kc = 2.0×10⁻³⁷, determine the composition of the equilibrium mixture.",
+    "answer": "Let the concentration of N₂O at equilibrium be x.\n2N₂(g) + O₂(g) ⇌ 2N₂O(g)\nInitial: 0.482 mol, 0.933 mol, 0\nAt equilibrium: (0.482 − x) mol, (0.933 − x/2) mol, x mol\n[N₂] = (0.482 − x)/10, [O₂] = (0.933 − x/2)/10, [N₂O] = x/10\nSince the equilibrium constant is extremely small, only a very small amount of N₂ and O₂ combine to form N₂O; hence x can be neglected in comparison to 0.482 and 0.933. Then:\n[N₂] = 0.482/10 = 0.0482 mol L⁻¹ and [O₂] = 0.933/10 = 0.0933 mol L⁻¹\nNow:\nKc = [N₂O]²/([N₂]²[O₂])\n2.0 × 10⁻³⁷ = (x/10)²/((0.0482)²(0.0933))\nx²/100 = 2.0 × 10⁻³⁷ × (0.0482)² × (0.0933)\nx² = 43.35 × 10⁻⁴⁰\nx = 6.6 × 10⁻²⁰\n[N₂O] = x/10 = (6.6 × 10⁻²⁰)/10 = 6.6 × 10⁻²¹ mol L⁻¹\nHence, at equilibrium: [N₂] = 0.0482 M, [O₂] = 0.0933 M, [N₂O] = 6.6×10⁻²¹ M."
+  },
+  {
+    "questionNumber": "9",
+    "questionText": "Nitric oxide reacts with Br₂ and gives nitrosyl bromide as per the reaction given below:\n2NO(g) + Br₂(g) ⇌ 2NOBr(g)\nWhen 0.087 mol of NO and 0.0437 mol of Br₂ are mixed in a closed container at a constant temperature, 0.0518 mol of NOBr is obtained at equilibrium. Calculate the equilibrium amount of NO and Br₂.",
+    "answer": "The given reaction is:\n2NO(g) + Br₂(g) ⇌ 2NOBr(g); 2 mol, 1 mol, 2 mol\nNow, 2 mol of NOBr is formed from 2 mol of NO. Therefore, 0.0518 mol of NOBr is formed from 0.0518 mol of NO.\nAgain, 2 mol of NOBr is formed from 1 mol of Br₂. Therefore, 0.0518 mol of NOBr is formed from:\n0.0518/2 = 0.0259 mol of Br₂\nThe amount of NO and Br₂ present initially:\n[NO]₀ = 0.087 mol, [Br₂]₀ = 0.0437 mol\nTherefore, the amount of NO present at equilibrium is:\n[NO] = 0.087 − 0.0518 = 0.0352 mol\nAnd the amount of Br₂ present at equilibrium is:\n[Br₂] = 0.0437 − 0.0259 = 0.0178 mol"
+  },
+  {
+    "questionNumber": "10",
+    "questionText": "At 450 K, Kp = 2.0×10¹⁰ bar⁻¹ for the given reaction at equilibrium:\n2SO₂(g) + O₂(g) ⇌ 2SO₃(g)\nWhat is Kc at this temperature?",
+    "answer": "For the given reaction:\nΔn = 2 − 3 = −1, T = 450 K, R = 0.0831 bar L K⁻¹mol⁻¹, Kp = 2.0 × 10¹⁰ bar⁻¹\nWe know that:\nKp = Kc(RT)^Δn\n2.0 × 10¹⁰ bar⁻¹ = Kc(0.0831 L bar K⁻¹mol⁻¹ × 450 K)⁻¹\nKc = (2.0 × 10¹⁰ bar⁻¹)(0.0831 L bar K⁻¹mol⁻¹ × 450 K)\nKc = 74.79 × 10¹⁰ L mol⁻¹ = 7.48 × 10¹¹ L mol⁻¹ = 7.48 × 10¹¹ M⁻¹"
+  },
+  {
+    "questionNumber": "11",
+    "questionText": "A sample of HI(g) is placed in a flask at a pressure of 0.2 atm. At equilibrium, the partial pressure of HI(g) is 0.04 atm. What is Kp for the given equilibrium?\n2HI(g) ⇌ H₂(g) + I₂(g)",
+    "answer": "The initial partial pressure of HI is 0.2 atm. At equilibrium, it is 0.04 atm. Therefore, the decrease in the pressure of HI is 0.2 − 0.04 = 0.16 atm.\n2HI(g) ⇌ H₂(g) + I₂(g)\nInitial: 0.2 atm, 0, 0\nAt equilibrium: 0.04 atm, 0.16/2 = 0.08 atm, 0.16/2 = 0.08 atm\nTherefore:\nKp = (pH₂ × pI₂)/pHI² = (0.08 × 0.08)/(0.04)² = 0.0064/0.0016 = 4.0\nHence, the value of Kp for the given equilibrium is 4.0."
+  },
+  {
+    "questionNumber": "12",
+    "questionText": "A mixture of 1.57 mol of N₂, 1.92 mol of H₂ and 8.13 mol of NH₃ is introduced into a 20 L reaction vessel at 500 K. At this temperature, the equilibrium constant, Kc, for the reaction\nN₂(g) + 3H₂(g) ⇌ 2NH₃(g)\nis 1.7×10². Is the reaction mixture at equilibrium? If not, what is the direction of the net reaction?",
+    "answer": "The given concentrations of the various species are:\n[N₂] = 1.57/20 mol L⁻¹, [H₂] = 1.92/20 mol L⁻¹, [NH₃] = 8.13/20 mol L⁻¹\nNow, the reaction quotient Qc is:\nQc = [NH₃]²/([N₂][H₂]³) = (8.13/20)²/((1.57/20)(1.92/20)³) = 2.4 × 10³\nSince Qc ≠ Kc, the reaction mixture is not at equilibrium.\nAgain, Qc > Kc. Hence, the reaction will proceed in the reverse direction (towards the reactants)."
+  },
+  {
+    "questionNumber": "13",
+    "questionText": "The equilibrium constant expression for a gas reaction is:\nKc = [NH₃]⁴[O₂]⁵/([NO]⁴[H₂O]⁶)\nWrite the balanced chemical equation corresponding to this expression.",
+    "answer": "The balanced chemical equation corresponding to the given expression is:\n4NO(g) + 6H₂O(g) ⇌ 4NH₃(g) + 5O₂(g)"
+  },
+  {
+    "questionNumber": "14",
+    "questionText": "One mole of H₂O and one mole of CO are taken in a 10 L vessel and heated to 725 K. At equilibrium, 60% of water (by mass) reacts with CO according to the equation:\nH₂O(g) + CO(g) ⇌ H₂(g) + CO₂(g)\nCalculate the equilibrium constant for the reaction.",
+    "answer": "Note: as in the source, the worked solution below is carried out for 40% of the water reacting (i.e. 0.4 mol reacted, 0.6 mol of each reactant remaining) — the figures used in the calculation match a 40% conversion, matching the original NCERT problem.\nCompound: H₂O, CO, H₂, CO₂\nInitial conc.: 0.1 M, 0.1 M, 0, 0\nEquilibrium conc.: 0.06 M, 0.06 M, 0.04 M, 0.04 M\nTherefore, the equilibrium constant for the reaction is:\nKc = [H₂][CO₂]/([H₂O][CO]) = (0.04)(0.04)/((0.06)(0.06)) = 0.444"
+  },
+  {
+    "questionNumber": "15",
+    "questionText": "At 700 K, the equilibrium constant for the reaction H₂(g) + I₂(g) ⇌ 2HI(g) is 54.8. If 0.5 mol L⁻¹ of HI(g) is present at equilibrium at 700 K, what is the concentration of H₂(g) and I₂(g), assuming that we initially started with HI(g) and allowed it to reach equilibrium at 700 K?",
+    "answer": "It is given that the equilibrium constant Kc for H₂(g)+I₂(g)⇌2HI(g) is 54.8.\nTherefore, the equilibrium constant Kc' for the reverse reaction 2HI(g)⇌H₂(g)+I₂(g), with [HI]=0.5 mol L⁻¹, will be (1/54.8).\nLet the equilibrium concentrations of H₂ and I₂ each be x mol L⁻¹: [H₂]=[I₂]=x mol L⁻¹.\nTherefore:\n[H₂][I₂]/[HI]² = Kc'\n(x × x)/(0.5)² = 1/54.8\nx² = 0.25/54.8\nx = √(0.25/54.8) = 0.06754 ≈ 0.068 mol L⁻¹ (approximately)\nHence, at equilibrium, [H₂] = [I₂] = 0.068 mol L⁻¹."
+  },
+  {
+    "questionNumber": "16",
+    "questionText": "What is the equilibrium concentration of each of the substances in the equilibrium when the initial concentration of ICl was 0.78 M?\n2ICl(g) ⇌ I₂(g) + Cl₂(g); Kc = 0.14",
+    "answer": "2ICl(g), I₂(g), Cl₂(g)\nInitial conc.: 0.78 M, 0, 0\nAt equilibrium: (0.78 − 2x) M, x M, x M\nNow, we can write:\nKc = [I₂][Cl₂]/[ICl]² = x²/(0.78 − 2x)² = 0.14\n⇒ √0.14 = x/(0.78 − 2x)\n⇒ 0.374 = x/(0.78 − 2x)\n⇒ 0.374 × (0.78 − 2x) = x ⇒ 0.2917 − 0.748x = x\n⇒ 1.748x = 0.2917 ⇒ x = 0.167 M (approximately)\nHence, at equilibrium, [I₂] = [Cl₂] = 0.167 M and [ICl] = 0.78 - 2(0.167) = 0.446 M."
+  },
+  {
+    "questionNumber": "17",
+    "questionText": "Kp = 0.04 atm at 899 K for the equilibrium shown below. What is the equilibrium concentration of C₂H₆ when it is placed in a flask at 4.0 atm pressure and allowed to come to equilibrium?\nC₂H₆(g) ⇌ C₂H₄(g) + H₂(g)",
+    "answer": "C₂H₆(g), C₂H₄(g), H₂(g)\nInitial conc.: 4.0 atm, 0, 0\nAt equilibrium: (4.0 − p) atm, p atm, p atm\nWe can write:\n(pC₂H₄ × pH₂)/pC₂H₆ = Kp ⇒ (p × p)/(4.0 − p) = 0.04\n⇒ p² = 0.16 − 0.04p ⇒ p² + 0.04p − 0.16 = 0\nSolving this quadratic equation for p:\np = (−0.04 ± √((0.04)² − 4×1×(−0.16)))/(2×1) = (−0.04 ± √0.6416)/2\n= (−0.04 + 0.80)/2 (taking the positive value) = 0.76/2 = 0.38\nHence, at equilibrium, [C₂H₆] = 4.0 - p = 4.0 - 0.38 = 3.62 atm."
+  },
+  {
+    "questionNumber": "18",
+    "questionText": "Ethyl acetate is formed by the reaction between ethanol and acetic acid, and the equilibrium is represented as:\nCH₃COOH(l) + C₂H₅OH(l) ⇌ CH₃COOC₂H₅(l) + H₂O(l)\n(i) Write the concentration ratio (reaction quotient) Qc for this reaction (note: water is not in excess and is not a solvent in this reaction).\n(ii) At 293 K, if one starts with 1.00 mol of acetic acid and 0.18 mol of ethanol, there is 0.171 mol of ethyl acetate in the final equilibrium mixture. Calculate the equilibrium constant.\n(iii) Starting with 0.5 mol of ethanol and 1.0 mol of acetic acid and maintaining it at 293 K, 0.214 mol of ethyl acetate is found after some time. Has equilibrium been reached?",
+    "answer": "(i) The reaction quotient is:\nQc = [CH₃COOC₂H₅][H₂O]/([CH₃COOH][C₂H₅OH])\n(ii) Let the volume of the reaction mixture be V.\nCH₃COOH, C₂H₅OH, CH₃COOC₂H₅, H₂O\nInitial conc.: 1/V M, 0.18/V M, 0, 0\nAt equilibrium: (1 − 0.171)/V = 0.829/V M, (0.18 − 0.171)/V = 0.009/V M, 0.171/V M, 0.171/V M\nTherefore, the equilibrium constant for the reaction is:\nKc = [CH₃COOC₂H₅][H₂O]/([CH₃COOH][C₂H₅OH]) = ((0.171/V)(0.171/V))/((0.829/V)(0.009/V)) = 3.919 ≈ 3.92 (approximately)\n(iii) Let the volume of the reaction mixture be V.\nCH₃COOH, C₂H₅OH, CH₃COOC₂H₅, H₂O\nInitial conc.: 1.0/V M, 0.5/V M, 0, 0\nAt this instant: (1.0 − 0.214)/V = 0.786/V M, (0.5 − 0.214)/V = 0.286/V M, 0.214/V M, 0.214/V M\nTherefore, the reaction quotient is:\nQc = [CH₃COOC₂H₅][H₂O]/([CH₃COOH][C₂H₅OH]) = ((0.214/V)(0.214/V))/((0.786/V)(0.286/V)) = 0.204 (approximately)\nSince Qc < Kc, equilibrium has not been reached."
+  },
+  {
+    "questionNumber": "19",
+    "questionText": "A sample of pure PCl₅ was introduced into an evacuated vessel at 473 K. After equilibrium was attained, the concentration of PCl₅ was found to be 0.5×10⁻¹ mol L⁻¹. If the value of Kc is 8.3×10⁻³, what are the concentrations of PCl₃ and Cl₂ at equilibrium?\nPCl₅(g) ⇌ PCl₃(g) + Cl₂(g)",
+    "answer": "Let the concentration of both PCl₃ and Cl₂ at equilibrium be x mol L⁻¹.\nPCl₅(g), PCl₃(g), Cl₂(g)\nAt equilibrium: 0.5 × 10⁻¹ mol L⁻¹, x mol L⁻¹, x mol L⁻¹\nNow, we can write the expression for the equilibrium constant as:\nKc = [PCl₃][Cl₂]/[PCl₅] ⇒ (x × x)/(0.5 × 10⁻¹) = 8.3 × 10⁻³\n⇒ x² = 8.3 × 10⁻³ × 0.5 × 10⁻¹ = 4.15 × 10⁻⁴\n⇒ x = √(4.15 × 10⁻⁴) = 2.04 × 10⁻² ≈ 0.02 mol L⁻¹ (approximately)\nTherefore, at equilibrium, [PCl₃] = [Cl₂] = 0.02 mol L⁻¹."
+  },
+  {
+    "questionNumber": "20",
+    "questionText": "One of the reactions that take place in producing steel from iron ore is the reduction of iron (II) oxide by carbon monoxide to give iron metal and CO₂.\nFeO(s) + CO(g) ⇌ Fe(s) + CO₂(g); Kp = 0.265 at 1050 K\nWhat are the equilibrium partial pressures of CO and CO₂ at 1050 K if the initial partial pressures are: pCO = 1.4 atm and pCO₂ = 0.80 atm?",
+    "answer": "Initially, pCO = 1.4 atm and pCO₂ = 0.80 atm.\nQp = pCO₂/pCO = 0.80/1.4 = 0.571\nSince Qp > Kp, the reaction will proceed in the backward direction. Therefore, we can say that the pressure of CO will increase while the pressure of CO₂ will decrease.\nNow, let the increase in pressure of CO = decrease in pressure of CO₂ be p. Then, we can write:\nKp = pCO₂/pCO ⇒ 0.265 = (0.80 − p)/(1.4 + p)\n⇒ 0.371 + 0.265p = 0.80 − p ⇒ 1.265p = 0.429 ⇒ p = 0.339 atm\nTherefore, the equilibrium partial pressure of CO₂, pCO₂ = 0.80 - 0.339 = 0.461 atm.\nAnd the equilibrium partial pressure of CO, pCO = 1.4 + 0.339 = 1.739 atm."
+  },
+  {
+    "questionNumber": "21",
+    "questionText": "The equilibrium constant, Kc, for the reaction N₂(g) + 3H₂(g) ⇌ 2NH₃(g) at 500 K is 0.061.\nAt a specific time, analysis shows that the composition of the reaction mixture is 3.0 mol L⁻¹ N₂, 2.0 mol L⁻¹ H₂ and 0.5 mol L⁻¹ NH₃. Is the reaction at equilibrium? If not, in which direction does the reaction proceed to reach equilibrium?",
+    "answer": "N₂(g), 3H₂(g), 2NH₃(g)\nAt a particular time: 3.0 mol L⁻¹, 2.0 mol L⁻¹, 0.5 mol L⁻¹\nSo,\nQc = [NH₃]²/([N₂][H₂]³) = (0.5)²/((3.0)(2.0)³) = 0.0104\nIt is given that Kc = 0.061. Since Qc ≠ Kc, the reaction is not at equilibrium.\nSince Qc < Kc, the reaction proceeds in the forward direction to reach equilibrium."
+  },
+  {
+    "questionNumber": "22",
+    "questionText": "Bromine monochloride, BrCl, decomposes into bromine and chlorine and reaches the following equilibrium:\n2BrCl(g) ⇌ Br₂(g) + Cl₂(g)\nfor which Kc = 32 at 500 K. If initially pure BrCl is present at a concentration of 3.3×10⁻³ mol L⁻¹, what is its molar concentration in the mixture at equilibrium?",
+    "answer": "Let the amount of bromine and chlorine formed at equilibrium be x.\n2BrCl(g), Br₂(g), Cl₂(g)\nInitial conc.: 3.3 × 10⁻³, 0, 0\nAt equilibrium: 3.3 × 10⁻³ − 2x, x, x\nNow, we can write:\n[Br₂][Cl₂]/[BrCl]² = Kc ⇒ (x × x)/(3.3 × 10⁻³ − 2x)² = 32\n⇒ √32 = x/(3.3 × 10⁻³ − 2x) ⇒ 5.66 = x/(3.3 × 10⁻³ − 2x)\n⇒ x = 5.66 × (3.3 × 10⁻³ − 2x) = 18.678 × 10⁻³ − 11.32x\n⇒ 12.32x = 18.678 × 10⁻³ ⇒ x = 1.5 × 10⁻³\nSo, at equilibrium:\n[BrCl] = 3.3 × 10⁻³ − (2 × 1.5 × 10⁻³) = 3.3 × 10⁻³ − 3.0 × 10⁻³ = 0.3 × 10⁻³ mol L⁻¹\nand [Br₂] = [Cl₂] = 1.5×10⁻³ mol L⁻¹."
+  },
+  {
+    "questionNumber": "23",
+    "questionText": "At 1127 K and 1 atm pressure, a gaseous mixture of CO and CO₂ in equilibrium with solid carbon has 90.55% CO by mass.\nC(s) + CO₂(g) ⇌ 2CO(g)\nCalculate Kc for this reaction at the above temperature.",
+    "answer": "Let us assume that the gaseous mixture is 100 g in total.\nGiven, the mass of CO = 90.55 g. Therefore, the mass of CO₂ = (100 - 90.55) = 9.45 g.\nNow, the number of moles of CO and CO₂ are:\nnCO = 90.55/28 = 3.234 mol, nCO₂ = 9.45/44 = 0.215 mol\nThe partial pressure of CO and CO₂ are:\npCO = nCO/(nCO + nCO₂) × ptotal = 3.234/(3.234 + 0.215) × 1 = 0.938 atm\npCO₂ = nCO₂/(nCO + nCO₂) × ptotal = 0.215/(3.234 + 0.215) × 1 = 0.062 atm\nTherefore:\nKp = [CO]²/[CO₂] = (0.938)²/0.062 = 14.19\nFor the given reaction, Δn = 2-1 = 1. We know that Kp = Kc(RT)^Δn, so:\n14.19 = Kc(0.082 × 1127)¹ ⇒ Kc = 14.19/(0.082 × 1127) = 0.154 (approximately)\nTherefore, the equilibrium constant for the given reaction, Kc, is 0.154."
+  },
+  {
+    "questionNumber": "24",
+    "questionText": "Calculate (a) ΔG° and (b) the equilibrium constant for the formation of NO₂ from NO and O₂ at 298 K:\nNO(g) + ½O₂(g) ⇌ NO₂(g)\nwhere ΔfG°(NO₂) = 52.0 kJ/mol, ΔfG°(NO) = 87.0 kJ/mol, ΔfG°(O₂) = 0 kJ/mol.",
+    "answer": "(a) For the given reaction:\nΔG° = ΔG°(Products) − ΔG°(Reactants) = 52.0 − (87.0 + 0) = −35.0 kJ mol⁻¹\n(b) We know that ΔG° = -2.303 RT log Kc. Therefore:\nlog Kc = −ΔG°/(2.303 RT) = (35.0 × 10³)/(2.303 × 8.314 × 298) = 6.134\n⇒ Kc = antilog(6.134) = 1.36 × 10⁶\nTherefore, the equilibrium constant for the given reaction, Kc, is 1.36×10⁶."
+  },
+  {
+    "questionNumber": "25",
+    "questionText": "Does the number of moles of reaction products increase, decrease or remain the same when each of the following equilibria is subjected to a decrease in pressure by increasing the volume?\n(a) PCl₅(g) ⇌ PCl₃(g) + Cl₂(g)\n(b) CaO(s) + CO₂(g) ⇌ CaCO₃(s)\n(c) 3Fe(s) + 4H₂O(g) ⇌ Fe₃O₄(s) + 4H₂(g)",
+    "answer": "(a) The number of moles of reaction products will increase. According to Le Chatelier's principle, if pressure is decreased, the equilibrium shifts in the direction in which the number of moles of gas is more. In the given reaction, the number of moles of gaseous products is more than that of gaseous reactants. Thus, the reaction proceeds in the forward direction, and the number of moles of reaction products will increase.\n(b) The number of moles of reaction products will decrease.\n(c) The number of moles of reaction products remains the same."
+  },
+  {
+    "questionNumber": "26",
+    "questionText": "Which of the following reactions will get affected by increasing the pressure? Also, mention whether the change will cause the reaction to go in the forward or backward direction.\n(I) COCl₂(g) ⇌ CO(g) + Cl₂(g)\n(II) CH₄(g) + 2S₂(g) ⇌ CS₂(g) + 2H₂S(g)\n(III) CO₂(g) + C(s) ⇌ 2CO(g)\n(IV) 2H₂(g) + CO(g) ⇌ CH₃OH(g)\n(V) CaCO₃(s) ⇌ CaO(s) + CO₂(g)\n(VI) 4NH₃(g) + 5O₂(g) ⇌ 4NO(g) + 6H₂O(g)",
+    "answer": "When pressure is increased, the reactions given in (I), (III), (IV), (V) and (VI) will get affected — reaction (II) is unaffected since the number of moles of gas is equal on both sides.\nSince the number of moles of gaseous reactants is more than that of gaseous products in (IV), the reaction given in (IV) will proceed in the forward direction.\nSince the number of moles of gaseous reactants is less than that of gaseous products in (I), (III), (V) and (VI), these reactions will shift in the backward direction."
+  },
+  {
+    "questionNumber": "27",
+    "questionText": "The equilibrium constant for the following reaction is Kp = 1.6×10⁵ at 1024 K:\nH₂(g) + Br₂(g) ⇌ 2HBr(g)\nFind the equilibrium pressure of all gases if 10.0 bar of HBr is introduced into a sealed container at 1024 K.",
+    "answer": "Given, Kp for H₂(g)+Br₂(g)⇌2HBr(g) is 1.6×10⁵.\nTherefore, for the reverse reaction 2HBr(g)⇌H₂(g)+Br₂(g), the equilibrium constant will be:\nKp' = 1/Kp = 1/(1.6 × 10⁵) = 6.25 × 10⁻⁶\nNow, let p be the pressure of both H₂ and Br₂ at equilibrium.\n2HBr(g), H₂(g), Br₂(g)\nInitial conc.: 10, 0, 0\nAt equilibrium: 10 − 2p, p, p\nNow, we can write:\n(pH₂ × pBr₂)/pHBr² = Kp' ⇒ (p × p)/(10 − 2p)² = 6.25 × 10⁻⁶\n⇒ p/(10 − 2p) = 2.5 × 10⁻³ ⇒ p = 2.5 × 10⁻² − (5.0 × 10⁻³)p\n⇒ p + (5.0 × 10⁻³)p = 2.5 × 10⁻² ⇒ (1.005)p = 2.5 × 10⁻²\n⇒ p = 2.49 × 10⁻² bar ≈ 2.5 × 10⁻² bar (approximately)\nTherefore, at equilibrium: [H₂] = [Br₂] = 2.49×10⁻² bar.\n[HBr] = 10 − 2 × (2.49 × 10⁻²) = 9.95 bar ≈ 10 bar (approximately)"
+  },
+  {
+    "questionNumber": "28",
+    "questionText": "Dihydrogen gas is obtained from natural gas by partial oxidation with steam as per the following endothermic reaction:\nCH₄(g) + H₂O(g) ⇌ CO(g) + 3H₂(g)\n(a) Write an expression for Kp for the above reaction.\n(b) How will the values of Kp and the composition of the equilibrium mixture be affected by (i) increasing the pressure, (ii) increasing the temperature, (iii) using a catalyst?",
+    "answer": "(a) For the given reaction:\nKp = (pCO × pH₂³)/(pCH₄ × pH₂O)\n(b) (i) According to Le Chatelier's principle, the equilibrium will shift in the backward direction.\n(ii) According to Le Chatelier's principle, as the reaction is endothermic, the equilibrium will shift in the forward direction.\n(iii) The equilibrium of the reaction is not affected by the presence of a catalyst. A catalyst only increases the rate of a reaction; thus, equilibrium will be attained more quickly."
+  },
+  {
+    "questionNumber": "29",
+    "questionText": "Describe the effect of (a) addition of H₂, (b) addition of CH₃OH, (c) removal of CO, and (d) removal of CH₃OH on the equilibrium of the reaction:\n2H₂(g) + CO(g) ⇌ CH₃OH(g)",
+    "answer": "(a) According to Le Chatelier's principle, on the addition of H₂, the equilibrium of the given reaction will shift in the forward direction.\n(b) On addition of CH₃OH, the equilibrium will shift in the backward direction.\n(c) On removing CO, the equilibrium will shift in the backward direction.\n(d) On removing CH₃OH, the equilibrium will shift in the forward direction."
+  },
+  {
+    "questionNumber": "30",
+    "questionText": "At 473 K, equilibrium constant Kc for the reaction PCl₅(g)⇌PCl₃(g)+Cl₂(g) is 8.3×10⁻³. If the decomposition is depicted as:\nPCl₅(g) ⇌ PCl₃(g) + Cl₂(g); ΔrH° = 124.0 kJ mol⁻¹\n(a) Write an expression for Kc for the reaction.\n(b) What is the value of Kc for the reverse reaction at the same temperature?\n(c) What would be the effect on Kc if (i) more PCl₅ is added, (ii) pressure is increased, (iii) the temperature is increased?",
+    "answer": "(a) Kc = [PCl₃(g)][Cl₂(g)]/[PCl₅(g)]\n(b) Value of Kc for the reverse reaction at the same temperature is:\nKc' = 1/Kc = 1/(8.3 × 10⁻³) = 1.2048 × 10² = 120.48\n(c) (i) Kc would remain the same because, in this case, the temperature remains the same.\n(ii) Kc is constant at a constant temperature. Thus, in this case, Kc would not change.\n(iii) In an endothermic reaction, the value of Kc increases with an increase in temperature. Since the given reaction is an endothermic reaction, the value of Kc will increase if the temperature is increased."
+  },
+  {
+    "questionNumber": "31",
+    "questionText": "Dihydrogen gas used in Haber's process is produced by reacting methane from natural gas with high-temperature steam. The first stage of the two-stage reaction involves the formation of CO and H₂. In the second stage, CO formed in the first stage is reacted with more steam in the water gas shift reaction,\nCO(g) + H₂O(g) ⇌ CO₂(g) + H₂(g)\nIf a reaction vessel at 400°C is charged with an equimolar mixture of CO and steam such that pCO = pH₂O = 4.0 bar, what will be the partial pressure of H₂ at equilibrium? Kp = 10.1 at 400°C.",
+    "answer": "Let the partial pressure of both carbon dioxide and hydrogen gas be p.\nCO(g), H₂O(g), CO₂(g), H₂(g)\nInitial conc.: 4.0 bar, 4.0 bar, 0, 0\nAt equilibrium: 4.0 − p, 4.0 − p, p, p\nGiven Kp = 10.1:\n(pCO₂ × pH₂)/(pCO × pH₂O) = Kp ⇒ (p × p)/((4.0 − p)(4.0 − p)) = 10.1\n⇒ p/(4.0 − p) = √10.1 = 3.178 ⇒ p = 12.712 − 3.178p\n⇒ 4.178p = 12.712 ⇒ p = 12.712/4.178 = 3.04\nSo, the partial pressure of H₂ is 3.04 bar at equilibrium."
+  },
+  {
+    "questionNumber": "32",
+    "questionText": "Predict which of the following reactions will have an appreciable concentration of reactants and products:\n(a) Cl₂(g) ⇌ 2Cl(g); Kc = 5×10⁻³⁹\n(b) Cl₂(g) + 2NO(g) ⇌ 2NOCl(g); Kc = 3.7×10⁸\n(c) Cl₂(g) + 2NO₂(g) ⇌ 2NO₂Cl(g); Kc = 1.8",
+    "answer": "If the value of Kc lies between 10⁻³ and 10³, a reaction has an appreciable concentration of reactants and products. Thus, the reaction given in (c) will have an appreciable concentration of reactants and products."
+  },
+  {
+    "questionNumber": "33",
+    "questionText": "The value of Kc for the reaction 3O₂(g) ⇌ 2O₃(g) is 2.0×10⁻⁵⁰ at 25°C. If the equilibrium concentration of O₂ in air at 25°C is 1.6×10⁻² M, what is the concentration of O₃?",
+    "answer": "3O₂(g) ⇌ 2O₃(g)\nKc = [O₃(g)]²/[O₂(g)]³\nGiven that Kc = 2.0×10⁻⁵⁰ and [O₂(g)] = 1.6×10⁻². Then:\n2.0 × 10⁻⁵⁰ = [O₃(g)]²/(1.6 × 10⁻²)³\n⇒ [O₃(g)]² = 2.0 × 10⁻⁵⁰ × (1.6 × 10⁻²)³ = 8.192 × 10⁻⁵⁶\n⇒ [O₃(g)] = √(8.192 × 10⁻⁵⁶) = 2.86 × 10⁻²⁸ M\nSo, the concentration of O₃ is 2.86×10⁻²⁸ M."
+  },
+  {
+    "questionNumber": "34",
+    "questionText": "The reaction, CO(g) + 3H₂(g) ⇌ CH₄(g) + H₂O(g) at 1300 K is at equilibrium in a 1 L container. It has 0.30 mol of CO, 0.10 mol of H₂ and 0.02 mol of H₂O, and an unknown amount of CH₄ in the flask. Determine the concentration of CH₄ in the mixture. The equilibrium constant, Kc, for the reaction at the given temperature is 3.90.",
+    "answer": "Let the concentration of CH₄ at equilibrium be y.\nCO(g) + 3H₂(g) ⇌ CH₄(g) + H₂O(g)\nAt equilibrium:\n[CO] = 0.3/1 = 0.3 M, [H₂] = 0.1/1 = 0.1 M, [H₂O] = 0.02/1 = 0.02 M\nKc = [CH₄(g)][H₂O(g)]/([CO(g)][H₂(g)]³) ⇒ (y × 0.02)/(0.3 × (0.1)³) = 3.9\n⇒ y = (3.9 × 0.3 × (0.1)³)/0.02 = 0.00117/0.02 = 0.0585 M = 5.85 × 10⁻² M\nTherefore, the concentration of CH₄ at equilibrium is 5.85×10⁻² M."
+  },
+  {
+    "questionNumber": "35",
+    "questionText": "What is meant by a conjugate acid-base pair? Find the conjugate acid/base for the following species:\nHNO₂, CN⁻, HClO₄, F⁻, OH⁻, CO₃²⁻, and S²⁻",
+    "answer": "A conjugate acid-base pair is a pair that differs by only one proton (HA ⇌ A⁻ + H⁺).\nThe conjugate acid-base pairs of the given species are as follows:\nHNO₂ — conjugate base NO₂⁻\nCN⁻ — conjugate acid HCN\nHClO₄ — conjugate base ClO₄⁻\nF⁻ — conjugate acid HF\nOH⁻ — conjugate acid H₂O; conjugate base O²⁻\nCO₃²⁻ — conjugate acid HCO₃⁻\nS²⁻ — conjugate acid HS⁻"
+  },
+  {
+    "questionNumber": "36",
+    "questionText": "Which of the following are Lewis acids? H₂O, BF₃, H⁺, and NH₄⁺",
+    "answer": "Lewis acids are species that can accept a pair of electrons, while Lewis bases can donate a pair of electrons. H₂O is a Lewis base (it can donate a lone pair of electrons). BF₃, H⁺, and NH₄⁺ are Lewis acids (each can accept a pair of electrons)."
+  },
+  {
+    "questionNumber": "37",
+    "questionText": "What will be the conjugate bases for the Brönsted acids: HF, H₂SO₄ and HCO₃⁻?",
+    "answer": "The conjugate bases for the given Brönsted acids are as follows:\nHF → F⁻\nH₂SO₄ → HSO₄⁻\nHCO₃⁻ → CO₃²⁻"
+  },
+  {
+    "questionNumber": "38",
+    "questionText": "Write the conjugate acids for the following Brönsted bases: NH₂⁻, NH₃ and HCOO⁻.",
+    "answer": "The conjugate acids for the given Brönsted bases are as follows:\nNH₂⁻ → NH₃\nNH₃ → NH₄⁺\nHCOO⁻ → HCOOH"
+  },
+  {
+    "questionNumber": "39",
+    "questionText": "The species: H₂O, HCO₃⁻, HSO₄⁻ and NH₃ can act both as Brönsted acids and bases. For each case, give the corresponding conjugate acid and base.",
+    "answer": "The conjugate acids and conjugate bases for the given species are listed below:\nSpecies — Conjugate Acid — Conjugate Base\nH₂O — H₃O⁺ — OH⁻\nHCO₃⁻ — H₂CO₃ — CO₃²⁻\nHSO₄⁻ — H₂SO₄ — SO₄²⁻\nNH₃ — NH₄⁺ — NH₂⁻"
+  },
+  {
+    "questionNumber": "40",
+    "questionText": "Classify the following species into Lewis acids and Lewis bases and show how these species act as Lewis acid/base:\n(a) OH⁻ (b) F⁻ (c) H⁺ (d) BCl₃",
+    "answer": "(a) OH⁻ is a Lewis base, as it has a tendency to donate a pair of electrons.\n(b) F⁻ is a Lewis base, as it has a tendency to donate its lone pair of electrons.\n(c) H⁺ is a Lewis acid, as it has a tendency to accept a pair of electrons.\n(d) BCl₃ is a Lewis acid, as it has a tendency to accept a pair of electrons."
+  },
+  {
+    "questionNumber": "41",
+    "questionText": "The concentration of hydrogen ion in a sample of soft drink is 3.8×10⁻³ M. What is its pH?",
+    "answer": "pH = −log[H⁺] = −log(3.8 × 10⁻³) = −log3.8 − log10⁻³ = −log3.8 + 3 = −0.5798 + 3 = 2.42 (approximately)\nHence, the pH of the soft drink sample is 2.42."
+  },
+  {
+    "questionNumber": "42",
+    "questionText": "The pH of a sample of vinegar is 3.76. Calculate the concentration of hydrogen ion in it.",
+    "answer": "pH = −log[H⁺] ⇒ log[H⁺] = −pH = −3.76\n⇒ [H⁺] = antilog(−3.76) = 1.74 × 10⁻⁴ M ≈ 1.78 × 10⁻⁴ M\nTherefore, the concentration of hydrogen ion in the given sample of vinegar is 1.78×10⁻⁴ M."
+  },
+  {
+    "questionNumber": "43",
+    "questionText": "The ionization constant of HF, HCOOH and HCN at 298 K are 6.8×10⁻⁴, 1.8×10⁻⁴ and 4.8×10⁻⁹ respectively. Calculate the ionization constants of the corresponding conjugate base.",
+    "answer": "The ionization constant of a conjugate base is related to the ionization constant of its acid by Ka × Kb = Kw, i.e. Kb = Kw/Ka.\nFor the conjugate base of HF, i.e. F⁻:\nKb = Kw/Ka = 10⁻¹⁴/(6.8 × 10⁻⁴) = 1.5 × 10⁻¹¹ (approximately)\nFor the conjugate base of HCOOH, i.e. HCOO⁻:\nKb = 10⁻¹⁴/(1.8 × 10⁻⁴) = 5.6 × 10⁻¹¹ (approximately)\nFor the conjugate base of HCN, i.e. CN⁻:\nKb = 10⁻¹⁴/(4.8 × 10⁻⁹) = 2.08 × 10⁻⁶ (approximately)"
+  },
+  {
+    "questionNumber": "44",
+    "questionText": "The ionization constant of phenol is 1.0×10⁻¹⁰. What is the concentration of phenolate ion in 0.05 M solution of phenol? What will be its degree of ionization if the solution is also 0.01 M in sodium phenolate?",
+    "answer": "Let the concentration of the phenolate ion be x.\nC₆H₅OH ⇌ C₆H₅O⁻ + H⁺\nInitial conc.: 0.05 M, 0, 0\nAt equilibrium: (0.05 − x) M, x M, x M\nKa = [C₆H₅O⁻][H⁺]/[C₆H₅OH] = x²/(0.05 − x) ≈ x²/0.05 = 1.0 × 10⁻¹⁰\n⇒ x² = 1.0 × 10⁻¹⁰ × 0.05 = 5 × 10⁻¹² ⇒ x = 2.2 × 10⁻⁶ M\nNow, if the solution is also 0.01 M in sodium phenolate, then let y be the additional dissociation of phenol. [C₆H₅O⁻] ≈ 0.01 M (from the salt) and [C₆H₅OH] ≈ 0.05 M.\nKa = [C₆H₅O⁻][H⁺]/[C₆H₅OH] ⇒ 1.0 × 10⁻¹⁰ = (0.01 × y)/0.05\n⇒ y = (1.0 × 10⁻¹⁰ × 0.05)/0.01 = 5 × 10⁻¹⁰ M\nTherefore, the degree of ionization, α = y/c = (5×10⁻¹⁰)/(5×10⁻²) = 1×10⁻⁸."
+  },
+  {
+    "questionNumber": "45",
+    "questionText": "The first ionization constant of H₂S is 9.1×10⁻⁸. Calculate the concentration of HS⁻ ion in its 0.1 M solution. How will this concentration be affected if the solution is 0.1 M in HCl also? If the second dissociation constant of H₂S is 1.2×10⁻¹³, calculate the concentration of S²⁻ under both conditions.",
+    "answer": "H₂S ⇌ H⁺ + HS⁻\nCase (i) — HCl absent. Let [HS⁻] = [H⁺] = x.\nKa₁ = [H⁺][HS⁻]/[H₂S] ≈ x²/0.1 = 9.1 × 10⁻⁸\n⇒ x² = 9.1 × 10⁻⁹ ⇒ x = 9.54 × 10⁻⁵ M\nSo, [HS⁻] = [H⁺] = 9.54×10⁻⁵ M (approximately).\nCase (ii) — the solution is also 0.1 M in HCl. Here, [H⁺] ≈ 0.1 M (from HCl) since it suppresses the dissociation of H₂S. Let [HS⁻] = y.\nKa₁ = [H⁺][HS⁻]/[H₂S] ≈ (0.1)y/0.1 = 9.1 × 10⁻⁸ ⇒ y = 9.1 × 10⁻⁸ M\nSo, [HS⁻] = 9.1×10⁻⁸ M.\nNow, for the second dissociation, HS⁻ ⇌ H⁺ + S²⁻, with Ka₂ = 1.2×10⁻¹³:\nKa₂ = [H⁺][S²⁻]/[HS⁻]\nIn Case (i), since [H⁺] ≈ [HS⁻] (both arise from the first dissociation), these terms cancel:\n[S²⁻] = Ka₂ = 1.2 × 10⁻¹³ M\nIn Case (ii), [H⁺] = 0.1 M and [HS⁻] = 9.1×10⁻⁸ M:\n[S²⁻] = (Ka₂ × [HS⁻])/[H⁺] = (1.2 × 10⁻¹³ × 9.1 × 10⁻⁸)/0.1 = 1.092 × 10⁻¹⁹ M"
+  },
+  {
+    "questionNumber": "46",
+    "questionText": "The ionization constant of acetic acid is 1.74×10⁻⁵. Calculate the degree of dissociation of acetic acid in its 0.05 M solution. Calculate the concentration of the acetate ion in the solution and its pH.",
+    "answer": "CH₃COOH ⇌ CH₃COO⁻ + H⁺\nLet the degree of dissociation of acetic acid be α. Using Ka = Cα²:\nα = √(Ka/C) = √((1.74 × 10⁻⁵)/0.05) = √(3.48 × 10⁻⁴) = 0.0187 (approximately)\nNow, [H⁺] = [CH₃COO⁻] = Cα = √(Ka × C) = √((1.74×10⁻⁵)(0.05)) = 9.33×10⁻⁴ M.\npH = −log[H⁺] = −log(9.33 × 10⁻⁴) = 3.03 (approximately)\nHence, the degree of dissociation is 0.0187, [CH₃COO⁻] = 9.33×10⁻⁴ M, and pH = 3.03."
+  },
+  {
+    "questionNumber": "47",
+    "questionText": "It has been found that the pH of a 0.01 M solution of an organic acid is 4.15. Calculate the concentration of the anion, the ionization constant of the acid, and its pKa.",
+    "answer": "HA ⇌ H⁺ + A⁻\nSince pH = -log[H⁺] = 4.15:\n[H⁺] = antilog(−4.15) = 7.08 × 10⁻⁵ M\nSo, [A⁻] = [H⁺] = 7.08×10⁻⁵ M.\nKa = [H⁺][A⁻]/[HA] = (7.08 × 10⁻⁵)²/0.01 = 5.0 × 10⁻⁷ (approximately)\npKa = −log Ka = −log(5.0 × 10⁻⁷) = 6.301 (approximately)"
+  },
+  {
+    "questionNumber": "48",
+    "questionText": "Assuming complete dissociation, calculate the pH of the following solutions:\n(a) 0.003 M HCl (b) 0.005 M NaOH (c) 0.002 M HBr (d) 0.002 M KOH",
+    "answer": "(a) [H⁺] = [HCl] = 0.003 M ⇒ pH = -log(3×10⁻³) = 2.52 (approximately)\n(b) [OH⁻] = [NaOH] = 0.005 M ⇒ [H⁺] = 10⁻¹⁴/(5×10⁻³) = 2×10⁻¹² M ⇒ pH = 11.70 (approximately)\n(c) [H⁺] = [HBr] = 0.002 M ⇒ pH = -log(2×10⁻³) = 2.70 (approximately)\n(d) [OH⁻] = [KOH] = 0.002 M ⇒ [H⁺] = 10⁻¹⁴/(2×10⁻³) = 5×10⁻¹² M ⇒ pH = 11.30 (approximately)"
+  },
+  {
+    "questionNumber": "49",
+    "questionText": "Calculate the pH of the following solutions:\n(I) 2 g of TlOH dissolved in water to give 2 L of solution.\n(II) 0.3 g of Ca(OH)₂ dissolved in water to give 500 mL of solution.\n(III) 0.3 g of NaOH dissolved in water to give 200 mL of solution.\n(IV) 1 mL of 13.6 M HCl is diluted with water to give 1 L of solution.",
+    "answer": "(I) Molar mass of TlOH = 204 + 16 + 1 = 221 g mol⁻¹.\n[TlOH] = 2/(221 × 2) = 4.52 × 10⁻³ M = [OH⁻]\n[H⁺] = Kw/[OH⁻] = 10⁻¹⁴/(4.52 × 10⁻³) = 2.21 × 10⁻¹² M ⇒ pH = 11.66 (approximately)\n(II) Molar mass of Ca(OH)₂ = 40 + 2(16+1) = 74 g mol⁻¹.\n[Ca(OH)₂] = 0.3/(74 × 0.5) = 8.11 × 10⁻³ M ⇒ [OH⁻] = 2 × 8.11 × 10⁻³ = 1.622 × 10⁻² M\npOH = −log(1.622 × 10⁻²) = 1.79 ⇒ pH = 14 − 1.79 = 12.21 (approximately)\n(III) Molar mass of NaOH = 23+16+1 = 40 g mol⁻¹.\n[NaOH] = 0.3/(40 × 0.2) = 3.75 × 10⁻² M = [OH⁻]\npOH = −log(3.75 × 10⁻²) = 1.43 ⇒ pH = 14 − 1.43 = 12.57 (approximately)\n(IV) Using M₁V₁ = M₂V₂: 13.6 M×1 mL = M₂×1000 mL\n⇒ M₂ = [H⁺] = 1.36 × 10⁻² M ⇒ pH = −log(1.36 × 10⁻²) = 1.87 (approximately)"
+  },
+  {
+    "questionNumber": "50",
+    "questionText": "The degree of ionization of a 0.1 M bromoacetic acid solution is 0.132. Calculate the pKa of the acid.",
+    "answer": "Let α be the degree of ionization of bromoacetic acid, C be its initial concentration.\nKa = Cα²\npKa = −log Ka = −log(1.74 × 10⁻³) = 2.76 (approximately)\nAlso, [H⁺] = Cα = 0.1×0.132 = 1.32×10⁻² M.\npH = −log(1.32 × 10⁻²) = 1.88 (approximately)"
+  },
+  {
+    "questionNumber": "51",
+    "questionText": "Aniline is a weak base with Kb = 4.27×10⁻¹⁰. Calculate the degree of ionization of aniline in its 0.001 M solution. Calculate the ionization constant of the conjugate acid of aniline.",
+    "answer": "Let the degree of ionization of aniline be α.\nKb = Cα² ⇒ α = √(Kb/C) = √((4.27 × 10⁻¹⁰)/0.001) = 6.53 × 10⁻⁴ (approximately)\n[OH⁻] = Cα = 0.001 × 6.53 × 10⁻⁴ = 6.53 × 10⁻⁷ M\npOH = −log(6.53 × 10⁻⁷) = 6.187 (approximately) ⇒ pH = 14 − 6.187 = 7.813\nThe ionization constant of the conjugate acid of aniline (the anilinium ion) is:\nKa = Kw/Kb = 10⁻¹⁴/(4.27 × 10⁻¹⁰) = 2.34 × 10⁻⁵"
+  },
+  {
+    "questionNumber": "52",
+    "questionText": "Calculate the degree of ionization of 0.05 M acetic acid if its pKa value is 4.74. How is the degree of dissociation affected when its solution is also 0.01 M in HCl? And, in 0.1 M in HCl?",
+    "answer": "Ka = antilog(−pKa) = antilog(−4.74) = 1.82 × 10⁻⁵\nLet α be the degree of ionization of acetic acid in the absence of HCl. Using Ka = Cα²:\nα = √(Ka/C) = √((1.82 × 10⁻⁵)/0.05) = 1.908 × 10⁻² (approximately)\nWhen HCl is added, the additional H⁺ suppresses the dissociation of acetic acid (common-ion effect). Let x be the new equilibrium concentration of CH₃COO⁻; since [H⁺] is now dominated by the added HCl:\nCase (i): with 0.01 M HCl present, [H⁺] ≈ 0.01 M.\nKa = [CH₃COO⁻][H⁺]/[CH₃COOH] ⇒ 1.82 × 10⁻⁵ = (x × 0.01)/0.05\n⇒ x = (1.82 × 10⁻⁵ × 0.05)/0.01 = 9.1 × 10⁻⁵ M\n⇒ α = x/C = (9.1 × 10⁻⁵)/0.05 = 1.82 × 10⁻³ (approximately)\nCase (ii): with 0.1 M HCl present, [H⁺] ≈ 0.1 M.\n1.82 × 10⁻⁵ = (X × 0.1)/0.05 ⇒ X = (1.82 × 10⁻⁵ × 0.05)/0.1 = 9.1 × 10⁻⁶ M\n⇒ α = X/C = (9.1 × 10⁻⁶)/0.05 = 1.82 × 10⁻⁴ (approximately)\nHence, the degree of dissociation of acetic acid decreases sharply as the concentration of added HCl increases, consistent with the common-ion effect."
+  },
+  {
+    "questionNumber": "53",
+    "questionText": "Calculate the degree of ionization of 0.02 M dimethylamine, (CH₃)₂NH, if its Kb = 5.4×10⁻⁴. Also, calculate its ionization constant if the solution is also 0.1 M in NaOH.",
+    "answer": "(CH₃)₂NH + H₂O ⇌ (CH₃)₂NH₂⁺ + OH⁻\nLet α be the degree of ionization of dimethylamine. With C = 0.02 M:\nα = √(Kb/C) = √((5.4 × 10⁻⁴)/0.02) = 0.1643 (approximately)\nNow, if 0.1 M of NaOH is added to the solution, then NaOH (being a strong base) undergoes complete ionization:\nNaOH(aq) → Na⁺(aq) + OH⁻(aq)\n(CH₃)₂NH, (CH₃)₂NH₂⁺, OH⁻\nInitial conc.: 0.02 M, 0, 0.1 M (from NaOH)\nAt equilibrium: 0.02 − x, x, x + 0.1 ≈ 0.1\nKb = [(CH₃)₂NH₂⁺][OH⁻]/[(CH₃)₂NH] ⇒ 5.4 × 10⁻⁴ = (x × 0.1)/0.02\n⇒ x = (5.4 × 10⁻⁴ × 0.02)/0.1 = 1.08 × 10⁻⁴ M\n⇒ α = x/C = (1.08 × 10⁻⁴)/0.02 = 5.4 × 10⁻³ = 0.54%\nHence, in the presence of 0.1 M NaOH, only 0.54% of dimethylamine will get dissociated (a sharp decrease from 16.43%, due to the common-ion effect)."
+  },
+  {
+    "questionNumber": "54",
+    "questionText": "Calculate the hydrogen ion concentration in the following biological fluids whose pH values are given below: (I) Human saliva, 6.4; (II) Human stomach fluid, 1.2; (III) Human muscle-fluid, 6.83; and (IV) Human blood, 7.38.",
+    "answer": "(I) pH = 6.4 = -log[H⁺] ⇒ [H⁺] = 3.98×10⁻⁷ M\n(II) pH = 1.2 = -log[H⁺] ⇒ [H⁺] = 0.063 M = 6.3×10⁻² M\n(III) pH = 6.83 = -log[H⁺] ⇒ [H⁺] = 1.48×10⁻⁷ M\n(IV) pH = 7.38 = -log[H⁺] ⇒ [H⁺] = 4.17×10⁻⁸ M"
+  },
+  {
+    "questionNumber": "55",
+    "questionText": "The pH of milk, black coffee, tomato juice, lemon juice and egg white are 6.8, 5.0, 4.2, 2.2 and 7.8, respectively. Calculate the corresponding hydrogen ion concentration in each.",
+    "answer": "The hydrogen ion concentration in the given substances can be calculated by using pH = -log[H⁺].\n(I) Milk: pH = 6.8 ⇒ [H⁺] = antilog(-6.8) = 1.5×10⁻⁷ M\n(II) Black coffee: pH = 5.0 ⇒ [H⁺] = antilog(-5.0) = 10⁻⁵ M\n(III) Tomato juice: pH = 4.2 ⇒ [H⁺] = antilog(-4.2) = 6.31×10⁻⁵ M\n(IV) Lemon juice: pH = 2.2 ⇒ [H⁺] = antilog(-2.2) = 6.31×10⁻³ M\n(V) Egg white: pH = 7.8 ⇒ [H⁺] = antilog(-7.8) = 1.58×10⁻⁸ M"
+  },
+  {
+    "questionNumber": "56",
+    "questionText": "0.561 g of KOH is dissolved in water to give 200 mL of solution at 298 K. Calculate the concentrations of potassium, hydrogen and hydroxyl ions. What is its pH?",
+    "answer": "Molar mass of KOH = 39+16+1 = 56 g mol⁻¹.\n[KOH] = 0.561/(56 × 0.2) = 0.05 M\nKOH(aq) → K⁺(aq) + OH⁻(aq)\nSo, [OH⁻] = 0.05 M = [K⁺]. Using [H⁺][OH⁻] = Kw:\n[H⁺] = Kw/[OH⁻] = 10⁻¹⁴/0.05 = 2 × 10⁻¹³ M\npH = −log[H⁺] = −log(2 × 10⁻¹³) = 12.70"
+  },
+  {
+    "questionNumber": "57",
+    "questionText": "The solubility of Sr(OH)₂ at 298 K is 19.23 g L⁻¹ of solution. Calculate the concentrations of strontium and hydroxyl ions and the pH of the solution.",
+    "answer": "Molar mass of Sr(OH)₂ = 87.62 + 2(17) = 121.63 g mol⁻¹.\n[Sr(OH)₂] = 19.23/121.63 = 0.1581 M\nSr(OH)₂(aq) → Sr²⁺(aq) + 2OH⁻(aq)\nSo, [Sr²⁺] = 0.1581 M and [OH⁻] = 2×0.1581 = 0.3162 M.\nKw = [OH⁻][H⁺] ⇒ [H⁺] = 10⁻¹⁴/0.3162 = 3.2 × 10⁻¹⁴ M\npH = −log(3.2 × 10⁻¹⁴) = 13.50"
+  },
+  {
+    "questionNumber": "58",
+    "questionText": "The ionization constant of propanoic acid is 1.32×10⁻⁵. Calculate the degree of ionization of the acid in its 0.05 M solution and also its pH. What will be its degree of ionization if the solution is 0.01 M in HCl also?",
+    "answer": "Let the degree of ionization of propanoic acid be α. Representing it as HA:\nHA + H₂O ⇌ H₃O⁺ + A⁻\nInitial conc.: 0.05 M, 0, 0\nAt equilibrium: (0.05 − 0.05α) ≈ 0.05, 0.05α, 0.05α\nKa = [H₃O⁺][A⁻]/[HA] = (0.05α)(0.05α)/0.05 = 0.05α²\n⇒ α = √(Ka/0.05) = √((1.32 × 10⁻⁵)/0.05) = 1.63 × 10⁻²\n[H₃O⁺] = 0.05α = 0.05 × 1.63 × 10⁻² = 8.15 × 10⁻⁴ M ⇒ pH = 3.09\nIn the presence of 0.01 M HCl, let α' be the new degree of ionization. Here [H₃O⁺] ≈ 0.01 M (dominated by HCl), [A⁻] = 0.05α', [HA] ≈ 0.05 M.\nKa = (0.01 × 0.05α')/0.05 = 0.01α' ⇒ 1.32 × 10⁻⁵ = 0.01α'\n⇒ α' = 1.32 × 10⁻³"
+  },
+  {
+    "questionNumber": "59",
+    "questionText": "The pH of 0.1 M solution of cyanic acid (HCNO) is 2.34. Calculate the ionization constant of the acid and its degree of ionization in the solution.",
+    "answer": "Given, c = 0.1 M and pH = 2.34.\n−log[H⁺] = 2.34 ⇒ [H⁺] = 4.5 × 10⁻³ M\nAlso, [H⁺] = cα:\n4.5 × 10⁻³ = 0.1 × α ⇒ α = (4.5 × 10⁻³)/0.1 = 0.045\nKa = cα² = 0.1 × (0.045)² = 0.0002025 = 2.025 × 10⁻⁴"
+  },
+  {
+    "questionNumber": "60",
+    "questionText": "The ionization constant of nitrous acid is 4.5×10⁻⁴. Calculate the pH of 0.04 M sodium nitrite solution and also its degree of hydrolysis.",
+    "answer": "Sodium nitrite is a salt of NaOH (strong base) and HNO₂ (weak acid); its anion undergoes hydrolysis:\nNO₂⁻ + H₂O ⇌ HNO₂ + OH⁻\nKh = [HNO₂][OH⁻]/[NO₂⁻] = Kw/Ka = 10⁻¹⁴/(4.5 × 10⁻⁴) = 2.2 × 10⁻¹¹\nLet y mole of the salt undergo hydrolysis. Then [NO₂⁻] = 0.04-y ≈ 0.04, [HNO₂] = y, [OH⁻] = y.\nKh = y²/0.04 = 2.2 × 10⁻¹¹ ⇒ y² = 8.8 × 10⁻¹³ ⇒ y = 9.3 × 10⁻⁷\nSo, [OH⁻] = 9.3×10⁻⁷ M, and:\n[H₃O⁺] = 10⁻¹⁴/(9.3 × 10⁻⁷) = 1.075 × 10⁻⁸ M ⇒ pH = −log(1.075 × 10⁻⁸) = 7.96\nThe degree of hydrolysis is:\nh = y/0.04 = (9.3 × 10⁻⁷)/0.04 = 2.325 × 10⁻⁵"
+  },
+  {
+    "questionNumber": "61",
+    "questionText": "The pH of 0.02 M solution of pyridinium hydrochloride (C₅H₅NHCl) is 3.44. Calculate the ionization constant of pyridine.",
+    "answer": "Pyridinium hydrochloride is a salt of a weak base (pyridine, C₅H₅N) and a strong acid (HCl); its cation undergoes hydrolysis:\nC₅H₅NH⁺ + H₂O ⇌ C₅H₅N + H₃O⁺\nGiven pH = 3.44:\n[H⁺] = antilog(−3.44) = 3.63 × 10⁻⁴ M\nKh = [H⁺]²/C = (3.63 × 10⁻⁴)²/0.02 = 6.6 × 10⁻⁶\nKa(pyridine) = Kw/Kh = 10⁻¹⁴/(6.6 × 10⁻⁶) = 1.51 × 10⁻⁹"
+  },
+  {
+    "questionNumber": "62",
+    "questionText": "Predict if the solutions of the following salts are neutral, acidic or basic: NaCl, KBr, NaCN, NH₄NO₃, NaNO₂ and KF.",
+    "answer": "NaCl is a salt of a strong acid (HCl) and a strong base (NaOH). Hence, it forms a neutral solution.\nKBr is a salt of a strong acid (HBr) and a strong base (KOH). Hence, it also forms a neutral solution.\nNaCN is a salt of a weak acid (HCN) and a strong base (NaOH). Hence, it forms a basic solution.\nNH₄NO₃ is a salt of a strong acid (HNO₃) and a weak base (NH₄OH). Hence, it forms an acidic solution.\nNaNO₂ is a salt of a weak acid (HNO₂) and a strong base (NaOH). Hence, it forms a basic solution.\nKF is a salt of a weak acid (HF) and a strong base (KOH). Hence, it forms a basic solution."
+  },
+  {
+    "questionNumber": "63",
+    "questionText": "The ionization constant of chloroacetic acid is 1.35×10⁻³. What will be the pH of 0.1 M acid and its 0.1 M sodium salt solution?",
+    "answer": "Let the degree of ionization of chloroacetic acid (ClCH₂COOH) be α.\nα = √(Ka/C) = √((1.35 × 10⁻³)/0.1) = 0.116 (approximately)\n[H⁺] = Cα = 0.1 × 0.116 = 0.0116 M ⇒ pH = −log(0.0116) = 1.94\nFor the 0.1 M sodium salt (ClCH₂COONa) solution, the anion undergoes hydrolysis:\nClCH₂COO⁻ + H₂O ⇌ ClCH₂COOH + OH⁻\nKh = Kw/Ka = 10⁻¹⁴/(1.35 × 10⁻³) = 7.40 × 10⁻¹²\nLet y be the concentration of OH⁻ produced by hydrolysis:\nKh = y²/0.1 = 7.40 × 10⁻¹² ⇒ y² = 7.40 × 10⁻¹³ ⇒ y = 8.6 × 10⁻⁷ M\n[H⁺] = Kw/[OH⁻] = 10⁻¹⁴/(8.6 × 10⁻⁷) = 1.162 × 10⁻⁸ M ⇒ pH = 7.94"
+  },
+  {
+    "questionNumber": "64",
+    "questionText": "Ionic product of water at 310 K is 2.7×10⁻¹⁴. What is the pH of neutral water at this temperature?",
+    "answer": "In neutral water, [H⁺] = [OH⁻]. Let this common concentration be y.\nKw = [H⁺][OH⁻] = y² = 2.7 × 10⁻¹⁴ ⇒ y = 1.64 × 10⁻⁷ M\npH = −log(1.64 × 10⁻⁷) = 6.78 (approximately)"
+  },
+  {
+    "questionNumber": "65",
+    "questionText": "The solubility product constant of Ag₂CrO₄ and AgBr are 1.1×10⁻¹² and 5.0×10⁻¹³, respectively. Calculate the ratio of the molarities of their saturated solutions.",
+    "answer": "Ag₂CrO₄ ⇌ 2Ag⁺ + CrO₄²⁻\nKsp = [Ag⁺]²[CrO₄²⁻]\nLet the solubility of Ag₂CrO₄ be x. Then [Ag⁺] = 2x and [CrO₄²⁻] = x.\nKsp = (2x)²(x) = 4x³ ⇒ 1.1 × 10⁻¹² = 4x³\n⇒ x = 0.65 × 10⁻⁴ M\nLet the solubility of AgBr be y.\nAgBr(s) ⇌ Ag⁺ + Br⁻ ⇒ Ksp = y²\n5.0 × 10⁻¹³ = y² ⇒ y = 7.07 × 10⁻⁷ M\nThe ratio of the molarities of their saturated solutions is:\nx/y = (0.65 × 10⁻⁴ M)/(7.07 × 10⁻⁷ M) = 91.9"
+  },
+  {
+    "questionNumber": "66",
+    "questionText": "Equal volumes of 0.002 M solutions of sodium iodate and cupric chlorate are mixed together. Will it lead to the precipitation of copper iodate? (For cupric iodate, Ksp = 7.4×10⁻⁸.)",
+    "answer": "On mixing equal volumes, the molar concentrations of both sodium iodate and cupric chlorate are halved to 0.001 M each.\nNaIO₃(aq) → Na⁺(aq) + IO₃⁻(aq) [IO₃⁻] = 0.001 M\nCu(ClO₃)₂(aq) → Cu²⁺(aq) + 2ClO₃⁻(aq) [Cu²⁺] = 0.001 M\nFor Cu(IO₃)₂(s) ⇌ Cu²⁺(aq) + 2IO₃⁻(aq), the ionic product is:\nIonic product = [Cu²⁺][IO₃⁻]² = (0.001)(0.001)² = 1.0 × 10⁻⁹\nSince the ionic product (1.0×10⁻⁹) is less than Ksp (7.4×10⁻⁸), precipitation will not occur."
+  },
+  {
+    "questionNumber": "67",
+    "questionText": "The ionisation constant of benzoic acid is 6.46×10⁻⁵, and Ksp for silver benzoate is 2.5×10⁻¹³. How many times is silver benzoate more soluble in a buffer of pH 3.19 compared to its solubility in pure water?",
+    "answer": "At pH = 3.19: [H₃O⁺] = antilog(-3.19) = 6.46×10⁻⁴ M.\nC₆H₅COOH + H₂O ⇌ C₆H₅COO⁻ + H₃O⁺\nKa = [C₆H₅COO⁻][H₃O⁺]/[C₆H₅COOH] ⇒ [C₆H₅COOH]/[C₆H₅COO⁻] = [H₃O⁺]/Ka = (6.46 × 10⁻⁴)/(6.46 × 10⁻⁵) = 10\nLet the solubility of silver benzoate (C₆H₅COOAg) in this buffer be y mol L⁻¹, so [Ag⁺] = y. Since [C₆H₅COOH] = 10[C₆H₅COO⁻] and [C₆H₅COOH] + [C₆H₅COO⁻] = y (mass balance):\n[C₆H₅COO⁻] = y/11\nKsp = [Ag⁺][C₆H₅COO⁻] ⇒ 2.5 × 10⁻¹³ = y × y/11\n⇒ y² = 27.5 × 10⁻¹³ ⇒ y = 1.66 × 10⁻⁶ mol L⁻¹\nHence, the solubility of C₆H₅COOAg in the buffer of pH = 3.19 is 1.66×10⁻⁶ mol L⁻¹.\nFor pure water: let the solubility of silver benzoate be x mol L⁻¹. Here [Ag⁺] = [C₆H₅COO⁻] = x (neglecting hydrolysis of the benzoate ion in pure water):\nKsp = x² ⇒ 2.5 × 10⁻¹³ = x² ⇒ x = 5.0 × 10⁻⁷ mol L⁻¹\nTherefore, the solubility of silver benzoate in the buffer relative to pure water is:\ny/x = (1.66 × 10⁻⁶)/(5.0 × 10⁻⁷) = 3.32\nHence, silver benzoate is about 3.32 times more soluble in a buffer of pH 3.19 than in pure water."
+  },
+  {
+    "questionNumber": "68",
+    "questionText": "What is the maximum concentration of equimolar solutions of ferrous sulphate and sodium sulphide so that when mixed in equal volumes, there is no precipitation of iron sulphide? (For iron sulphide, Ksp = 6.3×10⁻¹⁸.)",
+    "answer": "Let the concentration of both FeSO₄ and Na₂S be y mol L⁻¹. On mixing equal volumes, each concentration is halved to y/2:\n[Fe²⁺] = y/2, [S²⁻] = y/2\nFor no precipitation of FeS, the ionic product must not exceed Ksp:\nKsp = [Fe²⁺][S²⁻] = (y/2)×(y/2) = y²/4\n⇒ 6.3 × 10⁻¹⁸ = y²/4 ⇒ y² = 25.2 × 10⁻¹⁸ ⇒ y = 5.02 × 10⁻⁹ M\nHence, the maximum concentration of both FeSO₄ and Na₂S should be 5.02×10⁻⁹ M for no precipitation of FeS to occur."
+  },
+  {
+    "questionNumber": "69",
+    "questionText": "What is the minimum volume of water required to dissolve 1 g of calcium sulphate at 298 K? (For calcium sulphate, Ksp is 9.1×10⁻⁶.)",
+    "answer": "CaSO₄(s) ⇌ Ca²⁺(aq) + SO₄²⁻(aq)\nLet the solubility of CaSO₄ be x mol L⁻¹.\nKsp = [Ca²⁺][SO₄²⁻] = x² ⇒ 9.1 × 10⁻⁶ = x² ⇒ x = 3.02 × 10⁻³ mol L⁻¹\nMolar mass of CaSO₄ = 40 + 32 + 64 = 136 g mol⁻¹.\nSolubility = 3.02 × 10⁻³ × 136 = 0.41 g L⁻¹\nThis means that 0.41 g of CaSO₄ dissolves in 1 L of water. Therefore, the minimum volume of water required to dissolve 1 g of CaSO₄ is:\nV = 1/0.41 = 2.44 L"
+  },
+  {
+    "questionNumber": "70",
+    "questionText": "The concentration of sulphide ion in 0.1 M HCl solution saturated with hydrogen sulphide is 1.0×10⁻¹⁹ M. If 10 mL of this is added to 5 mL of 0.04 M solutions of the following ions: FeSO₄, MnCl₂, ZnCl₂ and CdCl₂, in which of these solutions will precipitation take place?",
+    "answer": "For precipitation, the ionic product [M²⁺][S²⁻] must exceed the Ksp of the corresponding metal sulphide.\nOn mixing 10 mL of the sulphide-ion solution with 5 mL of a 0.04 M metal-ion solution, the total volume becomes 15 mL, so both concentrations are diluted:\n[S²⁻] = (1.0 × 10⁻¹⁹ × 10)/15 = 6.67 × 10⁻²⁰ M\n[M²⁺] = (0.04 × 5)/15 = 1.33 × 10⁻² M\nSo, the ionic product for each metal sulphide is the same:\n[M²⁺][S²⁻] = (1.33 × 10⁻²)(6.67 × 10⁻²⁰) = 8.87 × 10⁻²²\nComparing this ionic product with the Ksp of each metal sulphide (from standard solubility-product data): FeS and MnS have Ksp values greater than 8.87×10⁻²², so no precipitation occurs in these solutions. ZnS and CdS have Ksp values smaller than 8.87×10⁻²², so precipitation will occur in these solutions.\nHence, precipitation takes place only in the ZnCl₂ and CdCl₂ solutions."
+  }
+]
