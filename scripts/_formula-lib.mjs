@@ -81,8 +81,15 @@ function matchUnitWithCount(str, i) {
   if (!sym) return null;
   // Allows a decimal count ("TiH1.5", "LaH2.87") for non-stoichiometric
   // hydride notation — a bare "\d+" would truncate at the decimal point,
-  // leaving the fractional part dangling outside the subscript.
-  const d = /^\d+(?:\.\d+)?/.exec(str.slice(sym.end));
+  // leaving the fractional part dangling outside the subscript. But if the
+  // decimal is immediately followed by another element symbol (e.g. the
+  // ".5H2O" in hydrate notation "CuSO4.5H2O"), that dot is a hydrate
+  // separator, not a decimal point — only take the integer part and let the
+  // "5H2O" be scanned as its own separate formula.
+  const rest = str.slice(sym.end);
+  const dec = /^\d+\.\d+/.exec(rest);
+  const isHydrateDot = dec && matchSymbolOnly(rest, dec[0].length) !== null;
+  const d = !isHydrateDot && dec ? dec : /^\d+/.exec(rest);
   const count = d ? d[0] : "";
   return { isGroup: false, symbol: sym.symbol, count, end: sym.end + count.length };
 }
