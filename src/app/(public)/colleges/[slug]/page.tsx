@@ -5,6 +5,7 @@ import {
   GraduationCap, ArrowRight, TrendingUp, Users, Trophy,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
+import { RecruiterLogos } from "./RecruiterLogos";
 
 const SECTIONS = [
   { id: "overview", label: "Overview" },
@@ -222,8 +223,8 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
               ))}
               {college.top_recruiters && (
                 <div className="col-span-2 md:col-span-3 rounded-xl border border-border bg-card p-5">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400 mb-2">Top recruiters</p>
-                  <p className="text-sm text-muted-foreground">{college.top_recruiters}</p>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400 mb-3">Top recruiters</p>
+                  <RecruiterLogos names={college.top_recruiters.split(",").map((s: string) => s.trim()).filter(Boolean)} />
                 </div>
               )}
             </div>
