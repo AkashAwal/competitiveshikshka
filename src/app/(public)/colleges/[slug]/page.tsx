@@ -121,13 +121,13 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
         <section id="campus" className="scroll-mt-32">
           <h2 className="text-2xl font-black text-foreground mb-4">Campus & facilities</h2>
           {college.campus_facilities && college.campus_facilities.length > 0 ? (
-            <div className="flex flex-wrap gap-2">
+            <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
               {college.campus_facilities.map((f: string) => (
-                <span key={f} className="flex items-center gap-1.5 text-sm font-medium px-3 py-1.5 rounded-full bg-[#2563eb]/5 text-muted-foreground border border-border">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[#2563eb]" /> {f}
-                </span>
+                <li key={f} className="flex items-center gap-2.5 text-sm font-medium text-muted-foreground">
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#2563eb]" /> {f}
+                </li>
               ))}
-            </div>
+            </ul>
           ) : (
             <p className="text-sm text-zinc-400">Facility details coming soon.</p>
           )}
