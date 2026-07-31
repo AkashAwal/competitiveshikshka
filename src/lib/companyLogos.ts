@@ -19,6 +19,7 @@ const DOMAIN_OVERRIDES: Record<string, string> = {
   "tcs": "tcs.com",
   "hcl": "hcltech.com",
   "hcltech": "hcltech.com",
+  "hcl technologies": "hcltech.com",
   "l&t": "larsentoubro.com",
   "itc": "itcportal.com",
   "reliance": "ril.com",
