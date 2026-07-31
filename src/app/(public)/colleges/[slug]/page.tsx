@@ -93,7 +93,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
       {/* Sticky section nav */}
       <div className="sticky top-[64px] z-30 w-full border-b border-border bg-background/95 backdrop-blur">
         <div className="relative mx-auto max-w-6xl">
-          <div className="flex gap-1 overflow-x-auto px-4 sm:px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex justify-center gap-1 overflow-x-auto px-4 sm:px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {SECTIONS.map(s => (
               <a key={s.id} href={`#${s.id}`} className="px-3 py-3 text-sm font-semibold text-muted-foreground hover:text-[#2563eb] whitespace-nowrap transition-colors">
                 {s.label}
