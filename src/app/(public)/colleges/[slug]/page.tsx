@@ -224,7 +224,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
               </div>
               {college.top_recruiters && (
                 <div className="mt-8">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400 mb-4">Top recruiters</p>
+                  <h3 className="text-2xl font-black text-foreground mb-4">Top recruiters</h3>
                   <RecruiterLogos names={college.top_recruiters.split(",").map((s: string) => s.trim()).filter(Boolean)} />
                 </div>
               )}

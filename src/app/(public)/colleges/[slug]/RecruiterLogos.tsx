@@ -52,7 +52,7 @@ function RecruiterLogo({ name }: { name: string }) {
 
 export function RecruiterLogos({ names }: { names: string[] }) {
   return (
-    <div className="flex flex-wrap items-start gap-6">
+    <div className="flex flex-wrap items-start justify-center gap-6">
       {names.map(name => <RecruiterLogo key={name} name={name} />)}
     </div>
   );
