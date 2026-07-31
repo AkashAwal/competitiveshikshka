@@ -13,6 +13,8 @@ export interface CollegeRow {
   name: string;
   type: string;
   field: string;
+  ownership: string | null;
+  tier: string | null;
   city: string | null;
   state: string | null;
   nirf_rank: number | null;
@@ -21,8 +23,10 @@ export interface CollegeRow {
 
 const COLLEGE_TYPES = ["IIT", "NIT", "IIIT", "GFTI", "State", "Private", "Medical", "Other"];
 const COLLEGE_FIELDS = ["Engineering", "Medical", "Management", "Architecture", "Pharmacy", "Law", "Design", "Other"];
+const OWNERSHIPS = ["Government", "Private", "Deemed"];
+const TIERS = ["Tier 1", "Tier 2", "Tier 3"];
 
-const EMPTY: CollegeCoreInput = { name: "", type: "IIT", field: "Engineering", city: "", state: "", website: "" };
+const EMPTY: CollegeCoreInput = { name: "", type: "IIT", field: "Engineering", ownership: "Government", tier: "Tier 1", city: "", state: "", website: "" };
 
 const inputClass = "w-full rounded-lg px-3 py-2 text-sm outline-none";
 const inputStyle = { backgroundColor: "rgba(var(--fg-rgb),0.05)", border: "1px solid rgba(var(--fg-rgb),0.08)", color: "rgba(var(--fg-rgb),0.9)" };
@@ -185,6 +189,21 @@ export function CollegesManager({ rows }: { rows: CollegeRow[] }) {
                   <Label>Field</Label>
                   <select className={inputClass} style={inputStyle} value={form.field} onChange={e => setForm({ ...form, field: e.target.value })}>
                     {COLLEGE_FIELDS.map(f => <option key={f} value={f} style={{ backgroundColor: "var(--surface-content)" }}>{f}</option>)}
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Label>Ownership</Label>
+                  <select className={inputClass} style={inputStyle} value={form.ownership} onChange={e => setForm({ ...form, ownership: e.target.value })}>
+                    {OWNERSHIPS.map(o => <option key={o} value={o} style={{ backgroundColor: "var(--surface-content)" }}>{o}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <Label>Tier</Label>
+                  <select className={inputClass} style={inputStyle} value={form.tier} onChange={e => setForm({ ...form, tier: e.target.value })}>
+                    {TIERS.map(t => <option key={t} value={t} style={{ backgroundColor: "var(--surface-content)" }}>{t}</option>)}
                   </select>
                 </div>
               </div>

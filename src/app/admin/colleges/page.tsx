@@ -5,7 +5,7 @@ export default async function AdminCollegesPage() {
   const supabase = createAdminClient();
   const { data: colleges } = await supabase
     .from("colleges")
-    .select("id, name, type, field, city, state, nirf_rank, avg_fees_lpa")
+    .select("id, name, type, field, ownership, tier, city, state, nirf_rank, avg_fees_lpa")
     .order("name");
 
   return (

@@ -9,6 +9,8 @@ export interface CollegeCoreInput {
   name: string;
   type: string;
   field: string;
+  ownership: string;
+  tier: string;
   city: string;
   state: string;
   website: string;

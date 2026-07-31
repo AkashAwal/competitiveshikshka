@@ -65,6 +65,12 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-zinc-100 text-muted-foreground">{college.type}</span>
                 <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-[#2563eb]/10 text-[#2563eb]">{college.field}</span>
+                {college.tier && (
+                  <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-violet-50 text-violet-600">{college.tier}</span>
+                )}
+                {college.ownership && (
+                  <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600">{college.ownership}</span>
+                )}
                 {college.nirf_rank && (
                   <span className="flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full bg-amber-50 text-amber-600">
                     <Award className="h-3.5 w-3.5" /> NIRF #{college.nirf_rank}
