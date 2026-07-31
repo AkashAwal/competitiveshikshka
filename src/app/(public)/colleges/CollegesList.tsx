@@ -9,29 +9,30 @@ export interface CollegeCard {
   slug: string;
   name: string;
   type: string;
+  field: string;
   city: string | null;
   state: string | null;
   nirf_rank: number | null;
   avg_fees_lpa: number | null;
 }
 
-const TYPES = ["All", "IIT", "NIT", "IIIT", "GFTI", "State", "Private", "Medical", "Other"];
+const FIELDS = ["All", "Engineering", "Medical", "Management", "Architecture", "Pharmacy", "Law", "Design", "Other"];
 
 export function CollegesList({ colleges }: { colleges: CollegeCard[] }) {
   const [query, setQuery] = useState("");
-  const [type, setType] = useState("All");
+  const [field, setField] = useState("All");
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return colleges.filter(c => {
-      const matchesType = type === "All" || c.type === type;
+      const matchesField = field === "All" || c.field === field;
       const matchesQuery = !q ||
         c.name.toLowerCase().includes(q) ||
         (c.city ?? "").toLowerCase().includes(q) ||
         (c.state ?? "").toLowerCase().includes(q);
-      return matchesType && matchesQuery;
+      return matchesField && matchesQuery;
     });
-  }, [colleges, query, type]);
+  }, [colleges, query, field]);
 
   return (
     <div>
@@ -48,16 +49,16 @@ export function CollegesList({ colleges }: { colleges: CollegeCard[] }) {
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {TYPES.map(t => (
+          {FIELDS.map(f => (
             <button
-              key={t}
-              onClick={() => setType(t)}
+              key={f}
+              onClick={() => setField(f)}
               className={cn(
                 "px-3.5 py-1.5 rounded-full text-sm font-semibold transition-colors cursor-pointer border",
-                type === t ? "bg-[#2563eb] text-white border-[#2563eb]" : "bg-card text-muted-foreground border-border hover:border-[#2563eb]"
+                field === f ? "bg-[#2563eb] text-white border-[#2563eb]" : "bg-card text-muted-foreground border-border hover:border-[#2563eb]"
               )}
             >
-              {t}
+              {f}
             </button>
           ))}
         </div>

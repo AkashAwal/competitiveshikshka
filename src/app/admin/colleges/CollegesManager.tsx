@@ -12,6 +12,7 @@ export interface CollegeRow {
   id: string;
   name: string;
   type: string;
+  field: string;
   city: string | null;
   state: string | null;
   nirf_rank: number | null;
@@ -19,8 +20,9 @@ export interface CollegeRow {
 }
 
 const COLLEGE_TYPES = ["IIT", "NIT", "IIIT", "GFTI", "State", "Private", "Medical", "Other"];
+const COLLEGE_FIELDS = ["Engineering", "Medical", "Management", "Architecture", "Pharmacy", "Law", "Design", "Other"];
 
-const EMPTY: CollegeCoreInput = { name: "", type: "IIT", city: "", state: "", website: "" };
+const EMPTY: CollegeCoreInput = { name: "", type: "IIT", field: "Engineering", city: "", state: "", website: "" };
 
 const inputClass = "w-full rounded-lg px-3 py-2 text-sm outline-none";
 const inputStyle = { backgroundColor: "rgba(var(--fg-rgb),0.05)", border: "1px solid rgba(var(--fg-rgb),0.08)", color: "rgba(var(--fg-rgb),0.9)" };
@@ -111,7 +113,7 @@ export function CollegesManager({ rows }: { rows: CollegeRow[] }) {
           <table className="w-full text-sm">
             <thead>
               <tr style={{ color: "rgba(var(--fg-rgb),0.4)" }}>
-                {["Name", "Type", "Location", "NIRF", "Fees (LPA)", ""].map(h => (
+                {["Name", "Type", "Field", "Location", "NIRF", "Fees (LPA)", ""].map(h => (
                   <th key={h} className="text-left font-semibold px-4 py-3 text-xs uppercase tracking-wide whitespace-nowrap">{h}</th>
                 ))}
               </tr>
@@ -125,6 +127,7 @@ export function CollegesManager({ rows }: { rows: CollegeRow[] }) {
                     </Link>
                   </td>
                   <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.type}</td>
+                  <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.field}</td>
                   <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.city}, {row.state}</td>
                   <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.nirf_rank ?? "—"}</td>
                   <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.avg_fees_lpa ?? "—"}</td>
@@ -179,9 +182,16 @@ export function CollegesManager({ rows }: { rows: CollegeRow[] }) {
                   </select>
                 </div>
                 <div>
-                  <Label>Website</Label>
-                  <input className={inputClass} style={inputStyle} value={form.website} onChange={e => setForm({ ...form, website: e.target.value })} placeholder="https://..." />
+                  <Label>Field</Label>
+                  <select className={inputClass} style={inputStyle} value={form.field} onChange={e => setForm({ ...form, field: e.target.value })}>
+                    {COLLEGE_FIELDS.map(f => <option key={f} value={f} style={{ backgroundColor: "var(--surface-content)" }}>{f}</option>)}
+                  </select>
                 </div>
+              </div>
+
+              <div>
+                <Label>Website</Label>
+                <input className={inputClass} style={inputStyle} value={form.website} onChange={e => setForm({ ...form, website: e.target.value })} placeholder="https://..." />
               </div>
 
               <div className="grid grid-cols-2 gap-4">

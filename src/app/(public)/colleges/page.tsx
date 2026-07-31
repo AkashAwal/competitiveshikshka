@@ -12,7 +12,7 @@ export default async function CollegesPage() {
   const supabase = await createClient();
   const { data: colleges } = await supabase
     .from("colleges")
-    .select("slug, name, type, city, state, nirf_rank, avg_fees_lpa")
+    .select("slug, name, type, field, city, state, nirf_rank, avg_fees_lpa")
     .not("slug", "is", null)
     .order("nirf_rank", { ascending: true, nullsFirst: false })
     .order("name");

@@ -8,6 +8,7 @@ import { slugify } from "@/lib/slugify";
 export interface CollegeCoreInput {
   name: string;
   type: string;
+  field: string;
   city: string;
   state: string;
   website: string;
