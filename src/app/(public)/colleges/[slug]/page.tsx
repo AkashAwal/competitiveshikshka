@@ -90,25 +90,25 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
         </div>
       </section>
 
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 grid md:grid-cols-[180px_1fr] gap-10">
+      {/* Sticky section nav */}
+      <div className="sticky top-[64px] z-30 w-full border-b border-border bg-background/95 backdrop-blur">
+        <div className="relative mx-auto max-w-6xl">
+          <div className="flex gap-1 overflow-x-auto px-4 sm:px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {SECTIONS.map(s => (
+              <a key={s.id} href={`#${s.id}`} className="px-3 py-3 text-sm font-semibold text-muted-foreground hover:text-[#2563eb] whitespace-nowrap transition-colors">
+                {s.label}
+              </a>
+            ))}
+          </div>
+          {/* Edge fade hints that the tab row scrolls horizontally on narrow screens */}
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-background to-transparent sm:hidden" />
+        </div>
+      </div>
 
-        {/* Section nav */}
-        <nav className="flex flex-row gap-1 overflow-x-auto md:sticky md:top-24 md:flex md:h-fit md:flex-col md:gap-0.5 md:overflow-visible [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {SECTIONS.map(s => (
-            <a
-              key={s.id}
-              href={`#${s.id}`}
-              className="px-3 py-2 rounded-lg text-sm font-semibold text-muted-foreground hover:text-[#2563eb] hover:bg-[#2563eb]/5 whitespace-nowrap md:whitespace-normal transition-colors"
-            >
-              {s.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="flex flex-col gap-14 min-w-0">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 flex flex-col gap-14">
 
         {/* Overview */}
-        <section id="overview" className="scroll-mt-20">
+        <section id="overview" className="scroll-mt-32">
           <h2 className="text-2xl font-black text-foreground mb-4">Overview</h2>
           {college.overview ? (
             <p className="text-muted-foreground leading-relaxed max-w-3xl whitespace-pre-line">{college.overview}</p>
@@ -118,7 +118,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
         </section>
 
         {/* Campus & Facilities */}
-        <section id="campus" className="scroll-mt-20">
+        <section id="campus" className="scroll-mt-32">
           <h2 className="text-2xl font-black text-foreground mb-4">Campus & facilities</h2>
           {college.campus_facilities && college.campus_facilities.length > 0 ? (
             <div className="flex flex-wrap gap-2">
@@ -134,7 +134,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
         </section>
 
         {/* Admission */}
-        <section id="admission" className="scroll-mt-20">
+        <section id="admission" className="scroll-mt-32">
           <h2 className="text-2xl font-black text-foreground mb-4">Admission</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="md:col-span-2">
@@ -166,7 +166,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
         </section>
 
         {/* Courses & Seats */}
-        <section id="courses" className="scroll-mt-20">
+        <section id="courses" className="scroll-mt-32">
           <h2 className="text-2xl font-black text-foreground mb-4">Courses & seats</h2>
           {!courses || courses.length === 0 ? (
             <p className="text-sm text-zinc-400">Course details coming soon.</p>
@@ -206,7 +206,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
         </section>
 
         {/* Placements */}
-        <section id="placements" className="scroll-mt-20">
+        <section id="placements" className="scroll-mt-32">
           <h2 className="text-2xl font-black text-foreground mb-4">Placements{college.placement_year ? ` (${college.placement_year})` : ""}</h2>
           {hasPlacements ? (
             <>
@@ -236,7 +236,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
         </section>
 
         {/* How to reach */}
-        <section id="reach" className="scroll-mt-20">
+        <section id="reach" className="scroll-mt-32">
           <h2 className="text-2xl font-black text-foreground mb-4">How to reach</h2>
           {college.how_to_reach ? (
             <p className="flex items-start gap-2 text-muted-foreground leading-relaxed max-w-3xl whitespace-pre-line">
@@ -246,7 +246,6 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
             <p className="text-sm text-zinc-400">Directions coming soon.</p>
           )}
         </section>
-        </div>
       </div>
 
       {/* Closing CTA */}
