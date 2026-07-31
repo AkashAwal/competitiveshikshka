@@ -4,14 +4,18 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { CollegeEditForm } from "./CollegeEditForm";
 import { CoursesManager } from "./CoursesManager";
+import { FaqsManager } from "./FaqsManager";
+import { RankingsManager } from "./RankingsManager";
 
 export default async function AdminCollegeDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const supabase = createAdminClient();
 
-  const [{ data: college }, { data: courses }] = await Promise.all([
+  const [{ data: college }, { data: courses }, { data: faqs }, { data: rankings }] = await Promise.all([
     supabase.from("colleges").select("*").eq("id", id).single(),
     supabase.from("college_courses").select("*").eq("college_id", id).order("name"),
+    supabase.from("college_faqs").select("*").eq("college_id", id).order("sort_order"),
+    supabase.from("college_rankings").select("*").eq("college_id", id).order("year"),
   ]);
 
   if (!college) notFound();
@@ -42,6 +46,8 @@ export default async function AdminCollegeDetailPage({ params }: { params: Promi
       <div className="flex flex-col gap-4">
         <CollegeEditForm college={college} />
         <CoursesManager collegeId={id} rows={courses ?? []} />
+        <RankingsManager collegeId={id} rows={rankings ?? []} />
+        <FaqsManager collegeId={id} rows={faqs ?? []} />
       </div>
     </div>
   );

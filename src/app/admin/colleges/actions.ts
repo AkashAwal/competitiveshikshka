@@ -44,6 +44,17 @@ export interface CourseInput {
   cutoff_details: string;
 }
 
+export interface FaqInput {
+  question: string;
+  answer: string;
+  sort_order: number;
+}
+
+export interface RankingInput {
+  year: number;
+  rank: number;
+}
+
 async function uniqueSlug(supabase: ReturnType<typeof createAdminClient>, name: string) {
   const base = slugify(name) || "college";
   let candidate = base;
@@ -109,6 +120,57 @@ export async function deleteCourse(id: string, collegeId: string) {
   await requireAdmin();
   const supabase = createAdminClient();
   const { error } = await supabase.from("college_courses").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath(`/admin/colleges/${collegeId}`);
+}
+
+export async function createFaq(collegeId: string, input: FaqInput) {
+  await requireAdmin();
+  const supabase = createAdminClient();
+  const { error } = await supabase.from("college_faqs").insert({ ...input, college_id: collegeId });
+  if (error) throw new Error(error.message);
+  revalidatePath(`/admin/colleges/${collegeId}`);
+}
+
+export async function updateFaq(id: string, collegeId: string, input: FaqInput) {
+  await requireAdmin();
+  const supabase = createAdminClient();
+  const { error } = await supabase
+    .from("college_faqs")
+    .update({ ...input, updated_at: new Date().toISOString() })
+    .eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath(`/admin/colleges/${collegeId}`);
+}
+
+export async function deleteFaq(id: string, collegeId: string) {
+  await requireAdmin();
+  const supabase = createAdminClient();
+  const { error } = await supabase.from("college_faqs").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath(`/admin/colleges/${collegeId}`);
+}
+
+export async function createRanking(collegeId: string, input: RankingInput) {
+  await requireAdmin();
+  const supabase = createAdminClient();
+  const { error } = await supabase.from("college_rankings").insert({ ...input, college_id: collegeId });
+  if (error) throw new Error(error.message);
+  revalidatePath(`/admin/colleges/${collegeId}`);
+}
+
+export async function updateRanking(id: string, collegeId: string, input: RankingInput) {
+  await requireAdmin();
+  const supabase = createAdminClient();
+  const { error } = await supabase.from("college_rankings").update(input).eq("id", id);
+  if (error) throw new Error(error.message);
+  revalidatePath(`/admin/colleges/${collegeId}`);
+}
+
+export async function deleteRanking(id: string, collegeId: string) {
+  await requireAdmin();
+  const supabase = createAdminClient();
+  const { error } = await supabase.from("college_rankings").delete().eq("id", id);
   if (error) throw new Error(error.message);
   revalidatePath(`/admin/colleges/${collegeId}`);
 }

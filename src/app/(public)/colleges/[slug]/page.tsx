@@ -6,6 +6,8 @@ import {
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { RecruiterLogos } from "./RecruiterLogos";
+import { RankTrend } from "./RankTrend";
+import { FaqAccordion } from "./FaqAccordion";
 
 const SECTIONS = [
   { id: "overview", label: "Overview" },
@@ -13,6 +15,7 @@ const SECTIONS = [
   { id: "admission", label: "Admission" },
   { id: "courses", label: "Courses & Seats" },
   { id: "placements", label: "Placements" },
+  { id: "faqs", label: "FAQs" },
   { id: "reach", label: "Directions" },
 ];
 
@@ -23,11 +26,20 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
   const { data: college } = await supabase.from("colleges").select("*").eq("slug", slug).single();
   if (!college) notFound();
 
-  const { data: courses } = await supabase
-    .from("college_courses")
-    .select("*")
-    .eq("college_id", college.id)
-    .order("name");
+  const [{ data: courses }, { data: faqs }, { data: rankings }, { data: similarColleges }] = await Promise.all([
+    supabase.from("college_courses").select("*").eq("college_id", college.id).order("name"),
+    supabase.from("college_faqs").select("*").eq("college_id", college.id).order("sort_order"),
+    supabase.from("college_rankings").select("*").eq("college_id", college.id).order("year"),
+    supabase
+      .from("colleges")
+      .select("slug, name, type, city, state, nirf_rank")
+      .eq("field", college.field)
+      .neq("id", college.id)
+      .order("nirf_rank", { ascending: true, nullsFirst: false })
+      .limit(4),
+  ]);
+
+  const mapQuery = college.address || `${college.name} ${college.city ?? ""} ${college.state ?? ""}`;
 
   const hasPlacements = college.avg_package_lpa || college.highest_package_lpa || college.placement_percentage;
   const totalSeats = (courses ?? []).reduce((sum, c) => sum + (c.seats ?? 0), 0);
@@ -116,6 +128,13 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
             <p className="text-muted-foreground leading-relaxed max-w-3xl whitespace-pre-line">{college.overview}</p>
           ) : (
             <p className="text-sm text-zinc-400">Overview coming soon.</p>
+          )}
+
+          {rankings && rankings.length > 1 && (
+            <div className="mt-6">
+              <h3 className="text-sm font-bold text-foreground mb-3">NIRF rank trend</h3>
+              <RankTrend points={rankings} />
+            </div>
           )}
         </section>
 
@@ -234,6 +253,18 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
           )}
         </section>
 
+        {/* FAQs */}
+        <section id="faqs" className="scroll-mt-32">
+          <h2 className="text-2xl font-black text-foreground mb-4">FAQs</h2>
+          {faqs && faqs.length > 0 ? (
+            <div className="max-w-3xl">
+              <FaqAccordion faqs={faqs} />
+            </div>
+          ) : (
+            <p className="text-sm text-zinc-400">FAQs coming soon.</p>
+          )}
+        </section>
+
         {/* Directions */}
         <section id="reach" className="scroll-mt-32">
           <h2 className="text-2xl font-black text-foreground mb-4">Directions</h2>
@@ -244,7 +275,43 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
           ) : (
             <p className="text-sm text-zinc-400">Directions coming soon.</p>
           )}
+          <div className="mt-6 max-w-3xl overflow-hidden rounded-xl border border-border">
+            <iframe
+              title={`Map of ${college.name}`}
+              src={`https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&output=embed`}
+              className="h-72 w-full"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
         </section>
+
+        {/* Similar colleges */}
+        {similarColleges && similarColleges.length > 0 && (
+          <section>
+            <h2 className="text-2xl font-black text-foreground mb-4">Similar colleges</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {similarColleges.map(c => (
+                <Link
+                  key={c.slug}
+                  href={`/colleges/${c.slug}`}
+                  className="group flex flex-col gap-3 rounded-xl border border-border bg-card p-5 transition-all duration-200 hover:border-[#2563eb] hover:shadow-sm"
+                >
+                  <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-zinc-100 text-muted-foreground w-fit">{c.type}</span>
+                  <h3 className="font-bold text-foreground leading-snug">{c.name}</h3>
+                  <p className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <MapPin className="h-3.5 w-3.5" /> {c.city ?? "—"}{c.state ? `, ${c.state}` : ""}
+                  </p>
+                  {c.nirf_rank && (
+                    <span className="flex items-center gap-1 text-xs font-semibold text-zinc-500">
+                      <Award className="h-3.5 w-3.5 text-[#fbbf24]" /> NIRF #{c.nirf_rank}
+                    </span>
+                  )}
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
 
       {/* Closing CTA */}
