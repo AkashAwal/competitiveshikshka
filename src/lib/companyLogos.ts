@@ -33,6 +33,10 @@ const DOMAIN_OVERRIDES: Record<string, string> = {
   "texas instruments": "ti.com",
   "de shaw": "deshaw.com",
   "american express": "americanexpress.com",
+  "isro": "isro.gov.in",
+  "coca-cola": "coca-cola.com",
+  "coca cola": "coca-cola.com",
+  "hyundai mobis": "hyundai-mobis.com",
 };
 
 export function companyDomain(name: string): string | null {
