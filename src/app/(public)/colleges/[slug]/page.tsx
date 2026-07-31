@@ -32,10 +32,13 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
   const hasPlacements = college.avg_package_lpa || college.highest_package_lpa || college.placement_percentage;
   const totalSeats = (courses ?? []).reduce((sum, c) => sum + (c.seats ?? 0), 0);
 
+  const formatLpa = (lpa: number) =>
+    lpa >= 100 ? `₹${+(lpa / 100).toFixed(2)} Cr` : `₹${lpa} LPA`;
+
   const quickStats = [
     college.nirf_rank && { label: "NIRF rank", value: `#${college.nirf_rank}` },
-    college.avg_fees_lpa && { label: "Avg. fees", value: `₹${college.avg_fees_lpa} LPA` },
-    college.avg_package_lpa && { label: "Avg. package", value: `₹${college.avg_package_lpa} LPA` },
+    college.avg_fees_lpa && { label: "Avg. fees", value: formatLpa(college.avg_fees_lpa) },
+    college.avg_package_lpa && { label: "Avg. package", value: formatLpa(college.avg_package_lpa) },
     college.placement_percentage && { label: "Placed", value: `${college.placement_percentage}%` },
     totalSeats > 0 && { label: "Total seats", value: totalSeats.toLocaleString("en-IN") },
   ].filter(Boolean) as { label: string; value: string }[];
@@ -206,13 +209,13 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
           <h2 className="text-2xl font-black text-foreground mb-4">Placements{college.placement_year ? ` (${college.placement_year})` : ""}</h2>
           {hasPlacements ? (
             <>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+              <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-center">
                 {[
-                  { icon: TrendingUp, label: "Avg. package", value: college.avg_package_lpa ? `₹${college.avg_package_lpa} LPA` : "—" },
-                  { icon: Trophy, label: "Highest package", value: college.highest_package_lpa ? `₹${college.highest_package_lpa} LPA` : "—" },
+                  { icon: TrendingUp, label: "Avg. package", value: college.avg_package_lpa ? formatLpa(college.avg_package_lpa) : "—" },
+                  { icon: Trophy, label: "Highest package", value: college.highest_package_lpa ? formatLpa(college.highest_package_lpa) : "—" },
                   { icon: Users, label: "Students placed", value: college.placement_percentage ? `${college.placement_percentage}%` : "—" },
                 ].map(({ icon: Icon, label, value }) => (
-                  <div key={label} className="rounded-xl border border-border bg-card p-5 flex flex-col gap-2">
+                  <div key={label} className="flex flex-col items-center gap-2">
                     <Icon className="h-5 w-5 text-[#2563eb]" />
                     <p className="text-2xl font-black text-foreground">{value}</p>
                     <p className="text-xs text-muted-foreground">{label}</p>
