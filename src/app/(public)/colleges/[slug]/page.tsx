@@ -209,25 +209,27 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
         <section id="placements" className="scroll-mt-32">
           <h2 className="text-2xl font-black text-foreground mb-4">Placements{college.placement_year ? ` (${college.placement_year})` : ""}</h2>
           {hasPlacements ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
-              {[
-                { icon: TrendingUp, label: "Avg. package", value: college.avg_package_lpa ? `₹${college.avg_package_lpa} LPA` : "—" },
-                { icon: Trophy, label: "Highest package", value: college.highest_package_lpa ? `₹${college.highest_package_lpa} LPA` : "—" },
-                { icon: Users, label: "Students placed", value: college.placement_percentage ? `${college.placement_percentage}%` : "—" },
-              ].map(({ icon: Icon, label, value }) => (
-                <div key={label} className="rounded-xl border border-border bg-card p-5 flex flex-col gap-2">
-                  <Icon className="h-5 w-5 text-[#2563eb]" />
-                  <p className="text-2xl font-black text-foreground">{value}</p>
-                  <p className="text-xs text-muted-foreground">{label}</p>
-                </div>
-              ))}
+            <>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+                {[
+                  { icon: TrendingUp, label: "Avg. package", value: college.avg_package_lpa ? `₹${college.avg_package_lpa} LPA` : "—" },
+                  { icon: Trophy, label: "Highest package", value: college.highest_package_lpa ? `₹${college.highest_package_lpa} LPA` : "—" },
+                  { icon: Users, label: "Students placed", value: college.placement_percentage ? `${college.placement_percentage}%` : "—" },
+                ].map(({ icon: Icon, label, value }) => (
+                  <div key={label} className="rounded-xl border border-border bg-card p-5 flex flex-col gap-2">
+                    <Icon className="h-5 w-5 text-[#2563eb]" />
+                    <p className="text-2xl font-black text-foreground">{value}</p>
+                    <p className="text-xs text-muted-foreground">{label}</p>
+                  </div>
+                ))}
+              </div>
               {college.top_recruiters && (
-                <div className="col-span-2 md:col-span-3 rounded-xl border border-border bg-card p-5">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400 mb-3">Top recruiters</p>
+                <div className="mt-8">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400 mb-4">Top recruiters</p>
                   <RecruiterLogos names={college.top_recruiters.split(",").map((s: string) => s.trim()).filter(Boolean)} />
                 </div>
               )}
-            </div>
+            </>
           ) : (
             <p className="text-sm text-zinc-400">Placement data coming soon.</p>
           )}
