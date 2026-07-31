@@ -13,7 +13,7 @@ const SECTIONS = [
   { id: "admission", label: "Admission" },
   { id: "courses", label: "Courses & Seats" },
   { id: "placements", label: "Placements" },
-  { id: "reach", label: "How to Reach" },
+  { id: "reach", label: "Directions" },
 ];
 
 export default async function CollegeDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -234,9 +234,9 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
           )}
         </section>
 
-        {/* How to reach */}
+        {/* Directions */}
         <section id="reach" className="scroll-mt-32">
-          <h2 className="text-2xl font-black text-foreground mb-4">How to reach</h2>
+          <h2 className="text-2xl font-black text-foreground mb-4">Directions</h2>
           {college.how_to_reach ? (
             <p className="flex items-start gap-2 text-muted-foreground leading-relaxed max-w-3xl whitespace-pre-line">
               <Navigation className="h-4 w-4 mt-1 shrink-0 text-[#2563eb]" /> {college.how_to_reach}
