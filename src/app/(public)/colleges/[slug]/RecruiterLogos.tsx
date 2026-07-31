@@ -15,24 +15,23 @@ function RecruiterLogo({ name }: { name: string }) {
   const [failed, setFailed] = useState(false);
 
   return (
-    <div className="flex items-center gap-2 pl-2 pr-3 py-2 rounded-lg border border-border bg-background">
+    <div title={name} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-background">
       {domain && !failed ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
-          alt=""
-          className="h-5 w-5 rounded-sm object-contain shrink-0"
+          src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`}
+          alt={name}
+          className="h-6 w-6 object-contain"
           onError={() => setFailed(true)}
         />
       ) : (
         <span
-          className="flex h-5 w-5 shrink-0 items-center justify-center rounded-sm text-[10px] font-bold text-white"
+          className="flex h-6 w-6 items-center justify-center rounded-sm text-[11px] font-bold text-white"
           style={{ backgroundColor: avatarColor(name) }}
         >
           {name.trim().charAt(0).toUpperCase()}
         </span>
       )}
-      <span className="text-sm font-semibold text-foreground whitespace-nowrap">{name}</span>
     </div>
   );
 }
