@@ -20,7 +20,7 @@ function RecruiterLogo({ name }: { name: string }) {
         {domain && !failed ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`}
+            src={`https://unavatar.io/${domain}?fallback=false`}
             alt={name}
             className="h-full w-full object-contain"
             onError={() => setFailed(true)}
