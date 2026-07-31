@@ -8,6 +8,7 @@ import { createClient } from "@/lib/supabase/server";
 
 const SECTIONS = [
   { id: "overview", label: "Overview" },
+  { id: "campus", label: "Campus & Facilities" },
   { id: "admission", label: "Admission" },
   { id: "courses", label: "Courses & Seats" },
   { id: "placements", label: "Placements" },
@@ -28,6 +29,16 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
     .order("name");
 
   const hasPlacements = college.avg_package_lpa || college.highest_package_lpa || college.placement_percentage;
+  const totalSeats = (courses ?? []).reduce((sum, c) => sum + (c.seats ?? 0), 0);
+  const cutoffNote = (courses ?? []).find(c => c.cutoff_details)?.cutoff_details;
+
+  const quickStats = [
+    college.nirf_rank && { label: "NIRF rank", value: `#${college.nirf_rank}` },
+    college.avg_fees_lpa && { label: "Avg. fees", value: `₹${college.avg_fees_lpa} LPA` },
+    college.avg_package_lpa && { label: "Avg. package", value: `₹${college.avg_package_lpa} LPA` },
+    college.placement_percentage && { label: "Placed", value: `${college.placement_percentage}%` },
+    totalSeats > 0 && { label: "Total seats", value: totalSeats.toLocaleString("en-IN") },
+  ].filter(Boolean) as { label: string; value: string }[];
 
   return (
     <div>
@@ -38,6 +49,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
             <div className="max-w-2xl">
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-zinc-100 text-muted-foreground">{college.type}</span>
+                <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-[#2563eb]/10 text-[#2563eb]">{college.field}</span>
                 {college.nirf_rank && (
                   <span className="flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full bg-amber-50 text-amber-600">
                     <Award className="h-3.5 w-3.5" /> NIRF #{college.nirf_rank}
@@ -63,6 +75,17 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
               )}
             </div>
           </div>
+
+          {quickStats.length > 0 && (
+            <div className="mt-8 grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4 border-t border-border pt-6">
+              {quickStats.map(s => (
+                <div key={s.label}>
+                  <p className="text-xl sm:text-2xl font-black text-foreground">{s.value}</p>
+                  <p className="text-xs text-muted-foreground">{s.label}</p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -91,18 +114,21 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
           ) : (
             <p className="text-sm text-zinc-400">Overview coming soon.</p>
           )}
+        </section>
 
-          {college.campus_facilities && college.campus_facilities.length > 0 && (
-            <div className="mt-6">
-              <h3 className="text-sm font-bold text-foreground mb-3">Campus facilities</h3>
-              <div className="flex flex-wrap gap-2">
-                {college.campus_facilities.map((f: string) => (
-                  <span key={f} className="flex items-center gap-1.5 text-sm font-medium px-3 py-1.5 rounded-full bg-[#2563eb]/5 text-muted-foreground border border-border">
-                    <CheckCircle2 className="h-3.5 w-3.5 text-[#2563eb]" /> {f}
-                  </span>
-                ))}
-              </div>
+        {/* Campus & Facilities */}
+        <section id="campus" className="scroll-mt-32">
+          <h2 className="text-2xl font-black text-foreground mb-4">Campus & facilities</h2>
+          {college.campus_facilities && college.campus_facilities.length > 0 ? (
+            <div className="flex flex-wrap gap-2">
+              {college.campus_facilities.map((f: string) => (
+                <span key={f} className="flex items-center gap-1.5 text-sm font-medium px-3 py-1.5 rounded-full bg-[#2563eb]/5 text-muted-foreground border border-border">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[#2563eb]" /> {f}
+                </span>
+              ))}
             </div>
+          ) : (
+            <p className="text-sm text-zinc-400">Facility details coming soon.</p>
           )}
         </section>
 
@@ -162,12 +188,18 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
                         <td className="px-4 py-3 text-muted-foreground">{c.eligibility || "—"}</td>
                         <td className="px-4 py-3 text-muted-foreground">{c.seats ?? "—"}</td>
                         <td className="px-4 py-3 text-muted-foreground">{c.cutoff_general || "—"}</td>
-                        <td className="px-4 py-3 text-muted-foreground">{c.fees_total_lpa ?? "—"}</td>
+                        <td className="px-4 py-3 text-muted-foreground">
+                          {c.fees_total_lpa ?? "—"}
+                          {c.fees_details && <span className="block text-xs text-zinc-400 mt-0.5">{c.fees_details}</span>}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
+              {cutoffNote && (
+                <p className="px-4 py-3 text-xs text-zinc-400 border-t border-border">{cutoffNote}</p>
+              )}
             </div>
           )}
         </section>
