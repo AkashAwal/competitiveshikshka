@@ -15,18 +15,18 @@ function RecruiterLogo({ name }: { name: string }) {
   const [failed, setFailed] = useState(false);
 
   return (
-    <div title={name} className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-background">
+    <div title={name} className="flex h-12 w-12 shrink-0 items-center justify-center">
       {domain && !failed ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`}
           alt={name}
-          className="h-6 w-6 object-contain"
+          className="h-full w-full object-contain"
           onError={() => setFailed(true)}
         />
       ) : (
         <span
-          className="flex h-6 w-6 items-center justify-center rounded-sm text-[11px] font-bold text-white"
+          className="flex h-full w-full items-center justify-center rounded-lg text-sm font-bold text-white"
           style={{ backgroundColor: avatarColor(name) }}
         >
           {name.trim().charAt(0).toUpperCase()}
@@ -38,7 +38,7 @@ function RecruiterLogo({ name }: { name: string }) {
 
 export function RecruiterLogos({ names }: { names: string[] }) {
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap items-center justify-center gap-6">
       {names.map(name => <RecruiterLogo key={name} name={name} />)}
     </div>
   );
