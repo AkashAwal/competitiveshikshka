@@ -1,7 +1,8 @@
 const DOMAIN_OVERRIDES: Record<string, string> = {
   "goldman sachs": "goldmansachs.com",
-  "jp morgan": "jpmorgan.com",
-  "jpmorgan": "jpmorgan.com",
+  "jp morgan": "jpmorganchase.com",
+  "jpmorgan": "jpmorganchase.com",
+  "jp morgan chase": "jpmorganchase.com",
   "morgan stanley": "morganstanley.com",
   "mckinsey": "mckinsey.com",
   "mckinsey & company": "mckinsey.com",

@@ -15,30 +15,33 @@ function RecruiterLogo({ name }: { name: string }) {
   const [failed, setFailed] = useState(false);
 
   return (
-    <div title={name} className="flex h-12 w-12 shrink-0 items-center justify-center">
-      {domain && !failed ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`}
-          alt={name}
-          className="h-full w-full object-contain"
-          onError={() => setFailed(true)}
-        />
-      ) : (
-        <span
-          className="flex h-full w-full items-center justify-center rounded-lg text-sm font-bold text-white"
-          style={{ backgroundColor: avatarColor(name) }}
-        >
-          {name.trim().charAt(0).toUpperCase()}
-        </span>
-      )}
+    <div className="flex w-20 flex-col items-center gap-1.5">
+      <div className="flex h-12 w-12 shrink-0 items-center justify-center">
+        {domain && !failed ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={`https://www.google.com/s2/favicons?domain=${domain}&sz=128`}
+            alt={name}
+            className="h-full w-full object-contain"
+            onError={() => setFailed(true)}
+          />
+        ) : (
+          <span
+            className="flex h-full w-full items-center justify-center rounded-lg text-sm font-bold text-white"
+            style={{ backgroundColor: avatarColor(name) }}
+          >
+            {name.trim().charAt(0).toUpperCase()}
+          </span>
+        )}
+      </div>
+      <span className="text-center text-xs font-semibold text-muted-foreground leading-tight">{name}</span>
     </div>
   );
 }
 
 export function RecruiterLogos({ names }: { names: string[] }) {
   return (
-    <div className="flex flex-wrap items-center justify-center gap-6">
+    <div className="flex flex-wrap items-start justify-center gap-6">
       {names.map(name => <RecruiterLogo key={name} name={name} />)}
     </div>
   );
