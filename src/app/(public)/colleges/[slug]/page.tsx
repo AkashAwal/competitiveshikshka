@@ -31,7 +31,6 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
 
   const hasPlacements = college.avg_package_lpa || college.highest_package_lpa || college.placement_percentage;
   const totalSeats = (courses ?? []).reduce((sum, c) => sum + (c.seats ?? 0), 0);
-  const cutoffNote = (courses ?? []).find(c => c.cutoff_details)?.cutoff_details;
 
   const quickStats = [
     college.nirf_rank && { label: "NIRF rank", value: `#${college.nirf_rank}` },
@@ -198,9 +197,6 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
                   </tbody>
                 </table>
               </div>
-              {cutoffNote && (
-                <p className="px-4 py-3 text-xs text-zinc-400 border-t border-border">{cutoffNote}</p>
-              )}
             </div>
           )}
         </section>
