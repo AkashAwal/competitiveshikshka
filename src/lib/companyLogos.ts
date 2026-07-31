@@ -29,6 +29,9 @@ const DOMAIN_OVERRIDES: Record<string, string> = {
   "hdfc bank": "hdfcbank.com",
   "icici bank": "icicibank.com",
   "hp": "hp.com",
+  "texas instruments": "ti.com",
+  "de shaw": "deshaw.com",
+  "american express": "americanexpress.com",
 };
 
 export function companyDomain(name: string): string | null {
