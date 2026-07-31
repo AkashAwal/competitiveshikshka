@@ -209,13 +209,13 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
           <h2 className="text-2xl font-black text-foreground mb-4">Placements{college.placement_year ? ` (${college.placement_year})` : ""}</h2>
           {hasPlacements ? (
             <>
-              <div className="flex flex-wrap justify-center gap-x-12 gap-y-6 text-center">
+              <div className="flex flex-wrap gap-x-12 gap-y-6">
                 {[
                   { icon: TrendingUp, label: "Avg. package", value: college.avg_package_lpa ? formatLpa(college.avg_package_lpa) : "—" },
                   { icon: Trophy, label: "Highest package", value: college.highest_package_lpa ? formatLpa(college.highest_package_lpa) : "—" },
                   { icon: Users, label: "Students placed", value: college.placement_percentage ? `${college.placement_percentage}%` : "—" },
                 ].map(({ icon: Icon, label, value }) => (
-                  <div key={label} className="flex flex-col items-center gap-2">
+                  <div key={label} className="flex flex-col gap-2">
                     <Icon className="h-5 w-5 text-[#2563eb]" />
                     <p className="text-2xl font-black text-foreground">{value}</p>
                     <p className="text-xs text-muted-foreground">{label}</p>
