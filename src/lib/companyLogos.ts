@@ -37,6 +37,7 @@ const DOMAIN_OVERRIDES: Record<string, string> = {
   "coca-cola": "coca-cola.com",
   "coca cola": "coca-cola.com",
   "hyundai mobis": "hyundai-mobis.com",
+  "general electric": "ge.com",
 };
 
 export function companyDomain(name: string): string | null {
