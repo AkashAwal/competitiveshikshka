@@ -21,7 +21,7 @@ export interface CollegeRow {
   avg_fees_lpa: number | null;
 }
 
-const COLLEGE_TYPES = ["IIT", "NIT", "IIIT", "GFTI", "State", "Private", "Medical", "Other"];
+const COLLEGE_TYPES = ["IIT", "NIT", "IIIT", "GFTI", "State", "Private", "Medical", "BITS", "Other"];
 const COLLEGE_FIELDS = ["Engineering", "Medical", "Management", "Architecture", "Pharmacy", "Law", "Design", "Other"];
 const OWNERSHIPS = ["Government", "Private", "Deemed"];
 const TIERS = ["Tier 1", "Tier 2", "Tier 3"];

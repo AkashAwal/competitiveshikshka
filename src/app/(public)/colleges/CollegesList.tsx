@@ -17,22 +17,26 @@ export interface CollegeCard {
 }
 
 const FIELDS = ["All", "Engineering", "Medical", "Management", "Architecture", "Pharmacy", "Law", "Design", "Other"];
+const ENGINEERING_TYPES = ["All", "IIT", "NIT", "BITS", "Other"];
 
 export function CollegesList({ colleges }: { colleges: CollegeCard[] }) {
   const [query, setQuery] = useState("");
   const [field, setField] = useState("All");
+  const [engType, setEngType] = useState("All");
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return colleges.filter(c => {
       const matchesField = field === "All" || c.field === field;
+      const matchesEngType = field !== "Engineering" || engType === "All" ||
+        (engType === "Other" ? !["IIT", "NIT", "BITS"].includes(c.type) : c.type === engType);
       const matchesQuery = !q ||
         c.name.toLowerCase().includes(q) ||
         (c.city ?? "").toLowerCase().includes(q) ||
         (c.state ?? "").toLowerCase().includes(q);
-      return matchesField && matchesQuery;
+      return matchesField && matchesEngType && matchesQuery;
     });
-  }, [colleges, query, field]);
+  }, [colleges, query, field, engType]);
 
   return (
     <div>
@@ -52,7 +56,7 @@ export function CollegesList({ colleges }: { colleges: CollegeCard[] }) {
           {FIELDS.map(f => (
             <button
               key={f}
-              onClick={() => setField(f)}
+              onClick={() => { setField(f); setEngType("All"); }}
               className={cn(
                 "px-3.5 py-1.5 rounded-full text-sm font-semibold transition-colors cursor-pointer border",
                 field === f ? "bg-[#2563eb] text-white border-[#2563eb]" : "bg-card text-muted-foreground border-border hover:border-[#2563eb]"
@@ -62,6 +66,24 @@ export function CollegesList({ colleges }: { colleges: CollegeCard[] }) {
             </button>
           ))}
         </div>
+
+        {field === "Engineering" && (
+          <div className="flex flex-wrap items-center gap-2 pl-1">
+            <span className="text-xs font-semibold uppercase tracking-wide text-zinc-400">Category</span>
+            {ENGINEERING_TYPES.map(t => (
+              <button
+                key={t}
+                onClick={() => setEngType(t)}
+                className={cn(
+                  "px-3 py-1 rounded-full text-xs font-semibold transition-colors cursor-pointer border",
+                  engType === t ? "bg-[#2563eb]/10 text-[#2563eb] border-[#2563eb]" : "bg-transparent text-muted-foreground border-border hover:border-[#2563eb]"
+                )}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       <p className="text-sm text-muted-foreground mb-4">{filtered.length} college{filtered.length === 1 ? "" : "s"} found</p>
