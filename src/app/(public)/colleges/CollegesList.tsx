@@ -17,7 +17,7 @@ export interface CollegeCard {
 }
 
 const FIELDS = ["All", "Engineering", "Medical", "Management", "Architecture", "Pharmacy", "Law", "Design", "Other"];
-const ENGINEERING_TYPES = ["All", "IIT", "NIT", "BITS", "Other"];
+const ENGINEERING_TYPES = ["All", "IIT", "NIT", "IIIT", "GFTI", "State", "BITS", "Other"];
 
 export function CollegesList({ colleges }: { colleges: CollegeCard[] }) {
   const [query, setQuery] = useState("");
@@ -29,7 +29,7 @@ export function CollegesList({ colleges }: { colleges: CollegeCard[] }) {
     return colleges.filter(c => {
       const matchesField = field === "All" || c.field === field;
       const matchesEngType = field !== "Engineering" || engType === "All" ||
-        (engType === "Other" ? !["IIT", "NIT", "BITS"].includes(c.type) : c.type === engType);
+        (engType === "Other" ? !["IIT", "NIT", "IIIT", "GFTI", "State", "BITS"].includes(c.type) : c.type === engType);
       const matchesQuery = !q ||
         c.name.toLowerCase().includes(q) ||
         (c.city ?? "").toLowerCase().includes(q) ||
