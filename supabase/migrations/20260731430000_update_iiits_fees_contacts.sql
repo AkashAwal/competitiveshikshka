@@ -3,8 +3,9 @@
 -- deliberately left untouched here (kept at their agent-researched values):
 --   - nirf_rank for iiit-hyderabad/iiit-delhi/iiit-bangalore (7/85/74 proposed
 --     vs 38/63/69 already stored) — user chose to keep the existing numbers.
---   - avg_package_lpa for iiit-naya-raipur (12.6 proposed vs 18.9 stored) and
---     highest_package_lpa for iiit-manipur (24 proposed vs 40 stored), plus
+--   - avg_package_lpa for iiit-naya-raipur (12.6 proposed vs 18.9 stored),
+--     placement_percentage for iiit-naya-raipur (100 proposed vs 90 stored),
+--     highest_package_lpa for iiit-manipur (24 proposed vs 40 stored), and
 --     admission_email for iiit-sri-city (contact@iiits.in proposed vs
 --     admissions@iiits.in stored) — same reasoning, not requested explicitly
 --     but consistent with "keep what was already sourced when it conflicts".
@@ -29,7 +30,7 @@ update public.colleges set avg_fees_lpa = 7.2, placement_percentage = 85, update
 update public.colleges set avg_fees_lpa = 7.3, avg_package_lpa = 8.5, placement_percentage = 82, updated_at = now() where slug = 'iiit-manipur';
 update public.colleges set avg_fees_lpa = 8.6, top_recruiters = 'TCS, Accenture, Infosys, Capgemini', updated_at = now() where slug = 'iiit-dharwad';
 update public.colleges set avg_fees_lpa = 8.2, placement_percentage = 80, top_recruiters = 'TCS, Infosys, Capgemini, Cognizant', updated_at = now() where slug = 'iiit-agartala';
-update public.colleges set avg_fees_lpa = 10.4, highest_package_lpa = 57, placement_percentage = 100, top_recruiters = 'Google, Amazon, Microsoft, Adobe, NVIDIA, Deloitte', updated_at = now() where slug = 'iiit-naya-raipur';
+update public.colleges set avg_fees_lpa = 10.4, highest_package_lpa = 57, top_recruiters = 'Google, Amazon, Microsoft, Adobe, NVIDIA, Deloitte', updated_at = now() where slug = 'iiit-naya-raipur';
 update public.colleges set avg_fees_lpa = 8.6, top_recruiters = 'TCS, Infosys, Capgemini', updated_at = now() where slug = 'iiit-raichur';
 update public.colleges set avg_fees_lpa = 11.2, updated_at = now() where slug = 'iiit-hyderabad';
 update public.colleges set avg_fees_lpa = 19.6, top_recruiters = 'Google, Microsoft, Amazon, Adobe, Atlassian, Goldman Sachs', updated_at = now() where slug = 'iiit-delhi';
