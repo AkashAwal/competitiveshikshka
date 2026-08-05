@@ -158,3 +158,54 @@ html.cs-no-anim *::after {
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
+
+/* Shared CTA hover treatment: gradient shine sweep + lift + shadow */
+.btn-cta {
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(to right, #1c67f6, #3b82f6);
+  box-shadow: 0 10px 15px -3px rgba(28, 103, 246, 0.3), 0 4px 6px -4px rgba(28, 103, 246, 0.3);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.btn-cta:hover {
+  box-shadow: 0 20px 25px -5px rgba(28, 103, 246, 0.4), 0 8px 10px -6px rgba(28, 103, 246, 0.4);
+  transform: translateY(-2px);
+}
+.btn-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+.btn-cta:hover::after {
+  transform: translateX(100%);
+}
+.btn-cta:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Same hover shine, for white/light buttons sitting on a solid blue background */
+.btn-cta-invert {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.btn-cta-invert:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+}
+.btn-cta-invert::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(28, 103, 246, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+.btn-cta-invert:hover::after {
+  transform: translateX(100%);
+}

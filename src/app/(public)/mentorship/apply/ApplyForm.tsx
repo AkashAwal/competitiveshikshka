@@ -101,7 +101,7 @@ export function ApplyForm({ userId, initialName, initialEmail }: Props) {
             We will contact you shortly — usually within 24 hours.
           </p>
         </div>
-        <Link href="/" className={cn("inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold text-white transition-colors hover:bg-zinc-900")} style={{ backgroundColor: "#1c67f6" }}>
+        <Link href="/" className="btn-cta inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold text-white">
           Back to home
         </Link>
       </div>
@@ -174,8 +174,7 @@ export function ApplyForm({ userId, initialName, initialEmail }: Props) {
       <button
         type="submit"
         disabled={!isValid || submitting}
-        className="mt-2 flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white transition-opacity disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-        style={{ backgroundColor: "#1c67f6" }}
+        className="btn-cta mt-2 flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white cursor-pointer"
       >
         {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
         {submitting ? "Submitting..." : "Submit application"}

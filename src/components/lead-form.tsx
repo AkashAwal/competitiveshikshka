@@ -149,9 +149,8 @@ export function LeadForm() {
         <button
           type="submit"
           disabled={!isValid || submitting}
-          className="group relative mt-2 flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#1c67f6] to-[#3b82f6] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[#1c67f6]/30 transition-all duration-300 hover:shadow-xl hover:shadow-[#1c67f6]/40 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 cursor-pointer"
+          className="btn-cta group mt-2 flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white cursor-pointer"
         >
-          <span className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-500 group-hover:translate-x-full" />
           {submitting ? (
             <Loader2 className="h-4 w-4 animate-spin" />
           ) : (

@@ -153,8 +153,7 @@ export function Navbar() {
           ) : (
             <Link
               href="/login"
-              className="px-4 py-1.5 rounded-md text-sm font-semibold text-white transition-colors"
-              style={{ backgroundColor: "#1c67f6" }}
+              className="btn-cta px-4 py-1.5 rounded-md text-sm font-semibold text-white"
             >
               Login
             </Link>
@@ -198,7 +197,7 @@ export function Navbar() {
               <button onClick={signOut} className="text-left px-3 py-2 rounded-md text-sm font-semibold text-red-500 hover:bg-red-50 cursor-pointer">Sign out</button>
             </>
           ) : (
-            <Link href="/login" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-white" style={{ backgroundColor: "#1c67f6" }}>Login</Link>
+            <Link href="/login" onClick={() => setMenuOpen(false)} className="btn-cta px-3 py-2 rounded-md text-sm font-semibold text-white">Login</Link>
           )}
         </div>
       )}

@@ -114,8 +114,7 @@ export function ExamsGrid({ exams, initialSlug }: { exams: ExamCard[]; initialSl
                       href={active.official_link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full text-white"
-                      style={{ backgroundColor: "#1c67f6" }}
+                      className="btn-cta flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full text-white"
                     >
                       Official website <ExternalLink className="h-3.5 w-3.5" />
                     </a>

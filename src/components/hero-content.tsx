@@ -67,7 +67,7 @@ export function HeroContent() {
         <div className="flex flex-wrap items-center gap-4">
           <Link
             href="/exams"
-            className="rounded-xl bg-[#1c67f6] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[#1c67f6]/25 transition-transform hover:-translate-y-0.5"
+            className="btn-cta rounded-xl px-6 py-3 text-sm font-bold text-white"
           >
             Explore Now
           </Link>
