@@ -2,14 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const pills = [
-  { label: "All Exams", href: "/exams" },
-  { label: "JEE", href: "/exams" },
-  { label: "NEET", href: "/exams" },
-  { label: "NCERT", href: "/ncert" },
-  { label: "PYQs", href: "/pyqs" },
-  { label: "Colleges", href: "/colleges" },
-];
+const pills = ["All Exams", "JEE", "NEET", "NCERT", "PYQs", "Colleges"];
 
 const avatars = [
   { initials: "AS", bg: "bg-amber-400" },
@@ -48,18 +41,17 @@ export function HeroContent() {
 
       <div className="flex flex-wrap gap-2">
         {pills.map((pill, i) => (
-          <Link
-            key={pill.label}
-            href={pill.href}
+          <span
+            key={pill}
             className={cn(
-              "rounded-full border px-4 py-2 text-sm font-semibold transition-colors",
+              "rounded-full border px-4 py-2 text-sm font-semibold",
               i === 0
                 ? "border-[#1c67f6] text-[#1c67f6] bg-[#1c67f6]/5"
-                : "border-border bg-white text-foreground hover:border-[#1c67f6]"
+                : "border-border bg-white text-foreground"
             )}
           >
-            {pill.label}
-          </Link>
+            {pill}
+          </span>
         ))}
       </div>
 
@@ -67,13 +59,13 @@ export function HeroContent() {
         <div className="flex flex-wrap items-center gap-4">
           <Link
             href="/exams"
-            className="btn-cta rounded-xl px-6 py-3 text-sm font-bold text-white"
+            className="btn-cta rounded-full px-6 py-3 text-sm font-bold text-white"
           >
             Explore Now
           </Link>
           <Link
             href="/colleges"
-            className="rounded-xl border border-[#1c67f6] px-6 py-3 text-sm font-bold text-[#1c67f6] transition-colors hover:bg-[#1c67f6] hover:text-white"
+            className="rounded-full border border-[#1c67f6] px-6 py-3 text-sm font-bold text-[#1c67f6] transition-colors hover:bg-[#1c67f6] hover:text-white"
           >
             View Colleges
           </Link>
