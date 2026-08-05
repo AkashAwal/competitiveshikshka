@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 
 const classes = ["9th", "10th", "11th", "12th", "Dropper"] as const;
@@ -58,16 +59,23 @@ export function LeadForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex w-full flex-col gap-4 rounded-2xl border border-border bg-white p-6 sm:p-8 shadow-xl shadow-black/5"
-    >
-      <div>
-        <p className="text-lg font-black text-foreground">Get started for free</p>
-        <p className="text-sm text-muted-foreground">Tell us a bit about yourself.</p>
-      </div>
+    <div className="w-full">
+      <Image
+        src="/form hero_1.webp"
+        alt=""
+        width={160}
+        height={160}
+        className="mx-auto h-32 w-32 object-contain animate-float"
+        priority
+      />
 
-      <Field label="Name">
+      <form
+        onSubmit={handleSubmit}
+        className="flex w-full flex-col gap-4 rounded-2xl border border-border bg-white p-6 sm:p-8 shadow-xl shadow-black/5 -mt-4"
+      >
+        <p className="text-center text-lg font-black text-foreground">Tell us about you</p>
+
+        <Field label="Name">
         <input
           type="text"
           required
@@ -153,6 +161,7 @@ export function LeadForm() {
           </>
         )}
       </button>
-    </form>
+      </form>
+    </div>
   );
 }

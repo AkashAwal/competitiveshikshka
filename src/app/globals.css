@@ -145,3 +145,16 @@ html.cs-no-anim *::after {
   background-image: radial-gradient(rgba(16, 19, 26, 0.12) 1px, transparent 1px);
   background-size: 20px 20px;
 }
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float {
+  animation: float 3.5s ease-in-out infinite;
+}
