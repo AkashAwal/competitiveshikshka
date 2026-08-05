@@ -8,7 +8,7 @@ export default async function PYQsPage() {
   const content = (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
       <h1 className="text-5xl font-black tracking-tight text-foreground mb-2">
-        Previous Year <span className="text-[#2563eb]">Questions</span>
+        Previous Year <span className="text-[#1c67f6]">Questions</span>
       </h1>
       <p className="text-muted-foreground mb-10">JEE and NEET PYQs with detailed answer keys and topic-wise filters.</p>
 

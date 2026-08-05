@@ -97,7 +97,7 @@ export function QuestionsManager({ rows }: { rows: QuestionRow[] }) {
               onClick={() => setBankFilter(b)}
               className="px-3 py-1.5 rounded-lg text-sm font-semibold cursor-pointer transition-colors"
               style={{
-                backgroundColor: bankFilter === b ? "#2563eb" : "rgba(var(--fg-rgb),0.05)",
+                backgroundColor: bankFilter === b ? "#1c67f6" : "rgba(var(--fg-rgb),0.05)",
                 color: bankFilter === b ? "#fff" : "rgba(var(--fg-rgb),0.6)",
               }}
             >
@@ -116,7 +116,7 @@ export function QuestionsManager({ rows }: { rows: QuestionRow[] }) {
           <button
             onClick={openCreate}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-white cursor-pointer"
-            style={{ backgroundColor: "#2563eb" }}
+            style={{ backgroundColor: "#1c67f6" }}
           >
             <Plus className="h-4 w-4" /> Add question
           </button>
@@ -251,7 +251,7 @@ export function QuestionsManager({ rows }: { rows: QuestionRow[] }) {
                 onClick={submit}
                 disabled={pending}
                 className="mt-1 rounded-xl px-5 py-2.5 text-sm font-bold text-white cursor-pointer disabled:opacity-50"
-                style={{ backgroundColor: "#2563eb" }}
+                style={{ backgroundColor: "#1c67f6" }}
               >
                 {pending ? "Saving..." : editing ? "Save changes" : "Add question"}
               </button>

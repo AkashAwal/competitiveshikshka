@@ -30,7 +30,7 @@ function Row({ icon: Icon, label, value }: { icon: React.ElementType; label: str
   return (
     <div className="flex flex-col gap-2">
       <p className="flex items-center gap-2 text-sm font-bold text-foreground">
-        <Icon className="h-4 w-4 text-[#2563eb]" /> {label}
+        <Icon className="h-4 w-4 text-[#1c67f6]" /> {label}
       </p>
       <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line pl-6">{value}</p>
     </div>
@@ -59,11 +59,11 @@ export function ExamsGrid({ exams, initialSlug }: { exams: ExamCard[]; initialSl
               <button
                 key={exam.id}
                 onClick={() => setActiveSlug(exam.slug)}
-                className="group flex flex-col gap-4 text-left rounded-xl border border-border bg-card p-6 transition-all duration-200 hover:border-[#2563eb] hover:shadow-sm cursor-pointer"
+                className="group flex flex-col gap-4 text-left rounded-xl border border-border bg-card p-6 transition-all duration-200 hover:border-[#1c67f6] hover:shadow-sm cursor-pointer"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#2563eb]/10">
-                    <FileText className="h-5 w-5 text-[#2563eb]" />
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#1c67f6]/10">
+                    <FileText className="h-5 w-5 text-[#1c67f6]" />
                   </span>
                 </div>
                 <div>
@@ -77,7 +77,7 @@ export function ExamsGrid({ exams, initialSlug }: { exams: ExamCard[]; initialSl
                 {exam.about && (
                   <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">{exam.about}</p>
                 )}
-                <span className="mt-auto flex items-center gap-1 text-sm font-semibold text-[#2563eb] opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="mt-auto flex items-center gap-1 text-sm font-semibold text-[#1c67f6] opacity-0 group-hover:opacity-100 transition-opacity">
                   Read full details <ArrowRight className="h-3.5 w-3.5" />
                 </span>
               </button>
@@ -105,8 +105,8 @@ export function ExamsGrid({ exams, initialSlug }: { exams: ExamCard[]; initialSl
 
                 <div className="flex flex-wrap items-center gap-2">
                   {active.conducting_body && (
-                    <span className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#2563eb]/5 text-muted-foreground border border-border">
-                      <Building2 className="h-3.5 w-3.5 text-[#2563eb]" /> Conducted by {active.conducting_body}
+                    <span className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#1c67f6]/5 text-muted-foreground border border-border">
+                      <Building2 className="h-3.5 w-3.5 text-[#1c67f6]" /> Conducted by {active.conducting_body}
                     </span>
                   )}
                   {active.official_link && (
@@ -115,7 +115,7 @@ export function ExamsGrid({ exams, initialSlug }: { exams: ExamCard[]; initialSl
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full text-white"
-                      style={{ backgroundColor: "#2563eb" }}
+                      style={{ backgroundColor: "#1c67f6" }}
                     >
                       Official website <ExternalLink className="h-3.5 w-3.5" />
                     </a>

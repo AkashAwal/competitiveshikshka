@@ -32,10 +32,10 @@ export function RankTrend({ points }: { points: RankPoint[] }) {
 
   return (
     <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} className="w-full h-auto max-w-md" role="img" aria-label="NIRF rank trend over time">
-      <path d={linePath} fill="none" stroke="#2563eb" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+      <path d={linePath} fill="none" stroke="#1c67f6" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
       {coords.map(c => (
         <g key={c.year}>
-          <circle cx={c.x} cy={c.y} r={4} fill="#2563eb" stroke="var(--background)" strokeWidth={2} />
+          <circle cx={c.x} cy={c.y} r={4} fill="#1c67f6" stroke="var(--background)" strokeWidth={2} />
           <title>{`${c.year}: #${c.rank}`}</title>
           <text x={c.x} y={c.y - 12} textAnchor="middle" className="fill-foreground text-[11px] font-bold">#{c.rank}</text>
           <text x={c.x} y={HEIGHT - 8} textAnchor="middle" className="fill-muted-foreground text-[11px]">{c.year}</text>

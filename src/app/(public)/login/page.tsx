@@ -16,7 +16,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden" style={{ backgroundColor: "#15191e" }}>
       {/* Glow blobs */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] opacity-25 pointer-events-none" style={{ background: "radial-gradient(ellipse at top left, #2563eb, transparent 70%)" }} />
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] opacity-25 pointer-events-none" style={{ background: "radial-gradient(ellipse at top left, #1c67f6, transparent 70%)" }} />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] opacity-20 pointer-events-none" style={{ background: "radial-gradient(ellipse at bottom right, #7c3aed, transparent 70%)" }} />
 
       <div className="w-full max-w-sm flex flex-col items-center gap-8 relative z-10">

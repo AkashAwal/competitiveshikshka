@@ -98,7 +98,7 @@ export function HeroSlider() {
             className={cn(
               "rounded-full transition-all duration-300 cursor-pointer",
               i === active
-                ? "w-6 h-2 bg-[#2563EB] shadow"
+                ? "w-6 h-2 bg-[#1C67F6] shadow"
                 : "w-2 h-2 bg-white/50 hover:bg-white/80"
             )}
           />

@@ -166,7 +166,7 @@ export function BulkAddDialog({ open, onOpenChange }: { open: boolean; onOpenCha
               onClick={submit}
               disabled={pending || !text.trim()}
               className="mt-1 self-start flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-bold text-white cursor-pointer disabled:opacity-50"
-              style={{ backgroundColor: "#2563eb" }}
+              style={{ backgroundColor: "#1c67f6" }}
             >
               <Upload className="h-4 w-4" />
               {pending ? "Importing…" : "Import questions"}

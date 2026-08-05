@@ -64,7 +64,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
             <div className="max-w-2xl">
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-zinc-100 text-muted-foreground">{college.type}</span>
-                <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-[#2563eb]/10 text-[#2563eb]">{college.field}</span>
+                <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-[#1c67f6]/10 text-[#1c67f6]">{college.field}</span>
                 {college.tier && (
                   <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-violet-50 text-violet-600">{college.tier}</span>
                 )}
@@ -85,12 +85,12 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
 
             <div className="flex flex-col gap-2 min-w-[220px]">
               {college.website && (
-                <a href={college.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-colors hover:bg-zinc-900" style={{ backgroundColor: "#2563eb" }}>
+                <a href={college.website} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-colors hover:bg-zinc-900" style={{ backgroundColor: "#1c67f6" }}>
                   <Globe className="h-4 w-4" /> Visit website
                 </a>
               )}
               {college.admission_email && (
-                <a href={`mailto:${college.admission_email}`} className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-foreground border border-foreground transition-colors hover:bg-[#2563eb] hover:text-white hover:border-[#2563eb]">
+                <a href={`mailto:${college.admission_email}`} className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-foreground border border-foreground transition-colors hover:bg-[#1c67f6] hover:text-white hover:border-[#1c67f6]">
                   <Mail className="h-4 w-4" /> Contact admissions
                 </a>
               )}
@@ -115,7 +115,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
         <div className="relative mx-auto max-w-6xl">
           <div className="flex justify-center gap-1 overflow-x-auto px-4 sm:px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {SECTIONS.map(s => (
-              <a key={s.id} href={`#${s.id}`} className="px-3 py-3 text-sm font-semibold text-muted-foreground hover:text-[#2563eb] whitespace-nowrap transition-colors">
+              <a key={s.id} href={`#${s.id}`} className="px-3 py-3 text-sm font-semibold text-muted-foreground hover:text-[#1c67f6] whitespace-nowrap transition-colors">
                 {s.label}
               </a>
             ))}
@@ -151,7 +151,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
             <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
               {college.campus_facilities.map((f: string) => (
                 <li key={f} className="flex items-center gap-2.5 text-sm font-medium text-muted-foreground">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#2563eb]" /> {f}
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-[#1c67f6]" /> {f}
                 </li>
               ))}
             </ul>
@@ -171,17 +171,17 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
                 <p className="text-sm text-zinc-400">Admission process details coming soon.</p>
               )}
               {college.accepts_exams && (
-                <p className="text-sm font-semibold text-muted-foreground mt-4">Accepts: <span className="text-[#2563eb]">{college.accepts_exams}</span></p>
+                <p className="text-sm font-semibold text-muted-foreground mt-4">Accepts: <span className="text-[#1c67f6]">{college.accepts_exams}</span></p>
               )}
             </div>
             <div className="rounded-xl border border-border bg-card p-5 flex flex-col gap-3 h-fit">
               {college.admission_email && (
-                <a href={`mailto:${college.admission_email}`} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-[#2563eb]">
+                <a href={`mailto:${college.admission_email}`} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-[#1c67f6]">
                   <Mail className="h-4 w-4 shrink-0" /> {college.admission_email}
                 </a>
               )}
               {college.phone && (
-                <a href={`tel:${college.phone}`} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-[#2563eb]">
+                <a href={`tel:${college.phone}`} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-[#1c67f6]">
                   <Phone className="h-4 w-4 shrink-0" /> {college.phone}
                 </a>
               )}
@@ -241,7 +241,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
                   { icon: Users, label: "Students placed", value: college.placement_percentage ? `${college.placement_percentage}%` : "—" },
                 ].map(({ icon: Icon, label, value }) => (
                   <div key={label} className="flex flex-col gap-2">
-                    <Icon className="h-5 w-5 text-[#2563eb]" />
+                    <Icon className="h-5 w-5 text-[#1c67f6]" />
                     <p className="text-2xl font-black text-foreground">{value}</p>
                     <p className="text-xs text-muted-foreground">{label}</p>
                   </div>
@@ -276,7 +276,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
           <h2 className="text-2xl font-black text-foreground mb-4">Directions</h2>
           {college.how_to_reach ? (
             <p className="flex items-start gap-2 text-muted-foreground leading-relaxed max-w-3xl whitespace-pre-line">
-              <Navigation className="h-4 w-4 mt-1 shrink-0 text-[#2563eb]" /> {college.how_to_reach}
+              <Navigation className="h-4 w-4 mt-1 shrink-0 text-[#1c67f6]" /> {college.how_to_reach}
             </p>
           ) : (
             <p className="text-sm text-zinc-400">Directions coming soon.</p>
@@ -301,7 +301,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
                 <Link
                   key={c.slug}
                   href={`/colleges/${c.slug}`}
-                  className="group flex flex-col gap-3 rounded-xl border border-border bg-card p-5 transition-all duration-200 hover:border-[#2563eb] hover:shadow-sm"
+                  className="group flex flex-col gap-3 rounded-xl border border-border bg-card p-5 transition-all duration-200 hover:border-[#1c67f6] hover:shadow-sm"
                 >
                   <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-zinc-100 text-muted-foreground w-fit">{c.type}</span>
                   <h3 className="font-bold text-foreground leading-snug">{c.name}</h3>
@@ -321,7 +321,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
       </div>
 
       {/* Closing CTA */}
-      <section className="w-full px-4 sm:px-6 py-20 flex flex-col items-center text-center gap-6" style={{ backgroundColor: "#2563eb" }}>
+      <section className="w-full px-4 sm:px-6 py-20 flex flex-col items-center text-center gap-6" style={{ backgroundColor: "#1c67f6" }}>
         <GraduationCap className="h-8 w-8 text-white/70" />
         <h2 className="text-4xl font-black text-white leading-tight">Not sure if this is the right fit?</h2>
         <p className="text-white/70 max-w-md text-sm leading-relaxed">
@@ -329,7 +329,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
         </p>
         <Link
           href="/mentorship"
-          className="inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold transition-colors bg-white text-[#2563eb] hover:bg-zinc-100"
+          className="inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold transition-colors bg-white text-[#1c67f6] hover:bg-zinc-100"
         >
           Talk to a mentor <ArrowRight className="h-4 w-4" />
         </Link>

@@ -21,7 +21,7 @@ export default async function ExamsPage({ searchParams }: { searchParams: Promis
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
       <h1 className="text-5xl font-black tracking-tight text-foreground mb-2">
-        Entrance <span className="text-[#2563eb]">exams</span>
+        Entrance <span className="text-[#1c67f6]">exams</span>
       </h1>
       <p className="text-muted-foreground mb-6 max-w-2xl">
         Everything about every major exam — syllabus, marking scheme, dates, cutoffs and tips. Tap a card to read the full breakdown.
@@ -30,7 +30,7 @@ export default async function ExamsPage({ searchParams }: { searchParams: Promis
       <div className="flex flex-wrap gap-x-6 gap-y-2 mb-10">
         {TRUST_POINTS.map(({ icon: Icon, text }) => (
           <div key={text} className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Icon className="h-4 w-4 text-[#2563eb] shrink-0" />
+            <Icon className="h-4 w-4 text-[#1c67f6] shrink-0" />
             {text}
           </div>
         ))}

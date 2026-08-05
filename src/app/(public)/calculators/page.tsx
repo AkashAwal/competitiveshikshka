@@ -8,7 +8,7 @@ export default async function CalculatorsPage() {
   const content = (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
       <h1 className="text-5xl font-black tracking-tight text-foreground mb-2">
-        Rank <span className="text-[#2563eb]">Calculator</span>
+        Rank <span className="text-[#1c67f6]">Calculator</span>
       </h1>
       <p className="text-muted-foreground mb-10">Enter your marks and instantly estimate your rank, percentile and college chances.</p>
 

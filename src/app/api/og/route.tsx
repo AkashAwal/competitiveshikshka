@@ -59,7 +59,7 @@ export async function GET(req: NextRequest) {
         }}
       >
         {/* Top accent bar */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "6px", background: "#2563eb", display: "flex" }} />
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "6px", background: "#1c67f6", display: "flex" }} />
 
         {/* Site name */}
         <div style={{ fontSize: "18px", color: "#6b7280", letterSpacing: "0.05em", marginBottom: "auto", display: "flex" }}>
@@ -72,7 +72,7 @@ export async function GET(req: NextRequest) {
           <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
             <div
               style={{
-                background: "#2563eb",
+                background: "#1c67f6",
                 color: "#ffffff",
                 fontSize: "15px",
                 fontWeight: 700,
@@ -104,7 +104,7 @@ export async function GET(req: NextRequest) {
           </div>
 
           {/* Divider */}
-          <div style={{ width: "60px", height: "4px", background: "#2563eb", borderRadius: "2px", display: "flex" }} />
+          <div style={{ width: "60px", height: "4px", background: "#1c67f6", borderRadius: "2px", display: "flex" }} />
 
           {/* Question */}
           <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -112,7 +112,7 @@ export async function GET(req: NextRequest) {
               <div
                 style={{
                   background: "#eff6ff",
-                  color: "#2563eb",
+                  color: "#1c67f6",
                   fontSize: "14px",
                   fontWeight: 700,
                   padding: "4px 12px",
@@ -132,7 +132,7 @@ export async function GET(req: NextRequest) {
         {/* Bottom bar */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid #e2e8f0", paddingTop: "20px" }}>
           <div style={{ fontSize: "15px", color: "#94a3b8", display: "flex" }}>NCERT Solutions</div>
-          <div style={{ fontSize: "15px", color: "#2563eb", fontWeight: 600, display: "flex" }}>competitiveshikshka.com</div>
+          <div style={{ fontSize: "15px", color: "#1c67f6", fontWeight: 600, display: "flex" }}>competitiveshikshka.com</div>
         </div>
       </div>
     ),

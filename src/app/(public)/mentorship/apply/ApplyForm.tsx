@@ -39,7 +39,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 }
 
 const inputClass =
-  "w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-zinc-400 focus:border-[#2563eb]";
+  "w-full rounded-xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-zinc-400 focus:border-[#1c67f6]";
 
 export function ApplyForm({ userId, initialName, initialEmail }: Props) {
   const [fullName, setFullName] = useState(initialName);
@@ -101,7 +101,7 @@ export function ApplyForm({ userId, initialName, initialEmail }: Props) {
             We will contact you shortly — usually within 24 hours.
           </p>
         </div>
-        <Link href="/" className={cn("inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold text-white transition-colors hover:bg-zinc-900")} style={{ backgroundColor: "#2563eb" }}>
+        <Link href="/" className={cn("inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold text-white transition-colors hover:bg-zinc-900")} style={{ backgroundColor: "#1c67f6" }}>
           Back to home
         </Link>
       </div>
@@ -137,8 +137,8 @@ export function ApplyForm({ userId, initialName, initialEmail }: Props) {
               className={cn(
                 "rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors cursor-pointer",
                 studentClass === c
-                  ? "border-[#2563eb] bg-[#2563eb] text-white"
-                  : "border-border bg-card text-muted-foreground hover:border-[#2563eb]"
+                  ? "border-[#1c67f6] bg-[#1c67f6] text-white"
+                  : "border-border bg-card text-muted-foreground hover:border-[#1c67f6]"
               )}
             >
               {c}
@@ -156,11 +156,11 @@ export function ApplyForm({ userId, initialName, initialEmail }: Props) {
               onClick={() => setPlan(id)}
               className={cn(
                 "flex flex-col gap-2 rounded-xl border p-4 text-left transition-colors cursor-pointer",
-                plan === id ? "border-[#2563eb] bg-[#2563eb]/5" : "border-border bg-card hover:border-[#2563eb]"
+                plan === id ? "border-[#1c67f6] bg-[#1c67f6]/5" : "border-border bg-card hover:border-[#1c67f6]"
               )}
             >
-              <span className={cn("flex h-8 w-8 items-center justify-center rounded-lg", plan === id ? "bg-[#2563eb]/15" : "bg-zinc-100")}>
-                <Icon className={cn("h-4 w-4", plan === id ? "text-[#2563eb]" : "text-zinc-500")} />
+              <span className={cn("flex h-8 w-8 items-center justify-center rounded-lg", plan === id ? "bg-[#1c67f6]/15" : "bg-zinc-100")}>
+                <Icon className={cn("h-4 w-4", plan === id ? "text-[#1c67f6]" : "text-zinc-500")} />
               </span>
               <span className="text-sm font-bold text-foreground">{title}</span>
               <span className="text-xs text-muted-foreground leading-relaxed">{desc}</span>
@@ -175,7 +175,7 @@ export function ApplyForm({ userId, initialName, initialEmail }: Props) {
         type="submit"
         disabled={!isValid || submitting}
         className="mt-2 flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white transition-opacity disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-        style={{ backgroundColor: "#2563eb" }}
+        style={{ backgroundColor: "#1c67f6" }}
       >
         {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
         {submitting ? "Submitting..." : "Submit application"}

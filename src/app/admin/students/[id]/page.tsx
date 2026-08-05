@@ -35,7 +35,7 @@ export default async function AdminStudentDetailPage({ params }: { params: Promi
       </Link>
 
       <div className="flex items-center gap-4 mb-8">
-        <div className="h-14 w-14 rounded-2xl flex items-center justify-center text-xl font-black text-white" style={{ backgroundColor: "#2563eb" }}>
+        <div className="h-14 w-14 rounded-2xl flex items-center justify-center text-xl font-black text-white" style={{ backgroundColor: "#1c67f6" }}>
           {(user.user_metadata?.full_name?.[0] ?? user.email?.[0] ?? "S").toUpperCase()}
         </div>
         <div>

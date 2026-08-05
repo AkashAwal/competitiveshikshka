@@ -79,7 +79,7 @@ export function FaqsManager({ collegeId, rows }: { collegeId: string; rows: FaqR
         <button
           onClick={openCreate}
           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-white cursor-pointer"
-          style={{ backgroundColor: "#2563eb" }}
+          style={{ backgroundColor: "#1c67f6" }}
         >
           <Plus className="h-3.5 w-3.5" /> Add FAQ
         </button>
@@ -143,7 +143,7 @@ export function FaqsManager({ collegeId, rows }: { collegeId: string; rows: FaqR
                 onClick={submit}
                 disabled={pending}
                 className="mt-1 rounded-xl px-5 py-2.5 text-sm font-bold text-white cursor-pointer disabled:opacity-50"
-                style={{ backgroundColor: "#2563eb" }}
+                style={{ backgroundColor: "#1c67f6" }}
               >
                 {pending ? "Saving..." : editing ? "Save changes" : "Add FAQ"}
               </button>

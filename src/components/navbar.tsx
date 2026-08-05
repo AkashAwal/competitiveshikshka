@@ -98,8 +98,8 @@ export function Navbar() {
                   "px-3 py-1.5 rounded-md text-sm font-semibold transition-all cursor-pointer",
                   isActive ? "text-white" : "text-foreground"
                 )}
-                style={{ backgroundColor: isActive ? "#2563eb" : "transparent" }}
-                onMouseEnter={e => { if (!isActive) { (e.currentTarget as HTMLElement).style.backgroundColor = "#2563eb"; e.currentTarget.classList.remove("text-foreground"); e.currentTarget.classList.add("text-white"); } }}
+                style={{ backgroundColor: isActive ? "#1c67f6" : "transparent" }}
+                onMouseEnter={e => { if (!isActive) { (e.currentTarget as HTMLElement).style.backgroundColor = "#1c67f6"; e.currentTarget.classList.remove("text-foreground"); e.currentTarget.classList.add("text-white"); } }}
                 onMouseLeave={e => { if (!isActive) { (e.currentTarget as HTMLElement).style.backgroundColor = "transparent"; e.currentTarget.classList.remove("text-white"); e.currentTarget.classList.add("text-foreground"); } }}
               >
                 {link.label}
@@ -123,10 +123,10 @@ export function Navbar() {
                       alt={user.user_metadata.full_name ?? "Profile"}
                       width={34}
                       height={34}
-                      className="rounded-full border-2 border-border hover:border-[#2563eb] transition-colors"
+                      className="rounded-full border-2 border-border hover:border-[#1c67f6] transition-colors"
                     />
                   ) : (
-                    <div className="h-[34px] w-[34px] rounded-full bg-[#2563eb] flex items-center justify-center text-white text-sm font-bold">
+                    <div className="h-[34px] w-[34px] rounded-full bg-[#1c67f6] flex items-center justify-center text-white text-sm font-bold">
                       {user.email?.[0].toUpperCase()}
                     </div>
                   )}
@@ -144,7 +144,7 @@ export function Navbar() {
                         onClick={() => setDropdownOpen(false)}
                         className="flex items-center gap-1.5 px-4 py-2 text-sm text-foreground/80 hover:bg-accent transition-colors"
                       >
-                        <ShieldCheck className="h-3.5 w-3.5 text-[#2563eb]" />
+                        <ShieldCheck className="h-3.5 w-3.5 text-[#1c67f6]" />
                         Admin
                       </Link>
                     )}
@@ -164,7 +164,7 @@ export function Navbar() {
             <Link
               href="/login"
               className="px-4 py-1.5 rounded-md text-sm font-semibold text-white transition-colors"
-              style={{ backgroundColor: "#2563eb" }}
+              style={{ backgroundColor: "#1c67f6" }}
             >
               Login
             </Link>
@@ -196,7 +196,7 @@ export function Navbar() {
                   ? "text-white"
                   : "text-foreground hover:bg-accent"
               )}
-              style={pathname.startsWith(link.href) ? { backgroundColor: "#2563eb" } : undefined}
+              style={pathname.startsWith(link.href) ? { backgroundColor: "#1c67f6" } : undefined}
             >
               {link.label}
             </Link>
@@ -209,7 +209,7 @@ export function Navbar() {
               <button onClick={signOut} className="text-left px-3 py-2 rounded-md text-sm font-semibold text-red-500 hover:bg-red-50 cursor-pointer">Sign out</button>
             </>
           ) : (
-            <Link href="/login" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-white" style={{ backgroundColor: "#2563eb" }}>Login</Link>
+            <Link href="/login" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-white" style={{ backgroundColor: "#1c67f6" }}>Login</Link>
           )}
         </div>
       )}

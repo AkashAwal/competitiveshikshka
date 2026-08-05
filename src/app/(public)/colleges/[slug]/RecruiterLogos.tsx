@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { companyDomain } from "@/lib/companyLogos";
 
-const AVATAR_COLORS = ["#2563eb", "#7c3aed", "#db2777", "#ea580c", "#16a34a", "#0891b2"];
+const AVATAR_COLORS = ["#1c67f6", "#7c3aed", "#db2777", "#ea580c", "#16a34a", "#0891b2"];
 
 function avatarColor(name: string) {
   const hash = name.split("").reduce((h, ch) => h + ch.charCodeAt(0), 0);
