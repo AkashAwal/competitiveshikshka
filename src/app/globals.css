@@ -124,3 +124,18 @@ html.cs-no-anim *::after {
   animation-duration: 0.01ms !important;
   transition-duration: 0.01ms !important;
 }
+
+@keyframes preheader-slide {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-preheader-slide {
+  animation: preheader-slide 0.5s ease-out;
+}
