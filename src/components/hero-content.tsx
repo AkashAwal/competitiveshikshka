@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const pills = ["Exams", "Material", "Mentorship", "Community", "NCERT", "PYQs", "Colleges"];
+const pills = ["Exams", "Material", "Mentorship", "Community", "NCERT", "PYQs", "Colleges", "Calculators"];
 
 const avatars = [
   { initials: "AS", bg: "bg-amber-400" },
