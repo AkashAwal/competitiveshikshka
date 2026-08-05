@@ -73,7 +73,7 @@ export function HeroContent() {
           </Link>
           <Link
             href="/colleges"
-            className="rounded-xl border border-[#1c67f6] px-6 py-3 text-sm font-bold text-[#1c67f6] transition-colors hover:bg-[#1c67f6]/5"
+            className="rounded-xl border border-[#1c67f6] px-6 py-3 text-sm font-bold text-[#1c67f6] transition-colors hover:bg-[#1c67f6] hover:text-white"
           >
             View Colleges
           </Link>
