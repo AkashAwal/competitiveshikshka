@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const pills = ["All Exams", "JEE", "NEET", "NCERT", "PYQs", "Colleges"];
+const pills = ["Exams", "Material", "Mentorship", "Community", "NCERT", "PYQs", "Colleges"];
 
 const avatars = [
   { initials: "AS", bg: "bg-amber-400" },
@@ -39,16 +39,11 @@ export function HeroContent() {
         </p>
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        {pills.map((pill, i) => (
+      <div className="grid grid-cols-4 gap-2">
+        {pills.map((pill) => (
           <span
             key={pill}
-            className={cn(
-              "rounded-full border px-4 py-2 text-sm font-semibold",
-              i === 0
-                ? "border-[#1c67f6] text-[#1c67f6] bg-[#1c67f6]/5"
-                : "border-border bg-white text-foreground"
-            )}
+            className="rounded-full border border-border bg-white px-3 py-2 text-center text-sm font-semibold text-foreground"
           >
             {pill}
           </span>
