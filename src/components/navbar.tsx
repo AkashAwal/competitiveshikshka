@@ -7,7 +7,6 @@ import { useState, useEffect, useRef } from "react";
 import { Menu, X, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { createClient } from "@/lib/supabase/client";
-import { ThemeToggle } from "@/components/theme-toggle";
 import type { User } from "@supabase/supabase-js";
 
 const navLinks = [
@@ -74,15 +73,7 @@ export function Navbar() {
             alt="CompetitiveShiksha"
             width={200}
             height={265}
-            className="h-[62px] w-auto dark:hidden"
-            priority
-          />
-          <Image
-            src="/logo_br_light.png"
-            alt="CompetitiveShiksha"
-            width={200}
-            height={265}
-            className="hidden h-[62px] w-auto dark:block"
+            className="h-[62px] w-auto"
             priority
           />
         </Link>
@@ -109,7 +100,6 @@ export function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <ThemeToggle />
           {user ? (
             <>
               <div className="relative" ref={dropdownRef}>
@@ -172,7 +162,6 @@ export function Navbar() {
         </div>
 
         <div className="flex items-center gap-1 md:hidden">
-          <ThemeToggle />
           <button
             className="p-2 rounded-md hover:bg-accent transition-colors cursor-pointer"
             onClick={() => setMenuOpen(!menuOpen)}

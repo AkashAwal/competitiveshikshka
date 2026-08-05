@@ -19,12 +19,11 @@ export function StepsSection({ steps, accentColor = "blue" }: { steps: Step[]; a
   }, []);
 
   const color = accentColor === "emerald" ? "#10b981" : "#3b82f6";
-  const colorDark = accentColor === "emerald" ? "#34d399" : "#60a5fa";
   const label = accentColor === "emerald" ? "emerald" : "blue";
 
   return (
     <div className="border-t border-border pt-8 mt-8">
-      <p className={`mb-4 text-xs font-bold uppercase tracking-wide text-${label}-600 dark:text-${label}-400`}>
+      <p className={`mb-4 text-xs font-bold uppercase tracking-wide text-${label}-600`}>
         Step-by-Step
       </p>
       <div className="space-y-2">

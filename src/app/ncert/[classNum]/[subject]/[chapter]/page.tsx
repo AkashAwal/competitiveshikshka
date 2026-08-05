@@ -178,7 +178,7 @@ export default async function NcertChapterPage({ params, searchParams }: Props) 
 
             {qa.explanation?.length ? (
               <div className="border-t border-border pt-8 mt-8">
-                <p className="mb-3 text-xs font-bold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">Why it works</p>
+                <p className="mb-3 text-xs font-bold uppercase tracking-wide text-emerald-600">Why it works</p>
                 <div className="text-muted-foreground leading-relaxed">
                   <PortableText value={qa.explanation as unknown[]} />
                 </div>

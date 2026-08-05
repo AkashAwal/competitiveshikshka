@@ -131,7 +131,7 @@ export default async function NcertExamplesPage({ params, searchParams }: Props)
 
           <div className="mb-10">
             <div className="flex items-start gap-3 mb-8">
-              <span className="flex h-7 shrink-0 items-center justify-center rounded-md bg-emerald-500/10 px-2 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+              <span className="flex h-7 shrink-0 items-center justify-center rounded-md bg-emerald-500/10 px-2 text-xs font-bold text-emerald-600">
                 {qa.questionNumber}
               </span>
               <div className="text-base font-medium leading-relaxed">
@@ -144,7 +144,7 @@ export default async function NcertExamplesPage({ params, searchParams }: Props)
             </div>
 
             <div className="border-t border-border pt-8">
-              <p className="mb-3 text-xs font-bold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">Solution</p>
+              <p className="mb-3 text-xs font-bold uppercase tracking-wide text-emerald-600">Solution</p>
               {qa.answer?.length ? (
                 <PortableText value={qa.answer as unknown[]} />
               ) : (
