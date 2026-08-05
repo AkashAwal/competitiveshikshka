@@ -8,12 +8,12 @@ const classes = ["9th", "10th", "11th", "12th", "Dropper"] as const;
 const streams = ["Science (PCM)", "Science (PCB)", "Commerce", "Arts"] as const;
 
 const inputClass =
-  "w-full rounded-2xl border border-border bg-white px-5 py-4 text-base text-foreground outline-none transition-colors placeholder:text-zinc-400 focus:border-[#1c67f6]";
+  "w-full rounded-xl border border-border bg-white px-4 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-zinc-400 focus:border-[#1c67f6]";
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="flex flex-col gap-2">
-      <label className="text-sm font-semibold uppercase tracking-wide text-zinc-500">{label}</label>
+    <div className="flex flex-col gap-1.5">
+      <label className="text-xs font-semibold uppercase tracking-wide text-zinc-500">{label}</label>
       {children}
     </div>
   );
@@ -48,12 +48,12 @@ export function LeadForm() {
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center gap-4 rounded-3xl border border-border bg-white p-12 text-center shadow-xl shadow-black/5">
-        <span className="flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-3xl bg-green-50">
-          <CheckCircle2 className="h-9 w-9 text-green-600" />
+      <div className="flex flex-col items-center gap-3 rounded-2xl border border-border bg-white p-8 text-center shadow-xl shadow-black/5">
+        <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-green-50">
+          <CheckCircle2 className="h-6 w-6 text-green-600" />
         </span>
-        <p className="text-2xl font-black text-foreground">Thanks, {name.split(" ")[0]}!</p>
-        <p className="text-base text-muted-foreground">We&apos;ll reach out to you shortly.</p>
+        <p className="text-lg font-black text-foreground">Thanks, {name.split(" ")[0]}!</p>
+        <p className="text-sm text-muted-foreground">We&apos;ll reach out to you shortly.</p>
       </div>
     );
   }
@@ -63,17 +63,17 @@ export function LeadForm() {
       <Image
         src="/form hero_1.webp"
         alt=""
-        width={288}
-        height={288}
-        className="absolute -top-24 left-1/2 z-10 h-48 w-48 -translate-x-1/2 object-contain animate-float"
+        width={192}
+        height={192}
+        className="absolute -top-16 left-1/2 z-10 h-32 w-32 -translate-x-1/2 object-contain animate-float"
         priority
       />
 
       <form
         onSubmit={handleSubmit}
-        className="relative flex w-full flex-col gap-6 rounded-3xl border border-border bg-white px-8 pb-10 pt-28 sm:px-10 shadow-xl shadow-black/5"
+        className="relative flex w-full flex-col gap-4 rounded-2xl border border-border bg-white px-6 pb-7 pt-20 sm:px-7 shadow-xl shadow-black/5"
       >
-        <p className="text-center text-2xl font-black text-foreground">Tell us about you</p>
+        <p className="text-center text-lg font-black text-foreground">Tell us about you</p>
 
         <Field label="Name">
           <input
@@ -97,7 +97,7 @@ export function LeadForm() {
           />
         </Field>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-4">
           <Field label="Class">
             <select
               required
@@ -149,15 +149,15 @@ export function LeadForm() {
         <button
           type="submit"
           disabled={!isValid || submitting}
-          className="group relative mt-3 flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#1c67f6] to-[#3b82f6] px-8 py-5 text-base font-bold text-white shadow-lg shadow-[#1c67f6]/30 transition-all duration-300 hover:shadow-xl hover:shadow-[#1c67f6]/40 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 cursor-pointer"
+          className="group relative mt-2 flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#1c67f6] to-[#3b82f6] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[#1c67f6]/30 transition-all duration-300 hover:shadow-xl hover:shadow-[#1c67f6]/40 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 cursor-pointer"
         >
           <span className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-500 group-hover:translate-x-full" />
           {submitting ? (
-            <Loader2 className="h-5 w-5 animate-spin" />
+            <Loader2 className="h-4 w-4 animate-spin" />
           ) : (
             <>
               Submit
-              <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </>
           )}
         </button>
