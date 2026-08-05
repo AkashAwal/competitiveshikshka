@@ -27,11 +27,6 @@ export async function proxy(request: NextRequest) {
 
   const { data: { user } } = await supabase.auth.getUser();
 
-  // Protect /dashboard routes
-  if (!user && request.nextUrl.pathname.startsWith("/dashboard")) {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
-
   // Protect /admin routes — full is_admin check happens again server-side
   // in requireAdmin(); this is just a fast, optimistic bounce.
   if (request.nextUrl.pathname.startsWith("/admin")) {
@@ -44,18 +39,18 @@ export async function proxy(request: NextRequest) {
       .eq("id", user.id)
       .single();
     if (!profile?.is_admin) {
-      return NextResponse.redirect(new URL("/dashboard", request.url));
+      return NextResponse.redirect(new URL("/", request.url));
     }
   }
 
   // Redirect logged-in users away from login page
   if (user && request.nextUrl.pathname === "/login") {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   return supabaseResponse;
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/login", "/admin/:path*"],
+  matcher: ["/login", "/admin/:path*"],
 };

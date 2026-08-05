@@ -215,27 +215,6 @@ export default function MentorshipPage() {
         </div>
       </section>
 
-      {/* Pricing tie-in */}
-      <section className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
-        <div className="rounded-xl border border-border bg-card p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#2563eb]/10">
-              <GraduationCap className="h-6 w-6 text-[#2563eb]" />
-            </span>
-            <div>
-              <h3 className="font-black text-foreground text-lg">Included in Premium</h3>
-              <p className="text-sm text-muted-foreground mt-1 max-w-md">
-                Mentorship comes bundled with CompetitiveShiksha Premium — or apply for
-                it on its own as a standalone add-on.
-              </p>
-            </div>
-          </div>
-          <Link href="/dashboard/premium" className={cn(buttonVariants({ size: "lg" }), "shrink-0")}>
-            View Premium <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
-
       {/* FAQ */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
         <div className="mb-10">

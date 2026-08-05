@@ -138,27 +138,6 @@ export function Navbar() {
                       <p className="text-sm font-semibold text-foreground truncate">{user.user_metadata.full_name ?? "Student"}</p>
                       <p className="text-xs text-muted-foreground truncate">{user.email}</p>
                     </div>
-                    <Link
-                      href="/dashboard/profile"
-                      onClick={() => setDropdownOpen(false)}
-                      className="flex items-center px-4 py-2 text-sm text-foreground/80 hover:bg-accent transition-colors"
-                    >
-                      My Profile
-                    </Link>
-                    <Link
-                      href="/dashboard/todo"
-                      onClick={() => setDropdownOpen(false)}
-                      className="flex items-center px-4 py-2 text-sm text-foreground/80 hover:bg-accent transition-colors"
-                    >
-                      To Do List
-                    </Link>
-                    <Link
-                      href="/dashboard/settings"
-                      onClick={() => setDropdownOpen(false)}
-                      className="flex items-center px-4 py-2 text-sm text-foreground/80 hover:bg-accent transition-colors"
-                    >
-                      Settings
-                    </Link>
                     {isAdmin && (
                       <Link
                         href="/admin"
@@ -180,14 +159,6 @@ export function Navbar() {
                   </div>
                 )}
               </div>
-
-              <Link
-                href="/dashboard"
-                className="px-4 py-1.5 rounded-md text-sm font-semibold text-white transition-colors hover:bg-zinc-900"
-                style={{ backgroundColor: "#2563eb" }}
-              >
-                Dashboard
-              </Link>
             </>
           ) : (
             <Link
@@ -232,9 +203,6 @@ export function Navbar() {
           ))}
           {user ? (
             <>
-              <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-foreground hover:bg-accent">Dashboard</Link>
-              <Link href="/dashboard/profile" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-foreground/80 hover:bg-accent">My Profile</Link>
-              <Link href="/dashboard/settings" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-foreground/80 hover:bg-accent">Settings</Link>
               {isAdmin && (
                 <Link href="/admin" onClick={() => setMenuOpen(false)} className="px-3 py-2 rounded-md text-sm font-semibold text-foreground/80 hover:bg-accent">Admin</Link>
               )}

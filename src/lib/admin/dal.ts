@@ -17,7 +17,7 @@ export const requireAdmin = cache(async () => {
     .eq("id", user.id)
     .single();
 
-  if (!profile?.is_admin) redirect("/dashboard");
+  if (!profile?.is_admin) redirect("/");
 
   return { id: user.id, email: user.email ?? "" };
 });

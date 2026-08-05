@@ -64,7 +64,7 @@ export function AdminSidebar({ email }: { email: string }) {
 
       <div className="px-3 pb-3 flex flex-col gap-0.5 border-t" style={{ borderColor: "rgba(var(--fg-rgb),0.15)", paddingTop: "10px" }}>
         <Link
-          href="/dashboard"
+          href="/"
           className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all"
           style={{ color: "rgba(var(--fg-rgb),0.6)" }}
           onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(var(--fg-rgb),0.07)"; }}

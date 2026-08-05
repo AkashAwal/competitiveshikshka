@@ -79,7 +79,7 @@ function ConfirmDeleteContent() {
                 Yes, permanently delete my account
               </button>
               <button
-                onClick={() => router.push("/dashboard/profile")}
+                onClick={() => router.push("/")}
                 className="w-full py-3 rounded-xl font-semibold text-sm cursor-pointer"
                 style={{ backgroundColor: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.6)" }}
               >
@@ -108,11 +108,11 @@ function ConfirmDeleteContent() {
               <p className="text-sm mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>{error}</p>
             </div>
             <button
-              onClick={() => router.push("/dashboard/profile")}
+              onClick={() => router.push("/")}
               className="px-6 py-2.5 rounded-xl text-sm font-bold cursor-pointer"
               style={{ backgroundColor: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)" }}
             >
-              Go back to profile
+              Go back home
             </button>
           </>
         )}
