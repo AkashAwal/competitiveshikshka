@@ -29,8 +29,8 @@ export function HeroContent() {
 
       <div className="flex flex-col gap-4">
         <h1 className="text-5xl sm:text-6xl font-black leading-[1.05] text-foreground">
-          <span aria-hidden className="mr-2">🎯</span>
-          <span className="text-[#1c67f6]">Ace</span> Your Next Rank
+          Ace Your <br />
+          <span className="text-[#1c67f6]">Next Rank</span> <span aria-hidden>🎯</span>
         </h1>
 
         <p className="max-w-lg text-lg">
