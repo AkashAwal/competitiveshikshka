@@ -1,3 +1,5 @@
 export default function HomePage() {
-  return null;
+  return (
+    <section className="w-full min-h-[60vh] bg-dot-pattern" />
+  );
 }

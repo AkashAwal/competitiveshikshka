@@ -139,3 +139,9 @@ html.cs-no-anim *::after {
 .animate-preheader-slide {
   animation: preheader-slide 0.5s ease-out;
 }
+
+.bg-dot-pattern {
+  background-color: #f7f7f8;
+  background-image: radial-gradient(rgba(16, 19, 26, 0.12) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
