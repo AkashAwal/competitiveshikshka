@@ -151,10 +151,10 @@ html.cs-no-anim *::after {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-12px);
+    transform: translateY(-16px);
   }
 }
 
 .animate-float {
-  animation: float 3.5s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite;
 }
