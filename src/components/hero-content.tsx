@@ -9,8 +9,6 @@ const pills = [
   { label: "NCERT", href: "/ncert" },
   { label: "PYQs", href: "/pyqs" },
   { label: "Colleges", href: "/colleges" },
-  { label: "Calculators", href: "/calculators" },
-  { label: "Mentorship", href: "/mentorship" },
 ];
 
 const avatars = [
@@ -23,7 +21,7 @@ const avatars = [
 
 export function HeroContent() {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-8">
       <Link
         href="/colleges"
         className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-sm text-foreground shadow-sm transition-colors hover:border-[#1c67f6]"
@@ -36,17 +34,17 @@ export function HeroContent() {
         <ArrowRight className="h-3.5 w-3.5" />
       </Link>
 
-      <div className="relative w-fit rounded-2xl border border-border bg-white px-6 py-5 shadow-sm">
-        <h1 className="text-4xl sm:text-5xl font-black leading-tight text-foreground">
+      <div className="flex flex-col gap-4">
+        <h1 className="text-5xl sm:text-6xl font-black leading-[1.05] text-foreground">
           <span aria-hidden className="mr-2">🎯</span>
           <span className="text-[#1c67f6]">Ace</span> Your Next Rank
         </h1>
-      </div>
 
-      <p className="max-w-lg text-lg">
-        <span className="block text-foreground">with Free NCERT Solutions and PYQs.</span>
-        <span className="block text-muted-foreground">Learn from Toppers and Track Your Rank.</span>
-      </p>
+        <p className="max-w-lg text-lg">
+          <span className="block text-foreground">with Free NCERT Solutions and PYQs.</span>
+          <span className="block text-muted-foreground">Learn from Toppers and Track Your Rank.</span>
+        </p>
+      </div>
 
       <div className="flex flex-wrap gap-2">
         {pills.map((pill, i) => (
@@ -65,19 +63,21 @@ export function HeroContent() {
         ))}
       </div>
 
-      <div className="flex flex-wrap items-center gap-4 pt-4">
-        <Link
-          href="/exams"
-          className="rounded-xl bg-[#1c67f6] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[#1c67f6]/25 transition-transform hover:-translate-y-0.5"
-        >
-          Explore Now
-        </Link>
-        <Link
-          href="/colleges"
-          className="rounded-xl border border-[#1c67f6] px-6 py-3 text-sm font-bold text-[#1c67f6] transition-colors hover:bg-[#1c67f6]/5"
-        >
-          View Colleges
-        </Link>
+      <div className="flex flex-col gap-5">
+        <div className="flex flex-wrap items-center gap-4">
+          <Link
+            href="/exams"
+            className="rounded-xl bg-[#1c67f6] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-[#1c67f6]/25 transition-transform hover:-translate-y-0.5"
+          >
+            Explore Now
+          </Link>
+          <Link
+            href="/colleges"
+            className="rounded-xl border border-[#1c67f6] px-6 py-3 text-sm font-bold text-[#1c67f6] transition-colors hover:bg-[#1c67f6]/5"
+          >
+            View Colleges
+          </Link>
+        </div>
 
         <div className="flex items-center gap-3">
           <div className="flex -space-x-3">
