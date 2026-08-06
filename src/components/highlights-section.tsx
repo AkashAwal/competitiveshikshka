@@ -1,31 +1,26 @@
 import Link from "next/link";
-import { GraduationCap, Gem, BadgeCheck, Briefcase, ArrowUpRight, ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { GraduationCap, Gem, BadgeCheck, Briefcase, ArrowUpRight } from "lucide-react";
 
 const cards = [
   {
     icon: GraduationCap,
     title: "Structured guides for every entrance exam",
     href: "/exams",
-    active: false,
   },
   {
     icon: Gem,
     title: "Mentorship from verified rank holders",
     href: "/mentorship",
-    active: true,
   },
   {
     icon: BadgeCheck,
     title: "Verified cutoffs & college data",
     href: "/colleges",
-    active: false,
   },
   {
     icon: Briefcase,
     title: "50,000+ students already admitted",
     href: "/colleges",
-    active: false,
   },
 ];
 
@@ -38,36 +33,20 @@ export function HighlightsSection() {
         </h2>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {cards.map(({ icon: Icon, title, href, active }) => (
+          {cards.map(({ icon: Icon, title, href }) => (
             <Link
               key={title}
               href={href}
-              className={cn(
-                "flex min-h-[220px] flex-col justify-between rounded-2xl border bg-[#f5f6f8] p-6 transition-colors",
-                active
-                  ? "border-[#1c67f6] bg-white"
-                  : "border-transparent hover:border-border"
-              )}
+              className="flex min-h-[220px] flex-col justify-between rounded-2xl border border-transparent bg-[#f5f6f8] p-6 transition-colors hover:border-border"
             >
               <div className="flex items-start justify-between">
                 <Icon className="h-8 w-8 text-foreground" strokeWidth={1.75} />
-                {active ? (
-                  <ArrowRight className="h-5 w-5 text-[#1c67f6]" />
-                ) : (
-                  <ArrowUpRight className="h-5 w-5 text-foreground" />
-                )}
+                <ArrowUpRight className="h-5 w-5 text-foreground" />
               </div>
 
               <div className="flex flex-col gap-3">
                 <p className="text-lg font-bold leading-snug text-foreground">{title}</p>
-                <span
-                  className={cn(
-                    "text-sm font-medium",
-                    active ? "text-[#1c67f6]" : "text-muted-foreground"
-                  )}
-                >
-                  Read more
-                </span>
+                <span className="text-sm font-medium text-muted-foreground">Read more</span>
               </div>
             </Link>
           ))}
