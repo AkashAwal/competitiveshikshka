@@ -8,6 +8,7 @@ import { TracksSection } from "@/components/tracks-section";
 import { AboutSection } from "@/components/about-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
 import { BlogSection } from "@/components/blog-section";
+import { FinalCtaSection } from "@/components/final-cta-section";
 
 export default function HomePage() {
   return (
@@ -28,6 +29,7 @@ export default function HomePage() {
       <AboutSection />
       <TestimonialsSection />
       <BlogSection />
+      <FinalCtaSection />
     </>
   );
 }
