@@ -1,5 +1,5 @@
 import { requireAdmin } from "@/lib/admin/dal";
-import { AdminSidebar } from "./AdminSidebar";
+import { AdminSidebar } from "../AdminSidebar";
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const admin = await requireAdmin();

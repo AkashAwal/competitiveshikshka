@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const pills = ["Exams", "Material", "Mentorship", "Community", "NCERT", "PYQs", "Colleges", "Calculators"];
+const pills = ["Exams", "Colleges", "Mentorship", "Community", "Cutoffs", "Rankings", "Placements", "Calculators"];
 
 const avatars = [
   { initials: "AS", bg: "bg-amber-400" },
@@ -34,7 +34,7 @@ export function HeroContent() {
         </h1>
 
         <p className="max-w-lg text-lg">
-          <span className="block text-foreground">with Free NCERT Solutions and PYQs.</span>
+          <span className="block text-foreground">with verified college cutoffs and exam guides.</span>
           <span className="block text-muted-foreground">Learn from Toppers and Track Your Rank.</span>
         </p>
       </div>

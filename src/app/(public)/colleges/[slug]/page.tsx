@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -18,6 +19,31 @@ const SECTIONS = [
   { id: "faqs", label: "FAQs" },
   { id: "reach", label: "Directions" },
 ];
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const supabase = await createClient();
+  const { data: college } = await supabase
+    .from("colleges")
+    .select("name, type, city, state, overview, nirf_rank")
+    .eq("slug", slug)
+    .single();
+
+  if (!college) return { title: "College not found" };
+
+  const location = [college.city, college.state].filter(Boolean).join(", ");
+  const title = `${college.name}${location ? ` (${location})` : ""} — Cutoff, Fees & Admission`;
+  const description =
+    college.overview?.slice(0, 155) ??
+    `${college.name}${college.nirf_rank ? ` (NIRF #${college.nirf_rank})` : ""} — courses, cutoffs, fees, placements and admission process on CompetitiveShiksha.`;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: `/colleges/${slug}` },
+    openGraph: { images: [{ url: `/api/og?type=college&slug=${slug}`, width: 1200, height: 630 }] },
+  };
+}
 
 export default async function CollegeDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -55,8 +81,29 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
     totalSeats > 0 && { label: "Total seats", value: totalSeats.toLocaleString("en-IN") },
   ].filter(Boolean) as { label: string; value: string }[];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollegeOrUniversity",
+    name: college.name,
+    description: college.overview ?? undefined,
+    url: college.website ?? undefined,
+    address: college.address || college.city
+      ? {
+          "@type": "PostalAddress",
+          streetAddress: college.address ?? undefined,
+          addressLocality: college.city ?? undefined,
+          addressRegion: college.state ?? undefined,
+          addressCountry: "IN",
+        }
+      : undefined,
+  };
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Header */}
       <section className="w-full border-b border-border bg-card">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12">

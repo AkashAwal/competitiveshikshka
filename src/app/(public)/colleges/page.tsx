@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
 import { ShieldCheck, RefreshCw, Ban } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { CollegesList } from "./CollegesList";
+
+export const metadata: Metadata = {
+  title: "Top Colleges — Cutoffs, Fees, Placements & Admission Details",
+  description:
+    "Search verified rankings, cutoffs, fees and placement data for every top engineering and medical college in India. Free, unbiased and updated every admission cycle.",
+  alternates: { canonical: "/colleges" },
+  openGraph: { images: [{ url: "/api/og", width: 1200, height: 630 }] },
+};
 
 const TRUST_POINTS = [
   { icon: ShieldCheck, text: "Verified against official prospectuses & NIRF data" },
@@ -20,7 +29,7 @@ export default async function CollegesPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
       <h1 className="text-5xl font-black tracking-tight text-foreground mb-2">
-        Find your <span className="text-[#1c67f6]">college</span>
+        Find your <span className="text-primary">college</span>
       </h1>
       <p className="text-muted-foreground mb-6 max-w-2xl">
         Rankings, cutoffs, fees and placements for every top engineering and medical college — verified and kept up to date.
@@ -29,7 +38,7 @@ export default async function CollegesPage() {
       <div className="flex flex-wrap gap-x-6 gap-y-2 mb-10">
         {TRUST_POINTS.map(({ icon: Icon, text }) => (
           <div key={text} className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Icon className="h-4 w-4 text-[#1c67f6] shrink-0" />
+            <Icon className="h-4 w-4 text-primary shrink-0" />
             {text}
           </div>
         ))}

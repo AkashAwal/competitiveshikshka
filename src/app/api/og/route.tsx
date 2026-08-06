@@ -1,141 +1,105 @@
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
-import { createClient } from "next-sanity";
+import { createClient } from "@supabase/supabase-js";
 
 export const runtime = "nodejs";
-export const revalidate = 3600; // cache for 1 hour
+export const revalidate = 3600;
 
-const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ?? "",
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? "production",
-  apiVersion: "2024-01-01",
-  useCdn: false,
-});
+function publicClient() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+}
 
-function blocksToText(blocks: unknown[]): string {
-  if (!blocks?.length) return "";
-  return (blocks as { children?: { text?: string }[] }[])
-    .map((b) => b.children?.map((c) => c.text ?? "").join("") ?? "")
-    .join(" ")
-    .trim();
+function Frame({ eyebrow, title, meta }: { eyebrow: string; title: string; meta: string }) {
+  return (
+    <div
+      style={{
+        width: "1200px",
+        height: "630px",
+        background: "#f8fafc",
+        display: "flex",
+        flexDirection: "column",
+        padding: "64px 72px",
+        fontFamily: "sans-serif",
+        position: "relative",
+      }}
+    >
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "8px", background: "#2563eb", display: "flex" }} />
+
+      <div style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "20px", fontWeight: 800, color: "#2563eb" }}>
+        CompetitiveShiksha
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: "18px", marginTop: "auto", marginBottom: "auto" }}>
+        <div
+          style={{
+            alignSelf: "flex-start",
+            background: "#eff6ff",
+            color: "#2563eb",
+            fontSize: "18px",
+            fontWeight: 700,
+            padding: "8px 20px",
+            borderRadius: "999px",
+            display: "flex",
+          }}
+        >
+          {eyebrow}
+        </div>
+        <div style={{ fontSize: "52px", fontWeight: 800, color: "#0f172a", lineHeight: 1.15, display: "flex", maxWidth: "1000px" }}>
+          {title}
+        </div>
+        {meta && (
+          <div style={{ fontSize: "24px", color: "#475569", display: "flex" }}>{meta}</div>
+        )}
+      </div>
+
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid #e2e8f0", paddingTop: "24px" }}>
+        <div style={{ fontSize: "16px", color: "#94a3b8", display: "flex" }}>Colleges · Exams · Mentorship</div>
+        <div style={{ fontSize: "16px", color: "#2563eb", fontWeight: 700, display: "flex" }}>competitiveshiksha.in</div>
+      </div>
+    </div>
+  );
 }
 
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
-  const cls = searchParams.get("class");
-  const subject = searchParams.get("subject");
-  const chapter = searchParams.get("chapter");
-  const q = searchParams.get("q") ?? "1";
+  const type = searchParams.get("type");
+  const slug = searchParams.get("slug");
 
-  if (!cls || !subject || !chapter) {
-    return new Response("Missing params", { status: 400 });
+  let eyebrow = "College Admissions & Exam Guide";
+  let title = "CompetitiveShiksha";
+  let meta = "Verified colleges, entrance exams & mentorship";
+
+  if (type === "college" && slug) {
+    const supabase = publicClient();
+    const { data } = await supabase
+      .from("colleges")
+      .select("name, city, state, type")
+      .eq("slug", slug)
+      .single();
+    if (data) {
+      eyebrow = data.type ?? "College";
+      title = data.name;
+      meta = [data.city, data.state].filter(Boolean).join(", ");
+    }
+  } else if (type === "exam" && slug) {
+    const supabase = publicClient();
+    const { data } = await supabase
+      .from("exams")
+      .select("name, full_name, category, conducting_body")
+      .eq("slug", slug)
+      .single();
+    if (data) {
+      eyebrow = `${data.category} Entrance Exam`;
+      title = data.name;
+      meta = data.full_name ?? data.conducting_body ?? "";
+    }
   }
 
-  const data = await client.fetch(
-    `*[_type == "ncertSolution" && class == $class && subject == $subject && chapter == $chapter][0]{
-      chapterTitle,
-      "question": questions[${parseInt(q, 10) - 1}]{ questionNumber, questionText }
-    }`,
-    { class: parseInt(cls, 10), subject, chapter: parseInt(chapter, 10) }
-  );
-
-  const chapterTitle = data?.chapterTitle ?? subject;
-  const questionNumber = data?.question?.questionNumber ?? q;
-  const questionText = blocksToText(data?.question?.questionText ?? []);
-  const truncated = questionText.length > 140 ? questionText.slice(0, 137) + "…" : questionText;
-
   const imageResponse = new ImageResponse(
-    (
-      <div
-        style={{
-          width: "1200px",
-          height: "630px",
-          background: "#ffffff",
-          display: "flex",
-          flexDirection: "column",
-          padding: "60px 72px",
-          fontFamily: "sans-serif",
-          position: "relative",
-        }}
-      >
-        {/* Top accent bar */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "6px", background: "#1c67f6", display: "flex" }} />
-
-        {/* Site name */}
-        <div style={{ fontSize: "18px", color: "#6b7280", letterSpacing: "0.05em", marginBottom: "auto", display: "flex" }}>
-          CompetitiveShikshka
-        </div>
-
-        {/* Main content */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px", marginBottom: "auto" }}>
-          {/* Chapter badge */}
-          <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-            <div
-              style={{
-                background: "#1c67f6",
-                color: "#ffffff",
-                fontSize: "15px",
-                fontWeight: 700,
-                padding: "6px 16px",
-                borderRadius: "999px",
-                display: "flex",
-              }}
-            >
-              Chapter {chapter}
-            </div>
-            <div
-              style={{
-                background: "#f1f5f9",
-                color: "#475569",
-                fontSize: "15px",
-                fontWeight: 600,
-                padding: "6px 16px",
-                borderRadius: "999px",
-                display: "flex",
-              }}
-            >
-              Class {cls} · {subject}
-            </div>
-          </div>
-
-          {/* Chapter title */}
-          <div style={{ fontSize: "42px", fontWeight: 800, color: "#0f172a", lineHeight: 1.15, display: "flex" }}>
-            {chapterTitle}
-          </div>
-
-          {/* Divider */}
-          <div style={{ width: "60px", height: "4px", background: "#1c67f6", borderRadius: "2px", display: "flex" }} />
-
-          {/* Question */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <div
-                style={{
-                  background: "#eff6ff",
-                  color: "#1c67f6",
-                  fontSize: "14px",
-                  fontWeight: 700,
-                  padding: "4px 12px",
-                  borderRadius: "8px",
-                  display: "flex",
-                }}
-              >
-                Q. {questionNumber}
-              </div>
-            </div>
-            <div style={{ fontSize: "22px", color: "#334155", lineHeight: 1.5, display: "flex" }}>
-              {truncated}
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderTop: "1px solid #e2e8f0", paddingTop: "20px" }}>
-          <div style={{ fontSize: "15px", color: "#94a3b8", display: "flex" }}>NCERT Solutions</div>
-          <div style={{ fontSize: "15px", color: "#1c67f6", fontWeight: 600, display: "flex" }}>competitiveshikshka.com</div>
-        </div>
-      </div>
-    ),
+    <Frame eyebrow={eyebrow} title={title} meta={meta} />,
     { width: 1200, height: 630 }
   );
 

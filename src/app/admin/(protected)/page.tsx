@@ -47,45 +47,28 @@ export default async function AdminOverviewPage() {
   const supabase = createAdminClient();
 
   const [
-    { count: totalStudents },
-    { count: signups7d },
-    { count: signups30d },
-    { data: profiles },
+    { data: colleges },
+    { data: exams },
     { data: applications },
-    { count: collegesCount },
-    { count: pyqCount },
-    { count: practiceCount },
+    { count: newApplications7d },
   ] = await Promise.all([
-    supabase.from("profiles").select("id", { count: "exact", head: true }),
-    supabase.from("profiles").select("id", { count: "exact", head: true }).gte("created_at", daysAgo(7)),
-    supabase.from("profiles").select("id", { count: "exact", head: true }).gte("created_at", daysAgo(30)),
-    supabase.from("profiles").select("class, stream, target_exam, streak"),
+    supabase.from("colleges").select("type, city"),
+    supabase.from("exams").select("category"),
     supabase.from("mentorship_applications").select("plan, status"),
-    supabase.from("colleges").select("id", { count: "exact", head: true }),
-    supabase.from("questions").select("id", { count: "exact", head: true }).eq("bank", "pyq"),
-    supabase.from("questions").select("id", { count: "exact", head: true }).eq("bank", "practice"),
+    supabase.from("mentorship_applications").select("id", { count: "exact", head: true }).gte("created_at", daysAgo(7)),
   ]);
 
-  const avgStreak = profiles?.length
-    ? Math.round((profiles.reduce((sum, p) => sum + (p.streak ?? 0), 0) / profiles.length) * 10) / 10
-    : 0;
-
-  const classDist = tally(profiles?.map(p => p.class) ?? []);
-  const streamDist = tally(profiles?.map(p => p.stream) ?? []);
-  const examDist = tally((profiles ?? []).flatMap(p => p.target_exam ? p.target_exam.split(",") : []));
-
+  const collegesByType = tally(colleges?.map(c => c.type) ?? []);
+  const collegesByCity = tally(colleges?.map(c => c.city) ?? []);
+  const examsByCategory = tally(exams?.map(e => e.category) ?? []);
   const appsByPlan = tally(applications?.map(a => a.plan) ?? []);
   const appsByStatus = tally(applications?.map(a => a.status) ?? []);
 
   const stats = [
-    { label: "Total Students", value: String(totalStudents ?? 0), color: "#60a5fa", bg: "rgba(96,165,250,0.1)", icon: "🎓" },
-    { label: "Signups (7d)", value: String(signups7d ?? 0), color: "#34d399", bg: "rgba(52,211,153,0.1)", icon: "📈" },
-    { label: "Signups (30d)", value: String(signups30d ?? 0), color: "#a78bfa", bg: "rgba(167,139,250,0.1)", icon: "🗓️" },
-    { label: "Avg Streak", value: String(avgStreak), color: "#fb923c", bg: "rgba(251,146,60,0.1)", icon: "🔥" },
+    { label: "Colleges", value: String(colleges?.length ?? 0), color: "#facc15", bg: "rgba(250,204,21,0.1)", icon: "🏛️" },
+    { label: "Exams", value: String(exams?.length ?? 0), color: "#22d3ee", bg: "rgba(34,211,238,0.1)", icon: "📄" },
     { label: "Mentorship Applications", value: String(applications?.length ?? 0), color: "#f472b6", bg: "rgba(244,114,182,0.1)", icon: "📝" },
-    { label: "Colleges", value: String(collegesCount ?? 0), color: "#facc15", bg: "rgba(250,204,21,0.1)", icon: "🏛️" },
-    { label: "PYQ Questions", value: String(pyqCount ?? 0), color: "#22d3ee", bg: "rgba(34,211,238,0.1)", icon: "📚" },
-    { label: "Practice Questions", value: String(practiceCount ?? 0), color: "#4ade80", bg: "rgba(74,222,128,0.1)", icon: "✅" },
+    { label: "New Applications (7d)", value: String(newApplications7d ?? 0), color: "#34d399", bg: "rgba(52,211,153,0.1)", icon: "📈" },
   ];
 
   return (
@@ -106,9 +89,9 @@ export default async function AdminOverviewPage() {
       </div>
 
       <div className="grid md:grid-cols-3 gap-4 mb-4">
-        <BarList title="Class distribution" data={classDist} color="#60a5fa" />
-        <BarList title="Stream distribution" data={streamDist} color="#a78bfa" />
-        <BarList title="Target exam distribution" data={examDist} color="#34d399" />
+        <BarList title="Colleges by type" data={collegesByType} color="#facc15" />
+        <BarList title="Colleges by city" data={collegesByCity} color="#60a5fa" />
+        <BarList title="Exams by category" data={examsByCategory} color="#22d3ee" />
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight, MessageCircle, Target, CalendarClock,
@@ -5,6 +6,13 @@ import {
 } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "1-on-1 Mentorship for JEE, NEET & Govt Exams",
+  description:
+    "Get paired with an IITian or AIIMS mentor for weekly guidance, a personalised roadmap, and unlimited doubt support — all the way to exam day.",
+  alternates: { canonical: "/mentorship" },
+};
 
 const stats = [
   { value: "500+", label: "Students mentored" },
@@ -212,6 +220,27 @@ export default function MentorshipPage() {
               <p className="text-xs font-semibold text-foreground">{name}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Pricing tie-in */}
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+        <div className="rounded-xl border border-border bg-card p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+              <GraduationCap className="h-6 w-6 text-primary" />
+            </span>
+            <div>
+              <h3 className="font-black text-foreground text-lg">Simple, transparent pricing</h3>
+              <p className="text-sm text-muted-foreground mt-1 max-w-md">
+                Applying is free. Plan pricing and mentor matching details are shown
+                right after you submit your application.
+              </p>
+            </div>
+          </div>
+          <Link href="/mentorship/apply" className={cn(buttonVariants({ size: "lg" }), "shrink-0")}>
+            Apply now <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
 

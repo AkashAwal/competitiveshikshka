@@ -29,9 +29,9 @@ export async function proxy(request: NextRequest) {
 
   // Protect /admin routes — full is_admin check happens again server-side
   // in requireAdmin(); this is just a fast, optimistic bounce.
-  if (request.nextUrl.pathname.startsWith("/admin")) {
+  if (request.nextUrl.pathname.startsWith("/admin") && request.nextUrl.pathname !== "/admin/login") {
     if (!user) {
-      return NextResponse.redirect(new URL("/login", request.url));
+      return NextResponse.redirect(new URL("/admin/login", request.url));
     }
     const { data: profile } = await supabase
       .from("profiles")
@@ -43,14 +43,14 @@ export async function proxy(request: NextRequest) {
     }
   }
 
-  // Redirect logged-in users away from login page
-  if (user && request.nextUrl.pathname === "/login") {
-    return NextResponse.redirect(new URL("/", request.url));
+  // Redirect logged-in admins away from the admin login page
+  if (user && request.nextUrl.pathname === "/admin/login") {
+    return NextResponse.redirect(new URL("/admin", request.url));
   }
 
   return supabaseResponse;
 }
 
 export const config = {
-  matcher: ["/login", "/admin/:path*"],
+  matcher: ["/admin/:path*"],
 };
