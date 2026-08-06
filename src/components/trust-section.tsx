@@ -20,7 +20,7 @@ export function TrustSection() {
               </p>
             </div>
 
-            <div className="flex gap-10">
+            <div className="flex flex-wrap gap-6 sm:gap-10">
               <div className="flex flex-col gap-2">
                 <p className="text-3xl font-black text-[#1c67f6]">50k+ students</p>
                 <p className="max-w-[200px] border-l-2 border-border pl-3 text-sm text-muted-foreground">

@@ -28,7 +28,7 @@ export function AboutSection() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="relative flex min-h-[340px] flex-col justify-between gap-10 overflow-hidden rounded-3xl bg-[#f5f6f8] p-10">
             <BookOpen
-              className="pointer-events-none absolute -bottom-6 -right-6 h-56 w-56 text-[#1c67f6]/5"
+              className="pointer-events-none absolute -bottom-6 -right-6 h-40 w-40 text-[#1c67f6]/5 sm:h-56 sm:w-56"
               strokeWidth={1}
             />
             <div className="relative flex flex-col gap-3">
@@ -49,7 +49,7 @@ export function AboutSection() {
           <div className="relative flex min-h-[340px] flex-col justify-between gap-6 overflow-hidden rounded-3xl bg-emerald-50 p-10">
             <span
               aria-hidden
-              className="pointer-events-none absolute -right-4 -top-6 select-none text-[180px] font-black leading-none text-emerald-100"
+              className="pointer-events-none absolute -right-4 -top-6 select-none text-[110px] font-black leading-none text-emerald-100 sm:text-[180px]"
             >
               4.8
             </span>
