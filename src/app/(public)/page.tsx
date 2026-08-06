@@ -7,6 +7,7 @@ import { MentorshipSection } from "@/components/mentorship-section";
 import { TracksSection } from "@/components/tracks-section";
 import { AboutSection } from "@/components/about-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
+import { BlogSection } from "@/components/blog-section";
 
 export default function HomePage() {
   return (
@@ -26,6 +27,7 @@ export default function HomePage() {
       <TracksSection />
       <AboutSection />
       <TestimonialsSection />
+      <BlogSection />
     </>
   );
 }

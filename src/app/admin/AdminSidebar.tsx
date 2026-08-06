@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
-  LayoutDashboard, GraduationCap, UserCheck, LogOut, ArrowLeft, FileText,
+  LayoutDashboard, GraduationCap, UserCheck, LogOut, ArrowLeft, FileText, Newspaper,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
@@ -12,6 +12,7 @@ const navItems = [
   { icon: GraduationCap,   label: "Colleges",   href: "/admin/colleges" },
   { icon: FileText,        label: "Exams",      href: "/admin/exams" },
   { icon: UserCheck,       label: "Mentorship", href: "/admin/mentorship" },
+  { icon: Newspaper,       label: "Blog",       href: "/admin/blog" },
 ];
 
 export function AdminSidebar({ email }: { email: string }) {
