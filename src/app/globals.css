@@ -159,6 +159,14 @@ html.cs-no-anim *::after {
   animation: float 3s ease-in-out infinite;
 }
 
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Shared CTA hover treatment: gradient shine sweep only (no lift, no hover glow/shadow) */
 .btn-cta {
   position: relative;
