@@ -27,24 +27,30 @@ export default async function CollegesPage() {
     .order("name");
 
   return (
-    <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
-      <h1 className="text-5xl font-black tracking-tight text-foreground mb-2">
-        Find your <span className="text-primary">college</span>
-      </h1>
-      <p className="text-muted-foreground mb-6 max-w-2xl">
-        Rankings, cutoffs, fees and placements for every top engineering and medical college — verified and kept up to date.
-      </p>
+    <div>
+      <section className="w-full bg-dot-pattern">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16">
+          <h1 className="text-5xl font-black tracking-tight text-foreground mb-2 sm:text-6xl">
+            Find your <span className="text-primary">college</span>
+          </h1>
+          <p className="text-muted-foreground max-w-2xl">
+            Rankings, cutoffs, fees and placements for every top engineering and medical college — verified and kept up to date.
+          </p>
 
-      <div className="flex flex-wrap gap-x-6 gap-y-2 mb-10">
-        {TRUST_POINTS.map(({ icon: Icon, text }) => (
-          <div key={text} className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Icon className="h-4 w-4 text-primary shrink-0" />
-            {text}
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+            {TRUST_POINTS.map(({ icon: Icon, text }) => (
+              <div key={text} className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Icon className="h-4 w-4 text-primary shrink-0" />
+                {text}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      </section>
 
-      <CollegesList colleges={colleges ?? []} />
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
+        <CollegesList colleges={colleges ?? []} />
+      </div>
     </div>
   );
 }
