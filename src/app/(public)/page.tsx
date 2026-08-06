@@ -1,6 +1,7 @@
 import { HeroContent } from "@/components/hero-content";
 import { LeadForm } from "@/components/lead-form";
 import { AdvantagesSection } from "@/components/advantages-section";
+import { TrustSection } from "@/components/trust-section";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
         </div>
       </section>
       <AdvantagesSection />
+      <TrustSection />
     </>
   );
 }
