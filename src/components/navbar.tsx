@@ -40,7 +40,7 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "px-3 py-1.5 rounded-md text-sm font-semibold transition-all cursor-pointer",
+                  "px-3 py-1.5 rounded-full text-sm font-semibold transition-all cursor-pointer",
                   isActive ? "text-white" : "text-foreground"
                 )}
                 style={{ backgroundColor: isActive ? "#1c67f6" : "transparent" }}
@@ -56,7 +56,7 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-3">
           <Link
             href="/mentorship/apply"
-            className="btn-cta px-4 py-1.5 rounded-md text-sm font-semibold text-white"
+            className="btn-cta px-4 py-1.5 rounded-full text-sm font-semibold text-white"
           >
             Apply for Mentorship
           </Link>
@@ -64,7 +64,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-1 md:hidden">
           <button
-            className="p-2 rounded-md hover:bg-accent transition-colors cursor-pointer"
+            className="p-2 rounded-full hover:bg-accent transition-colors cursor-pointer"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -81,7 +81,7 @@ export function Navbar() {
               href={link.href}
               onClick={() => setMenuOpen(false)}
               className={cn(
-                "px-3 py-2 rounded-md text-sm font-semibold transition-colors cursor-pointer",
+                "px-3 py-2 rounded-full text-sm font-semibold transition-colors cursor-pointer",
                 pathname.startsWith(link.href)
                   ? "text-white"
                   : "text-foreground hover:bg-accent"
@@ -94,7 +94,7 @@ export function Navbar() {
           <Link
             href="/mentorship/apply"
             onClick={() => setMenuOpen(false)}
-            className="btn-cta px-3 py-2 rounded-md text-sm font-semibold text-white text-center"
+            className="btn-cta px-3 py-2 rounded-full text-sm font-semibold text-white text-center"
           >
             Apply for Mentorship
           </Link>

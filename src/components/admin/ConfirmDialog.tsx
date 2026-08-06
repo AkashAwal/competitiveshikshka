@@ -37,7 +37,7 @@ export function ConfirmDialog({
             <Dialog.Title className="text-lg font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>
               {title}
             </Dialog.Title>
-            <Dialog.Close className="p-1 rounded-lg cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
+            <Dialog.Close className="p-1 rounded-full cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
               <X className="h-4 w-4" />
             </Dialog.Close>
           </div>
@@ -50,7 +50,7 @@ export function ConfirmDialog({
 
           <div className="flex items-center justify-end gap-2">
             <Dialog.Close
-              className="px-4 py-2 rounded-xl text-sm font-bold cursor-pointer"
+              className="px-4 py-2 rounded-full text-sm font-bold cursor-pointer"
               style={{ color: "rgba(var(--fg-rgb),0.5)" }}
             >
               Cancel
@@ -58,7 +58,7 @@ export function ConfirmDialog({
             <button
               onClick={onConfirm}
               disabled={pending}
-              className="rounded-xl px-5 py-2.5 text-sm font-bold text-white cursor-pointer disabled:opacity-50"
+              className="rounded-full px-5 py-2.5 text-sm font-bold text-white cursor-pointer disabled:opacity-50"
               style={{ backgroundColor: "#ef4444" }}
             >
               {pending ? "Deleting..." : confirmLabel}

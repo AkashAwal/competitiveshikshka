@@ -273,7 +273,7 @@ export default function MentorshipPage() {
         </p>
         <Link
           href="/mentorship/apply"
-          className="btn-cta-invert inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold bg-white text-[#1c67f6]"
+          className="btn-cta-invert inline-flex items-center gap-2 px-8 py-3 rounded-full text-sm font-bold bg-white text-[#1c67f6]"
         >
           Apply for Mentorship
         </Link>

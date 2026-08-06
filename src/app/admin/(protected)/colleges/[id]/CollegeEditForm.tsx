@@ -156,7 +156,7 @@ export function CollegeEditForm({ college }: { college: CollegeDetails }) {
       <button
         onClick={save}
         disabled={pending}
-        className="self-start flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-bold text-white cursor-pointer disabled:opacity-50"
+        className="self-start flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold text-white cursor-pointer disabled:opacity-50"
         style={{ backgroundColor: saved ? "#16a34a" : "#1c67f6" }}
       >
         {saved && <Check className="h-4 w-4" />}

@@ -44,7 +44,7 @@ export function AdminSidebar({ email }: { email: string }) {
             <Link
               key={href}
               href={href}
-              className="flex items-center gap-3 px-3 py-2 rounded-lg text-[15px] transition-all"
+              className="flex items-center gap-3 px-3 py-2 rounded-full text-[15px] transition-all"
               style={{
                 backgroundColor: active ? "var(--surface-active-bg)" : "transparent",
                 color: active ? "var(--surface-active-fg)" : "rgba(var(--fg-rgb),0.75)",
@@ -63,7 +63,7 @@ export function AdminSidebar({ email }: { email: string }) {
       <div className="px-3 pb-3 flex flex-col gap-0.5 border-t" style={{ borderColor: "rgba(var(--fg-rgb),0.15)", paddingTop: "10px" }}>
         <Link
           href="/"
-          className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all"
+          className="flex items-center gap-3 px-3 py-2 rounded-full text-sm font-medium transition-all"
           style={{ color: "rgba(var(--fg-rgb),0.6)" }}
           onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(var(--fg-rgb),0.07)"; }}
           onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "transparent"; }}
@@ -78,7 +78,7 @@ export function AdminSidebar({ email }: { email: string }) {
           </div>
           <button
             onClick={signOut}
-            className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer"
+            className="w-full flex items-center gap-3 px-3 py-2 rounded-full text-sm font-medium transition-all cursor-pointer"
             style={{ color: "rgba(248,113,113,0.75)" }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(239,68,68,0.08)"; (e.currentTarget as HTMLElement).style.color = "#f87171"; }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = "transparent"; (e.currentTarget as HTMLElement).style.color = "rgba(248,113,113,0.75)"; }}

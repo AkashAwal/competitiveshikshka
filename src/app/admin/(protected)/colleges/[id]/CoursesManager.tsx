@@ -79,7 +79,7 @@ export function CoursesManager({ collegeId, rows }: { collegeId: string; rows: C
         <p className="text-sm font-bold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>Courses & seats</p>
         <button
           onClick={openCreate}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-white cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-white cursor-pointer"
           style={{ backgroundColor: "#1c67f6" }}
         >
           <Plus className="h-3.5 w-3.5" /> Add course
@@ -105,10 +105,10 @@ export function CoursesManager({ collegeId, rows }: { collegeId: string; rows: C
                 <td className="px-3 py-2.5" style={{ color: "rgba(var(--fg-rgb),0.55)" }}>{row.fees_total_lpa ?? "—"}</td>
                 <td className="px-3 py-2.5">
                   <div className="flex items-center gap-1 justify-end">
-                    <button onClick={() => openEdit(row)} className="p-1 rounded-lg cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
+                    <button onClick={() => openEdit(row)} className="p-1 rounded-full cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
                       <Pencil className="h-3.5 w-3.5" />
                     </button>
-                    <button onClick={() => { setError(""); setConfirmDeleteId(row.id); }} className="p-1 rounded-lg cursor-pointer" style={{ color: "#f87171" }}>
+                    <button onClick={() => { setError(""); setConfirmDeleteId(row.id); }} className="p-1 rounded-full cursor-pointer" style={{ color: "#f87171" }}>
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>
                   </div>
@@ -133,7 +133,7 @@ export function CoursesManager({ collegeId, rows }: { collegeId: string; rows: C
               <Dialog.Title className="text-lg font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>
                 {editing ? "Edit course" : "Add course"}
               </Dialog.Title>
-              <Dialog.Close className="p-1 rounded-lg cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
+              <Dialog.Close className="p-1 rounded-full cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
                 <X className="h-4 w-4" />
               </Dialog.Close>
             </div>
@@ -186,7 +186,7 @@ export function CoursesManager({ collegeId, rows }: { collegeId: string; rows: C
               <button
                 onClick={submit}
                 disabled={pending}
-                className="mt-1 rounded-xl px-5 py-2.5 text-sm font-bold text-white cursor-pointer disabled:opacity-50"
+                className="mt-1 rounded-full px-5 py-2.5 text-sm font-bold text-white cursor-pointer disabled:opacity-50"
                 style={{ backgroundColor: "#1c67f6" }}
               >
                 {pending ? "Saving..." : editing ? "Save changes" : "Add course"}

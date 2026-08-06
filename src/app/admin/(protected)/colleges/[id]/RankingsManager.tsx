@@ -78,7 +78,7 @@ export function RankingsManager({ collegeId, rows }: { collegeId: string; rows: 
         <p className="text-sm font-bold" style={{ color: "rgba(var(--fg-rgb),0.9)" }}>NIRF rank history</p>
         <button
           onClick={openCreate}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-white cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold text-white cursor-pointer"
           style={{ backgroundColor: "#1c67f6" }}
         >
           <Plus className="h-3.5 w-3.5" /> Add year
@@ -89,10 +89,10 @@ export function RankingsManager({ collegeId, rows }: { collegeId: string; rows: 
         {sorted.map(row => (
           <div key={row.id} className="rounded-lg px-3 py-2 flex items-center gap-2" style={{ border: "1px solid rgba(var(--fg-rgb),0.06)" }}>
             <span className="text-sm font-semibold" style={{ color: "rgba(var(--fg-rgb),0.85)" }}>{row.year}: #{row.rank}</span>
-            <button onClick={() => openEdit(row)} className="p-0.5 rounded cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
+            <button onClick={() => openEdit(row)} className="p-0.5 rounded-full cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
               <Pencil className="h-3 w-3" />
             </button>
-            <button onClick={() => { setError(""); setConfirmDeleteId(row.id); }} className="p-0.5 rounded cursor-pointer" style={{ color: "#f87171" }}>
+            <button onClick={() => { setError(""); setConfirmDeleteId(row.id); }} className="p-0.5 rounded-full cursor-pointer" style={{ color: "#f87171" }}>
               <Trash2 className="h-3 w-3" />
             </button>
           </div>
@@ -113,7 +113,7 @@ export function RankingsManager({ collegeId, rows }: { collegeId: string; rows: 
               <Dialog.Title className="text-lg font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>
                 {editing ? "Edit ranking" : "Add ranking"}
               </Dialog.Title>
-              <Dialog.Close className="p-1 rounded-lg cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
+              <Dialog.Close className="p-1 rounded-full cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
                 <X className="h-4 w-4" />
               </Dialog.Close>
             </div>
@@ -135,7 +135,7 @@ export function RankingsManager({ collegeId, rows }: { collegeId: string; rows: 
               <button
                 onClick={submit}
                 disabled={pending}
-                className="mt-1 rounded-xl px-5 py-2.5 text-sm font-bold text-white cursor-pointer disabled:opacity-50"
+                className="mt-1 rounded-full px-5 py-2.5 text-sm font-bold text-white cursor-pointer disabled:opacity-50"
                 style={{ backgroundColor: "#1c67f6" }}
               >
                 {pending ? "Saving..." : editing ? "Save changes" : "Add ranking"}

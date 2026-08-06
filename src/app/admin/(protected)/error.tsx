@@ -21,7 +21,7 @@ export default function AdminError({ error, reset }: { error: Error & { digest?:
         </p>
         <button
           onClick={reset}
-          className="mt-2 rounded-xl px-5 py-2.5 text-sm font-bold text-white cursor-pointer"
+          className="mt-2 rounded-full px-5 py-2.5 text-sm font-bold text-white cursor-pointer"
           style={{ backgroundColor: "#1c67f6" }}
         >
           Try again

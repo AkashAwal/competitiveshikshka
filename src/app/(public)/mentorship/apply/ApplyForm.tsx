@@ -101,7 +101,7 @@ export function ApplyForm({ userId, initialName, initialEmail }: Props) {
             We will contact you shortly — usually within 24 hours.
           </p>
         </div>
-        <Link href="/" className="btn-cta inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold text-white">
+        <Link href="/" className="btn-cta inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold text-white">
           Back to home
         </Link>
       </div>
@@ -135,7 +135,7 @@ export function ApplyForm({ userId, initialName, initialEmail }: Props) {
               type="button"
               onClick={() => setStudentClass(c)}
               className={cn(
-                "rounded-xl border px-4 py-2.5 text-sm font-semibold transition-colors cursor-pointer",
+                "rounded-full border px-4 py-2.5 text-sm font-semibold transition-colors cursor-pointer",
                 studentClass === c
                   ? "border-[#1c67f6] bg-[#1c67f6] text-white"
                   : "border-border bg-card text-muted-foreground hover:border-[#1c67f6]"
@@ -174,7 +174,7 @@ export function ApplyForm({ userId, initialName, initialEmail }: Props) {
       <button
         type="submit"
         disabled={!isValid || submitting}
-        className="btn-cta mt-2 flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold text-white cursor-pointer"
+        className="btn-cta mt-2 flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white cursor-pointer"
       >
         {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
         {submitting ? "Submitting..." : "Submit application"}

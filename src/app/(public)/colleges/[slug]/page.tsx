@@ -132,12 +132,12 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
 
             <div className="flex flex-col gap-2 min-w-[220px]">
               {college.website && (
-                <a href={college.website} target="_blank" rel="noopener noreferrer" className="btn-cta inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white">
+                <a href={college.website} target="_blank" rel="noopener noreferrer" className="btn-cta inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white">
                   <Globe className="h-4 w-4" /> Visit website
                 </a>
               )}
               {college.admission_email && (
-                <a href={`mailto:${college.admission_email}`} className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-foreground border border-foreground transition-colors hover:bg-[#1c67f6] hover:text-white hover:border-[#1c67f6]">
+                <a href={`mailto:${college.admission_email}`} className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-foreground border border-foreground transition-colors hover:bg-[#1c67f6] hover:text-white hover:border-[#1c67f6]">
                   <Mail className="h-4 w-4" /> Contact admissions
                 </a>
               )}
@@ -376,7 +376,7 @@ export default async function CollegeDetailPage({ params }: { params: Promise<{ 
         </p>
         <Link
           href="/mentorship"
-          className="btn-cta-invert inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold bg-white text-[#1c67f6]"
+          className="btn-cta-invert inline-flex items-center gap-2 px-8 py-3 rounded-full text-sm font-bold bg-white text-[#1c67f6]"
         >
           Talk to a mentor <ArrowRight className="h-4 w-4" />
         </Link>

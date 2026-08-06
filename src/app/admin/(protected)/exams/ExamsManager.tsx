@@ -95,7 +95,7 @@ export function ExamsManager({ rows }: { rows: ExamRow[] }) {
         </div>
         <button
           onClick={openCreate}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-white cursor-pointer shrink-0"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold text-white cursor-pointer shrink-0"
           style={{ backgroundColor: "#1c67f6" }}
         >
           <Plus className="h-4 w-4" /> Add exam
@@ -124,7 +124,7 @@ export function ExamsManager({ rows }: { rows: ExamRow[] }) {
                   <td className="px-4 py-3" style={{ color: "rgba(var(--fg-rgb),0.6)" }}>{row.conducting_body || "—"}</td>
                   <td className="px-4 py-3">
                     <div className="flex items-center justify-end">
-                      <button onClick={() => { setError(""); setConfirmDeleteId(row.id); }} className="p-1.5 rounded-lg cursor-pointer" style={{ color: "#f87171" }}>
+                      <button onClick={() => { setError(""); setConfirmDeleteId(row.id); }} className="p-1.5 rounded-full cursor-pointer" style={{ color: "#f87171" }}>
                         <Trash2 className="h-4 w-4" />
                       </button>
                     </div>
@@ -150,7 +150,7 @@ export function ExamsManager({ rows }: { rows: ExamRow[] }) {
           >
             <div className="flex items-center justify-between mb-5">
               <Dialog.Title className="text-lg font-black" style={{ color: "rgba(var(--fg-rgb),0.95)" }}>Add exam</Dialog.Title>
-              <Dialog.Close className="p-1 rounded-lg cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
+              <Dialog.Close className="p-1 rounded-full cursor-pointer" style={{ color: "rgba(var(--fg-rgb),0.5)" }}>
                 <X className="h-4 w-4" />
               </Dialog.Close>
             </div>
@@ -183,7 +183,7 @@ export function ExamsManager({ rows }: { rows: ExamRow[] }) {
               <button
                 onClick={submit}
                 disabled={pending}
-                className="mt-1 rounded-xl px-5 py-2.5 text-sm font-bold text-white cursor-pointer disabled:opacity-50"
+                className="mt-1 rounded-full px-5 py-2.5 text-sm font-bold text-white cursor-pointer disabled:opacity-50"
                 style={{ backgroundColor: "#1c67f6" }}
               >
                 {pending ? "Creating..." : "Create & continue"}

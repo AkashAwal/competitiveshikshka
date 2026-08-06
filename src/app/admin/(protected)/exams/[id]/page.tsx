@@ -26,7 +26,7 @@ export default async function AdminExamDetailPage({ params }: { params: Promise<
           <Link
             href={`/exams?exam=${exam.slug}`}
             target="_blank"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-1.5 rounded-lg"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-1.5 rounded-full"
             style={{ color: "#60a5fa", backgroundColor: "rgba(96,165,250,0.1)" }}
           >
             View public page <ExternalLink className="h-3.5 w-3.5" />

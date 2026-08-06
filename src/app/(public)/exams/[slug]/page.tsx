@@ -149,7 +149,7 @@ export default async function ExamDetailPage({ params }: { params: Promise<{ slu
         </p>
         <Link
           href="/mentorship"
-          className="inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-bold transition-colors bg-white text-primary hover:bg-zinc-100"
+          className="inline-flex items-center gap-2 px-8 py-3 rounded-full text-sm font-bold transition-colors bg-white text-primary hover:bg-zinc-100"
         >
           Talk to a mentor <ArrowRight className="h-4 w-4" />
         </Link>
