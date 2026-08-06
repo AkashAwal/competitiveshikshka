@@ -167,6 +167,19 @@ html.cs-no-anim *::after {
   display: none;
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 45s linear infinite;
+}
+
 /* Shared CTA hover treatment: gradient shine sweep only (no lift, no hover glow/shadow) */
 .btn-cta {
   position: relative;
