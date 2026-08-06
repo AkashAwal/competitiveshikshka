@@ -3,6 +3,7 @@ import { LeadForm } from "@/components/lead-form";
 import { AdvantagesSection } from "@/components/advantages-section";
 import { TrustSection } from "@/components/trust-section";
 import { HighlightsSection } from "@/components/highlights-section";
+import { MentorshipSection } from "@/components/mentorship-section";
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
       <AdvantagesSection />
       <TrustSection />
       <HighlightsSection />
+      <MentorshipSection />
     </>
   );
 }
