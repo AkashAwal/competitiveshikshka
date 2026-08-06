@@ -40,7 +40,7 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "px-3 py-1.5 rounded-full text-sm font-semibold transition-all cursor-pointer",
+                  "px-3 py-1.5 rounded-md text-sm font-semibold transition-all cursor-pointer",
                   isActive ? "text-white" : "text-foreground"
                 )}
                 style={{ backgroundColor: isActive ? "#1c67f6" : "transparent" }}
@@ -81,7 +81,7 @@ export function Navbar() {
               href={link.href}
               onClick={() => setMenuOpen(false)}
               className={cn(
-                "px-3 py-2 rounded-full text-sm font-semibold transition-colors cursor-pointer",
+                "px-3 py-2 rounded-md text-sm font-semibold transition-colors cursor-pointer",
                 pathname.startsWith(link.href)
                   ? "text-white"
                   : "text-foreground hover:bg-accent"
